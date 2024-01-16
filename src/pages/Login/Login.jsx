@@ -1,13 +1,18 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const { signIn, signInWithGoogle } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm();
@@ -17,6 +22,9 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log("login user", user);
+        reset();
+        toast.success("Login Successfully!");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -28,6 +36,8 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log("google login user", user);
+        toast.success("Login Successfully!");
+        navigate(from, { replace: true });
 
         // const userInfo = {
         //     name: user.displayName,

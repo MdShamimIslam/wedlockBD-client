@@ -1,13 +1,23 @@
 import { AiOutlineMenu } from "react-icons/ai";
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import avatarImg from "../../../assets/profile/profile.jpg";
 import useAuth from "../../../hooks/useAuth";
 import "./MenuDropdown.css";
+import toast from "react-hot-toast";
 
 const MenuDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logOut } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogOut = ()=>{
+    logOut()
+    .then(()=>{
+      navigate('/');
+      toast.success('Logout Successfully !!')
+    })
+  }
 
   return (
     <div className="relative">
@@ -79,7 +89,7 @@ const MenuDropdown = () => {
                   </NavLink>
                 </nav>
                 <div
-                  onClick={logOut}
+                  onClick={handleLogOut}
                   className="px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer"
                 >
                   Logout

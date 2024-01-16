@@ -7,6 +7,7 @@ import SignUp from "../pages/SignUp/SignUp";
 import Biodatas from "../pages/Biodatas/Biodatas";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import ContactUs from "../pages/ContactUs/ContactUs";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -24,7 +25,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/about',
-                element:<AboutUs></AboutUs>
+                element:<PrivateRoute><AboutUs></AboutUs></PrivateRoute>
             },
             {
                 path:'/contact',
