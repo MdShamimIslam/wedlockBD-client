@@ -1,7 +1,8 @@
 import React from "react";
 import { Slider } from "../Slider/Slider";
 import { Helmet } from "react-helmet-async";
-import Biodatas from "../../Biodatas/Biodatas";
+import WebWork from "../WebWork/WebWork";
+import PremiumBio from "./PremiumBio/PremiumBio";
 
 const Home = () => {
   return (
@@ -10,7 +11,8 @@ const Home = () => {
         <title>Home | WedlockBD</title>
       </Helmet>
       <Slider></Slider>
-      <Biodatas></Biodatas>
+      <PremiumBio></PremiumBio>
+      <WebWork></WebWork>
     </div>
   );
 };

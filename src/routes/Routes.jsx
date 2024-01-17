@@ -8,6 +8,8 @@ import Biodatas from "../pages/Biodatas/Biodatas";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import PrivateRoute from "./PrivateRoute";
+import BiodataDetails from "../pages/Biodatas/BiodataDetails";
+import AddBiodata from "../pages/AddBiodata/AddBiodata";
 
 export const router = createBrowserRouter([
     {
@@ -25,11 +27,20 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/about',
-                element:<PrivateRoute><AboutUs></AboutUs></PrivateRoute>
+                element:<AboutUs></AboutUs>
             },
             {
                 path:'/contact',
                 element:<ContactUs></ContactUs>
+            },
+            {
+                path:'/biodata-details/:id',
+                element:<PrivateRoute><BiodataDetails></BiodataDetails></PrivateRoute>,
+                loader:({params})=>fetch(`http://localhost:5000/biodatas/${params.id}`)
+            },
+            {
+                path:'/add-biodata',
+                element:<PrivateRoute><AddBiodata></AddBiodata></PrivateRoute>
             },
             
         ])
