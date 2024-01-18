@@ -6,6 +6,7 @@ import GenderBio from "./GenderBio";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import useBio from "../../hooks/useBio";
 
 const BiodataDetails = () => {
   const { user } = useAuth();
@@ -35,6 +36,8 @@ const BiodataDetails = () => {
     weight,
   } = biodata;
 
+  const [bio] = useBio();
+
   // get gender by biodatas
   const { data: biodatas = [] } = useQuery({
     queryKey: ["genderBiodatas"],
@@ -50,34 +53,40 @@ const BiodataDetails = () => {
 
   // add biodata to database
   const handleAddToFavorite = () => {
-    const bioInfo = {
-      age,
-      biodata_id,
-      biodata_type,
-      contact_email,
-      contact_number,
-      date_of_birth,
-      expected_partner_age,
-      expected_partner_height,
-      expected_partner_weight,
-      fathers_name,
-      height,
-      mothers_name,
-      name,
-      occupation,
-      permanent_division_name,
-      premium_status,
-      present_division_name,
-      profile_image,
-      race,
-      weight,
-      email: user?.email,
-    };
-    axiosSecure.post("/favorites", bioInfo).then((res) => {
-      if (res.data.insertedId) {
-        toast.success("Successfully Added!!");
-      }
-    });
+    if(bio.biodata_id){
+      const bioInfo = {
+        age,
+        biodata_id,
+        biodata_type,
+        contact_email,
+        contact_number,
+        date_of_birth,
+        expected_partner_age,
+        expected_partner_height,
+        expected_partner_weight,
+        fathers_name,
+        height,
+        mothers_name,
+        name,
+        occupation,
+        permanent_division_name,
+        premium_status,
+        present_division_name,
+        profile_image,
+        race,
+        weight,
+        email: user?.email,
+      };
+      axiosSecure.post("/favorites", bioInfo).then((res) => {
+        if (res.data.insertedId) {
+          toast.success("Successfully Added!!");
+        }
+      });
+    }
+    else{
+      toast.error('Create your biodata before add to favorites')
+    }
+    
   };
 
   return (
@@ -138,13 +147,13 @@ const BiodataDetails = () => {
                 Expected Partner Age : {expected_partner_age}
               </p>
 
-              {premium_status ? (
+              {bio?.premium_status ? (
                 <p className="text-gray-500"> Number : {contact_number}</p>
               ) : (
                 ""
               )}
 
-              {premium_status ? (
+              {bio?.premium_status ? (
                 <p className="text-gray-500"> Email : {contact_email}</p>
               ) : (
                 ""
@@ -152,6 +161,7 @@ const BiodataDetails = () => {
             </div>
             <div className="flex gap-4 mt-8">
               <button
+               
                 onClick={handleAddToFavorite}
                 className=" w-full rounded-lg h-14 bg-sky-500 text-white relative overflow-hidden group z-10 hover:text-white duration-1000"
               >
@@ -159,9 +169,14 @@ const BiodataDetails = () => {
                 <span className="absolute bg-sky-800 w-36 h-36 -left-2 -top-10 rounded-full group-hover:scale-100 scale-0 -z-10 group-hover:duration-700 duration-500 origin-center transform transition-all"></span>
                 Add To Favourite
               </button>
-              <div className=" flex justify-center items-center rounded-lg w-full  h-14 text-white bg-sky-950 overflow-hidden relative z-10 group hover:text-sky-900 duration-700">
-                <Link to={`/contact-request/${_id}`}>
-                  <button className="">
+              {
+                bio.premium_status ? 
+                ''
+                :
+                <div className=" flex justify-center items-center rounded-lg w-full  h-14 text-white bg-sky-950 overflow-hidden relative z-10 group hover:text-sky-900 duration-700">
+              
+                <Link className="w-full text-center" to={`${bio.biodata_id ? `/contact-request/${_id}` : '/nodata'}`}>
+                  <button>
                     Request Contact
                     <span className="bg-sky-900 group-hover:scale-125 scale-0 ease-in-out duration-300 delay-50 w-32 h-32 rounded-full absolute mx-auto my-auto inset-0 -z-10"></span>
                     <span className="bg-sky-800 group-hover:scale-125 scale-0 ease-in-out duration-300 delay-100 w-28 h-28 rounded-full absolute mx-auto my-auto inset-0 -z-10"></span>
@@ -171,6 +186,7 @@ const BiodataDetails = () => {
                   </button>
                 </Link>
               </div>
+              }
             </div>
           </div>
         </div>

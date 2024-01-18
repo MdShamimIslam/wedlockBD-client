@@ -154,7 +154,7 @@ const SignUp = () => {
               </div>
 
               <button className="block w-full p-3 text-center bg-black text-white rounded-sm dark:text-gray-900 dark:bg-violet-400">
-                Sign in
+                Sign Up
               </button>
             </form>
             <div className="flex items-center pt-4 space-x-1">

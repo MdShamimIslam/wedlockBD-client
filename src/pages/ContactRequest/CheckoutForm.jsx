@@ -15,16 +15,13 @@ const CheckoutForm = ({ biodata }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axiosSecure
-      .post("/create-payment-intent", { price: 500 })
-      .then((res) => {
-        setClientSecret(res.data.clientSecret);
-      });
+    axiosSecure.post("/create-payment-intent", { price: 500 }).then((res) => {
+      setClientSecret(res.data.clientSecret);
+    });
   }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
 
     if (!stripe || !elements) {
       return;
@@ -36,7 +33,7 @@ const CheckoutForm = ({ biodata }) => {
       return;
     }
 
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
+    const { error} = await stripe.createPaymentMethod({
       type: "card",
       card,
     });
@@ -45,7 +42,6 @@ const CheckoutForm = ({ biodata }) => {
       console.log("[error]", error);
       setError(error.message);
     } else {
-        console.log('payment method',paymentMethod);
       setError("");
     }
 
@@ -62,9 +58,9 @@ const CheckoutForm = ({ biodata }) => {
       });
 
     if (confirmCardError) {
-      console.log("paymentIntent error", confirmCardError);
       setError(confirmCardError.message);
-    } else {
+    } 
+    else {
       if (paymentIntent.status === "succeeded") {
         const paymentInfo = {
           selfEmail: bio?.contact_email,
@@ -77,7 +73,7 @@ const CheckoutForm = ({ biodata }) => {
         };
         await axiosSecure.post("/payments-info", paymentInfo);
         toast.success("Your Payment Successful!");
-        navigate('/biodatas')
+        navigate("/biodatas");
       }
     }
   };

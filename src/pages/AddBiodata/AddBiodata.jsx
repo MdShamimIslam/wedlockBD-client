@@ -94,7 +94,7 @@ const AddBiodata = () => {
       console.log(res.data);
       if(res.data.insertedId){
         reset();
-        toast.success('Your Bidata Created Successfully!!');
+        toast.success('Your Profile Created Successfully!!');
         navigate('/biodatas')
       }
     })

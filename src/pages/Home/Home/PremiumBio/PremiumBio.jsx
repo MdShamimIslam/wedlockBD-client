@@ -11,7 +11,7 @@ const PremiumBio = () => {
         queryKey:['premiumBiodatas'],
         queryFn:async()=>{
             const res = await axiosPublic.get('/limit-biodatas');
-            const premiumBiodatas = res?.data?.filter(biodata=>biodata.premium_status === true)
+            const premiumBiodatas = res?.data?.filter(biodata=>biodata.premium_status === true);
             return premiumBiodatas;
         }
     })

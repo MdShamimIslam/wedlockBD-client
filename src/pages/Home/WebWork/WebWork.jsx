@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useBio from "../../../hooks/useBio";
 
 const WebWork = () => {
+  const [bio] = useBio();
   return (
     <div className="my-12">
       <div className="text-center">
@@ -12,7 +14,7 @@ const WebWork = () => {
         </p>
         <p>But before filing you must register through the website</p>
       </div>
-    <Link to='/add-biodata'>
+    <Link to={`${bio.biodata_id ? '/alreadyCreate' : '/add-biodata'}`}>
     <div className="flex justify-center">
         <button className="py-2 w-60 h-16 rounded-lg px-6 mb-4 mt-6 bg-sky-700 hover:bg-sky-600 duration-300 text-white flex items-center justify-center overflow-hidden hover:overflow-visible relative group">
           <svg

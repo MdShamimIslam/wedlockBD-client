@@ -34,13 +34,15 @@ const BiodataCard = ({ biodata }) => {
             <span className="text-purple-700 font-bold">{biodata_id}</span>
           </p>
         </div>
-        <Link className="" to={`/biodata-details/${_id}`}>
+        
           <div className="flex items-center  p-6">
+          <Link className="w-full" to={`/biodata-details/${_id}`}>
             <button className="bg-gray-900 text-white px-6 py-2 w-full rounded-lg font-semibold md:text-base sm:text-sm text-[12px] hover:bg-slate-900">
               View Profile
             </button>
+            </Link>
           </div>
-        </Link>
+       
       </div>
     </div>
   );
