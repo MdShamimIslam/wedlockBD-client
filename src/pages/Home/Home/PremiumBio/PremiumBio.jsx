@@ -8,7 +8,7 @@ const PremiumBio = () => {
 
     // get biodatas 
     const {data:biodatas=[]} = useQuery({
-        queryKey:['biodatas'],
+        queryKey:['premiumBiodatas'],
         queryFn:async()=>{
             const res = await axiosPublic.get('/limit-biodatas');
             const premiumBiodatas = res?.data?.filter(biodata=>biodata.premium_status === true)

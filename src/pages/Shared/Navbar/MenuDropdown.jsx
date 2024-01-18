@@ -31,6 +31,8 @@ const MenuDropdown = () => {
           <div className="hidden md:block">
             {/* Avatar */}
             <img
+            // title={`${user?.displayName}`}
+            title={user?`${user?.displayName}`:''}
               className="rounded-full"
               referrerPolicy="no-referrer"
               src={user && user.photoURL ? user.photoURL : avatarImg}

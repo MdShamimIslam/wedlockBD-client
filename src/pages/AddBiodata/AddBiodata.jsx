@@ -4,8 +4,10 @@ import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const AddBiodata = () => {
+  const {user} = useAuth();
   const { register, reset, handleSubmit,setValue } = useForm();
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
@@ -132,6 +134,8 @@ const AddBiodata = () => {
               </label>
               <input
                 required
+                defaultValue={user?.email}
+                readOnly
                 {...register("contact_email")}
                 className="flex h-10 w-full px-3 py-2 text-sm  file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-gray-100  border border-gray-300  rounded-md"
                 id="email"

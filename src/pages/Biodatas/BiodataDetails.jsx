@@ -37,15 +37,16 @@ const BiodataDetails = () => {
 
   // get gender by biodatas
   const { data: biodatas = [] } = useQuery({
-    queryKey: ["biodatas"],
+    queryKey: ["genderBiodatas"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/gender-biodatas");
-      const genderData = res.data?.filter(
+      const res = await axiosSecure.get("/gender-biodatas");
+      const genderData = res?.data?.filter(
         (filterData) => filterData.biodata_type === biodata_type
       );
       return genderData;
     },
   });
+
 
   // add biodata to database
   const handleAddToFavorite = () => {
