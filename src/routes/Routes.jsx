@@ -22,6 +22,7 @@ import AdminHome from "../pages/Admin/AdminHome/AdminHome";
 import ApprovedContactRequest from "../pages/Admin/ApprovedContactRequest/ApprovedContactRequest";
 import ApprovedPremium from "../pages/Admin/ApprovedPremium/ApprovedPremium";
 import ManageUsers from "../pages/Admin/ManageUsers/ManageUsers";
+import UserHome from "../pages/User/UserHome/UserHome";
 
 export const router = createBrowserRouter([
   {
@@ -92,6 +93,10 @@ export const router = createBrowserRouter([
     element:<Dashboard></Dashboard>,
     children:[
       // user route
+      {
+        path:'userHome',
+        element:<UserHome></UserHome>
+      },
       {
         path:'editBio',
         element:<EditBio></EditBio>

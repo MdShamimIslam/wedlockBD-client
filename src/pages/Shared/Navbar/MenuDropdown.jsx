@@ -6,6 +6,7 @@ import useAuth from "../../../hooks/useAuth";
 import "./MenuDropdown.css";
 import toast from "react-hot-toast";
 
+
 const MenuDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logOut } = useAuth();
