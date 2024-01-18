@@ -4,9 +4,11 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Login = () => {
   const { signIn, signInWithGoogle } = useAuth();
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
@@ -21,7 +23,6 @@ const Login = () => {
     signIn(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        console.log("login user", user);
         reset();
         toast.success("Login Successfully!");
         navigate(from, { replace: true });
@@ -35,26 +36,22 @@ const Login = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
-        console.log("google login user", user);
-        toast.success("Login Successfully!");
-        navigate(from, { replace: true });
-
-        // const userInfo = {
-        //     name: user.displayName,
-        //     email: user.email,
-        //     image: user.photoURL,
-        //   };
-        //   axiosPublic.post("/users", userInfo)
-        //   .then((res) => {
-        //     if (res.data.insertedId) {
-        //       toast.success("Sign Up Successfully!");
-        //       navigate(from, { replace: true });
-        //     }
-        //     else{
-        //         toast.success("Sign Up Successfully!");
-        //         navigate(from, { replace: true });
-        //     }
-        //   });
+        const userInfo = {
+            name: user.displayName,
+            email: user.email,
+            image: user.photoURL,
+          };
+          axiosPublic.post("/users", userInfo)
+          .then((res) => {
+            if (res.data.insertedId) {
+              toast.success("Sign Up Successfully!");
+              navigate(from, { replace: true });
+            }
+            else{
+                toast.success("Sign Up Successfully!");
+                navigate(from, { replace: true });
+            }
+          });
       })
       .catch((error) => {
         console.log(error.message);

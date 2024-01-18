@@ -3,10 +3,12 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const AddBiodata = () => {
   const { register, reset, handleSubmit,setValue } = useForm();
   const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
 
   const handleSelectChange = (event) => {
     const selectedValue = event.target.value;
@@ -89,8 +91,9 @@ const AddBiodata = () => {
     .then(res=>{
       console.log(res.data);
       if(res.data.insertedId){
-        
-        toast.success('Your Bidata Created Successfully!!')
+        reset();
+        toast.success('Your Bidata Created Successfully!!');
+        navigate('/biodatas')
       }
     })
   };

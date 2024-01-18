@@ -4,12 +4,14 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SignUp = () => {
   const { createUser, signInWithGoogle, updateUserProfile } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
+  const axiosPublic = useAxiosPublic();
 
   const {
     register,
@@ -25,21 +27,18 @@ const SignUp = () => {
         console.log("signUp user", user);
         updateUserProfile(data.name, data.photoURL)
           .then(() => {
-            reset();
-        toast.success("Sign Up Successfully!");
-        navigate(from, { replace: true });
-            // const userInfo = {
-            //   name: data.name,
-            //   email: data.email,
-            //   image: data.photoURL,
-            // };
-            // axiosPublic.post("/users", userInfo).then((res) => {
-            //   if (res.data.insertedId) {
-            //     // reset();
-            //     toast.success("Sign Up Successfully!");
-            //     navigate(from, { replace: true });
-            //   }
-            // });
+            const userInfo = {
+              name: data.name,
+              email: data.email,
+              image: data.photoURL,
+            };
+            axiosPublic.post("/users", userInfo).then((res) => {
+              if (res.data.insertedId) {
+                reset();
+                toast.success("Sign Up Successfully!");
+                navigate(from, { replace: true });
+              }
+            });
           })
           .catch((error) => {
             console.log(error.message);
@@ -54,26 +53,22 @@ const SignUp = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
-        console.log('google login user',user);
-        toast.success("Sign Up Successfully!");
-        navigate(from, { replace: true });
-        
-        // const userInfo = {
-        //     name: user.displayName,
-        //     email: user.email,
-        //     image: user.photoURL,
-        //   };
-        //   axiosPublic.post("/users", userInfo)
-        //   .then((res) => {
-        //     if (res.data.insertedId) {
-        //       toast.success("Sign Up Successfully!");
-        //       navigate(from, { replace: true });
-        //     }
-        //     else{
-        //         toast.success("Sign Up Successfully!");
-        //         navigate(from, { replace: true });
-        //     }
-        //   });
+        const userInfo = {
+            name: user.displayName,
+            email: user.email,
+            image: user.photoURL,
+          };
+          axiosPublic.post("/users", userInfo)
+          .then((res) => {
+            if (res.data.insertedId) {
+              toast.success("Sign Up Successfully!");
+              navigate(from, { replace: true });
+            }
+            else{
+                toast.success("Sign Up Successfully!");
+                navigate(from, { replace: true });
+            }
+          });
        
       })
       .catch((error) => {
