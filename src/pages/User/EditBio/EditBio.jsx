@@ -79,7 +79,6 @@ const EditBio = () => {
     const bioInfo ={
       age:parseInt(age),
       biodata_type,
-      contact_email:user?.email,
       contact_number,
       date_of_birth,
       expected_partner_age:parseInt(expected_partner_age),
@@ -91,7 +90,6 @@ const EditBio = () => {
       name,
       occupation,
       permanent_division_name,
-      premium_status:bio?.premium_status,
       present_division_name,
       profile_image,
       race,
@@ -109,14 +107,14 @@ const EditBio = () => {
   
 
   return (
-    <div className="mb-20 mt-8">
+    <div className="mb-20 mt-8 w-5/6 mx-auto">
       <Helmet>
         <title>Add Biodata | WedlockBD</title>
       </Helmet>
       
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* form -1 */}
-        <div className="space-y-5">
+        <div className="">
           <div className="flex gap-12">
             <div className="w-full">
               <label
@@ -171,7 +169,7 @@ const EditBio = () => {
           </div>
         </div>
         {/* form -2 */}
-        <div className="space-y-5">
+        <div className=" mt-3">
           <div className="flex gap-12">
             <div className="w-full">
               <label
@@ -235,7 +233,7 @@ const EditBio = () => {
           </div>
         </div>
         {/* form -3 */}
-        <div className="space-y-5">
+        <div className="mt-3">
           <div className="flex gap-12">
             <div className="w-full">
               <label
@@ -409,7 +407,7 @@ const EditBio = () => {
           </div>
         </div>
         {/* form -4 */}
-        <div className="space-y-5">
+        <div className=" mt-3">
           <div className="flex gap-12">
             <div className="w-full">
               <label
@@ -476,7 +474,7 @@ const EditBio = () => {
           </div>
         </div>
         {/* form -5 */}
-        <div className="space-y-5">
+        <div className=" mt-3">
           <div className="flex gap-12">
             <div className="w-full">
               <label
@@ -573,7 +571,7 @@ const EditBio = () => {
           </div>
         </div>
         {/* form -6 */}
-        <div className="space-y-5">
+        <div className=" mt-3">
           <div className="flex gap-12">
             <div className="w-full">
               <label
@@ -750,7 +748,7 @@ const EditBio = () => {
           <input
             className="bg-gray-900 cursor-pointer text-white px-6 py-2 w-1/2 rounded-lg font-semibold md:text-base sm:text-sm text-[12px] hover:bg-slate-900"
             type="submit"
-            value="Edit Now"
+            value="Save And Publish Now"
           />
         </div>
       </form>

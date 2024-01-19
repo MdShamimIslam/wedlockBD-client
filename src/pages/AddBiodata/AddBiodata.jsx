@@ -107,7 +107,7 @@ const AddBiodata = () => {
       </Helmet>
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* form -1 */}
-        <div className="space-y-5">
+        <div className="mt-3">
           <div className="flex gap-12">
             <div className="w-full">
               <label
@@ -162,7 +162,7 @@ const AddBiodata = () => {
           </div>
         </div>
         {/* form -2 */}
-        <div className="space-y-5">
+        <div className="mt-3">
           <div className="flex gap-12">
             <div className="w-full">
               <label
@@ -226,7 +226,7 @@ const AddBiodata = () => {
           </div>
         </div>
         {/* form -3 */}
-        <div className="space-y-5">
+        <div className="mt-3">
           <div className="flex gap-12">
             <div className="w-full">
               <label
@@ -400,7 +400,7 @@ const AddBiodata = () => {
           </div>
         </div>
         {/* form -4 */}
-        <div className="space-y-5">
+        <div className="mt-3">
           <div className="flex gap-12">
             <div className="w-full">
               <label
@@ -453,7 +453,7 @@ const AddBiodata = () => {
           </div>
         </div>
         {/* form -5 */}
-        <div className="space-y-5">
+        <div className="mt-3">
           <div className="flex gap-12">
             <div className="w-full">
               <label
@@ -550,7 +550,7 @@ const AddBiodata = () => {
           </div>
         </div>
         {/* form -6 */}
-        <div className="space-y-5">
+        <div className="mt-3">
           <div className="flex gap-12">
             <div className="w-full">
               <label
