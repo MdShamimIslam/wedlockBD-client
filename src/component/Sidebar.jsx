@@ -15,7 +15,8 @@ import useAuth from "../hooks/useAuth";
 
 const Sidebar = () => {
   const { logOut } = useAuth();
-  const isAdmin = false;
+  const isAdmin = true;
+  // const isAdmin = false;
   const navigate = useNavigate();
   const [isActive, setActive] = useState(false);
   const handleToggle = () => {
@@ -74,7 +75,7 @@ const Sidebar = () => {
                   }`
                 }
               >
-                <IoHome /> <span className="ml-2 font-medium">Admin Home</span>
+                <IoHome /> <span className="ml-2 font-medium">Admin Dashboard</span>
               </NavLink>
               <NavLink
                 to="manage-users"
@@ -101,7 +102,7 @@ const Sidebar = () => {
                 <span className="ml-2 font-medium">Approved Premium</span>
               </NavLink>
               <NavLink
-                to="myContactRequest"
+                to="approved-contact-request"
                 end
                 className={({ isActive }) =>
                   `flex items-center px-4 py-2   transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
@@ -110,7 +111,7 @@ const Sidebar = () => {
                 }
               >
                 <TiContacts />{" "}
-                <span className="ml-2 font-medium">Contact Request</span>
+                <span className="ml-2 font-medium">Approved Request</span>
               </NavLink>
             </div>
           ) : (
@@ -125,7 +126,7 @@ const Sidebar = () => {
                   }`
                 }
               >
-                <IoHome /> <span className="ml-2 font-medium">User Home</span>
+                <IoHome /> <span className="ml-2 font-medium">User Dashboard</span>
               </NavLink>
               <NavLink
                 to="editBio"

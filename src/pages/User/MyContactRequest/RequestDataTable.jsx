@@ -12,21 +12,21 @@ const RequestDataTable = ({ requestInfo,handleRequestInfoDelete }) => {
         <p className="text-gray-900 ml-6 whitespace-no-wrap">{biodata_id}</p>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        {status === "approved" ? (
+        {status === "Approved" ? (
           <p className="text-gray-900 whitespace-no-wrap">{contact_email}</p>
         ) : (
-          ""
+          <p className='text-xl ml-10'>X</p>
         )}
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        {status === "approved" ? (
+        {status === "Approved" ? (
           <p className="text-gray-900 whitespace-no-wrap">{contact_number}</p>
         ) : (
-          ""
+          <p className='text-xl ml-12'>X</p>
         )}
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-      {status === "approved" ? (
+      {status === "Approved" ? (
           <p className="text-green-600  whitespace-no-wrap">{status}</p>
         ) : (
             <p className="text-gray-600  whitespace-no-wrap">{status}</p>

@@ -59,7 +59,6 @@ const ViewBio = () => {
           const userBioInfo = {name,contact_email,biodata_id}
           axiosSecure.post('/premium-bio',userBioInfo)
           .then(res=>{
-            console.log(res.data);
             if(res.data.insertedId){
               Swal.fire("Wait for Admin Approved Now!", "", "success");
             }

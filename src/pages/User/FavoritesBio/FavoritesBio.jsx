@@ -4,6 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import FavoritesDataTable from "./FavoritesDataTable";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const FavoritesBio = () => {
   const axiosSecure = useAxiosSecure();
@@ -56,6 +57,9 @@ const FavoritesBio = () => {
 
   return (
     <div className="">
+       <Helmet>
+        <title> Favorites Biodata | WedlockBD</title>
+      </Helmet>
       <div className="container mx-auto px-4 sm:px-8">
         <div className="py-8">
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">

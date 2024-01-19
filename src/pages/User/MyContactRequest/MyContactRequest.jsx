@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import RequestDataTable from "./RequestDataTable";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const MyContactRequest = () => {
@@ -57,7 +58,9 @@ const handleRequestInfoDelete =(_id,name)=>{
 
   return (
     <div className="">
-     
+      <Helmet>
+        <title> My Contact Request| WedlockBD</title>
+      </Helmet>
         <div className='container mx-auto px-4 sm:px-8'>
         <div className='py-8'>
           <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>

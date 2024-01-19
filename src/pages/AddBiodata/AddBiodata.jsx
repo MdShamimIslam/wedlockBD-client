@@ -91,7 +91,6 @@ const AddBiodata = () => {
     }
     axiosPublic.post('/biodatas',bioInfo)
     .then(res=>{
-      console.log(res.data);
       if(res.data.insertedId){
         reset();
         toast.success('Your Profile Created Successfully!!');
