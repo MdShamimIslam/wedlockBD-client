@@ -15,7 +15,7 @@ import useAuth from "../hooks/useAuth";
 
 const Sidebar = () => {
   const { logOut } = useAuth();
-  const isAdmin = true;
+  const isAdmin = false;
   const navigate = useNavigate();
   const [isActive, setActive] = useState(false);
   const handleToggle = () => {

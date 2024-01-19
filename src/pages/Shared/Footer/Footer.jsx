@@ -14,7 +14,7 @@ const Footer = () => {
                 <h3 className="lg:text-xl text-lg font-bold mb-2">GET IN TOUCH</h3>
                 <p>Email : shamim401897@gmail.com</p>
                 <p>Phone : 01738740639</p>
-                <p>Address : Jamal,Sundargonj,Gaibandha</p>
+                <p>Address : Jamal,Sundarganj,Gaibandha</p>
             </div>
             <div className='-ml-48 md:-ml-48 lg:-ml-0'>
                 <h3 className="lg:text-xl text-lg font-bold">FIND ON</h3>
