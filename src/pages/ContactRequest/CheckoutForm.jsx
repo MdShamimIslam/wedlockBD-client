@@ -62,7 +62,7 @@ const CheckoutForm = ({ biodata }) => {
     } 
     else {
       if (paymentIntent.status === "succeeded") {
-        const paymentInfo = {
+        const contactInfo = {
           selfEmail: bio?.contact_email,
           name: biodata?.name,
           biodata_id: biodata?.biodata_id,
@@ -71,7 +71,7 @@ const CheckoutForm = ({ biodata }) => {
           date: new Date(),
           status: "pending",
         };
-        await axiosSecure.post("/payments-info", paymentInfo);
+        await axiosSecure.post("/contact-request", contactInfo);
         toast.success("Your Payment Successful!");
         navigate("/biodatas");
       }
