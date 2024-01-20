@@ -65,10 +65,14 @@ const CheckoutForm = ({ biodata }) => {
         const contactInfo = {
           selfEmail: bio?.contact_email,
           selfBiodata_Id : bio?.biodata_id,
+          selfBiodata_type : bio?.biodata_type,
+          selfBiodata_status : bio?.premium_status,
           contact_email:biodata?.contact_email,
           contact_number:biodata?.contact_number,
           name: biodata?.name,
           biodata_id: biodata?.biodata_id,
+          date : new Date(),
+          price : 500 ,
           status: "Pending",
         };
         await axiosSecure.post("/contact-request", contactInfo);
