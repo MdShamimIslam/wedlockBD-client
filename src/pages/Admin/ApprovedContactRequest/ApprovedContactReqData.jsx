@@ -4,7 +4,7 @@ import { VscGitPullRequestGoToChanges } from "react-icons/vsc";
 
 
 const ApprovedContactReqData = ({requestData,handleMakeContactRequest,handleContactRequestInfoDelete}) => {
-    const {_id,name,selfEmail,biodata_id,status} = requestData;
+    const {_id,name,selfEmail,biodata_id,status,price} = requestData;
     return (
         <tr>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -15,6 +15,9 @@ const ApprovedContactReqData = ({requestData,handleMakeContactRequest,handleCont
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <p className="text-gray-900 whitespace-no-wrap">{selfEmail}</p>
+      </td>
+      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+        <p className="text-gray-900 whitespace-no-wrap">{price} Tk</p>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         {status === 'Approved' ? (

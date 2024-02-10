@@ -32,8 +32,7 @@ const ViewBio = () => {
 
   // request biodata for premium
   const handleBioPremium = () => {
-
-    if(bio.premium_status === true){
+    if (bio.premium_status === true) {
       Swal.fire({
         title: "Your Biodata Already Premium",
         width: 600,
@@ -45,25 +44,25 @@ const ViewBio = () => {
           url("/images/nyan-cat.gif")
           left top
           no-repeat
-        `
+        `,
       });
-    }
-
-    else{
+    } else {
       Swal.fire({
         title: "Are you sure to make your biodata premium",
         showCancelButton: true,
         confirmButtonText: "Yes",
       }).then((result) => {
         if (result.isConfirmed) {
-          const userBioInfo = {name,contact_email,biodata_id}
-          axiosSecure.post('/premium-bio',userBioInfo)
-          .then(res=>{
-            if(res.data.insertedId){
+          const userBioInfo = { name, contact_email, biodata_id ,status:false};
+          axiosSecure.post("/premium-bio", userBioInfo)
+          .then((res) => {
+            if (res.data.insertedId) {
               Swal.fire("Wait for Admin Approved Now!", "", "success");
             }
-          })
-          
+            if (res.data.insertedId === null) {
+              Swal.fire("Already sent your biodata for premium !", "", "error");
+            }
+          });
         } else if (result.isDenied) {
           Swal.fire("Changes are not saved", "", "biodata premium");
         }
@@ -79,15 +78,13 @@ const ViewBio = () => {
       {bio.biodata_id ? (
         <div className="max-w-[950px]  md:w-[950px] p-6 mx-auto shadow-lg  space-y-4 rounded-lg ">
           <div>
-            {/* <img
-              alt="Profile Image"
-              className="w-[950px] h-[450px] object-cover  rounded-lg "
-              src={profile_image}
-            /> */}
             <div className="relative w-[220px] h-[220px] mx-auto">
-        <img src={profile_image} alt="portrait" className="w-full h-full rounded-full bg-black/30"/>
-        
-      </div>
+              <img
+                src={profile_image}
+                alt="portrait"
+                className="w-full h-full rounded-full bg-black/30"
+              />
+            </div>
             <div className="grid ml-44 gap-x-16 gap-y-2 md:grid-cols-2 mt-4">
               <p className="text-gray-500 dark:text-gray-400">Name : {name}</p>
               <p className=" text-gray-500 dark:text-gray-400">
@@ -153,7 +150,7 @@ const ViewBio = () => {
               ----Keep In Mind----
             </h2>
             <p>
-            To view biodata you must create your own profile in advance then
+              To view biodata you must create your own profile in advance then
               you can view your view biodata, so click the button below to
               create your bio, then view biodata.
             </p>

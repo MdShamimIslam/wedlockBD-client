@@ -9,13 +9,13 @@ import toast from "react-hot-toast";
 
 const ApprovedContactRequest = () => {
     const axiosSecure = useAxiosSecure();
-    const { user, loading } = useAuth();
-    // get request contact biodatas by user email
+    const {loading } = useAuth();
+
     const { data: requestContactData = [], refetch } = useQuery({
-      queryKey: ["requestContactData", user?.email],
+      queryKey: ["requestContactData"],
       queryFn: async () => {
         const res = await axiosSecure.get(
-          `/contact-request?email=${user?.email}`
+          `/admin/contact-request`
         );
         return res.data;
       },
@@ -98,6 +98,12 @@ Swal.fire({
                       className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
                      Contact Email
+                    </th>
+                    <th
+                      scope='col'
+                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                    >
+                    Payment Fee
                     </th>
                     
                     <th

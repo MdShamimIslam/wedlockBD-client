@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
@@ -12,6 +12,7 @@ const SignUp = () => {
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
   const axiosPublic = useAxiosPublic();
+  const [errorMess,setErrorMess] = useState('');
 
   const {
     register,
@@ -21,6 +22,7 @@ const SignUp = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    setErrorMess('')
     createUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
@@ -41,11 +43,12 @@ const SignUp = () => {
             });
           })
           .catch((error) => {
+            setErrorMess(error.message);
             console.log(error.message);
           });
       })
       .catch((error) => {
-        console.log(error);
+        setErrorMess(error.message);
       });
   };
 
@@ -57,6 +60,7 @@ const SignUp = () => {
             name: user.displayName,
             email: user.email,
             image: user.photoURL,
+            status:false
           };
           axiosPublic.post("/users", userInfo)
           .then((res) => {
@@ -72,7 +76,7 @@ const SignUp = () => {
        
       })
       .catch((error) => {
-        console.log(error.message);
+        setErrorMess(error.message);
       });
   };
 
@@ -83,7 +87,8 @@ const SignUp = () => {
         </Helmet>
         <div className="flex justify-center items-center min-h-screen">
           <div className="w-full max-w-md p-8 space-y-3 rounded-xl border dark:bg-gray-900 dark:text-gray-100 font-sans">
-            <h1 className="text-2xl font-bold text-center">Sign Up</h1>
+            <h1 className="text-2xl font-bold text-center">Sign Up Now</h1>
+            <p className="text-red-600">{errorMess}</p>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="space-y-1 text-sm">
                 <label htmlFor="username" className="block dark:text-gray-400">

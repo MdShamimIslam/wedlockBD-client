@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -12,6 +12,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
+  const [errorMess,setErrorMess] = useState('');
   const {
     register,
     reset,
@@ -20,6 +21,7 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    setErrorMess('');
     signIn(data.email, data.password)
       .then((result) => {
         const user = result.user;
@@ -28,7 +30,7 @@ const Login = () => {
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.log(error);
+        setErrorMess(error.message);
       });
   };
 
@@ -40,6 +42,7 @@ const Login = () => {
             name: user.displayName,
             email: user.email,
             image: user.photoURL,
+            status:false
           };
           axiosPublic.post("/users", userInfo)
           .then((res) => {
@@ -54,7 +57,7 @@ const Login = () => {
           });
       })
       .catch((error) => {
-        console.log(error.message);
+        setErrorMess(error.message);
       });
   };
 
@@ -65,7 +68,8 @@ const Login = () => {
       </Helmet>
       <div className="flex justify-center items-center min-h-screen">
         <div className="w-full max-w-md p-8 space-y-3 rounded-xl border dark:bg-gray-900 dark:text-gray-100 font-sans">
-          <h1 className="text-2xl font-bold text-center">Login</h1>
+          <h1 className="text-2xl font-bold text-center">Sign In Now</h1>
+          <p className="text-red-600">{errorMess}</p>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="space-y-1 text-sm">
               <label htmlFor="username" className="block dark:text-gray-400">

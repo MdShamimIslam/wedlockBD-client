@@ -15,8 +15,8 @@ const BiodataCard = ({ biodata }) => {
     <div>
       <div className="rounded-lg border shadow-sm w-full max-w-md mx-auto">
         <div className="px-6 py-4 flex flex-col gap-4">
-          <div className="flex justify-between items-end">
-            <h2 className="text-2xl font-medium text-center">{occupation}</h2>
+          <div className="flex  justify-between items-end">
+            <h2 className="text-xl font-medium text-center">{occupation}</h2>
             <p className="text-sm rounded-lg text-center p-2 bg-gray-700 text-white">
               Age : {age}
             </p>
@@ -30,7 +30,7 @@ const BiodataCard = ({ biodata }) => {
           <p>Permanent Division Name : {permanent_division_name}</p>
           <p>Biodata Type : {biodata_type}</p>
           <p>
-            Biodata Id :{" "}
+            Biodata Id :
             <span className="text-purple-700 font-bold">{biodata_id}</span>
           </p>
         </div>

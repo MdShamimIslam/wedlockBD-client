@@ -5,12 +5,14 @@ import avatarImg from "../../../assets/profile/profile.jpg";
 import useAuth from "../../../hooks/useAuth";
 import "./MenuDropdown.css";
 import toast from "react-hot-toast";
+import useAdmin from "../../../hooks/useAdmin";
 
 
 const MenuDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
+  const [isAdmin] = useAdmin();
 
   const handleLogOut = ()=>{
     logOut()
@@ -30,11 +32,9 @@ const MenuDropdown = () => {
         >
           <AiOutlineMenu />
           <div className="hidden md:block">
-            {/* Avatar */}
             <img
-            // title={`${user?.displayName}`}
             title={user?`${user?.displayName}`:''}
-              className="rounded-full"
+              className="rounded-full h-7 object-cover"
               referrerPolicy="no-referrer"
               src={user && user.photoURL ? user.photoURL : avatarImg}
               alt="profile"
@@ -84,12 +84,22 @@ const MenuDropdown = () => {
             {user ? (
               <>
                 <nav className="sidebar">
-                  <NavLink
-                    to="/dashboard"
+                  {
+                    isAdmin ?  <NavLink
+                    to="/dashboard/adminHome"
                     className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
                   >
                     Dashboard
                   </NavLink>
+                  :
+                  <NavLink
+                  to="/dashboard/userHome"
+                  className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
+                >
+                  Dashboard
+                </NavLink>
+                  }
+                 
                 </nav>
                 <div
                   onClick={handleLogOut}

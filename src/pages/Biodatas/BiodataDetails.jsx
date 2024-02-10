@@ -78,8 +78,12 @@ const BiodataDetails = () => {
         email: user?.email,
       };
       axiosSecure.post("/favorites", bioInfo).then((res) => {
+        console.log(res.data);
         if (res.data.insertedId) {
           toast.success("Successfully Added!!");
+        }
+        if (res.data.insertedId === null) {
+          toast.error('Already added')
         }
       });
     }

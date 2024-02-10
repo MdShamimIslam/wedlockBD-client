@@ -4,11 +4,11 @@ import { Helmet } from "react-helmet-async";
 const ContactUs = () => {
   
   return (
-    <div>
+    <div className=" flex items-center justify-center my-44">
       <Helmet>
-        <title>Contact Us | WedlockBD</title>
+        <title> Contact Us| WedlockBD</title>
       </Helmet>
-     <h2> Contact Us </h2>
+      <h3 className="text-3xl font-semibold">Upcoming...............</h3>
     </div>
   );
 };

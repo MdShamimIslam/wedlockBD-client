@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import FavoritesDataTable from "./FavoritesDataTable";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import useBio from "../../../hooks/useBio";
 
 const FavoritesBio = () => {
   const axiosSecure = useAxiosSecure();
@@ -55,13 +56,17 @@ const FavoritesBio = () => {
       });
   };
 
+  const [bio] = useBio();
+
   return (
     <div className="">
        <Helmet>
         <title> Favorites Biodata | WedlockBD</title>
       </Helmet>
       <div className="container mx-auto px-4 sm:px-8">
-        <div className="py-8">
+        {
+          bio && bio?.biodata_id ?
+          <div className="py-8">
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
             <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
               <table className="min-w-full leading-normal">
@@ -112,6 +117,14 @@ const FavoritesBio = () => {
             </div>
           </div>
         </div>
+          :
+          <div className="flex justify-center my-80">
+              <h3 className="font-bold text-4xl">
+              You haven't added Biodata of your favorite people yet !!
+              </h3>
+            </div>
+        }
+        
       </div>
     </div>
   );

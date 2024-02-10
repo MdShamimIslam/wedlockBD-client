@@ -6,17 +6,17 @@ const WebWork = () => {
   const [bio] = useBio();
   return (
     <div className="my-12">
-      <div className="text-center">
-        <h2 className="text-4xl font-semibold">How Works This Site</h2>
-        <p className="mt-2">
+      <div className="text-center w-5/6 md:w-3/4 mx-auto">
+        <h2 className="md:text-4xl text-3xl font-semibold">How Works This Site</h2>
+        <p className="mt-4">
           If you want to find people of your choice then you must fill biodata
-          below
+          below.But before filing you must register through the website
         </p>
-        <p>But before filing you must register through the website</p>
+        
       </div>
     <Link to={`${bio.biodata_id ? '/alreadyCreate' : '/add-biodata'}`}>
     <div className="flex justify-center">
-        <button className="py-2 w-60 h-16 rounded-lg px-6 mb-4 mt-6 bg-sky-700 hover:bg-sky-600 duration-300 text-white flex items-center justify-center overflow-hidden hover:overflow-visible relative group">
+        <button className=" w-56 md:w-60 h-14 md:h-16 rounded-lg px-6 mb-4 mt-4 md:mt-6 bg-sky-700 hover:bg-sky-600 duration-300 text-white flex items-center justify-center overflow-hidden hover:overflow-visible relative group">
           <svg
             viewBox="0 0 1024 1024"
             className="icon rotate-45 group-hover:duration-700 absolute w-12 -translate-x-full translate-y-full scale-0 group-hover:scale-100 group-hover:translate-x-8 group-hover:-translate-y-8 duration-150"

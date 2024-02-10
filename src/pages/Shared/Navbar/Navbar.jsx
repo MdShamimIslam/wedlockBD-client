@@ -10,13 +10,13 @@ const Navbar = () => {
       {/* Logo */}
       <Link to="/" className="flex items-center">
         <img
-          className="hidden md:block"
+          className=""
           src={logoImg}
           alt="logo"
           width="70"
           height="70"
         />
-        <h3 className="text-3xl  font-bold">WedlockBD</h3>
+        <h3 className="md:text-3xl text-2xl  font-bold">WedlockBD</h3>
       </Link>
       <div className="hidden md:block">
         <ul className="  flex items-center gap-10">

@@ -1,15 +1,15 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const AddBiodata = () => {
   const {user} = useAuth();
   const { register, reset, handleSubmit,setValue } = useForm();
-  const axiosPublic = useAxiosPublic();
+ const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
 
   const handleSelectChange = (event) => {
@@ -89,7 +89,7 @@ const AddBiodata = () => {
       race,
       weight:parseInt(weight),
     }
-    axiosPublic.post('/biodatas',bioInfo)
+    axiosSecure.post('/biodatas',bioInfo)
     .then(res=>{
       if(res.data.insertedId){
         reset();

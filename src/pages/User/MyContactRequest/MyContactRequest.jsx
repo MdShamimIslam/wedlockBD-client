@@ -4,6 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import RequestDataTable from "./RequestDataTable";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import useBio from "../../../hooks/useBio";
 
 
 const MyContactRequest = () => {
@@ -56,71 +57,82 @@ const handleRequestInfoDelete =(_id,name)=>{
       });
 }
 
+const [bio] = useBio();
+
   return (
     <div className="">
       <Helmet>
         <title> My Contact Request| WedlockBD</title>
       </Helmet>
         <div className='container mx-auto px-4 sm:px-8'>
-        <div className='py-8'>
-          <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
-            <div className='inline-block min-w-full shadow rounded-lg overflow-hidden'>
-              <table className='min-w-full leading-normal'>
-                <thead>
-                  <tr>
-                    <th
-                      scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
-                    >
-                    Name
-                    </th>
-                    <th
-                      scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
-                    >
-                      Biodata Id
-
-                    </th>
-                    <th
-                      scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
-                    >
-                     Contact Email
-                    </th>
-                    <th
-                      scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
-                    >
-                    Contact Number
-                    </th>
-                    <th
-                      scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
-                    >
-                       Status
-                    </th>
-                    <th
-                      scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
-                    >
-                      Delete
-                    </th>
-                   
-                  </tr>
-                </thead>
-                <tbody>
-                {requestData?.map((requestInfo) => (
-                  <RequestDataTable
-                    key={requestInfo._id}
-                    requestInfo={requestInfo}
-                    handleRequestInfoDelete={handleRequestInfoDelete}
-                  ></RequestDataTable>
-                ))}
-                </tbody>
-              </table>
+          {
+            bio && bio?.biodata_id ?<div className='py-8'>
+            <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
+              <div className='inline-block min-w-full shadow rounded-lg overflow-hidden'>
+                <table className='min-w-full leading-normal'>
+                  <thead>
+                    <tr>
+                      <th
+                        scope='col'
+                        className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      >
+                      Name
+                      </th>
+                      <th
+                        scope='col'
+                        className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      >
+                        Biodata Id
+  
+                      </th>
+                      <th
+                        scope='col'
+                        className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      >
+                       Contact Email
+                      </th>
+                      <th
+                        scope='col'
+                        className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      >
+                      Contact Number
+                      </th>
+                      <th
+                        scope='col'
+                        className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      >
+                         Status
+                      </th>
+                      <th
+                        scope='col'
+                        className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      >
+                        Delete
+                      </th>
+                     
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {requestData?.map((requestInfo) => (
+                    <RequestDataTable
+                      key={requestInfo._id}
+                      requestInfo={requestInfo}
+                      handleRequestInfoDelete={handleRequestInfoDelete}
+                    ></RequestDataTable>
+                  ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
-        </div>
+            : 
+            <div className="flex justify-center my-80">
+              <h3 className="font-bold text-4xl">
+              You have not sent any requests yet !!
+              </h3>
+            </div>
+          }
+        
       </div>
     </div>
   );

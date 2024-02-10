@@ -2,7 +2,6 @@ import React from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { RiAdminFill } from "react-icons/ri";
 import { MdWorkspacePremium } from "react-icons/md";
-import useBio from "../../../hooks/useBio";
 
 const ManageUserTable = ({
   user,
@@ -10,8 +9,7 @@ const ManageUserTable = ({
   handleMakePremium,
   handleDeleteUser,
 }) => {
-  const { _id, name, email } = user;
-  const [bio] = useBio();
+  const { _id, name, email,status } = user;
 
   return (
     <tr>
@@ -34,7 +32,7 @@ const ManageUserTable = ({
         )}
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        {bio?.premium_status === true ? (
+        {status === true ? (
           <p className="text-green-600 ml-4 font-semibold">Approved</p>
         ) : (
           <p

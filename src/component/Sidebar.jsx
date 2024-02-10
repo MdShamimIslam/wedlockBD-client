@@ -11,12 +11,15 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { FaUsersGear } from "react-icons/fa6";
 import { TbPremiumRights } from "react-icons/tb";
 import { TiContacts } from "react-icons/ti";
+import { GiHappySkull } from "react-icons/gi";
 import useAuth from "../hooks/useAuth";
+import useAdmin from "../hooks/useAdmin";
 
 const Sidebar = () => {
   const { logOut } = useAuth();
-  const isAdmin = true;
-  // const isAdmin = false;
+  const [isAdmin] = useAdmin();
+
+  
   const navigate = useNavigate();
   const [isActive, setActive] = useState(false);
   const handleToggle = () => {
@@ -75,7 +78,7 @@ const Sidebar = () => {
                   }`
                 }
               >
-                <IoHome /> <span className="ml-2 font-medium">Admin Dashboard</span>
+                <IoHome /> <span className="ml-2 font-medium">Admin Home</span>
               </NavLink>
               <NavLink
                 to="manage-users"
@@ -86,7 +89,7 @@ const Sidebar = () => {
                   }`
                 }
               >
-                <FaUsersGear />{" "}
+                <FaUsersGear />
                 <span className="ml-2 font-medium">Manage Users</span>
               </NavLink>
               <NavLink
@@ -98,7 +101,7 @@ const Sidebar = () => {
                   }`
                 }
               >
-                <TbPremiumRights />{" "}
+                <TbPremiumRights />
                 <span className="ml-2 font-medium">Approved Premium</span>
               </NavLink>
               <NavLink
@@ -110,8 +113,20 @@ const Sidebar = () => {
                   }`
                 }
               >
-                <TiContacts />{" "}
+                <TiContacts />
                 <span className="ml-2 font-medium">Approved Request</span>
+              </NavLink>
+              <NavLink
+                to="success-married"
+                end
+                className={({ isActive }) =>
+                  `flex items-center px-4 py-2   transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
+                    isActive ? "bg-gray-300  text-gray-700" : "text-gray-600"
+                  }`
+                }
+              >
+                <TiContacts />
+                <span className="ml-2 font-medium">Success Story (Married)</span>
               </NavLink>
             </div>
           ) : (
@@ -126,7 +141,7 @@ const Sidebar = () => {
                   }`
                 }
               >
-                <IoHome /> <span className="ml-2 font-medium">User Dashboard</span>
+                <IoHome /> <span className="ml-2 font-medium">User Home</span>
               </NavLink>
               <NavLink
                 to="editBio"
@@ -137,7 +152,7 @@ const Sidebar = () => {
                   }`
                 }
               >
-                <FaEdit />{" "}
+                <FaEdit />
                 <span className="ml-2 font-medium">Edit Biodata</span>
               </NavLink>
               <NavLink
@@ -149,7 +164,7 @@ const Sidebar = () => {
                   }`
                 }
               >
-                <CiViewList />{" "}
+                <CiViewList />
                 <span className="ml-2 font-medium">View Biodata</span>
               </NavLink>
               <NavLink
@@ -161,7 +176,7 @@ const Sidebar = () => {
                   }`
                 }
               >
-                <IoIosGitPullRequest />{" "}
+                <IoIosGitPullRequest />
                 <span className="ml-2 font-medium">My Contact Request</span>
               </NavLink>
               <NavLink
@@ -173,8 +188,20 @@ const Sidebar = () => {
                   }`
                 }
               >
-                <MdFavoriteBorder />{" "}
+                <MdFavoriteBorder />
                 <span className="ml-2 font-medium">Favourites Biodata</span>
+              </NavLink>
+              <NavLink
+                to="got-married"
+                end
+                className={({ isActive }) =>
+                  `flex items-center px-4 py-2   transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
+                    isActive ? "bg-gray-300  text-gray-700" : "text-gray-600"
+                  }`
+                }
+              >
+                <GiHappySkull />
+                <span className="ml-2 font-medium">Got Married</span>
               </NavLink>
             </div>
           )}

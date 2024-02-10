@@ -9,13 +9,13 @@ import toast from "react-hot-toast";
 
 const ApprovedPremium = () => {
     const axiosSecure = useAxiosSecure();
-    const { user, loading } = useAuth();
+    const { loading } = useAuth();
     // get premium biodatas by user email
     const { data: premiumData = [], refetch } = useQuery({
-      queryKey: ["premiumData", user?.email],
+      queryKey: ["premiumData"],
       queryFn: async () => {
         const res = await axiosSecure.get(
-          `/premium-bio?email=${user?.email}`
+          `/premium-bio`
         );
   
         return res.data;
@@ -35,7 +35,7 @@ const ApprovedPremium = () => {
         axiosSecure.patch(`/biodatas-premium/${email}`)
         .then(res=>{
             console.log(res.data);
-            if(res.data.modifiedCount > 0){
+            if(res.data.result3.modifiedCount > 0){
                 refetch();
                 toast.success('Premium approved now!!')
             }

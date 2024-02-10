@@ -12,7 +12,7 @@ const EditBio = () => {
   const { user } = useAuth();
   const { register, reset, handleSubmit, setValue } = useForm();
   const axiosSecure = useAxiosSecure();
-  const [bio] = useBio();
+  const [bio,refetch] = useBio();
   const [biodatas] = useBiodatas();
 
   const handleSelectChange = (event) => {
@@ -93,10 +93,9 @@ const EditBio = () => {
       race,
       weight: parseInt(weight),
     };
-    console.log("update info--", bioInfo);
     axiosSecure.put(`/biodatas?email=${user?.email}`, bioInfo).then((res) => {
       if (res.data.modifiedCount > 0) {
-        reset();
+        refetch();
         toast.success("Your Profile Updated Successfully!!");
       }
     });
@@ -122,6 +121,7 @@ const EditBio = () => {
                   </label>
                   <input
                     required
+                    defaultValue={bio?.name}
                     {...register("name")}
                     className="flex h-10 w-full px-3 py-2 text-sm  file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-gray-100  border border-gray-300  rounded-md"
                     id="name"
@@ -156,6 +156,7 @@ const EditBio = () => {
                   </label>
                   <input
                     required
+                    defaultValue={bio?.contact_number}
                     {...register("contact_number")}
                     className="flex h-10 w-full px-3 py-2 text-sm  file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-gray-100  border border-gray-300  rounded-md"
                     id="number"
@@ -177,6 +178,7 @@ const EditBio = () => {
                   </label>
                   <input
                     required
+                    defaultValue={bio?.profile_image}
                     {...register("profile_image")}
                     className="flex h-10 w-full px-3 py-2 text-sm  file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-gray-100  border border-gray-300  rounded-md"
                     id="image"
@@ -193,6 +195,7 @@ const EditBio = () => {
                   </label>
                   <input
                     required
+                    defaultValue={bio?.date_of_birth}
                     {...register("date_of_birth")}
                     className="flex h-10 w-full px-3 py-2 text-sm  file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-gray-100  border border-gray-300  rounded-md"
                     id="date"
@@ -394,6 +397,7 @@ const EditBio = () => {
                   </label>
                   <input
                     required
+                    defaultValue={bio?.age}
                     {...register("age")}
                     className="flex h-10 w-full px-3 py-2 text-sm  file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-gray-100  border border-gray-300  rounded-md"
                     id="age"
@@ -445,6 +449,7 @@ const EditBio = () => {
                   </label>
                   <input
                     required
+                    defaultValue={bio?.fathers_name}
                     {...register("fathers_name")}
                     className="flex h-10 w-full px-3 py-2 text-sm  file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-gray-100  border border-gray-300  rounded-md"
                     id="fathers-name"
@@ -461,6 +466,7 @@ const EditBio = () => {
                   </label>
                   <input
                     required
+                    defaultValue={bio?.mothers_name}
                     {...register("mothers_name")}
                     className="flex h-10 w-full px-3 py-2 text-sm  file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-gray-100  border border-gray-300  rounded-md"
                     id="mothers-name"
@@ -579,6 +585,7 @@ const EditBio = () => {
                   </label>
                   <input
                     required
+                    defaultValue={bio?.expected_partner_age}
                     {...register("expected_partner_age")}
                     className="flex h-10 w-full px-3 py-2 text-sm  file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-gray-100  border border-gray-300  rounded-md"
                     id="number"

@@ -34,15 +34,17 @@ const ManageUsers = () => {
                 refetch();
                 toast.success('Admin created now!!')
             }
-        })
+        });
+
+   
     }
 
     // make premium to user bio
     const handleMakePremium =(email)=>{
         axiosSecure.patch(`/biodatas-premium/${email}`)
         .then(res=>{
-            console.log(res.data);
-            if(res.data.modifiedCount > 0){
+          console.log(res.data);
+            if(res.data.result2.modifiedCount > 0){
                 refetch();
                 toast.success('Premium approved now!!')
             }
@@ -75,6 +77,7 @@ const ManageUsers = () => {
         }
       });
   };
+ 
 
   return (
     <div>
@@ -82,6 +85,7 @@ const ManageUsers = () => {
         <title> Manage Users | WedlockBD</title>
       </Helmet>
       <div className="container mx-auto px-4 sm:px-8">
+      
         <div className="py-8">
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
             <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
@@ -129,6 +133,7 @@ const ManageUsers = () => {
                       handleMakeAdmin={handleMakeAdmin}
                       handleMakePremium={handleMakePremium}
                       handleDeleteUser={handleDeleteUser}
+                     
                     ></ManageUserTable>
                   ))}
                 </tbody>

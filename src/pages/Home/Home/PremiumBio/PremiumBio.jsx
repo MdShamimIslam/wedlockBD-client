@@ -11,14 +11,13 @@ const PremiumBio = () => {
         queryKey:['premiumBiodatas'],
         queryFn:async()=>{
             const res = await axiosPublic.get('/limit-biodatas');
-            const premiumBiodatas = res?.data?.filter(biodata=>biodata.premium_status === true);
-            return premiumBiodatas;
+            return res.data;
         }
     })
     return (
         <div>
-            <h3 className="text-4xl  font-semibold text-center text-purple-600">----Our Premium Members----</h3>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10 mb-16'>
+            <h3 className="md:text-4xl text-3xl  font-semibold text-center">Our Premium Members</h3>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-4 md:mt-10 mb-16'>
             {
                 biodatas?.map(biodata =><BiodataCard key={biodata._id} biodata={biodata}></BiodataCard>)
             }

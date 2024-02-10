@@ -128,7 +128,7 @@ const CheckoutForm = ({ biodata }) => {
           </div>
         </div>
         <div className="mt-4">
-          <h3 className="">Total Fee (500tk)</h3>
+          <h3 className="">Your Stripe Card Number (Total Fee : 500tk)</h3>
           <CardElement
             className=" bg-gray-100 mt-1 p-4 rounded-lg text-white"
             options={{

@@ -3,12 +3,12 @@ import { Helmet } from 'react-helmet-async';
 
 const AboutUs = () => {
     return (
-        <div>
-            <Helmet>
-        <title>About Us | WedlockBD</title>
-      </Helmet>
-            About Us
-        </div>
+        <div className=" flex items-center justify-center my-44">
+        <Helmet>
+          <title> About Us| WedlockBD</title>
+        </Helmet>
+        <h3 className="text-3xl font-semibold">Upcoming...............</h3>
+      </div>
     );
 };
 

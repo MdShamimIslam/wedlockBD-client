@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { BarChart, Bar, Cell, XAxis,CartesianGrid } from "recharts";
-import { PieChart, Pie, Legend, Tooltip } from "recharts";
 
 
 
@@ -26,7 +25,7 @@ const AdminHome = () => {
       return res.data;
     },
   });
-console.log(chartData);
+  
   // -------chart functionality------
   const data = [
     {

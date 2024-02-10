@@ -23,6 +23,9 @@ import ApprovedContactRequest from "../pages/Admin/ApprovedContactRequest/Approv
 import ApprovedPremium from "../pages/Admin/ApprovedPremium/ApprovedPremium";
 import ManageUsers from "../pages/Admin/ManageUsers/ManageUsers";
 import UserHome from "../pages/User/UserHome/UserHome";
+import GotMarried from "../pages/User/GotMarried/GotMarried";
+import SuccessMarried from "../pages/Admin/SuccessMarried/SuccessMarried";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -37,14 +40,15 @@ export const router = createBrowserRouter([
       {
         path: "/biodatas",
         element: <Biodatas></Biodatas>,
+        loader: () => fetch("https://wedlock-bd-server.vercel.app/user-stats"),
       },
       {
         path: "/nodata",
-        element: <Nodata></Nodata>
+        element: <Nodata></Nodata>,
       },
       {
         path: "/alreadyCreate",
-        element: <AlreadyCreate></AlreadyCreate>
+        element: <AlreadyCreate></AlreadyCreate>,
       },
       {
         path: "/about",
@@ -62,13 +66,13 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/biodatas/${params.id}`),
+          fetch(`https://wedlock-bd-server.vercel.app/biodatas/${params.id}`),
       },
       {
         path: "/contact-request/:id",
         element: <ContactRequest></ContactRequest>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/biodatas/${params.id}`),
+          fetch(`https://wedlock-bd-server.vercel.app/biodatas/${params.id}`),
       },
       {
         path: "/add-biodata",
@@ -89,47 +93,79 @@ export const router = createBrowserRouter([
     element: <SignUp></SignUp>,
   },
   {
-    path:'/dashboard',
-    element:<Dashboard></Dashboard>,
-    children:[
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    children: [
       // user route
       {
-        path:'userHome',
-        element:<UserHome></UserHome>
+        path: "userHome",
+        element: <UserHome></UserHome>,
       },
       {
-        path:'editBio',
-        element:<EditBio></EditBio>
+        path: "editBio",
+        element: <EditBio></EditBio>,
       },
       {
-        path:'favoritesBio',
-        element:<FavoritesBio></FavoritesBio>
+        path: "favoritesBio",
+        element: <FavoritesBio></FavoritesBio>,
       },
       {
-        path:'myContactRequest',
-        element:<MyContactRequest></MyContactRequest>
+        path: "myContactRequest",
+        element: <MyContactRequest></MyContactRequest>,
       },
       {
-        path:'viewBio',
-        element:<ViewBio></ViewBio>
+        path: "viewBio",
+        element: <ViewBio></ViewBio>,
+      },
+      {
+        path: "got-married",
+        element: <GotMarried></GotMarried>,
       },
       // admin route
       {
-        path:'adminHome',
-        element:<AdminHome></AdminHome>
+        path: "adminHome",
+        element: (
+          <AdminRoute>
+            <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
       },
       {
-        path:'approved-contact-request',
-        element:<ApprovedContactRequest></ApprovedContactRequest>
+        path: "approved-contact-request",
+        element: (
+          <AdminRoute>
+            <ApprovedContactRequest></ApprovedContactRequest>
+          </AdminRoute>
+        ),
       },
       {
-        path:'approved-premium',
-        element:<ApprovedPremium></ApprovedPremium>
+        path: "approved-premium",
+        element: (
+          <AdminRoute>
+            <ApprovedPremium></ApprovedPremium>
+          </AdminRoute>
+        ),
       },
       {
-        path:'manage-users',
-        element:<ManageUsers></ManageUsers>
+        path: "manage-users",
+        element: (
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
+          </AdminRoute>
+        ),
       },
-    ]
-  }
+      {
+        path: "success-married",
+        element: (
+          <AdminRoute>
+            <SuccessMarried></SuccessMarried>
+          </AdminRoute>
+        ),
+      },
+    ],
+  },
 ]);
