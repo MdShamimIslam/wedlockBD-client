@@ -1,10 +1,10 @@
-import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import logoImg from "../../../assets/logo/wedlock.png";
 import MenuDropdown from "./MenuDropdown";
 import "./MenuDropdown.css";
 
 const Navbar = () => {
+
   return (
     <div className="flex flex-row  items-center justify-between gap-3 md:gap-0 mt-4">
       {/* Logo */}
