@@ -16,12 +16,12 @@ const Footer = () => {
         <footer className="bg-gray-900 text-white">
             {/* Main Footer Content */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 md:gap-16 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 md:gap-12 gap-8">
                     {/* Brand Section */}
                     <div className="lg:col-span-2">
                         <div className="flex items-center space-x-2 mb-2 mt-[-20px]">
-                            <img className='w-20 ml-[-30px]' src={logo} alt="logo-image" />
-                            <Link to="/"><span className="text-3xl  font-bold ml-[-10px]" style={{ marginLeft: "-10px" }}>WedlockBD</span></Link>
+                            <img className='w-20 ml-[-24px]' src={logo} alt="logo-image" />
+                            <Link to="/"><span className="text-2xl lg:text-3xl font-bold ml-[-10px]" style={{ marginLeft: "-10px" }}>WedlockBD</span></Link>
                         </div>
 
                         <p dangerouslySetInnerHTML={{ __html: "Bangladesh's most trusted matrimony platform helping thousands of people find their perfect life partner. Join our community and start your journey towards a happy marriage." }} className="text-gray-300 mb-6 font-sans leading-relaxed">
@@ -82,7 +82,9 @@ const Footer = () => {
                                 placeholder="Enter your email"
                                 className="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:border-primary-500"
                             />
-                            <button className="bg-gradient-to-r from-pink-700 via-black-500 to-black-500  text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200">
+                            <button
+                                className="bg-gradient-to-r from-pink-700 via-black-500 to-black-500  hover:bg-gradient-to-r hover:from-black-500 hover:via-black-500 hover:to-pink-700  text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
+                            >
                                 Subscribe
                             </button>
                         </div>

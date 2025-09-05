@@ -1,109 +1,93 @@
 import { AiOutlineMenu } from "react-icons/ai";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import avatarImg from "../../../assets/profile/profile.jpg";
 import useAuth from "../../../hooks/useAuth";
-import "./MenuDropdown.css";
 import toast from "react-hot-toast";
 import useAdmin from "../../../hooks/useAdmin";
-
+import { navLinks } from "../../../utils/options";
 
 const MenuDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
   const [isAdmin] = useAdmin();
+  const dropdownRef = useRef(null);
 
-  const handleLogOut = ()=>{
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleLogOut = () => {
     logOut()
-    .then(()=>{
-      navigate('/');
-      toast.success('Logout Successfully !!')
-    })
-  }
+      .then(() => {
+        navigate("/");
+        toast.success("Successfully Logged Out!");
+      })
+      .catch((err) => toast.error(err.message));
+  };
+
+  const menuItemClass = "px-4 py-3 hover:bg-pink-50 transition-colors font-medium text-gray-700 rounded-lg";
 
   return (
-    <div className="relative">
-      <div className="flex flex-row items-center gap-3">
-        {/* Dropdown btn */}
+    <div className="relative mr-2 lg:mr-0" ref={dropdownRef}>
+      {/* Menu Button */}
+      <div className="flex items-center gap-3">
         <div
           onClick={() => setIsOpen(!isOpen)}
-          className="p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition"
+          className="flex items-center gap-3 px-2 py-2 md:py-1 border border-neutral-200 rounded-full cursor-pointer hover:shadow-lg transition-shadow duration-300"
         >
-          <AiOutlineMenu />
+          <AiOutlineMenu size={20} />
           <div className="hidden md:block">
             <img
-            title={user?`${user?.displayName}`:''}
-              className="rounded-full h-7 object-cover"
+              title={user ? user.displayName : ""}
+              className="w-7 h-7 rounded-full object-cover"
               referrerPolicy="no-referrer"
-              src={user && user.photoURL ? user.photoURL : avatarImg}
+              src={user?.photoURL || avatarImg}
               alt="profile"
-              height="30"
-              width="30"
             />
           </div>
         </div>
       </div>
-      {isOpen && (
-        <div className="absolute z-10 rounded-xl shadow-md w-[40vw] md:w-[12vw] bg-white overflow-hidden right-0 top-12 text-sm">
-          <div className="flex flex-col cursor-pointer">
-            <nav className="sidebar">
-              <NavLink
-                to="/"
-                className="block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold"
-              >
-                Home
-              </NavLink>
-            </nav>
 
-            <nav className="sidebar">
+      {/* Dropdown */}
+      {isOpen && (
+        <div className="absolute right-0 mt-2 w-56 bg-white shadow-lg rounded-xl overflow-hidden z-20 border border-gray-200">
+          <div className="flex flex-col">
+
+            {navLinks.map((link, idx) => (
               <NavLink
-                to="/biodatas"
-                className="block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold"
+                key={idx}
+                to={link.href}
+                className={({ isActive }) =>
+                  `block md:hidden px-4 py-3 hover:bg-pink-50 transition-colors font-medium ${
+                    isActive ? "bg-pink-100 text-pink-700 rounded-lg" : "text-gray-700"
+                  }`
+                }
               >
-                Biodatas
+                {link.name}
               </NavLink>
-            </nav>
-            <nav className="sidebar">
-              <NavLink
-                to="/contact"
-                className="block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold"
-              >
-                Contact Us
-              </NavLink>
-            </nav>
-            <nav className="sidebar">
-              <NavLink
-                to="/about"
-                className="block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold"
-              >
-                About Us
-              </NavLink>
-            </nav>
+            ))}
+            
+            <hr className="my-2 border-gray-200 block md:hidden" />
 
             {user ? (
               <>
-                <nav className="sidebar">
-                  {
-                    isAdmin ?  <NavLink
-                    to="/dashboard/adminHome"
-                    className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
-                  >
-                    Dashboard
-                  </NavLink>
-                  :
-                  <NavLink
-                  to="/dashboard/userHome"
-                  className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
+                <NavLink
+                  to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userHome"}
+                  className={menuItemClass}
                 >
                   Dashboard
                 </NavLink>
-                  }
-                 
-                </nav>
                 <div
                   onClick={handleLogOut}
-                  className="px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer"
+                  className={`${menuItemClass} cursor-pointer`}
                 >
                   Logout
                 </div>
@@ -112,13 +96,13 @@ const MenuDropdown = () => {
               <>
                 <Link
                   to="/login"
-                  className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
+                  className={menuItemClass}
                 >
                   Login
                 </Link>
                 <Link
                   to="/signUp"
-                  className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
+                  className={menuItemClass}
                 >
                   Sign Up
                 </Link>

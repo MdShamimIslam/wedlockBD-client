@@ -39,10 +39,18 @@ export const footerSections = [
 ];
 
 export const socialLinks = [
-    { icon: LuFacebook, href: "#" },
-    { icon: FiTwitter, href: "#" },
-    { icon: SiInstagram, href: "#" },
-    { icon: TbBrandYoutubeFilled, href: "#" }
+    { icon: LuFacebook, href: "/" },
+    { icon: FiTwitter, href: "/" },
+    { icon: SiInstagram, href: "/" },
+    { icon: TbBrandYoutubeFilled, href: "/" }
 ];
 
 // footer related options end
+
+// navbar related options start
+export const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "Biodatas", href: "/biodatas" },
+    { name: "About Us", href: "/about" },
+    { name: "Contact Us", href: "/contact" },
+];
