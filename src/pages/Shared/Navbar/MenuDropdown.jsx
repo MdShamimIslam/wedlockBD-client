@@ -60,7 +60,6 @@ const MenuDropdown = () => {
       {isOpen && (
         <div className="absolute right-0 mt-2 w-56 bg-white shadow-lg rounded-xl overflow-hidden z-20 border border-gray-200">
           <div className="flex flex-col">
-
             {navLinks.map((link, idx) => (
               <NavLink
                 key={idx}
@@ -74,8 +73,8 @@ const MenuDropdown = () => {
                 {link.name}
               </NavLink>
             ))}
-            
-            <hr className="my-2 border-gray-200 block md:hidden" />
+
+            <hr className="my-4 border-gray-200 block md:hidden" />
 
             {user ? (
               <>

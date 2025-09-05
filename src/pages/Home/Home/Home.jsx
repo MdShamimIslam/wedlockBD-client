@@ -1,4 +1,3 @@
-import React from "react";
 import { Slider } from "../Slider/Slider";
 import { Helmet } from "react-helmet-async";
 import WebWork from "../WebWork/WebWork";
@@ -8,16 +7,14 @@ import Counter from "../Counter/Counter";
 
 const Home = () => {
   return (
-    <div>
-      <Helmet>
-        <title>Home | WedlockBD</title>
-      </Helmet>
-      <Slider></Slider>
-      <PremiumBio></PremiumBio>
-      <WebWork></WebWork>
-      <Counter></Counter>
-      <SuccessStory></SuccessStory>
-    </div>
+    <>
+      <Helmet> <title>Home | WedlockBD</title></Helmet>
+      <Slider/>
+      <PremiumBio/>
+      <WebWork/>
+      <Counter/>
+      <SuccessStory/>
+    </>
   );
 };
 
