@@ -1,6 +1,7 @@
+import { MapPin, Briefcase, Eye, Crown } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const BiodataCard = ({ biodata }) => {
+const BiodataCard = ({ profile = {} }) => {
   const {
     _id,
     biodata_id,
@@ -9,40 +10,73 @@ const BiodataCard = ({ biodata }) => {
     permanent_division_name,
     age,
     occupation,
-  } = biodata;
+    name,
+  } = profile || {};
 
   return (
-    <div>
-      <div className="rounded-lg border shadow-sm w-full max-w-md mx-auto">
-        <div className="px-6 py-4 flex flex-col gap-4">
-          <div className="flex  justify-between items-end">
-            <h2 className="text-xl font-medium text-center">{occupation}</h2>
-            <p className="text-sm rounded-lg text-center p-2 bg-gray-700 text-white">
-              Age : {age}
-            </p>
-          </div>
-          <div className="">
-            <img
-              className="rounded-lg h-[350px]  bg-gray-600 object-cover w-full "
-              src={profile_image}
-            />
-          </div>
-          <p>Permanent Division Name : {permanent_division_name}</p>
-          <p>Biodata Type : {biodata_type}</p>
-          <p>
-            Biodata Id :
-            <span className="text-purple-700 font-bold">{biodata_id}</span>
-          </p>
+    <div className="bg-slate-100 rounded-2xl shadow-md overflow-hidden card-hover group">
+      <div className="relative">
+        <img
+          src={profile_image}
+          alt={`Profile ${_id}`}
+          className="w-full h-64 object-cover object-center group-hover:scale-105 transition-transform duration-300"
+        />
+        <div className="absolute inset-0 bg-black/30"></div>
+
+        <div className="absolute top-4 right-4 bg-pink-600 text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center space-x-1 shadow">
+          <Crown className="h-4 w-4" />
+          <span>Premium</span>
         </div>
-        
-          <div className="flex items-center  p-6">
-          <Link className="w-full" to={`/biodata-details/${_id}`}>
-            <button className="bg-gray-900 text-white px-6 py-2 w-full rounded-lg font-semibold md:text-base sm:text-sm text-[12px] hover:bg-slate-900">
-              View Profile
-            </button>
-            </Link>
+
+        <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">
+          ID: {biodata_id}
+        </div>
+      </div>
+
+      <div className="p-6">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h2 className="text-lg font-bold text-gray-900">{name || "Unknown"}</h2>
+            <span
+              className={`inline-block mt-2 px-3 py-1 rounded-full text-sm font-medium ${
+                biodata_type === "Male"
+                  ? "bg-blue-100 text-blue-800"
+                  : "bg-pink-100 text-pink-800"
+              }`}
+            >
+              {biodata_type}
+            </span>
+
+            <span
+              className={`inline-block ml-2 mt-1 px-3 py-1 rounded-full text-sm font-medium ${
+                biodata_type === "Male"
+                  ? "bg-blue-100 text-blue-800"
+                  : "bg-pink-100 text-pink-800"
+              }`}
+            >
+              {age}
+            </span>
           </div>
-       
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 my-6">
+          <div className="flex items-center text-gray-600">
+            <Briefcase className="h-4 w-4 mr-2 text-pink-500" />
+            <span>{occupation || "Not Specified"}</span>
+          </div>
+          <div className="flex items-center text-gray-600">
+            <MapPin className="h-4 w-4 mr-2 text-blue-500" />
+            <span>{permanent_division_name || "Unknown"}</span>
+          </div>
+        </div>
+
+        <Link
+          to={`/biodata-details/${_id}`}
+          className="w-full bg-gradient-to-r from-pink-500 to-blue-900 text-white py-3 px-4 rounded-lg font-semibold hover:from-pink-600 hover:to-blue-800 transition-all duration-300 flex items-center justify-center space-x-2 group"
+        >
+          <Eye className="h-4 w-4 group-hover:scale-110 transition-transform" />
+          <span>View Profile</span>
+        </Link>
       </div>
     </div>
   );
