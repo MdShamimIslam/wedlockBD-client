@@ -1,78 +1,45 @@
-import { Heart, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
+import { FiPhone } from "react-icons/fi";
+import { MdOutlineMarkEmailUnread } from "react-icons/md";
+import { RiMapPinLine } from "react-icons/ri";
+
+
+
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo/wedlock.png';
+import { footerSections, socialLinks } from '../../../utils/options';
+
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
-
-    const footerSections = [
-        {
-            title: "Quick Links",
-            links: [
-                { name: "Home", href: "/" },
-                { name: "Browse Profiles", href: "/" },
-                { name: "Success Stories", href: "/" },
-                { name: "About Us", href: "/" },
-                { name: "Contact Us", href: "/" },
-            ]
-        },
-        {
-            title: "Services",
-            links: [
-                { name: "Premium Membership", href: "/" },
-                { name: "Profile Verification", href: "/" },
-                { name: "Matchmaking", href: "/" },
-                { name: "Wedding Planning", href: "/" },
-                { name: "Relationship Counseling", href: "/" },
-            ]
-        },
-        {
-            title: "Support",
-            links: [
-                { name: "Help Center", href: "/" },
-                { name: "Privacy Policy", href: "/" },
-                { name: "Terms of Service", href: "/" },
-                { name: "Safety Guidelines", href: "/" },
-                { name: "FAQ", href: "/" },
-            ]
-        }
-    ];
-
-    const socialLinks = [
-        { icon: Facebook, href: "#", color: "hover:text-blue-600" },
-        { icon: Twitter, href: "#", color: "hover:text-blue-400" },
-        { icon: Instagram, href: "#", color: "hover:text-pink-500" },
-        { icon: Youtube, href: "#", color: "hover:text-red-500" }
-    ];
 
     return (
         <footer className="bg-gray-900 text-white">
             {/* Main Footer Content */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 md:gap-16 gap-8">
                     {/* Brand Section */}
                     <div className="lg:col-span-2">
-                        <Link to="/" className="flex items-center space-x-2 mb-2 mt-[-20px]">
-                            <img className='w-24 ml-[-32px]' src={logo} alt="logo-image" title='this is logo image' />
-                            <span className="text-3xl  font-bold ml-[-10px]" style={{ marginLeft: "-10px" }}>WedlockBD</span>
-                        </Link>
+                        <div className="flex items-center space-x-2 mb-2 mt-[-20px]">
+                            <img className='w-20 ml-[-30px]' src={logo} alt="logo-image" />
+                            <Link to="/"><span className="text-3xl  font-bold ml-[-10px]" style={{ marginLeft: "-10px" }}>WedlockBD</span></Link>
+                        </div>
 
-                        <p className="text-gray-300 mb-6 font-sans leading-relaxed">
-                            Bangladesh's most trusted matrimony platform helping thousands of people find their perfect life partner. Join our community and start your journey towards a happy marriage.
+                        <p dangerouslySetInnerHTML={{ __html: "Bangladesh's most trusted matrimony platform helping thousands of people find their perfect life partner. Join our community and start your journey towards a happy marriage." }} className="text-gray-300 mb-6 font-sans leading-relaxed">
+
                         </p>
 
                         {/* Contact Info */}
                         <div className="space-y-3">
                             <div className="flex items-center space-x-3 text-gray-300">
-                                <Phone className="h-5 w-5 text-primary-500" />
+                                <FiPhone className="h-5 w-5 text-primary-500" />
                                 <span>+880 1571529918</span>
                             </div>
                             <div className="flex items-center space-x-3 text-gray-300">
-                                <Mail className="h-5 w-5 text-primary-500" />
+                                <MdOutlineMarkEmailUnread className="h-5 w-5 text-primary-500" />
                                 <span>shamim401897@gmail.com</span>
                             </div>
                             <div className="flex items-center space-x-3 text-gray-300">
-                                <MapPin className="h-5 w-5 text-primary-500" />
+                                <RiMapPinLine className="h-5 w-5 text-primary-500" />
                                 <span>Dhaka, Bangladesh</span>
                             </div>
                         </div>
@@ -89,13 +56,15 @@ const Footer = () => {
                                     <li key={linkIndex}>
                                         <Link
                                             to={link.href}
-                                            className="text-gray-300 hover:text-primary-400 transition-colors duration-200"
+                                            className="text-gray-300 hover:hover:text-pink-400 transition-colors duration-200"
                                         >
                                             {link.name}
                                         </Link>
                                     </li>
                                 ))}
                             </ul>
+
+
                         </div>
                     ))}
                 </div>
@@ -139,7 +108,7 @@ const Footer = () => {
                                     <a
                                         key={index}
                                         href={social.href}
-                                        className={`text-gray-400 ${social.color} transition-colors duration-200 p-2 rounded-full hover:bg-gray-800`}
+                                        className="text-gray-400 hover:text-pink-500 transition-colors duration-200 p-2 rounded-full hover:bg-gray-800"
                                     >
                                         <IconComponent className="h-5 w-5" />
                                     </a>
