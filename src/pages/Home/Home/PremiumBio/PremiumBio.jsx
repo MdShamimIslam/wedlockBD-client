@@ -19,7 +19,7 @@ const PremiumBio = () => {
 
 
   return (
-      <section className="my-16 md:my-20 lg:my-24 ">
+      <section className="my-16 md:my-20 lg:my-28">
         <div className="px-4 sm:px-6 lg:px-8">
           <Heading
             title="Premium Profiles"

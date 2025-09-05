@@ -2,6 +2,8 @@ import { LuFacebook } from "react-icons/lu";
 import { TbBrandYoutubeFilled } from "react-icons/tb";
 import { FiTwitter } from "react-icons/fi";
 import { SiInstagram } from "react-icons/si";
+import { UserPlus, Search, Heart, MessageCircle } from 'lucide-react';
+
 
 // navbar options
 export const navLinks = [
@@ -131,44 +133,76 @@ export const premiumProfiles = [
       age: 24,
       occupation: 'Student'
     }
-  ];
+];
   
-  export const successStories = [
+export const successStories = [
+{
+    id: 1,
+    coupleImage: 'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=400',
+    marriageDate: '2024-01-15',
+    rating: 5,
+    story: 'We found each other through SoulMate and it was love at first sight. The platform made it so easy to connect with genuine people. Thank you for bringing us together!'
+},
+{
+    id: 2,
+    coupleImage: 'https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=400',
+    marriageDate: '2023-12-20',
+    rating: 5,
+    story: 'After months of searching, we finally found our perfect match. The detailed profiles and verification process gave us confidence. We are now happily married!'
+},
+{
+    id: 3,
+    coupleImage: 'https://images.pexels.com/photos/1024994/pexels-photo-1024994.jpeg?auto=compress&cs=tinysrgb&w=400',
+    marriageDate: '2023-11-10',
+    rating: 4,
+    story: 'SoulMate helped us find true love. The matching algorithm is amazing and we connected instantly. Our families are also very happy with our choice.'
+},
+{
+    id: 4,
+    coupleImage: 'https://images.pexels.com/photos/1043473/pexels-photo-1043473.jpeg?auto=compress&cs=tinysrgb&w=400',
+    marriageDate: '2023-10-05',
+    rating: 5,
+    story: 'We were both skeptical about online matrimony, but SoulMate proved us wrong. The quality of profiles and the genuine people we met exceeded our expectations.'
+}
+];
+  
+export const websiteStats = {
+totalBiodatas: 15420,
+maleBiodatas: 8230,
+femaleBiodatas: 7190,
+successfulMarriages: 3450
+};
+
+// site work options
+export const steps = [
     {
-      id: 1,
-      coupleImage: 'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=400',
-      marriageDate: '2024-01-15',
-      rating: 5,
-      story: 'We found each other through SoulMate and it was love at first sight. The platform made it so easy to connect with genuine people. Thank you for bringing us together!'
+      icon: UserPlus,
+      title: "Create Your Profile",
+      description: "Sign up and create a detailed profile with your preferences, photos, and personal information to attract compatible matches.",
+      color: "text-rose-500",
+      bgColor: "bg-orange-50"
     },
     {
-      id: 2,
-      coupleImage: 'https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=400',
-      marriageDate: '2023-12-20',
-      rating: 5,
-      story: 'After months of searching, we finally found our perfect match. The detailed profiles and verification process gave us confidence. We are now happily married!'
+      icon: Search,
+      title: "Find Compatible Matches",
+      description: "Browse through verified profiles and use our advanced search filters to find potential life partners based on your criteria.",
+      color: "text-purple-500",
+      bgColor: "bg-green-50"
     },
     {
-      id: 3,
-      coupleImage: 'https://images.pexels.com/photos/1024994/pexels-photo-1024994.jpeg?auto=compress&cs=tinysrgb&w=400',
-      marriageDate: '2023-11-10',
-      rating: 4,
-      story: 'SoulMate helped us find true love. The matching algorithm is amazing and we connected instantly. Our families are also very happy with our choice.'
+      icon: MessageCircle,
+      title: "Connect & Communicate",
+      description: "Send interest requests and start meaningful conversations with your preferred matches in a safe and secure environment.",
+      color: "text-yellow-500",
+      bgColor: "bg-blue-50"
     },
     {
-      id: 4,
-      coupleImage: 'https://images.pexels.com/photos/1043473/pexels-photo-1043473.jpeg?auto=compress&cs=tinysrgb&w=400',
-      marriageDate: '2023-10-05',
-      rating: 5,
-      story: 'We were both skeptical about online matrimony, but SoulMate proved us wrong. The quality of profiles and the genuine people we met exceeded our expectations.'
+      icon: Heart,
+      title: "Find Your Soulmate",
+      description: "Build meaningful relationships, meet in person with family involvement, and take the next step towards a happy married life.",
+      color: "text-pink-500",
+      bgColor: "bg-pink-50"
     }
-  ];
-  
-  export const websiteStats = {
-    totalBiodatas: 15420,
-    maleBiodatas: 8230,
-    femaleBiodatas: 7190,
-    successfulMarriages: 3450
-  };
+];
 
 
