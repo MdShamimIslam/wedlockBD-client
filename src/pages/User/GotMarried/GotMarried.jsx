@@ -1,4 +1,3 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
@@ -12,7 +11,7 @@ const GotMarried = () => {
    const storyInfo ={
         selfNumber,partnerNumber,img,marriage_date,ratings:parseInt(ratings),message,post_date:new Date(),
     }
-    console.log(storyInfo);
+    
     // save success story info to database
     axiosSecure.post('/successStories',storyInfo)
     .then(res=>{

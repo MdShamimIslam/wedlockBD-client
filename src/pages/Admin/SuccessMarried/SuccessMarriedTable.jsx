@@ -1,4 +1,3 @@
-import React from 'react';
 import { Modal1 } from '../../../component/Modal1';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
@@ -13,7 +12,7 @@ const SuccessMarriedTable = ({story}) => {
 
   const {data} = useQuery({
     queryKey:['data',selfNumber],
-    queryFn:async()=>{
+    queryFn: async()=> {
       const res = await axiosSecure(`male-biodataId?selfNumber=${selfNumber}`);
       return res.data;
     }

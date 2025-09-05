@@ -7,7 +7,7 @@ import { useLoaderData } from "react-router-dom";
 import './Biodatas.css'
 
 const Biodatas = () => {
-  const { totalBiodata } = useLoaderData();
+  const { totalBiodatas } = useLoaderData();
   const axiosPublic = useAxiosPublic();
   const [loading, setLoading] = useState(true);
   const [division, setDivision] = useState("");
@@ -16,7 +16,7 @@ const Biodatas = () => {
   // pagination
   const [itemPerPage, setItemPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(0);
-  const numbersOfPage = Math.ceil(totalBiodata / itemPerPage);
+  const numbersOfPage = Math.ceil(totalBiodatas / itemPerPage);
   const pages = [...Array(numbersOfPage).keys()];
 
   const handlePerPageChange = (e) => {

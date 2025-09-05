@@ -15,7 +15,7 @@ const useBiodatas = () => {
           return res.data;
         },
       });
-      return [biodatas,refetch]
+      return [biodatas,refetch];
 };
 
 export default useBiodatas;

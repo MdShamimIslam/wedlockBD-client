@@ -15,8 +15,6 @@ const PremiumBio = () => {
     },
   });
 
-  const sortedProfiles = [...biodatas].sort((a, b) => b.age - a.age);
-
 
   return (
       <section className="my-16 md:my-20 lg:my-28">
@@ -27,8 +25,8 @@ const PremiumBio = () => {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {sortedProfiles.map((profile) => (
-              <BiodataCard key={profile._id} profile={profile} />
+            {biodatas.map((biodata) => (
+              <BiodataCard key={biodata._id} biodata={biodata} />
             ))}
           </div>
         </div>

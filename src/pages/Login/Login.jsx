@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -23,8 +23,7 @@ const Login = () => {
   const onSubmit = (data) => {
     setErrorMess('');
     signIn(data.email, data.password)
-      .then((result) => {
-        const user = result.user;
+      .then(() => {
         reset();
         toast.success("Login Successfully!");
         navigate(from, { replace: true });

@@ -1,10 +1,9 @@
 import axios from "axios";
-import React from "react";
 import useAuth from "./useAuth";
 import { useNavigate } from "react-router-dom";
-
+// https://wedlock-bd-server.vercel.app
 const axiosSecure = axios.create({
-  baseURL: "https://wedlock-bd-server.vercel.app",
+  baseURL: "http://localhost:5000",
 });
 
 const useAxiosSecure = () => {
@@ -32,7 +31,6 @@ const useAxiosSecure = () => {
         await logOut();
         navigate("/login");
       }
-
       return Promise.reject(error);
     }
   );

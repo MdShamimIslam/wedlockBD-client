@@ -40,7 +40,7 @@ export const router = createBrowserRouter([
       {
         path: "/biodatas",
         element: <Biodatas></Biodatas>,
-        loader: () => fetch("https://wedlock-bd-server.vercel.app/user-stats"),
+        loader: () => fetch("http://localhost:5000/user-stats"),
       },
       {
         path: "/nodata",
@@ -66,13 +66,13 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://wedlock-bd-server.vercel.app/biodatas/${params.id}`),
+          fetch(`http://localhost:5000/biodatas/${params.id}`),
       },
       {
         path: "/contact-request/:id",
         element: <ContactRequest></ContactRequest>,
         loader: ({ params }) =>
-          fetch(`https://wedlock-bd-server.vercel.app/biodatas/${params.id}`),
+          fetch(`http://localhost:5000/biodatas/${params.id}`),
       },
       {
         path: "/add-biodata",

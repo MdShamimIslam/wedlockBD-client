@@ -33,9 +33,6 @@ const WebWork = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-3"> {title}</h3>
                 <p className="text-gray-600 leading-relaxed"> {description}</p>
-                {index < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-primary-200 to-secondary-200 transform translate-x-4" style={{ width: 'calc(100% - 2rem)' }} />
-                )}
               </div>
             );
           })}

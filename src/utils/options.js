@@ -165,13 +165,7 @@ export const successStories = [
     story: 'We were both skeptical about online matrimony, but SoulMate proved us wrong. The quality of profiles and the genuine people we met exceeded our expectations.'
 }
 ];
-  
-export const websiteStats = {
-totalBiodatas: 15420,
-maleBiodatas: 8230,
-femaleBiodatas: 7190,
-successfulMarriages: 3450
-};
+
 
 // site work options
 export const steps = [

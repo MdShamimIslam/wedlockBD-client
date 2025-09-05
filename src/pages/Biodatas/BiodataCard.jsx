@@ -1,7 +1,7 @@
 import { MapPin, Briefcase, Eye, Crown } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const BiodataCard = ({ profile = {} }) => {
+const BiodataCard = ({ biodata = {} }) => {
   const {
     _id,
     biodata_id,
@@ -11,7 +11,7 @@ const BiodataCard = ({ profile = {} }) => {
     age,
     occupation,
     name,
-  } = profile || {};
+  } = biodata || {};
 
   return (
     <div className="bg-slate-100 rounded-2xl shadow-md overflow-hidden card-hover group">
@@ -19,17 +19,17 @@ const BiodataCard = ({ profile = {} }) => {
         <img
           src={profile_image}
           alt={`Profile ${_id}`}
-          className="w-full h-64 object-cover object-center group-hover:scale-105 transition-transform duration-300"
+          className="w-full h-64 object-cover"
         />
         <div className="absolute inset-0 bg-black/30"></div>
 
-        <div className="absolute top-4 right-4 bg-pink-600 text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center space-x-1 shadow">
-          <Crown className="h-4 w-4" />
-          <span>Premium</span>
+        <div className="absolute top-3 right-2 bg-pink-600 text-white px-2 py-1 rounded-full text-sm font-semibold flex items-center space-x-1 shadow">
+          <Crown className="h-3 w-3" />
+          <span className="text-xs">Premium</span>
         </div>
-
-        <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">
-          ID: {biodata_id}
+    
+        <div className="absolute top-3 left-2 bg-blue-600 text-white px-2 py-[1px] rounded-full text-sm font-semibold shadow">
+         <span className="text-xs">ID: {biodata_id}</span>
         </div>
       </div>
 

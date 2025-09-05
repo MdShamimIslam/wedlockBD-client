@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import SuccessMarriedTable from './SuccessMarriedTable';
@@ -6,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 
 const SuccessMarried = () => {
     const axiosSecure = useAxiosSecure();
-    // get success stories biodatas
+    
     const { data: stories = [] } = useQuery({
       queryKey: ["successStories"],
       queryFn: async () => {
