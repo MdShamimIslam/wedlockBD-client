@@ -4,7 +4,7 @@ import Heading from "../../component/common/Heading";
 
 const ContactFAQ = () => {
   return (
-   <div className={`${secCl} px-4 sm:px-6 lg:px-8`}>
+    <div className={secCl}>
       <Heading
         title="Frequently Asked Questions"
         desc="Find quick answers to common questions about our matrimony platform and services"

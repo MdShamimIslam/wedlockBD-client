@@ -4,7 +4,7 @@ import { secCl, teamMembers } from "../../utils/options"
 const Team = () => {
 
   return (
-    <div className={`${secCl} px-4 sm:px-6 lg:px-8`}>
+    <div className={secCl}>
       <Heading
         title="Meet Our Experts"
         desc=" Dedicated professionals working tirelessly to help you find your perfect life partner"

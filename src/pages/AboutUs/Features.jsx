@@ -3,7 +3,7 @@ import { features, secCl } from "../../utils/options";
 
 const Features = () => {
   return (
-     <div className={`${secCl} px-4 sm:px-6 lg:px-8`}>
+    <div className={secCl}>
       <Heading
         title="Why WedlockBD is Different?"
         desc=" We provide the best matrimony experience with our unique features, dedicated service, and commitment to your happiness."

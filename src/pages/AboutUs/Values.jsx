@@ -3,7 +3,7 @@ import { secCl, values } from "../../utils/options";
 
 const Values = () => {
   return (
-    <div className={`${secCl} px-4 sm:px-6 lg:px-8`}>
+    <div className={secCl}>
       <Heading
         title="Our Core Values"
         desc="The principles that guide us in helping you find your perfect match and build lasting relationships"

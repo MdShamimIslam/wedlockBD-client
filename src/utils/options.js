@@ -5,7 +5,7 @@ import { SiInstagram } from "react-icons/si";
 import { UserPlus, Search, Heart, MessageCircle,Mail, Phone, MapPin, Clock,  HeadphonesIcon, Users, Globe, Shield, Award, Target, Eye, Lightbulb } from 'lucide-react';
 
 // section class
-export const secCl = "my-16 md:my-20 lg:my-24";
+export const secCl = "my-16 md:my-20 lg:my-24 px-4 sm:px-6 lg:px-8";
 
 // navbar options
 export const navLinks = [

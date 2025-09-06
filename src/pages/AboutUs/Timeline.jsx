@@ -35,7 +35,7 @@ const Timeline = () => {
   ];
 
   return (
-    <div className={`${secCl} px-4 sm:px-6 lg:px-8`}>
+    <div className={secCl}>
       <Heading
         title="Milestones & Achievement"
         desc="A timeline of our growth and the milestones we have achieved in serving the matrimony community"

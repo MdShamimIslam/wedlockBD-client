@@ -1,23 +1,19 @@
 import { Mail, MapPin, Phone, Users } from "lucide-react";
-import { officeLocations } from "../../utils/options";
+import { officeLocations, secCl } from "../../utils/options";
+import Heading from "../../component/common/Heading";
 
 const ContactOfficeLocation = () => {
   return (
-    <section className="py-20 bg-gradient-to-br from-primary-50 to-secondary-50">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-16">
-        <div className="bg-primary-100 inline-block px-4 py-2 rounded-full mb-6">
-          <span className="text-primary-700 font-semibold">Our Locations</span>
-        </div>
-        <h2 className="text-5xl font-bold text-gray-800 mb-6">Visit Our Offices</h2>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          We have offices in major cities across Bangladesh to serve you better
-        </p>
-      </div>
+    
+    <div className={secCl}>
+      <Heading
+        title="Visit Our Offices"
+        desc="Find our offices in major cities across Bangladesh to serve you better"
+      />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-8">
         {officeLocations.map((office, index) => (
-          <div key={index} className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div key={index} className="bg-slate-50 p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
             <div className="text-center mb-6">
               <div className="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MapPin className="h-8 w-8 text-primary-600" />
@@ -51,7 +47,7 @@ const ContactOfficeLocation = () => {
         ))}
       </div>
     </div>
-  </section>
+
   )
 }
 
