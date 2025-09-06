@@ -2,7 +2,7 @@ import { LuFacebook } from "react-icons/lu";
 import { TbBrandYoutubeFilled } from "react-icons/tb";
 import { FiTwitter } from "react-icons/fi";
 import { SiInstagram } from "react-icons/si";
-import { UserPlus, Search, Heart, MessageCircle,Mail, Phone, MapPin, Clock,  HeadphonesIcon, Users, Globe, Shield, Award, Star, Target, Eye, Lightbulb, Trophy } from 'lucide-react';
+import { UserPlus, Search, Heart, MessageCircle,Mail, Phone, MapPin, Clock,  HeadphonesIcon, Users, Globe, Shield, Award, Target, Eye, Lightbulb } from 'lucide-react';
 
 // section class
 export const secCl = "my-16 md:my-20 lg:my-24";
@@ -206,7 +206,7 @@ export const contactInfo = [
   {
     icon: Phone,
     title: "Call Us Anytime",
-    details: ["+880 1234-567890", "+880 9876-543210"],
+    details: ["+880 1571529918", "+880 9638727541"],
     description: "Available 24/7 for your queries and support",
     color: "text-blue-500",
     bgColor: "bg-blue-50"
@@ -214,7 +214,7 @@ export const contactInfo = [
   {
     icon: Mail,
     title: "Email Support",
-    details: ["info@soulmate.com", "support@soulmate.com"],
+    details: ["support@wedlockbd.com", "shamim401897@gmail.com" ],
     description: "We'll respond within 2-4 hours",
     color: "text-green-500",
     bgColor: "bg-green-50"
@@ -438,13 +438,6 @@ export const values = [
   }
 ];
 
-export const stats = [
-  { number: "50,000+", label: "Active Members", icon: Users },
-  { number: "3,450+", label: "Successful Marriages", icon: Heart },
-  { number: "5+", label: "Years of Service", icon: Clock },
-  { number: "99%", label: "Customer Satisfaction", icon: Trophy }
-];
-
 import shamim from "../assets/images/shamim.png";
 import fatima from "../assets/images/fatima.jpeg";
 import nadiya from "../assets/images/nadiya.jpeg";
@@ -474,62 +467,6 @@ export const teamMembers = [
     position: "Customer Success Manager",
     image: nadiya,
     description: "Ensuring exceptional member experience and support"
-  }
-];
-
-export const milestones = [
-  {
-    year: "2019",
-    title: "SoulMate Founded",
-    description: "Started with a vision to revolutionize matrimony in Bangladesh"
-  },
-  {
-    year: "2020",
-    title: "10,000 Members",
-    description: "Reached our first major milestone with verified profiles"
-  },
-  {
-    year: "2021",
-    title: "1,000 Marriages",
-    description: "Celebrated our first thousand successful marriages"
-  },
-  {
-    year: "2022",
-    title: "Mobile App Launch",
-    description: "Launched mobile applications for iOS and Android"
-  },
-  {
-    year: "2023",
-    title: "AI Matching",
-    description: "Introduced AI-powered compatibility matching system"
-  },
-  {
-    year: "2024",
-    title: "50,000+ Members",
-    description: "Became Bangladesh's largest trusted matrimony platform"
-  }
-];
-
-export const awards = [
-  {
-    title: "Best Matrimony Platform 2023",
-    organization: "Bangladesh Digital Awards",
-    icon: Trophy
-  },
-  {
-    title: "Most Trusted Brand 2023",
-    organization: "Consumer Choice Awards",
-    icon: Shield
-  },
-  {
-    title: "Innovation in Technology 2022",
-    organization: "Tech Excellence Awards",
-    icon: Lightbulb
-  },
-  {
-    title: "Customer Service Excellence 2022",
-    organization: "Service Quality Institute",
-    icon: Star
   }
 ];
 

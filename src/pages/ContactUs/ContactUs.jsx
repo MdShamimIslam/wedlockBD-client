@@ -1,4 +1,3 @@
-import ContactHero from './ContactHero';
 import QuickContact from './QuickContact';
 import ContactFormSupport from './ContactFormSupport';
 import ContactFAQ from './ContactFAQ';
@@ -13,7 +12,6 @@ const ContactUs = () => {
       <Helmet>
           <title>Contact Us| WedlockBD</title>
       </Helmet>
-      <ContactHero/>
       <QuickContact/>
       <ContactFormSupport/>
       <ContactFAQ/>
