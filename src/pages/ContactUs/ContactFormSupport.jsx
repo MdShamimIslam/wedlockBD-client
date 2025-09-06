@@ -14,7 +14,7 @@ const ContactFormSupport = () => {
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      alert('Thank you for your message! We will get back to you within 24 hours.');
+
       setFormData({
         name: '',
         email: '',
@@ -27,19 +27,13 @@ const ContactFormSupport = () => {
 
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div className="my-16 md:my-24 lg:my-32 px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-        {/* Enhanced Contact Form */}
         <div className="bg-white p-10 rounded-3xl shadow-2xl border border-gray-100">
           <div className="text-center mb-8">
-            <div className="bg-primary-50 inline-block p-3 rounded-full mb-4">
-              <Send className="h-8 w-8 text-primary-500" />
-            </div>
-            <h3 className="text-3xl font-bold text-gray-800 mb-4">Send us a Message</h3>
+            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 mb-4">Send us a Message</h3>
             <p className="text-gray-600">Fill out the form below and we will get back to you as soon as possible</p>
           </div>
-          
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
@@ -73,7 +67,6 @@ const ContactFormSupport = () => {
                 />
               </div>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-3">
@@ -107,7 +100,6 @@ const ContactFormSupport = () => {
                 </select>
               </div>
             </div>
-
             <div>
               <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 mb-3">
                 Subject *
@@ -132,7 +124,6 @@ const ContactFormSupport = () => {
                 <option value="other">Other</option>
               </select>
             </div>
-
             <div>
               <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-3">
                 Message *
@@ -148,7 +139,6 @@ const ContactFormSupport = () => {
                 placeholder="Tell us how we can help you..."
               />
             </div>
-
             <div className="flex items-center space-x-3">
               <input
                 type="checkbox"
@@ -162,7 +152,7 @@ const ContactFormSupport = () => {
 
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white py-4 px-6 rounded-xl font-semibold hover:from-primary-600 hover:to-secondary-600 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2"
+              className="w-full bg-gradient-to-r from-pink-500 to-blue-500 text-white py-4 px-6 rounded-xl font-semibold hover:from-primary-600 hover:to-secondary-600 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2"
             >
               <Send className="h-5 w-5" />
               <span>Send Message</span>
@@ -170,13 +160,9 @@ const ContactFormSupport = () => {
           </form>
         </div>
 
-        {/* Enhanced Support Options */}
         <div className="space-y-8">
           <div className="text-center lg:text-left">
-            <div className="bg-secondary-50 inline-block px-4 py-2 rounded-full mb-6">
-              <span className="text-secondary-600 font-semibold">Support Options</span>
-            </div>
-            <h3 className="text-3xl font-bold text-gray-800 mb-6">Other Ways to Get Help</h3>
+            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 mb-6">Other Ways to Get Help</h3>
             <p className="text-gray-600 mb-8 text-lg leading-relaxed">
               Choose the support option that works best for you. Our team is always ready to assist with personalized care.
             </p>
@@ -191,7 +177,7 @@ const ContactFormSupport = () => {
                     <IconComponent className="h-7 w-7 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-xl font-semibold text-gray-800 mb-3">{option.title}</h4>
+                    <h4 className="text-lg md:text-xl font-semibold text-gray-800 mb-3">{option.title}</h4>
                     <p className="text-gray-600 mb-4 leading-relaxed">{option.description}</p>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {option.features.map((feature, idx) => (
@@ -200,7 +186,7 @@ const ContactFormSupport = () => {
                         </span>
                       ))}
                     </div>
-                    <button className={`bg-gradient-to-r ${option.color} text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all duration-200 font-semibold`}>
+                    <button className={`bg-gradient-to-r ${option.color} text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all duration-200 md:font-semibold`}>
                       {option.action}
                     </button>
                   </div>
@@ -211,7 +197,6 @@ const ContactFormSupport = () => {
         </div>
       </div>
     </div>
-  </section>
   )
 }
 
