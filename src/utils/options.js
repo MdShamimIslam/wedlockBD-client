@@ -2,8 +2,7 @@ import { LuFacebook } from "react-icons/lu";
 import { TbBrandYoutubeFilled } from "react-icons/tb";
 import { FiTwitter } from "react-icons/fi";
 import { SiInstagram } from "react-icons/si";
-import { UserPlus, Search, Heart, MessageCircle } from 'lucide-react';
-
+import { UserPlus, Search, Heart, MessageCircle,Mail, Phone, MapPin, Clock,  HeadphonesIcon, Users, Globe } from 'lucide-react';
 
 // navbar options
 export const navLinks = [
@@ -83,7 +82,7 @@ export const sliders = [
     },
 ];
 
-
+// premium profiles options
 export const premiumProfiles = [
     {
       id: 1,
@@ -134,7 +133,8 @@ export const premiumProfiles = [
       occupation: 'Student'
     }
 ];
-  
+
+// success stories options
 export const successStories = [
 {
     id: 1,
@@ -166,7 +166,6 @@ export const successStories = [
 }
 ];
 
-
 // site work options
 export const steps = [
     {
@@ -197,6 +196,164 @@ export const steps = [
       color: "text-pink-500",
       bgColor: "bg-pink-50"
     }
+];
+
+// contact us options
+export const contactInfo = [
+  {
+    icon: Phone,
+    title: "Call Us Anytime",
+    details: ["+880 1234-567890", "+880 9876-543210"],
+    description: "Available 24/7 for your queries and support",
+    color: "text-blue-500",
+    bgColor: "bg-blue-50"
+  },
+  {
+    icon: Mail,
+    title: "Email Support",
+    details: ["info@soulmate.com", "support@soulmate.com"],
+    description: "We'll respond within 2-4 hours",
+    color: "text-green-500",
+    bgColor: "bg-green-50"
+  },
+  {
+    icon: MapPin,
+    title: "Visit Our Office",
+    details: ["123 Love Street, Dhanmondi", "Dhaka-1205, Bangladesh"],
+    description: "Monday to Saturday, 9 AM - 6 PM",
+    color: "text-red-500",
+    bgColor: "bg-red-50"
+  },
+  {
+    icon: Clock,
+    title: "Working Hours",
+    details: ["Mon - Sat: 9:00 AM - 6:00 PM", "Sunday: 10:00 AM - 4:00 PM"],
+    description: "Extended hours for premium members",
+    color: "text-purple-500",
+    bgColor: "bg-purple-50"
+  }
+];
+
+export const supportOptions = [
+  {
+    icon: MessageCircle,
+    title: "Live Chat Support",
+    description: "Get instant help from our support team with real-time chat assistance",
+    features: ["Instant Response", "24/7 Available", "Multi-language Support"],
+    action: "Start Chat Now",
+    color: "from-blue-500 to-blue-600"
+  },
+  {
+    icon: HeadphonesIcon,
+    title: "Phone Consultation",
+    description: "Speak directly with our matrimony experts for personalized guidance",
+    features: ["Expert Advice", "Free Consultation", "Callback Service"],
+    action: "Schedule Call",
+    color: "from-green-500 to-green-600"
+  },
+  {
+    icon: Users,
+    title: "Community Forum",
+    description: "Connect with other members and get advice from our community",
+    features: ["Member Stories", "Expert Tips", "Q&A Sessions"],
+    action: "Join Community",
+    color: "from-purple-500 to-purple-600"
+  },
+  {
+    icon: Globe,
+    title: "Video Consultation",
+    description: "Face-to-face consultation with our relationship counselors",
+    features: ["Personal Guidance", "Relationship Tips", "Family Counseling"],
+    action: "Book Session",
+    color: "from-pink-500 to-pink-600"
+  }
+];
+
+export const faqCategories = [
+  {
+    title: "Account & Profile",
+    questions: [
+      "How do I create a profile?",
+      "How to verify my profile?",
+      "Can I edit my information?",
+      "How to delete my account?"
+    ]
+  },
+  {
+    title: "Matching & Search",
+    questions: [
+      "How does matching work?",
+      "Can I search by location?",
+      "How to save favorite profiles?",
+      "What are compatibility scores?"
+    ]
+  },
+  {
+    title: "Privacy & Safety",
+    questions: [
+      "Is my information secure?",
+      "How to report suspicious profiles?",
+      "Can I block someone?",
+      "What are privacy settings?"
+    ]
+  },
+  {
+    title: "Premium Features",
+    questions: [
+      "What are premium benefits?",
+      "How to upgrade my account?",
+      "Payment methods available?",
+      "Can I cancel subscription?"
+    ]
+  }
+];
+
+export const officeLocations = [
+  {
+    city: "Dhaka",
+    address: "123 Love Street, Dhanmondi, Dhaka-1205",
+    phone: "+880 1234-567890",
+    email: "dhaka@soulmate.com",
+    manager: "Rahul Ahmed"
+  },
+  {
+    city: "Chattagram",
+    address: "456 Heart Avenue, Agrabad, Chattagram-4100",
+    phone: "+880 1234-567891",
+    email: "chattagram@soulmate.com",
+    manager: "Fatima Khan"
+  },
+  {
+    city: "Sylhet",
+    address: "789 Romance Road, Zindabazar, Sylhet-3100",
+    phone: "+880 1234-567892",
+    email: "sylhet@soulmate.com",
+    manager: "Arif Hassan"
+  }
+];
+
+export const testimonials = [
+  {
+    name: "Sarah Ahmed",
+    location: "Dhaka",
+    message: "Excellent customer service! They helped me find my perfect match within 3 months.",
+    rating: 5,
+    image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400"
+  },
+  {
+    name: "Karim Rahman",
+    location: "Chattagram",
+    message: "The support team is very responsive and helpful. Highly recommend SoulMate!",
+    rating: 5,
+    image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400"
+  },
+  {
+    name: "Nadia Khan",
+    location: "Sylhet",
+    message: "Professional service with genuine care for their members. Thank you SoulMate!",
+    rating: 5,
+    image: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=400"
+  }
 ];
 
 

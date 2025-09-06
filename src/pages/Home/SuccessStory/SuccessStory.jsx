@@ -58,8 +58,8 @@
               {/* Navigation Arrows */}
               <button
                 onClick={prevSlider}
-                className="absolute left-1 z-20 flex justify-center items-center text-white bg-pink-400  hover:bg-pink-500 rounded-full 
-                shadow-elegant w-10 h-10 md:w-14 md:h-14 transition-all duration-300 hover:scale-110 group"
+                className="absolute left-1 z-20 flex justify-center items-center text-white bg-pink-500  hover:bg-pink-600 rounded-full 
+                shadow-elegant w-10 h-10 md:w-12 md:h-12 transition-all duration-300 hover:scale-110 group"
                 aria-label="Previous story"
               >
                 <ChevronLeft className="w-6 h-6 text-foreground group-hover:text-primary transition-colors" />
@@ -67,8 +67,8 @@
 
               <button
                 onClick={nextSlider}
-                className="absolute right-1 z-20 flex justify-center items-center text-white bg-pink-400  hover:bg-pink-500 rounded-full 
-                shadow-elegant w-10 h-10  md:w-14 md:h-14 transition-all duration-300 hover:scale-110 group"
+                className="absolute right-1 z-20 flex justify-center items-center text-white bg-pink-500  hover:bg-pink-600 rounded-full 
+                shadow-elegant w-10 h-10  md:w-12 md:h-12 transition-all duration-300 hover:scale-110 group"
                 aria-label="Next story"
               >
                 <ChevronRight className="w-6 h-6 text-foreground group-hover:text-primary transition-colors" />
