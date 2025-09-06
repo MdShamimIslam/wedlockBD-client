@@ -17,7 +17,7 @@ const Team = () => {
               <img
                 src={member.image}
                 alt={member.name}
-                className="w-full h-64 object-cover"
+                className="w-full h-64 object-cover"  
               />
               {/* <div className="absolute inset-0 bg-gradient-to-t from-black bg-opacity-20 to-transparent"></div> */}
             </div>

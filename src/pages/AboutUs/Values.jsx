@@ -14,7 +14,7 @@ const Values = () => {
           const IconComponent = value.icon;
           return (
             <div key={index} className="group">
-              <div className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl border border-gray-200 hover:border-primary-200 transition-all duration-300 h-full">
+              <div className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl border border-gray-200 hover:border-blue-200 transition-all duration-300 h-full">
                 <div className="flex items-start space-x-4">
                   <div className="bg-primary-50 p-3 rounded-xl group-hover:bg-primary-100 transition-colors duration-300">
                     <IconComponent className="h-6 w-6 text-primary-500" />
