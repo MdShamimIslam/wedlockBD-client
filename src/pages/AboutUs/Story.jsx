@@ -2,6 +2,7 @@ import { Heart, Star } from "lucide-react"
 import useUserStats from "../../hooks/useUserStats";
 import storyImg from "../../assets/images/story.jpeg";
 import useSuccessStory from "../../hooks/useSuccessStory";
+import { secCl } from "../../utils/options";
 
 const Story = () => {
   const userStats = useUserStats();
@@ -16,9 +17,8 @@ const Story = () => {
   const hasHalfStar = avgRating - fullStars >= 0.5;
 
   return (
-    <section className="my-16 md:my-20 lg:my-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className={`${secCl} px-4 sm:px-6 lg:px-8`}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center px-8 md:px-6 lg:px-0">
             <div className="order-2 lg:order-1">
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-8 leading-tight">Our Story</h2>
               <p className="lg:text-lg text-gray-600 mb-6 leading-relaxed">
@@ -65,11 +65,11 @@ const Story = () => {
                   alt="Happy Couple"
                   className="rounded-3xl shadow-2xl w-full"
                 />
-                <div className="absolute -bottom-8 -left-8 bg-white p-8 rounded-2xl shadow-xl">
-                  <div className="text-4xl font-bold text-primary-500 mb-2">3+</div>
+                <div className="absolute -bottom-8 -left-8 bg-white p-4 md:p-8 rounded-2xl shadow-xl">
+                  <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-500 mb-2">3+</div>
                   <div className="text-gray-600 font-medium">Years of Excellence</div>
                 </div>
-                <div className="absolute -top-8 -right-8 bg-gradient-to-r from-pink-500 to-blue-500 text-white p-6 rounded-2xl shadow-xl">
+                <div className="absolute -top-8 -right-8 bg-gradient-to-r from-pink-500 to-blue-500 text-white p-3 md:p-6 rounded-2xl shadow-xl">
                   <Heart className="h-8 w-8 mb-2" />
                   <div className="font-semibold">Trusted Platform</div>
                 </div>
@@ -77,7 +77,6 @@ const Story = () => {
             </div>
           </div>
         </div>
-      </section>
   )
 }
 

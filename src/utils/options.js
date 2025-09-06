@@ -4,6 +4,9 @@ import { FiTwitter } from "react-icons/fi";
 import { SiInstagram } from "react-icons/si";
 import { UserPlus, Search, Heart, MessageCircle,Mail, Phone, MapPin, Clock,  HeadphonesIcon, Users, Globe, Shield, Award, Star, Target, Eye, Lightbulb, Trophy } from 'lucide-react';
 
+// section class
+export const secCl = "my-16 md:my-20 lg:my-24";
+
 // navbar options
 export const navLinks = [
     { name: "Home", href: "/" },
@@ -373,11 +376,11 @@ export const features = [
     bgColor: "bg-green-50"
   },
   {
-    icon: Heart,
-    title: "Successful Matches",
-    description: "Over 3,000+ successful marriages completed through our advanced matching algorithms.",
-    color: "text-red-500",
-    bgColor: "bg-red-50"
+    icon: Globe,
+    title: "Worldwide Reach",
+    description: "Connect with potential matches not just locally but from around the globe with ease.",
+    color: "text-orange-500",
+    bgColor: "bg-orange-50"
   },
   {
     icon: Award,
@@ -442,29 +445,34 @@ export const stats = [
   { number: "99%", label: "Customer Satisfaction", icon: Trophy }
 ];
 
+import shamim from "../assets/images/shamim.png";
+import fatima from "../assets/images/fatima.jpeg";
+import nadiya from "../assets/images/nadiya.jpeg";
+import salman from "../assets/images/salman.jpg";
+
 export const teamMembers = [
   {
-    name: "Rahul Ahmed",
+    name: "Md. Shamim Islam",
     position: "Founder & CEO",
-    image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400",
-    description: "10+ years experience in matrimony industry"
+    image: shamim,
+    description: "3.5+ years experience in matrimony industry"
   },
   {
     name: "Fatima Khan",
     position: "Head of Operations",
-    image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: fatima,
     description: "Expert in relationship counseling and matchmaking"
   },
   {
-    name: "Arif Hassan",
+    name: "Salman Khan",
     position: "Technical Director",
-    image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: salman,
     description: "Leading our technology and security initiatives"
   },
   {
     name: "Nadia Rahman",
     position: "Customer Success Manager",
-    image: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: nadiya,
     description: "Ensuring exceptional member experience and support"
   }
 ];

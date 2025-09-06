@@ -1,18 +1,13 @@
-import { values } from "../../utils/options";
+import Heading from "../../component/common/Heading";
+import { secCl, values } from "../../utils/options";
 
 const Values = () => {
   return (
-    <section className="py-20 bg-white">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-16">
-        <div className="bg-secondary-50 inline-block px-4 py-2 rounded-full mb-6">
-          <span className="text-secondary-600 font-semibold">Our Values</span>
-        </div>
-        <h2 className="text-5xl font-bold text-gray-800 mb-6">What We Stand For</h2>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          The principles that guide us in helping you find your perfect match and build lasting relationships
-        </p>
-      </div>
+    <div className={`${secCl} px-4 sm:px-6 lg:px-8`}>
+      <Heading
+        title="Our Core Values"
+        desc="The principles that guide us in helping you find your perfect match and build lasting relationships"
+      />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {values.map((value, index) => {
@@ -35,7 +30,6 @@ const Values = () => {
         })}
       </div>
     </div>
-  </section>
   )
 }
 

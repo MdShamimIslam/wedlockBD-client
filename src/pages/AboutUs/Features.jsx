@@ -1,18 +1,13 @@
-import { features } from "../../utils/options";
+import Heading from "../../component/common/Heading";
+import { features, secCl } from "../../utils/options";
 
 const Features = () => {
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-16">
-        <div className="bg-primary-50 inline-block px-4 py-2 rounded-full mb-6">
-          <span className="text-primary-600 font-semibold">Why Choose Us</span>
-        </div>
-        <h2 className="text-5xl font-bold text-gray-800 mb-6">Why SoulMate is Different?</h2>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          We provide the best matrimony experience with our unique features, dedicated service, and commitment to your happiness
-        </p>
-      </div>
+     <div className={`${secCl} px-4 sm:px-6 lg:px-8`}>
+      <Heading
+        title="Why WedlockBD is Different?"
+        desc=" We provide the best matrimony experience with our unique features, dedicated service, and commitment to your happiness."
+      />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {features.map((feature, index) => {
@@ -22,14 +17,13 @@ const Features = () => {
               <div className={`${feature.bgColor} w-16 h-16 rounded-2xl flex items-center justify-center mb-6`}>
                 <IconComponent className={`h-8 w-8 ${feature.color}`} />
               </div>
-              <h3 className="text-2xl font-semibold text-gray-800 mb-4">{feature.title}</h3>
+              <h3 className=" text-lg md:text-xl font-semibold text-gray-800 mb-4">{feature.title}</h3>
               <p className="text-gray-600 leading-relaxed">{feature.description}</p>
             </div>
           );
         })}
       </div>
     </div>
-  </section>
   )
 }
 
