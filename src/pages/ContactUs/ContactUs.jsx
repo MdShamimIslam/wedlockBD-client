@@ -4,11 +4,15 @@ import ContactFormSupport from './ContactFormSupport';
 import ContactFAQ from './ContactFAQ';
 import ContactOfficeLocation from './ContactOfficeLocation';
 import CustomerTestimonial from './CustomerTestimonial';
+import { Helmet } from 'react-helmet-async';
 
 const ContactUs = () => {
 
   return (
     <>
+      <Helmet>
+          <title>Contact Us| WedlockBD</title>
+      </Helmet>
       <ContactHero/>
       <QuickContact/>
       <ContactFormSupport/>

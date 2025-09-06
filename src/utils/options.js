@@ -2,7 +2,7 @@ import { LuFacebook } from "react-icons/lu";
 import { TbBrandYoutubeFilled } from "react-icons/tb";
 import { FiTwitter } from "react-icons/fi";
 import { SiInstagram } from "react-icons/si";
-import { UserPlus, Search, Heart, MessageCircle,Mail, Phone, MapPin, Clock,  HeadphonesIcon, Users, Globe } from 'lucide-react';
+import { UserPlus, Search, Heart, MessageCircle,Mail, Phone, MapPin, Clock,  HeadphonesIcon, Users, Globe, Shield, Award, Star, Target, Eye, Lightbulb, Trophy } from 'lucide-react';
 
 // navbar options
 export const navLinks = [
@@ -353,6 +353,175 @@ export const testimonials = [
     message: "Professional service with genuine care for their members. Thank you SoulMate!",
     rating: 5,
     image: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=400"
+  }
+];
+
+// about us options
+export const features = [
+  {
+    icon: Shield,
+    title: "100% Verified Profiles",
+    description: "All profiles are manually verified by our expert team to ensure authenticity and safety for our members.",
+    color: "text-blue-500",
+    bgColor: "bg-blue-50"
+  },
+  {
+    icon: Users,
+    title: "Trusted Community",
+    description: "Join thousands of families who trust us to find their perfect life partner in a safe environment.",
+    color: "text-green-500",
+    bgColor: "bg-green-50"
+  },
+  {
+    icon: Heart,
+    title: "Successful Matches",
+    description: "Over 3,000+ successful marriages completed through our advanced matching algorithms.",
+    color: "text-red-500",
+    bgColor: "bg-red-50"
+  },
+  {
+    icon: Award,
+    title: "Premium Service",
+    description: "Dedicated support team available 24/7 with personalized matchmaking assistance.",
+    color: "text-purple-500",
+    bgColor: "bg-purple-50"
+  },
+  {
+    icon: Target,
+    title: "Perfect Matching",
+    description: "AI-powered compatibility analysis to find your most suitable life partner.",
+    color: "text-indigo-500",
+    bgColor: "bg-indigo-50"
+  },
+  {
+    icon: Eye,
+    title: "Privacy Protection",
+    description: "Your personal information is completely secure with our advanced privacy measures.",
+    color: "text-pink-500",
+    bgColor: "bg-pink-50"
+  }
+];
+
+export const values = [
+  {
+    title: "Trust & Safety",
+    description: "We prioritize the safety and privacy of our members with strict verification processes and secure data handling.",
+    icon: Shield
+  },
+  {
+    title: "Cultural Values",
+    description: "Respecting traditional Bengali marriage customs while embracing modern technology for better connections.",
+    icon: Heart
+  },
+  {
+    title: "Family Involvement",
+    description: "We understand the importance of family in Bengali marriages and facilitate their meaningful involvement.",
+    icon: Users
+  },
+  {
+    title: "Quality Matches",
+    description: "Our advanced algorithms ensure compatible matches based on preferences, values, and lifestyle choices.",
+    icon: Target
+  },
+  {
+    title: "Transparency",
+    description: "Complete transparency in our processes, pricing, and member interactions for building trust.",
+    icon: Eye
+  },
+  {
+    title: "Innovation",
+    description: "Continuously improving our platform with latest technology to enhance user experience.",
+    icon: Lightbulb
+  }
+];
+
+export const stats = [
+  { number: "50,000+", label: "Active Members", icon: Users },
+  { number: "3,450+", label: "Successful Marriages", icon: Heart },
+  { number: "5+", label: "Years of Service", icon: Clock },
+  { number: "99%", label: "Customer Satisfaction", icon: Trophy }
+];
+
+export const teamMembers = [
+  {
+    name: "Rahul Ahmed",
+    position: "Founder & CEO",
+    image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400",
+    description: "10+ years experience in matrimony industry"
+  },
+  {
+    name: "Fatima Khan",
+    position: "Head of Operations",
+    image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400",
+    description: "Expert in relationship counseling and matchmaking"
+  },
+  {
+    name: "Arif Hassan",
+    position: "Technical Director",
+    image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400",
+    description: "Leading our technology and security initiatives"
+  },
+  {
+    name: "Nadia Rahman",
+    position: "Customer Success Manager",
+    image: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=400",
+    description: "Ensuring exceptional member experience and support"
+  }
+];
+
+export const milestones = [
+  {
+    year: "2019",
+    title: "SoulMate Founded",
+    description: "Started with a vision to revolutionize matrimony in Bangladesh"
+  },
+  {
+    year: "2020",
+    title: "10,000 Members",
+    description: "Reached our first major milestone with verified profiles"
+  },
+  {
+    year: "2021",
+    title: "1,000 Marriages",
+    description: "Celebrated our first thousand successful marriages"
+  },
+  {
+    year: "2022",
+    title: "Mobile App Launch",
+    description: "Launched mobile applications for iOS and Android"
+  },
+  {
+    year: "2023",
+    title: "AI Matching",
+    description: "Introduced AI-powered compatibility matching system"
+  },
+  {
+    year: "2024",
+    title: "50,000+ Members",
+    description: "Became Bangladesh's largest trusted matrimony platform"
+  }
+];
+
+export const awards = [
+  {
+    title: "Best Matrimony Platform 2023",
+    organization: "Bangladesh Digital Awards",
+    icon: Trophy
+  },
+  {
+    title: "Most Trusted Brand 2023",
+    organization: "Consumer Choice Awards",
+    icon: Shield
+  },
+  {
+    title: "Innovation in Technology 2022",
+    organization: "Tech Excellence Awards",
+    icon: Lightbulb
+  },
+  {
+    title: "Customer Service Excellence 2022",
+    organization: "Service Quality Institute",
+    icon: Star
   }
 ];
 

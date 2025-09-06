@@ -1,15 +1,34 @@
-import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import Hero from './Hero';
+import Story from './Story';
+import Features from './Features';
+import Values from './Values';
+import Team from './Team';
+import Timeline from './Timeline';
+import Awards from './Awards';
+import Stats from './Stats';
+import CallToAction from './CallToAction';
 
 const AboutUs = () => {
-    return (
-        <div className=" flex items-center justify-center my-44">
-        <Helmet>
-          <title> About Us| WedlockBD</title>
-        </Helmet>
-        <h3 className="text-3xl font-semibold">Upcoming...............</h3>
-      </div>
-    );
+
+  return (
+    <>
+      <Helmet>
+          <title>About Us| WedlockBD</title>
+      </Helmet>
+
+      <Hero/>
+      <Story/>
+      <Features/>
+      <Values/>
+      <Team/>
+      <Timeline/>
+      <Awards/>
+      <Stats/>
+      <CallToAction/>
+
+    </>
+  );
 };
 
 export default AboutUs;
