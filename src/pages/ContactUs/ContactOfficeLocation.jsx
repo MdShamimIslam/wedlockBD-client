@@ -18,7 +18,7 @@ const ContactOfficeLocation = () => {
               <div className="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MapPin className="h-8 w-8 text-primary-600" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-2">{office.city} Office</h3>
+              <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-800 mb-2">{office.city} Office</h3>
             </div>
             
             <div className="space-y-4">
@@ -40,7 +40,7 @@ const ContactOfficeLocation = () => {
               </div>
             </div>
 
-            <button className="w-full mt-6 bg-primary-500 text-white py-3 rounded-lg hover:bg-primary-600 transition-colors duration-200 font-semibold">
+            <button className="bg-gradient-to-r from-pink-500 to-blue-500 w-full mt-6 bg-pink-500 text-white py-3 rounded-lg hover:bg-primary-600 transition-colors duration-200 font-semibold">
               Get Directions
             </button>
           </div>
