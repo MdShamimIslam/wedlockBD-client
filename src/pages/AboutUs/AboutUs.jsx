@@ -1,5 +1,4 @@
 import { Helmet } from 'react-helmet-async';
-import Hero from './Hero';
 import Story from './Story';
 import Features from './Features';
 import Values from './Values';
@@ -16,8 +15,6 @@ const AboutUs = () => {
       <Helmet>
           <title>About Us| WedlockBD</title>
       </Helmet>
-
-      <Hero/>
       <Story/>
       <Features/>
       <Values/>

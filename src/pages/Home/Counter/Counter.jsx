@@ -1,38 +1,29 @@
 import { Users, UserRound, UserRoundCheck, HeartHandshake } from "lucide-react";
 import Heading from '../../../component/common/Heading';
-import useAxiosPublic from '../../../hooks/useAxiosPublic';
-import { useQuery } from '@tanstack/react-query';
+import useUserStats from "../../../hooks/useUserStats";
 
 const Counter = () => {
-  const axiosPublic = useAxiosPublic();
-
-  const { data: websiteStats = {} } = useQuery({
-    queryKey: ["userStats"],
-    queryFn: async () => {
-      const res = await axiosPublic.get("/user-stats");
-      return res.data;
-    },
-  });
+ const userStats = useUserStats();
 
   const stats = [
     {
       icon: Users,
       label: "Total Biodatas",
-      value: websiteStats.totalBiodatas,
+      value: userStats.totalBiodatas,
       color: "text-pink-500",
       bgColor: "bg-pink-50"
     },
     {
       icon: UserRound,
       label: "Male Members",
-      value: websiteStats.maleBiodatas,
+      value: userStats.maleBiodatas,
       color: "text-yellow-500",
       bgColor: "bg-blue-50"
     },
     {
       icon: UserRoundCheck,
       label: "Female Members",
-      value: websiteStats.femaleBiodatas,
+      value: userStats.femaleBiodatas,
       color: "text-purple-500",
       bgColor: "bg-green-50"
 
@@ -40,7 +31,7 @@ const Counter = () => {
     {
       icon: HeartHandshake,
       label: "Successful Marriages",
-      value: websiteStats.successStories,
+      value: userStats.successStories,
       color: "text-rose-500",
       bgColor: "bg-orange-50"
     }

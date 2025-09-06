@@ -1,18 +1,9 @@
 import { Helmet } from 'react-helmet-async';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import SuccessMarriedTable from './SuccessMarriedTable';
-import { useQuery } from '@tanstack/react-query';
+import useSuccessStory from '../../../hooks/useSuccessStory';
 
 const SuccessMarried = () => {
-    const axiosSecure = useAxiosSecure();
-    
-    const { data: stories = [] } = useQuery({
-      queryKey: ["successStories"],
-      queryFn: async () => {
-        const res = await axiosSecure.get('/successStories');
-        return res.data;
-      },
-    });
+    const [stories] = useSuccessStory();
 
     return (
         <div>

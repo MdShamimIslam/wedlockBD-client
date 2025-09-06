@@ -3,19 +3,10 @@
   import Heading from "../../../component/common/Heading";
   import { Rating } from "@smastrom/react-rating";
   import "@smastrom/react-rating/style.css";
-  import useAxiosSecure from "../../../hooks/useAxiosSecure";
-  import { useQuery } from "@tanstack/react-query";
+import useSuccessStory from "../../../hooks/useSuccessStory";
 
   const SuccessStory = () => {
-    const axiosSecure = useAxiosSecure();
-      
-    const { data: stories = [] } = useQuery({
-      queryKey: ["successStories"],
-      queryFn: async () => {
-        const res = await axiosSecure.get('/successStories');
-        return res.data;
-      },
-    });
+    const [stories] = useSuccessStory();
 
     const [currentSlider, setCurrentSlider] = useState(0);
     const [isSmallScreen, setIsSmallScreen] = useState(false);
