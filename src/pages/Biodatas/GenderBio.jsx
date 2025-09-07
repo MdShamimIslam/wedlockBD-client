@@ -1,13 +1,8 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const GenderBio = ({bio}) => {
-    const {_id,
-        name,
-        profile_image,
-        age,
-        height,weight,
-        occupation,} = bio;
+    const {_id, name, profile_image, age, height,weight, occupation} = bio || {};
+
   return (
     <div>
       <div className="p-8 shadow-2xl w-full  font-sans rounded-xl space-y-4  flex flex-col justify-center items-center">

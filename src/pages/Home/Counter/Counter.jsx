@@ -1,6 +1,7 @@
 import { Users, UserRound, UserRoundCheck, HeartHandshake } from "lucide-react";
 import Heading from '../../../component/common/Heading';
 import useUserStats from "../../../hooks/useUserStats";
+import { secCl } from "../../../utils/options";
 
 const Counter = () => {
  const userStats = useUserStats();
@@ -38,8 +39,7 @@ const Counter = () => {
   ];
   
   return (
-    <section id="success-counter" className="my-16 md:my-20 lg:my-24">
-      <div className="px-4 sm:px-6 lg:px-8">
+    <div className={secCl}>
         <Heading
           title="Our Success in Numbers"
           desc="We are proud of our achievements and the positive impact we have made on the lives of our members."
@@ -67,7 +67,6 @@ const Counter = () => {
           })}
         </div>
       </div>
-    </section>
   );
 };
 

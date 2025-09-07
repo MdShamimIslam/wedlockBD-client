@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import BiodataCard from "../../../Biodatas/BiodataCard";
 import Heading from "../../../../component/common/Heading";
+import { secCl } from "../../../../utils/options";
 
 const PremiumBio = () => {
   const axiosPublic = useAxiosPublic();
@@ -17,8 +18,7 @@ const PremiumBio = () => {
 
 
   return (
-      <section className="my-16 md:my-20 lg:my-28">
-        <div className="px-4 sm:px-6 lg:px-8">
+    <div className={secCl}>
           <Heading
             title="Premium Profiles"
             desc="Explore our premium profiles for a special selection of verified and trusted individuals."
@@ -30,7 +30,6 @@ const PremiumBio = () => {
             ))}
           </div>
         </div>
-    </section>
   );
 };
 

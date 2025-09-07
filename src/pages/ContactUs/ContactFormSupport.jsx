@@ -163,7 +163,7 @@ const ContactFormSupport = () => {
         <div className="space-y-8">
           <div className="text-center lg:text-left">
             <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 mb-6">Other Ways to Get Help</h3>
-            <p className="text-gray-600 mb-8 text-lg leading-relaxed">
+            <p className="text-gray-600 mb-8 md:text-lg leading-relaxed">
               Choose the support option that works best for you. Our team is always ready to assist with personalized care.
             </p>
           </div>

@@ -1,9 +1,10 @@
   import { useState, useEffect, useCallback } from "react";
-  import { ChevronLeft, ChevronRight } from "lucide-react";
+  import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from "lucide-react";
   import Heading from "../../../component/common/Heading";
   import { Rating } from "@smastrom/react-rating";
   import "@smastrom/react-rating/style.css";
 import useSuccessStory from "../../../hooks/useSuccessStory";
+import { secCl } from "../../../utils/options";
 
   const SuccessStory = () => {
     const [stories] = useSuccessStory();
@@ -38,18 +39,17 @@ import useSuccessStory from "../../../hooks/useSuccessStory";
     }, [nextSlider]);
 
     return (
-      <section  className="my-16 md:my-20 lg:my-24">
+      <div className={secCl}>
           <Heading
             title="Our Success Stories"
             desc="Real couples sharing their journey from first meeting to happily ever after"
           />
-          {/* Carousel */}
           <div className="relative mt-[-28px]">
             <div className="relative flex items-center justify-center overflow-hidden rounded-2xl px-8">
-              {/* Navigation Arrows */}
+              {/* Navigation Arrows for Desktop (left/right) */}
               <button
                 onClick={prevSlider}
-                className="absolute left-1 z-20 flex justify-center items-center text-white bg-pink-500  hover:bg-pink-600 rounded-full 
+                className="hidden md:flex absolute left-1 z-20 justify-center items-center text-white bg-pink-500 hover:bg-pink-600 rounded-full 
                 shadow-elegant w-10 h-10 md:w-12 md:h-12 transition-all duration-300 hover:scale-110 group"
                 aria-label="Previous story"
               >
@@ -58,12 +58,36 @@ import useSuccessStory from "../../../hooks/useSuccessStory";
 
               <button
                 onClick={nextSlider}
-                className="absolute right-1 z-20 flex justify-center items-center text-white bg-pink-500  hover:bg-pink-600 rounded-full 
-                shadow-elegant w-10 h-10  md:w-12 md:h-12 transition-all duration-300 hover:scale-110 group"
+                className="hidden md:flex absolute right-1 z-20 justify-center items-center text-white bg-pink-500 hover:bg-pink-600 rounded-full 
+                shadow-elegant w-10 h-10 md:w-12 md:h-12 transition-all duration-300 hover:scale-110 group"
                 aria-label="Next story"
               >
                 <ChevronRight className="w-6 h-6 text-foreground group-hover:text-primary transition-colors" />
               </button>
+
+              {/* Prev Button (Top Center on Mobile) */}
+              <button
+                onClick={prevSlider}
+                className="md:hidden absolute top-2 left-1/2 -translate-x-1/2 z-20 flex justify-center items-center 
+                text-white bg-pink-500 hover:bg-pink-600 rounded-full shadow-elegant w-10 h-10 
+                transition-all duration-300 hover:scale-110 group"
+                aria-label="Previous story"
+              >
+                <ChevronUp className="w-6 h-6 text-foreground group-hover:text-primary transition-colors" />
+              </button>
+
+              {/* Next Button (Bottom Center on Mobile) */}
+              <button
+                onClick={nextSlider}
+                className="md:hidden absolute bottom-2 left-1/2 -translate-x-1/2 z-20 flex justify-center items-center 
+                text-white bg-pink-500 hover:bg-pink-600 rounded-full shadow-elegant w-10 h-10 
+                transition-all duration-300 hover:scale-110 group"
+                aria-label="Next story"
+              >
+                <ChevronDown className="w-6 h-6 text-foreground group-hover:text-primary transition-colors" />
+              </button>
+
+
 
               {/* Slider container */}
               <div
@@ -124,7 +148,7 @@ import useSuccessStory from "../../../hooks/useSuccessStory";
               ))}
             </div>
           </div>
-      </section>
+      </div>
     );
   };
 

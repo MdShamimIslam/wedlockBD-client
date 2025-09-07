@@ -30,39 +30,39 @@ import AdminRoute from "./AdminRoute";
 export const router = createBrowserRouter([
   {
     path: "/",
-    errorElement: <ErrorElement></ErrorElement>,
-    element: <Main></Main>,
+    errorElement: <ErrorElement/>,
+    element: <Main/>,
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: <Home/>,
       },
       {
         path: "/biodatas",
-        element: <Biodatas></Biodatas>,
+        element: <Biodatas/>,
         loader: () => fetch("http://localhost:5000/user-stats"),
       },
       {
         path: "/nodata",
-        element: <Nodata></Nodata>,
+        element: <Nodata/>,
       },
       {
         path: "/alreadyCreate",
-        element: <AlreadyCreate></AlreadyCreate>,
+        element: <AlreadyCreate/>,
       },
       {
         path: "/about",
-        element: <AboutUs></AboutUs>,
+        element: <AboutUs/>,
       },
       {
         path: "/contact",
-        element: <ContactUs></ContactUs>,
+        element: <ContactUs/>,
       },
       {
         path: "/biodata-details/:id",
         element: (
           <PrivateRoute>
-            <BiodataDetails></BiodataDetails>
+            <BiodataDetails/>
           </PrivateRoute>
         ),
         loader: ({ params }) =>
@@ -70,7 +70,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/contact-request/:id",
-        element: <ContactRequest></ContactRequest>,
+        element: <ContactRequest/>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/biodatas/${params.id}`),
       },
@@ -78,7 +78,7 @@ export const router = createBrowserRouter([
         path: "/add-biodata",
         element: (
           <PrivateRoute>
-            <AddBiodata></AddBiodata>
+            <AddBiodata/>
           </PrivateRoute>
         ),
       },
@@ -86,51 +86,51 @@ export const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Login></Login>,
+    element: <Login/>,
   },
   {
     path: "/signUp",
-    element: <SignUp></SignUp>,
+    element: <SignUp/>,
   },
   {
     path: "/dashboard",
     element: (
       <PrivateRoute>
-        <Dashboard></Dashboard>
+        <Dashboard/>
       </PrivateRoute>
     ),
     children: [
       // user route
       {
         path: "userHome",
-        element: <UserHome></UserHome>,
+        element: <UserHome/>,
       },
       {
         path: "editBio",
-        element: <EditBio></EditBio>,
+        element: <EditBio/>,
       },
       {
         path: "favoritesBio",
-        element: <FavoritesBio></FavoritesBio>,
+        element: <FavoritesBio/>,
       },
       {
         path: "myContactRequest",
-        element: <MyContactRequest></MyContactRequest>,
+        element: <MyContactRequest/>,
       },
       {
         path: "viewBio",
-        element: <ViewBio></ViewBio>,
+        element: <ViewBio/>,
       },
       {
         path: "got-married",
-        element: <GotMarried></GotMarried>,
+        element: <GotMarried/>,
       },
       // admin route
       {
         path: "adminHome",
         element: (
           <AdminRoute>
-            <AdminHome></AdminHome>
+            <AdminHome/>
           </AdminRoute>
         ),
       },
@@ -138,7 +138,7 @@ export const router = createBrowserRouter([
         path: "approved-contact-request",
         element: (
           <AdminRoute>
-            <ApprovedContactRequest></ApprovedContactRequest>
+            <ApprovedContactRequest/>
           </AdminRoute>
         ),
       },
@@ -146,7 +146,7 @@ export const router = createBrowserRouter([
         path: "approved-premium",
         element: (
           <AdminRoute>
-            <ApprovedPremium></ApprovedPremium>
+            <ApprovedPremium/>
           </AdminRoute>
         ),
       },
@@ -154,7 +154,7 @@ export const router = createBrowserRouter([
         path: "manage-users",
         element: (
           <AdminRoute>
-            <ManageUsers></ManageUsers>
+            <ManageUsers/>
           </AdminRoute>
         ),
       },
@@ -162,7 +162,7 @@ export const router = createBrowserRouter([
         path: "success-married",
         element: (
           <AdminRoute>
-            <SuccessMarried></SuccessMarried>
+            <SuccessMarried/>
           </AdminRoute>
         ),
       },

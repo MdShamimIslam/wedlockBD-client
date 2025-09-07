@@ -2,16 +2,7 @@ import { MapPin, Briefcase, Eye, Crown } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const BiodataCard = ({ biodata = {} }) => {
-  const {
-    _id,
-    biodata_id,
-    biodata_type,
-    profile_image,
-    permanent_division_name,
-    age,
-    occupation,
-    name,
-  } = biodata || {};
+  const { _id, biodata_id, biodata_type, profile_image, permanent_division_name, age, occupation, name } = biodata || {};
 
   return (
     <div className="bg-slate-100 rounded-2xl shadow-md overflow-hidden card-hover group">

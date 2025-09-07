@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import useBio from "../../../hooks/useBio";
-import { steps } from "../../../utils/options";
+import { secCl, steps } from "../../../utils/options";
 import Heading from "../../../component/common/Heading";
 import Button from "../../../component/common/Button";
 
@@ -9,8 +9,7 @@ const WebWork = () => {
 
   return (
    
-    <section className="my-16 md:my-20 lg:my-28">
-      <div className="px-4 sm:px-6 lg:px-8">
+       <div className={secCl}>
         <Heading 
           title="How WedlockBD Works"
           desc=" Finding your life partner has never been easier. Follow these simple steps to start your journey towards a happy marriage."
@@ -45,7 +44,6 @@ const WebWork = () => {
         </div>
 
       </div>
-    </section>
    
   );
 };
