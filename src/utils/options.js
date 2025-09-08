@@ -4,6 +4,15 @@ import { FiTwitter } from "react-icons/fi";
 import { SiInstagram } from "react-icons/si";
 import { UserPlus, Search, Heart, MessageCircle,Mail, Phone, MapPin, Clock,  HeadphonesIcon, Users, Globe, Shield, Award, Target, Eye, Lightbulb } from 'lucide-react';
 
+import shamim from "../assets/images/shamim.png";
+import fatima from "../assets/images/fatima.jpeg";
+import nadiya from "../assets/images/nadiya.jpeg";
+import salman from "../assets/images/salman.jpg";
+import niha from "../assets/images/niha.jpg";
+import rahim from "../assets/images/rahim.jpg";
+import sayem from "../assets/images/sayem.jpg";
+
+
 export const allBiodatas = [
   {
     id: 1,
@@ -740,25 +749,25 @@ export const officeLocations = [
 
 export const testimonials = [
   {
-    name: "Sarah Ahmed",
+    name: "Sayem Ahmed",
     location: "Dhaka",
     message: "Excellent customer service! They helped me find my perfect match within 3 months.",
     rating: 5,
-    image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400"
+    image: sayem
   },
   {
-    name: "Karim Rahman",
+    name: "Rahim",
     location: "Chattagram",
     message: "The support team is very responsive and helpful. Highly recommend SoulMate!",
     rating: 5,
-    image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400"
+    image: rahim
   },
   {
-    name: "Nadia Khan",
+    name: "Niha Khan",
     location: "Sylhet",
     message: "Professional service with genuine care for their members. Thank you SoulMate!",
     rating: 5,
-    image: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=400"
+    image: niha
   }
 ];
 
@@ -840,11 +849,6 @@ export const values = [
     icon: Lightbulb
   }
 ];
-
-import shamim from "../assets/images/shamim.png";
-import fatima from "../assets/images/fatima.jpeg";
-import nadiya from "../assets/images/nadiya.jpeg";
-import salman from "../assets/images/salman.jpg";
 
 export const teamMembers = [
   {

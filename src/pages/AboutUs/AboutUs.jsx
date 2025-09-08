@@ -10,7 +10,7 @@ const AboutUs = () => {
   return (
     <>
       <Helmet>
-          <title>About Us| WedlockBD</title>
+          <title>About Us | WedlockBD</title>
       </Helmet>
       <Story/>
       <Features/>

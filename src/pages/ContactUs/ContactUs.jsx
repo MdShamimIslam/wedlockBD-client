@@ -10,7 +10,7 @@ const ContactUs = () => {
   return (
     <>
       <Helmet>
-          <title>Contact Us| WedlockBD</title>
+          <title>Contact Us | WedlockBD</title>
       </Helmet>
       <QuickContact/>
       <ContactFormSupport/>

@@ -1,7 +1,7 @@
 import { MapPin, Briefcase, Eye, Crown } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const BiodataCard = ({ biodata = {} }) => {
+const HomeBiodataCard = ({ biodata = {} }) => {
   const { _id, biodata_id, biodata_type, profile_image, permanent_division_name, age, occupation, name } = biodata || {};
 
   return (
@@ -73,4 +73,4 @@ const BiodataCard = ({ biodata = {} }) => {
   );
 };
 
-export default BiodataCard;
+export default HomeBiodataCard;
