@@ -1,4 +1,5 @@
 import { Crown, Mail, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ContactInfo = ({bio = {}, contact_email, contact_number}) => {
   
@@ -29,12 +30,11 @@ const ContactInfo = ({bio = {}, contact_email, contact_number}) => {
         <p className="text-gray-600 mb-6">
           Contact information is only available to premium members. Upgrade your account or request contact information.
         </p>
-        <button
-          // onClick={handleRequestContact}
-          className="bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 px-8 rounded-lg font-semibold hover:from-pink-600 hover:to-blue-600 transition-all duration-300"
-        >
-          Request Contact Info
-        </button>
+        <Link to={`${bio.biodata_id ? `/contact-request` : '/nodata'}`}>
+            <button className="bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 px-8 rounded-lg font-semibold hover:from-pink-600 hover:to-blue-600 transition-all duration-300">
+                Request Contact Info
+            </button>
+        </Link>
       </div>
     )}
   </div>

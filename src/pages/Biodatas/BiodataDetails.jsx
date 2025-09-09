@@ -83,6 +83,21 @@ const BiodataDetails = () => {
 
   const similarProfiles = biodatas?.filter((biodata) => biodata.biodata_type === biodata_type);
 
+  const handlePayment = async (biodataId) => {
+    try {
+      const res = await axiosSecure.post(`/checkout-session/${biodataId}`);
+      
+      if (!res?.data?.session?.url) {
+        throw new Error("Payment URL not found!");
+      }
+
+      window.location.href = res.data.session.url;
+      
+    } catch (err) {
+      toast.error(err.message || "Payment failed!");
+    }
+  };
+
 
   return (
     <>
@@ -134,14 +149,14 @@ const BiodataDetails = () => {
                     <span>Add to Favorites</span>
                   </button> 
                   
-                  {!bio?.premium_status && (
-                    <button
-                      // onClick={handleRequestContact}
-                      className="flex-1 bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-pink-600 hover:to-blue-600 transition-all duration-300 flex items-center justify-center space-x-2"
-                    >
-                      <Lock className="h-5 w-5" />
-                      <span>Request Contact</span>
-                    </button>
+                  {bio?.premium_status && (
+                      <button
+                        onClick={() => handlePayment(bio.biodata_id)}
+                        className="flex-1 bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-pink-600 hover:to-blue-600 transition-all duration-300 flex items-center justify-center space-x-2"
+                      >
+                        <Lock className="h-5 w-5" />
+                        <span>Request Contact</span>
+                      </button>
                   )}
                 </div>
               </div>

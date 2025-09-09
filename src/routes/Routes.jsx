@@ -26,6 +26,7 @@ import UserHome from "../pages/User/UserHome/UserHome";
 import GotMarried from "../pages/User/GotMarried/GotMarried";
 import SuccessMarried from "../pages/Admin/SuccessMarried/SuccessMarried";
 import AdminRoute from "./AdminRoute";
+import CheckoutSuccess from "../pages/CheckoutSuccess/CheckoutSuccess";
 
 export const router = createBrowserRouter([
   {
@@ -67,7 +68,7 @@ export const router = createBrowserRouter([
           fetch(`http://localhost:5000/biodatas/${params.id}`),
       },
       {
-        path: "/contact-request/:id",
+        path: "/contact-request",
         element: <ContactRequest/>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/biodatas/${params.id}`),
@@ -77,6 +78,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddBiodata/>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/checkout-success",
+        element: (
+          <PrivateRoute>
+            <CheckoutSuccess/>
           </PrivateRoute>
         ),
       },
