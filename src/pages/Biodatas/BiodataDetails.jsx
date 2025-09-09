@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { Heart, Lock} from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
@@ -17,7 +16,6 @@ const BiodataDetails = () => {
   const biodata = useLoaderData();
   const {biodatas}= useBiodatas();
   const [bio] = useBio();
-  const [isFavorite, setIsFavorite] = useState(false);
 
   const {
     age,
@@ -45,7 +43,6 @@ const BiodataDetails = () => {
 
   const handleAddToFavorite = () => {
     if(bio.biodata_id){
-
       const bioInfo = {
         age,
         biodata_id,
@@ -73,7 +70,6 @@ const BiodataDetails = () => {
       axiosSecure.post("/favorites", bioInfo).then((res) => {
         if (res.data.insertedId) {
           toast.success("Successfully Added!!");
-          setIsFavorite(true);
         }
         if (res.data.insertedId === null) {
           toast.error("Already added!!");
@@ -132,18 +128,11 @@ const BiodataDetails = () => {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button
                     onClick={handleAddToFavorite}
-                    className={`flex-1 flex items-center justify-center space-x-2 py-3 px-6 rounded-lg font-semibold 
-                      transition-all duration-300 ${
-                        isFavorite
-                          ? 'bg-red-500 text-white hover:bg-red-600'
-                          : ' bg-gradient-to-r from-pink-500 to-blue-500 text-white hover:from-pink-600 hover:to-blue-600'
-                        }
-                    
-                    `}
+                    className="flex-1 flex items-center justify-center space-x-2 py-3 px-6 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r from-pink-500 to-blue-500 text-white hover:from-pink-600 hover:to-blue-600"
                   >
-                    <Heart className={`h-5 w-5 ${isFavorite ? 'fill-current' : ''}`} />
-                    <span>{isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}</span>
-                  </button>
+                    <Heart className="h-5 w-5" />
+                    <span>Add to Favorites</span>
+                  </button> 
                   
                   {!bio?.premium_status && (
                     <button
