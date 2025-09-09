@@ -1,18 +1,25 @@
-import { Helmet } from "react-helmet-async";
-import { Link, useLoaderData } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import GenderBio from "./GenderBio";
-import useAuth from "../../hooks/useAuth";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
-import toast from "react-hot-toast";
-import useBio from "../../hooks/useBio";
+import { useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
+import { Heart, Lock} from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
+import useBio from '../../hooks/useBio';
+import useBiodatas from '../../hooks/useBiodatas';
+import toast from 'react-hot-toast';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import useAuth from '../../hooks/useAuth';
+import SimilarProfiles from './SimilarProfiles';
+import ContactInfo from './ContactInfo';
+import BasicInfo from './BasicInfo';
 
 const BiodataDetails = () => {
   const { user } = useAuth();
-  const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecure(); 
   const biodata = useLoaderData();
+  const {biodatas}= useBiodatas();
+  const [bio] = useBio();
+  const [isFavorite, setIsFavorite] = useState(false);
+
   const {
-    _id,
     age,
     biodata_id,
     biodata_type,
@@ -35,24 +42,10 @@ const BiodataDetails = () => {
     weight,
   } = biodata;
 
-  const [bio] = useBio();
 
-  // get gender by biodatas
-  const { data: biodatas = [] } = useQuery({
-    queryKey: ["genderBiodatas"],
-    queryFn: async () => {
-      const res = await axiosSecure.get("/gender-biodatas");
-      const genderData = res?.data?.filter(
-        (filterData) => filterData.biodata_type === biodata_type
-      );
-      return genderData;
-    },
-  });
-
-
-  // add biodata to database
   const handleAddToFavorite = () => {
     if(bio.biodata_id){
+
       const bioInfo = {
         age,
         biodata_id,
@@ -76,131 +69,114 @@ const BiodataDetails = () => {
         weight,
         email: user?.email,
       };
+
       axiosSecure.post("/favorites", bioInfo).then((res) => {
-        console.log(res.data);
         if (res.data.insertedId) {
           toast.success("Successfully Added!!");
+          setIsFavorite(true);
         }
         if (res.data.insertedId === null) {
-          toast.error('Already added')
+          toast.error("Already added!!");
         }
       });
-    }
-    else{
+    }else{
       toast.error('Create your biodata before add to favorites')
     }
     
   };
 
+  const similarProfiles = biodatas?.filter((biodata) => biodata.biodata_type === biodata_type);
+
+
   return (
-    <div>
+    <>
       <Helmet>
-        <title>Details Biodata | WedlockBD</title>
+        <title>Biodata Details | WedlockBD</title>
       </Helmet>
 
-      <div className="flex justify-between my-12 gap-12">
-        <div className="max-w-[650px]  md:w-[650px] p-6 shadow-lg  space-y-4 rounded-lg ">
-          <div>
-            <img
-              alt="Profile Image"
-              className="w-[650px] h-[650px] object-cover  rounded-lg "
-              src={profile_image}
-            />
-            <div className="grid gap-2 md:grid-cols-2 mt-4">
-              <p className="text-gray-500 dark:text-gray-400">Name : {name}</p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Date of Birth : {date_of_birth}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Occupation : {occupation}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">Age : {age}</p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Height : {height}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Weight : {weight}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">Race : {race}</p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Biodata Id : {biodata_id}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Gender : {biodata_type}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Permanent Division : {permanent_division_name}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Present Division : {present_division_name}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Father's name : {fathers_name}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Mother's name : {mothers_name}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Expected Partner Height : {expected_partner_height}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Expected Partner Weight : {expected_partner_weight}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Expected Partner Age : {expected_partner_age}
-              </p>
-
-              {bio?.premium_status ? (
-                <p className="text-gray-500"> Number : {contact_number}</p>
-              ) : (
-                ""
-              )}
-
-              {bio?.premium_status ? (
-                <p className="text-gray-500"> Email : {contact_email}</p>
-              ) : (
-                ""
-              )}
-            </div>
-            <div className="flex gap-4 mt-8">
-              <button
-               
-                onClick={handleAddToFavorite}
-                className=" w-full rounded-lg h-14 bg-sky-500 text-white relative overflow-hidden group z-10 hover:text-white duration-1000"
-              >
-                <span className="absolute bg-sky-600 w-36 h-36 rounded-full group-hover:scale-100 scale-0 -z-10 -left-2 -top-10 group-hover:duration-500 duration-700 origin-center transform transition-all"></span>
-                <span className="absolute bg-sky-800 w-36 h-36 -left-2 -top-10 rounded-full group-hover:scale-100 scale-0 -z-10 group-hover:duration-700 duration-500 origin-center transform transition-all"></span>
-                Add To Favourite
-              </button>
-              {
-                bio.premium_status ? 
-                ''
-                :
-                <div className=" flex justify-center items-center rounded-lg w-full  h-14 text-white bg-sky-950 overflow-hidden relative z-10 group hover:text-sky-900 duration-700">
-              
-                <Link className="w-full text-center" to={`${bio.biodata_id ? `/contact-request/${_id}` : '/nodata'}`}>
-                  <button>
-                    Request Contact
-                    <span className="bg-sky-900 group-hover:scale-125 scale-0 ease-in-out duration-300 delay-50 w-32 h-32 rounded-full absolute mx-auto my-auto inset-0 -z-10"></span>
-                    <span className="bg-sky-800 group-hover:scale-125 scale-0 ease-in-out duration-300 delay-100 w-28 h-28 rounded-full absolute mx-auto my-auto inset-0 -z-10"></span>
-                    <span className="bg-sky-600 group-hover:scale-125 scale-0 ease-in-out duration-300 delay-200 w-24 h-24 rounded-full absolute mx-auto my-auto inset-0 -z-10"></span>
-                    <span className="bg-sky-500 group-hover:scale-125 scale-0 ease-in-out duration-300 delay-300 w-20 h-20 rounded-full absolute mx-auto my-auto inset-0 -z-10"></span>
-                    <span className="bg-sky-500 group-hover:scale-125 scale-0 ease-in-out duration-300 delay-[400ms] w-16 h-16 rounded-full absolute mx-auto my-auto inset-0 -z-10"></span>
-                  </button>
-                </Link>
+      <div className="my-12 md:my-20 p-3 lg:p-0">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* biodata details */}
+          <div className="lg:col-span-2">
+            <div className=" rounded-2xl shadow-lg overflow-hidden">
+              {/* image */}
+              <div className="relative">
+                <img
+                  src={profile_image}
+                  alt={name}
+                  className="w-full h-[300px] md:h-[450px] lg:h-[600px] object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black bg-opacity-50 to-transparent"></div>
+                <div className="absolute bottom-6 left-6 text-white">
+                  <h1 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2">{name}</h1>
+                  <div className="flex items-center space-x-4">
+                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                      biodata_type === 'Male' 
+                        ? 'bg-blue-500 text-white' 
+                        : 'bg-pink-500 text-white'
+                    }`}>
+                      {biodata_type}
+                    </span>
+                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                      biodata_type === 'Male' 
+                        ? 'bg-pink-500 text-white' 
+                        : 'bg-blue-500 text-white'
+                    }`}>
+                      ID: {biodata_id}
+                    </span>
+                  </div>
+                </div>
               </div>
-              }
+
+              <div className="p-6 border-b border-gray-200">
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button
+                    onClick={handleAddToFavorite}
+                    className={`flex-1 flex items-center justify-center space-x-2 py-3 px-6 rounded-lg font-semibold 
+                      transition-all duration-300 ${
+                        isFavorite
+                          ? 'bg-red-500 text-white hover:bg-red-600'
+                          : ' bg-gradient-to-r from-pink-500 to-blue-500 text-white hover:from-pink-600 hover:to-blue-600'
+                        }
+                    
+                    `}
+                  >
+                    <Heart className={`h-5 w-5 ${isFavorite ? 'fill-current' : ''}`} />
+                    <span>{isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}</span>
+                  </button>
+                  
+                  {!bio?.premium_status && (
+                    <button
+                      // onClick={handleRequestContact}
+                      className="flex-1 bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-pink-600 hover:to-blue-600 transition-all duration-300 flex items-center justify-center space-x-2"
+                    >
+                      <Lock className="h-5 w-5" />
+                      <span>Request Contact</span>
+                    </button>
+                  )}
+                </div>
+              </div>
+                <BasicInfo {...{age, race, permanent_division_name, present_division_name, occupation, height, weight, date_of_birth,fathers_name, mothers_name}}/>
+                <ContactInfo {...{bio, contact_email, contact_number}} />
+            </div>
+          </div>
+          {/* similar profiles */}
+          <div className="lg:col-span-1">
+            <div className="bg-slate-100 rounded-2xl shadow-lg p-6 sticky top-4">
+              <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-800 mb-6">
+                Similar {biodata_type} Profiles
+              </h2>
+              
+              <div className="space-y-4 h-[800px] overflow-y-auto pr-2">
+                {similarProfiles?.map((profile) => (
+                  <SimilarProfiles key={profile._id} profile={profile}/>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-        {/* gender bio card data */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4  p-4">
-          {biodatas?.map((bio) => (
-            <GenderBio key={bio._id} bio={bio}></GenderBio>
-          ))}
-        </div>
       </div>
-    </div>
+    </>
   );
 };
 

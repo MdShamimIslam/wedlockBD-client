@@ -61,9 +61,7 @@ export const router = createBrowserRouter([
       {
         path: "/biodata-details/:id",
         element: (
-          <PrivateRoute>
             <BiodataDetails/>
-          </PrivateRoute>
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/biodatas/${params.id}`),

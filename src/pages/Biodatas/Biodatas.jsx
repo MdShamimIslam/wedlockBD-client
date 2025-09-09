@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { useDebounce } from "use-debounce"; 
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { useDebounce } from "use-debounce";
 import Hero from "./Hero";
 import MobileFilter from "./MobileFilter";
 import FilterSidebar from "./FilterSidebar";
 import Biodata from "./Biodata";
 import { Helmet } from "react-helmet-async";
+import useBiodatas from "../../hooks/useBiodatas";
 
 const Biodatas = () => {
   const [filters, setFilters] = useState({ ageRange: [18, 50], biodataType: "", division: "", occupation: "", search: "", sortBy: "" });
@@ -16,39 +15,14 @@ const Biodatas = () => {
   const [page, setPage] = useState(1);
   const limit = 6;
 
-  const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
     setFilters((prev) => ({ ...prev, search: debouncedSearch }));
     setPage(1); 
   }, [debouncedSearch]);
 
-  const { data, isLoading, isFetching } = useQuery({
-    queryKey: ["biodatas", filters, page],
-    queryFn: async () => {
-      const res = await axiosPublic.get(`/biodatas`, {
-        params: {
-          search: filters.search,
-          division: filters.division,
-          occupation: filters.occupation,
-          biodataType: filters.biodataType,
-          minAge: filters.ageRange[0],
-          maxAge: filters.ageRange[1],
-          sortBy: filters.sortBy,
-          page,
-          limit,
-        },
-      });
-      return res?.data;
-    },
-    keepPreviousData: true,
-  });
+  const {biodatas,total,totalPages,isLoading, isFetching} = useBiodatas({filters,page,limit})
 
-  const biodatas = data?.biodatas || [];
-  const total = data?.total || 0;
-  const totalPages = Math.ceil(total / limit);
-
-  // unique divisions & occupations
   const divisions = [...new Set(biodatas.map((b) => b.present_division_name))];
   const occupations = [...new Set(biodatas.map((b) => b.occupation))];
 
@@ -74,7 +48,7 @@ const Biodatas = () => {
    <>
     <Helmet>
           <title>Biodatas | WedlockBD</title>
-      </Helmet>
+    </Helmet>
     <div className="my-8 md:my-12 lg:my-16 p-3 lg:p-0">
       <Hero {...{searchInput,setSearchInput}}/>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

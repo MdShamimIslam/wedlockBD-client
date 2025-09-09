@@ -142,7 +142,7 @@ const FilterSidebar = ({filters={}, handleFilterChange, showFilters, clearFilter
 
               {/* Results Count */}
               <div className="bg-primary-50 p-4 rounded-lg">
-                <p className="text-pink-700 font-semibold text-center">
+                <p className="text-pink-500 font-semibold text-center">
                   {total} profiles found
                 </p>
               </div>

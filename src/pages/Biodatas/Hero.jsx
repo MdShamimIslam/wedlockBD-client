@@ -20,7 +20,7 @@ const Hero = ({searchInput, setSearchInput}) => {
           placeholder="Search by name, occupation, or location..."
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
-          className="w-full pl-12 pr-4 py-3 md:py-4 rounded-full text-sm md:text-base border-0 focus:ring-4 focus:ring-white focus:ring-opacity-30 shadow-lg"
+          className="w-full pl-12 pr-4 py-3 md:py-4 rounded-full text-sm md:text-base border-0 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-30 shadow-lg"
         />
       </div>
     </div>

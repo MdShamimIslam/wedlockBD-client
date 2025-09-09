@@ -1,4 +1,5 @@
-import { Briefcase, Calendar, Eye, Heart, Link, MapPin } from "lucide-react";
+import { Briefcase, Calendar, Eye, Heart, MapPin } from "lucide-react";
+import {Link} from "react-router-dom";
 
 const ProfileBiodataCard = ({biodata = {}}) => {
     const { _id, name, profile_image, biodata_id, biodata_type, age, present_division_name, occupation } = biodata || {};
@@ -11,22 +12,10 @@ const ProfileBiodataCard = ({biodata = {}}) => {
                     alt={name}
                     className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-            <div className="absolute top-4 right-4 bg-primary-500 text-white px-3 py-1 rounded-full text-sm font-semibold">ID: {biodata_id}</div>
-            <div className="absolute top-4 left-4">
-                <span
-                    className={`px-3 py-1 rounded-full text-sm font-medium ${
-                        biodata_type === "Male"
-                        ? "bg-blue-100 text-blue-800"
-                        : "bg-pink-100 text-pink-800"
-                    }`}
-                >
-                    {biodata_type}
-                </span>
-            </div>
             </div>
             <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-semibold text-gray-800">{name}</h3>
+                    <h3 className="text-lg md:text-xl font-semibold text-gray-800">{name}</h3>
                     <div className="flex items-center text-gray-600">
                         <Calendar className="h-4 w-4 mr-1" />
                         <span className="font-semibold">{age}</span>
@@ -43,19 +32,39 @@ const ProfileBiodataCard = ({biodata = {}}) => {
                         <span>{occupation}</span>
                     </div>
                 </div>
-
+                <div className="flex justify-between mb-6">
+                    <div 
+                        className={`${ biodata_type === "Male" ? "bg-blue-100 text-blue-800" : "bg-pink-100 text-pink-800"} 
+                            px-2 py-1 rounded-full text-sm font-semibold`
+                        }
+                    >
+                        ID: {biodata_id}
+                    </div>
+                    <div className="">
+                        <span
+                            className={`px-3 py-1 rounded-full text-sm font-medium ${
+                                biodata_type === "Male"
+                                ? "bg-blue-100 text-blue-800"
+                                : "bg-pink-100 text-pink-800"
+                            }`}
+                        >
+                            {biodata_type}
+                        </span>
+                    </div>
+                </div>
                 <div className="flex space-x-2">
                     <Link
-                        to={`/biodata/${_id}`}
-                        className="flex-1 bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 px-4 rounded-lg font-semibold hover:from-primary-600 hover:to-secondary-600 transition-all duration-300 flex items-center justify-center space-x-2"
+                        to={`/biodata-details/${_id}`}
+                        className="flex-1 bg-gradient-to-r from-pink-500 to-blue-500 text-white py-2 px-3 rounded-lg font-semibold hover:from-pink-600 hover:to-blue-600 transition-all duration-300 flex items-center justify-center space-x-2"
                     >
                         <Eye className="h-4 w-4" />
-                    <span>View Profile</span>
-                        </Link>
+                        <span >View Profile</span>
+                    </Link>
                     <button className="bg-gray-100 hover:bg-gray-200 text-gray-600 p-3 rounded-lg transition-colors duration-200">
                         <Heart className="h-4 w-4" />
                     </button>
                 </div>
+               
             </div>
         </div>
     )
