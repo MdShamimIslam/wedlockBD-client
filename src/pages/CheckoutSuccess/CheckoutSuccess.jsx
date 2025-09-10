@@ -2,31 +2,39 @@ import { Link } from "react-router-dom";
 
 const CheckoutSuccess = () => {
   return (
-    <div className=" my-8 md:my-16">
-      <div className="bg-white p-6 md:mx-auto">
-        <svg className="w-[100px] mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-          <path
-            fill="green"
-            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"
-          />
-        </svg>
-        <div className="text-center mt-6">
-          <h3 className="md:text-2xl text-base text-gray-900 font-semibold text-center">
-            Payment Done
-          </h3>
-          <p className="text-gray-600 my-2">
-            Thank you for completing your secure online payment.
-          </p>
-          <p>Have a great day!</p>
-          <div className="py-10 text-center">
-            <Link
-              to="/"
-              className="px-12 bg-buttonBgColor btn font-semibold py-3"
-            >
-               Back to Home
-            </Link>
-          </div>
+    <div className="flex items-center justify-center my-12 md:my-16 lg:my-20 p-4">
+      <div className="bg-white rounded-3xl shadow-xl max-w-md w-full p-8 text-center animate-fadeIn">
+        <div className="mx-auto w-20 h-20 md:w-24 md:h-24 flex items-center justify-center rounded-full bg-green-100 mb-6 relative">
+          <svg
+            className="w-12 h-12 text-green-600 animate-bounce"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M10.28 15.28a1 1 0 011.44 0l6-6a1 1 0 10-1.44-1.44L11 12.56 8.72 10.28a1 1 0 00-1.44 1.44l3 3z"
+              clipRule="evenodd"
+            />
+          </svg>
         </div>
+
+        {/* Heading */}
+        <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-2">Payment Successful!</h2>
+        <p className="text-gray-600 my-4">
+          Thank you for completing your payment. Your transaction has been processed successfully.
+        </p>
+
+        <div className="mb-6">
+          <span className="text-4xl animate-pulse">🎉</span>
+        </div>
+
+        <Link
+          to="/"
+          className="inline-block px-8 py-3 bg-gradient-to-r from-pink-500 to-blue-500 text-white  rounded-lg font-semibold hover:from-pink-600 hover:to-blue-600 transition duration-300"
+        >
+          Back to Home
+        </Link>
       </div>
     </div>
   );

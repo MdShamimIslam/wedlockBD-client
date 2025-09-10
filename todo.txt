@@ -1,1 +1,2 @@
-1. Footer(Optional): link gulor right route dite hobe and subscribe er functionality add korte hobe 
+1. Footer: link gulor right route dite hobe and subscribe er functionality add korte hobe 
+2. SuccessStory : minimum 1 ta success story add korte hobe

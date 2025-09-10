@@ -10,7 +10,6 @@ import ContactUs from "../pages/ContactUs/ContactUs";
 import PrivateRoute from "./PrivateRoute";
 import BiodataDetails from "../pages/Biodatas/BiodataDetails";
 import AddBiodata from "../pages/AddBiodata/AddBiodata";
-import ContactRequest from "../pages/ContactRequest/ContactRequest";
 import Nodata from "../component/Nodata";
 import AlreadyCreate from "../component/AlreadyCreate";
 import Dashboard from "../Layout/Dashboard";
@@ -62,14 +61,10 @@ export const router = createBrowserRouter([
       {
         path: "/biodata-details/:id",
         element: (
+          <PrivateRoute>
             <BiodataDetails/>
+          </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/biodatas/${params.id}`),
-      },
-      {
-        path: "/contact-request",
-        element: <ContactRequest/>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/biodatas/${params.id}`),
       },

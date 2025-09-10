@@ -1,4 +1,4 @@
-import { Briefcase, Calendar, Eye, Heart, MapPin } from "lucide-react";
+import { Briefcase, Calendar, Eye, MapPin } from "lucide-react";
 import {Link} from "react-router-dom";
 
 const ProfileBiodataCard = ({biodata = {}}) => {
@@ -60,9 +60,6 @@ const ProfileBiodataCard = ({biodata = {}}) => {
                         <Eye className="h-4 w-4" />
                         <span >View Profile</span>
                     </Link>
-                    <button className="bg-gray-100 hover:bg-gray-200 text-gray-600 p-3 rounded-lg transition-colors duration-200">
-                        <Heart className="h-4 w-4" />
-                    </button>
                 </div>
                
             </div>

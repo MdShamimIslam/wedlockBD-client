@@ -4,7 +4,6 @@ import { secCl } from "../../utils/options";
 
 const Timeline = () => {
   const userStats = useUserStats();
-  console.log(userStats);
 
   const milestones = [
     {
