@@ -1,4 +1,3 @@
-import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -10,10 +9,10 @@ import { Link } from "react-router-dom";
 
 const EditBio = () => {
   const { user } = useAuth();
-  const { register, reset, handleSubmit, setValue } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
   const axiosSecure = useAxiosSecure();
   const [bio,refetch] = useBio();
-  const [biodatas] = useBiodatas();
+  const {biodatas} = useBiodatas();
 
   const handleSelectChange = (event) => {
     const selectedValue = event.target.value;
@@ -56,7 +55,6 @@ const EditBio = () => {
     const {
       age,
       biodata_type,
-      contact_email,
       contact_number,
       date_of_birth,
       expected_partner_age,
@@ -445,7 +443,7 @@ const EditBio = () => {
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-gray-700 "
                     htmlFor="fathers-name"
                   >
-                    Father's Name
+                    Father&apos;s Name
                   </label>
                   <input
                     required
@@ -462,7 +460,7 @@ const EditBio = () => {
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-gray-700 "
                     htmlFor="mothers-name"
                   >
-                    Mother's Name
+                    Mother&apos;s Name
                   </label>
                   <input
                     required

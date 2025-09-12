@@ -83,7 +83,7 @@ const FilterSidebar = ({filters={}, handleFilterChange, showFilters, clearFilter
               {/* Division */}
               <div className="mb-6">
                 <label className="block text-sm font-semibold text-gray-700 mb-3">
-                  Division
+                 Present Division
                 </label>
                 <select
                   value={filters.division}

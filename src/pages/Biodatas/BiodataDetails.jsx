@@ -18,52 +18,27 @@ const BiodataDetails = () => {
   const [bio] = useBio();
 
   const {
-    age,
     biodata_id,
     biodata_type,
     contact_email,
     contact_number,
     date_of_birth,
-    expected_partner_age,
-    expected_partner_height,
-    expected_partner_weight,
     fathers_name,
     height,
     mothers_name,
     name,
     occupation,
     permanent_division_name,
-    premium_status,
     present_division_name,
     profile_image,
     race,
     weight,
   } = biodata;
 
-
   const handleAddToFavorite = () => {
     if(bio.biodata_id){
       const bioInfo = {
-        age,
-        biodata_id,
-        biodata_type,
-        contact_email,
-        contact_number,
-        date_of_birth,
-        expected_partner_age,
-        expected_partner_height,
-        expected_partner_weight,
-        fathers_name,
-        height,
-        mothers_name,
-        name,
-        occupation,
-        permanent_division_name,
-        premium_status,
-        present_division_name,
-        profile_image,
-        race,
-        weight,
+        ...biodata,
         email: user?.email,
       };
 
@@ -81,7 +56,7 @@ const BiodataDetails = () => {
     
   };
 
-  const similarProfiles = biodatas?.filter((biodata) => biodata.biodata_type === biodata_type);
+  const similarProfiles = biodatas?.filter( (profile) => profile.biodata_type === biodata_type && profile._id !== biodata._id );
 
   const handlePayment = async (biodataId) => {
     try {
@@ -107,7 +82,7 @@ const BiodataDetails = () => {
 
       <div className="my-12 md:my-20 p-3 lg:p-0">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* biodata details */}
+
           <div className="lg:col-span-2">
             <div className=" rounded-2xl shadow-lg overflow-hidden">
               {/* image */}
@@ -160,7 +135,7 @@ const BiodataDetails = () => {
                   )}
                 </div>
               </div>
-                <BasicInfo {...{age, race, permanent_division_name, present_division_name, occupation, height, weight, date_of_birth,fathers_name, mothers_name}}/>
+                <BasicInfo {...{ race, permanent_division_name, present_division_name, occupation, height, weight, date_of_birth,fathers_name, mothers_name}}/>
                 <ContactInfo {...{bio, contact_email, contact_number}} />
             </div>
           </div>

@@ -1,3 +1,7 @@
 1. Footer: link gulor right route dite hobe and subscribe er functionality add korte hobe 
 2. SuccessStory : minimum 1 ta success story add korte hobe
 3. User Dashboard a add biodata menu dite hobe
+4. database er data guloke valo kore sajaite hobe
+5. Contact us er moddhe real feedback data add korte hobe and site jekono akta vlo page a feedback dewar section banaite hobe
+6. verifyToken and verifyAdmin aisob server and client a thik vabe bosate hobe
+7. email verification, forget & reset passward,

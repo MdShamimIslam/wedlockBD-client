@@ -1,7 +1,11 @@
 import { Briefcase, Calendar, Flag, MapPin, Ruler, Scale, User } from "lucide-react";
+import { calculateAge } from "../../utils/functions";
 
-const BasicInfo = ({age, race, permanent_division_name, present_division_name, occupation, height, weight, date_of_birth,fathers_name, mothers_name}) => {
-  return (
+const BasicInfo = ({race, permanent_division_name, present_division_name, occupation, height, weight, date_of_birth,fathers_name, mothers_name}) => {
+  
+    const actualAge = calculateAge(date_of_birth);
+  
+    return (
     <div className="p-6">
         <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-800 mb-6">Basic & Personal Information</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -9,7 +13,7 @@ const BasicInfo = ({age, race, permanent_division_name, present_division_name, o
             <Calendar className="h-5 w-5 text-primary-500" />
             <div>
             <p className="text-sm text-gray-500">Age</p>
-            <p className="font-semibold text-gray-800">{age} years</p>
+            <p className="font-semibold text-gray-800">{actualAge} years</p>
             </div>
         </div>
         <div className="flex items-center space-x-3">
@@ -44,15 +48,7 @@ const BasicInfo = ({age, race, permanent_division_name, present_division_name, o
             <Scale className="h-5 w-5 text-primary-500" />
             <div>
             <p className="text-sm text-gray-500">Weight</p>
-            <p className="font-semibold text-gray-800">{weight}</p>
-            </div>
-        </div>
-        {/* date of birth */}
-        <div className="flex items-center space-x-3">
-            <Calendar className="h-5 w-5 text-primary-500" />
-            <div>
-            <p className="text-sm text-gray-500">Date of Birth</p>
-            <p className="font-semibold text-gray-800">{date_of_birth}</p>
+            <p className="font-semibold text-gray-800">{weight} kg</p>
             </div>
         </div>
         {/* father name */}

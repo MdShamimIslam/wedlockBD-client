@@ -1,8 +1,11 @@
 import { Calendar, Eye, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import { calculateAge } from "../../utils/functions";
 
 const SimilarProfiles = ({profile}) => {
-    const {_id, name, profile_image, age, present_division_name, occupation} = profile || {};
+    const {_id, name, profile_image, date_of_birth, present_division_name, occupation} = profile || {};
+
+    const actualAge = calculateAge(date_of_birth);
   
     return (
         <Link
@@ -19,7 +22,7 @@ const SimilarProfiles = ({profile}) => {
                     <h3 className="font-semibold text-gray-800">{name}</h3>
                     <div className="flex items-center text-sm text-gray-600 mt-1">
                         <Calendar className="h-3 w-3 mr-1" />
-                        <span>{age}</span>
+                        <span>{actualAge} yrs</span>
                         <span className="mx-2">•</span>
                         <MapPin className="h-3 w-3 mr-1" />
                         <span>{present_division_name}</span>

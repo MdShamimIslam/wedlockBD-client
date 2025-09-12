@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
 import useAxiosPublic from "./useAxiosPublic";
 
-const useBiodatas = ({ filters = {}, page = 1, limit } = {}) => {
+const useBiodatas = ({ filters = {}, page = 1, limit  } = {}) => {
   const axiosPublic = useAxiosPublic();
   const { loading } = useAuth();
 

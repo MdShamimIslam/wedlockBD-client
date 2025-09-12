@@ -5,6 +5,7 @@
   import "@smastrom/react-rating/style.css";
 import useSuccessStory from "../../../hooks/useSuccessStory";
 import { secCl } from "../../../utils/options";
+import Loading from "../../../component/Loading";
 
   const SuccessStory = () => {
     const [stories] = useSuccessStory();
@@ -44,6 +45,9 @@ import { secCl } from "../../../utils/options";
             title="Our Success Stories"
             desc="Real couples sharing their journey from first meeting to happily ever after"
           />
+          
+           {stories.length === 0 && <Loading />}
+
           <div className="relative mt-[-28px]">
             <div className="relative flex items-center justify-center overflow-hidden rounded-2xl px-8">
               {/* Navigation Arrows for Desktop (left/right) */}

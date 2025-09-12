@@ -1,8 +1,11 @@
-import { MapPin, Briefcase, Eye, Crown } from "lucide-react";
+import { MapPin, Briefcase, Eye, Crown, User, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
+import { calculateAge } from "../../../utils/functions";
 
 const HomeBiodataCard = ({ biodata = {} }) => {
-  const { _id, biodata_id, biodata_type, profile_image, permanent_division_name, age, occupation, name } = biodata || {};
+  const { _id, biodata_id, biodata_type, profile_image, permanent_division_name, date_of_birth , occupation, name } = biodata || {};
+
+  const actualAge = calculateAge(date_of_birth);
 
   return (
     <div className="bg-slate-100 rounded-2xl shadow-md overflow-hidden card-hover group">
@@ -10,9 +13,8 @@ const HomeBiodataCard = ({ biodata = {} }) => {
         <img
           src={profile_image}
           alt={`Profile ${_id}`}
-          className="w-full h-64 object-cover"
+          className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
         />
-        <div className="absolute inset-0 bg-black/30"></div>
 
         <div className="absolute top-3 right-2 bg-pink-600 text-white px-2 py-1 rounded-full text-sm font-semibold flex items-center space-x-1 shadow">
           <Crown className="h-3 w-3" />
@@ -29,24 +31,25 @@ const HomeBiodataCard = ({ biodata = {} }) => {
           <div>
             <h2 className="text-lg font-bold text-gray-900">{name || "Unknown"}</h2>
             <span
-              className={`inline-block mt-2 px-3 py-1 rounded-full text-sm font-medium ${
+              className={`inline-flex items-center mt-2 px-3 py-1 rounded-full text-sm font-medium ${
                 biodata_type === "Male"
                   ? "bg-blue-100 text-blue-800"
                   : "bg-pink-100 text-pink-800"
               }`}
             >
+              <User className="h-4 w-4 mr-1" />
               {biodata_type}
             </span>
-
             <span
-              className={`inline-block ml-2 mt-1 px-3 py-1 rounded-full text-sm font-medium ${
+              className={`inline-flex items-center ml-3 mt-2 px-3 py-1 rounded-full text-sm font-medium ${
                 biodata_type === "Male"
                   ? "bg-blue-100 text-blue-800"
                   : "bg-pink-100 text-pink-800"
               }`}
             >
-              {age}
-            </span>
+              <Calendar className="h-4 w-4 mr-1" />
+              {actualAge} yrs
+            </span> 
           </div>
         </div>
 

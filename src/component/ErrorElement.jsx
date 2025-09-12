@@ -1,18 +1,30 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import { Home, AlertTriangle } from "lucide-react";
 import errorImg from "../assets/logo/err.jpg";
 
 const ErrorElement = () => {
   return (
-    <div className="flex justify-center items-center mt-8 text-center">
-      <div className="w-1/3">
-        <img src={errorImg} alt="" />
-        <Link className="text-blue-600" to={"/"}>
-        <button className="py-2 w-40 h-16 px-6  text-sky-700 shadow-lg before:block before:-left-1 before:-top-1 before:bg-sky-700 before:absolute before:h-0 before:w-0 before:hover:w-[100%] before:hover:h-[100%]  before:duration-500 before:-z-40 after:block after:-right-1 after:-bottom-1 after:bg-sky-700 after:absolute after:h-0 after:w-0 after:hover:w-[100%] after:hover:h-[100%] after:duration-500 after:-z-40 bg-white relative inline-block">
-        Back to Home
-        </button>
-        </Link>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-gray-50 to-gray-200 text-center p-6">
+      
+      <div className="w-72 mb-6">
+        <img src={errorImg} alt="Error" className="rounded-2xl shadow-xl" />
       </div>
+
+      <div className="flex items-center space-x-2 text-red-600 mb-4">
+        <AlertTriangle className="w-6 h-6" />
+        <h1 className="text-2xl md:text-3xl font-bold">404 - Page Not Found</h1>
+      </div>
+
+      <p className="text-gray-600 max-w-md mb-6">
+        Oops! The page you are looking for doesn’t exist or has been moved.
+      </p>
+
+      <Link to="/">
+        <button className="flex items-center justify-center space-x-2 bg-gradient-to-r from-pink-500 to-blue-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition-transform duration-300">
+          <Home className="w-5 h-5" />
+          <span>Back to Home</span>
+        </button>
+      </Link>
     </div>
   );
 };

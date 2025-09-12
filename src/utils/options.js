@@ -877,4 +877,39 @@ export const teamMembers = [
   }
 ];
 
+// divisions
+export const divisions = ["Dhaka","Barisal","Chittagong","Khulna","Mymensingh","Rajshahi","Rangpur","Sylhet"];
+
+export const countries = [
+  "Bangladesh",
+  "Afghanistan",
+  "India",
+  "Pakistan",
+  "Nepal",
+  "Bhutan",
+  "Sri Lanka",
+  "Maldives",
+  "China",
+  "Japan",
+  "South Korea",
+  "Malaysia",
+  "Singapore",
+  "Thailand",
+  "USA",
+  "UK",
+  "Canada",
+  "Australia",
+  "Saudi Arabia",
+  "UAE",
+  "Qatar",
+  "Oman",
+  "Kuwait",
+  "South Africa",
+  "Germany",
+  "France",
+  "Italy",
+  "Spain",
+  "Brazil",
+  "Mexico"
+]
 

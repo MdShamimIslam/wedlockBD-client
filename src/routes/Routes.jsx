@@ -26,6 +26,8 @@ import GotMarried from "../pages/User/GotMarried/GotMarried";
 import SuccessMarried from "../pages/Admin/SuccessMarried/SuccessMarried";
 import AdminRoute from "./AdminRoute";
 import CheckoutSuccess from "../pages/CheckoutSuccess/CheckoutSuccess";
+// import TDashboard from "../pages/Dashboard/Dashboard";
+// import MatrimonyDashboard from "../pages/Dashboard/MatrimonyDashboard";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +39,10 @@ export const router = createBrowserRouter([
         path: "/",
         element: <Home/>,
       },
+      // {
+      //   path: "/tdashboard",
+      //   element: <MatrimonyDashboard/>,
+      // },
       {
         path: "/biodatas",
         element: <Biodatas/>,

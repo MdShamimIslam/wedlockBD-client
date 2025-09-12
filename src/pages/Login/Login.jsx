@@ -39,8 +39,7 @@ const Login = () => {
       const userInfo = {
         name: user.displayName,
         email: user.email,
-        image: user.photoURL,
-        status: false,
+          image: user.photoURL
       };
       await axiosPublic.post('/users', userInfo);
       toast.success('Sign In Successfully!');

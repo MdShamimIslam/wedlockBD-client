@@ -1,8 +1,11 @@
 import { Briefcase, Calendar, Eye, MapPin } from "lucide-react";
 import {Link} from "react-router-dom";
+import { calculateAge } from "../../utils/functions";
 
 const ProfileBiodataCard = ({biodata = {}}) => {
-    const { _id, name, profile_image, biodata_id, biodata_type, age, present_division_name, occupation } = biodata || {};
+    const { _id, name, profile_image, biodata_id, biodata_type, date_of_birth, present_division_name, occupation } = biodata || {};
+
+    const actualAge = calculateAge(date_of_birth);
 
     return (
         <div key={_id} className="bg-white rounded-2xl shadow-lg overflow-hidden card-hover group">
@@ -15,10 +18,10 @@ const ProfileBiodataCard = ({biodata = {}}) => {
             </div>
             <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg md:text-xl font-semibold text-gray-800">{name}</h3>
+                    <h3 className="text-lg md:text-xl font-semibold text-gray-800 truncate max-w-[65%]">{name}</h3>
                     <div className="flex items-center text-gray-600">
                         <Calendar className="h-4 w-4 mr-1" />
-                        <span className="font-semibold">{age}</span>
+                        <span className="font-semibold">{actualAge} yrs</span>
                     </div>
                 </div>
 

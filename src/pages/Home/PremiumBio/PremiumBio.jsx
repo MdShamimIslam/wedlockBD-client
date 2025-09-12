@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../../../hooks/useAxiosPublic";
-import Heading from "../../../../component/common/Heading";
-import { secCl } from "../../../../utils/options";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import Heading from "../../../component/common/Heading";
+import { secCl } from "../../../utils/options";
 import HomeBiodataCard from "./HomeBiodataCard";
+import Loading from "../../../component/Loading";
 
 const PremiumBio = () => {
   const axiosPublic = useAxiosPublic();
@@ -23,6 +24,8 @@ const PremiumBio = () => {
             title="Premium Profiles"
             desc="Explore our premium profiles for a special selection of verified and trusted individuals."
           />
+
+          {biodatas.length === 0 && <Loading />}
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {biodatas.map((biodata) => (
