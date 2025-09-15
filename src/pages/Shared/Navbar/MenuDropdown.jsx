@@ -79,7 +79,7 @@ const MenuDropdown = () => {
             {user ? (
               <>
                 <NavLink
-                  to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userHome"}
+                  to={isAdmin ? "/dashboard/admin-overview" : "/dashboard/overview"}
                   className={menuItemClass}
                 >
                   Dashboard

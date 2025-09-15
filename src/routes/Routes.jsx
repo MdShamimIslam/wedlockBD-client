@@ -12,7 +12,6 @@ import BiodataDetails from "../pages/Biodatas/BiodataDetails";
 import AddBiodata from "../pages/AddBiodata/AddBiodata";
 import Nodata from "../component/Nodata";
 import AlreadyCreate from "../component/AlreadyCreate";
-import Dashboard from "../Layout/Dashboard";
 import EditBio from "../pages/User/EditBio/EditBio";
 import FavoritesBio from "../pages/User/FavoritesBio/FavoritesBio";
 import MyContactRequest from "../pages/User/MyContactRequest/MyContactRequest";
@@ -21,13 +20,12 @@ import AdminHome from "../pages/Admin/AdminHome/AdminHome";
 import ApprovedContactRequest from "../pages/Admin/ApprovedContactRequest/ApprovedContactRequest";
 import ApprovedPremium from "../pages/Admin/ApprovedPremium/ApprovedPremium";
 import ManageUsers from "../pages/Admin/ManageUsers/ManageUsers";
-import UserHome from "../pages/User/UserHome/UserHome";
+import OverView from "../pages/User/OverView/OverView";
 import GotMarried from "../pages/User/GotMarried/GotMarried";
 import SuccessMarried from "../pages/Admin/SuccessMarried/SuccessMarried";
 import AdminRoute from "./AdminRoute";
 import CheckoutSuccess from "../pages/CheckoutSuccess/CheckoutSuccess";
-// import TDashboard from "../pages/Dashboard/Dashboard";
-// import MatrimonyDashboard from "../pages/Dashboard/MatrimonyDashboard";
+import DashboardLayout from "../Layout/DashboardLayout";
 
 export const router = createBrowserRouter([
   {
@@ -39,10 +37,6 @@ export const router = createBrowserRouter([
         path: "/",
         element: <Home/>,
       },
-      // {
-      //   path: "/tdashboard",
-      //   element: <MatrimonyDashboard/>,
-      // },
       {
         path: "/biodatas",
         element: <Biodatas/>,
@@ -75,14 +69,6 @@ export const router = createBrowserRouter([
           fetch(`http://localhost:5000/biodatas/${params.id}`),
       },
       {
-        path: "/add-biodata",
-        element: (
-          <PrivateRoute>
-            <AddBiodata/>
-          </PrivateRoute>
-        ),
-      },
-      {
         path: "/checkout-success",
         element: (
           <PrivateRoute>
@@ -92,6 +78,8 @@ export const router = createBrowserRouter([
       },
     ],
   },
+
+  // login and signup route
   {
     path: "/login",
     element: <Login/>,
@@ -100,21 +88,31 @@ export const router = createBrowserRouter([
     path: "/signUp",
     element: <SignUp/>,
   },
+
+  // old dashboard route
   {
     path: "/dashboard",
     element: (
       <PrivateRoute>
-        <Dashboard/>
+        <DashboardLayout/>
       </PrivateRoute>
     ),
     children: [
       // user route
       {
-        path: "userHome",
-        element: <UserHome/>,
+        path: "overview",
+        element: <OverView/>,
       },
       {
-        path: "editBio",
+        path: "add-biodata",
+        element: (
+          <PrivateRoute>
+            <AddBiodata/>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "edit-biodata",
         element: <EditBio/>,
       },
       {
@@ -126,7 +124,7 @@ export const router = createBrowserRouter([
         element: <MyContactRequest/>,
       },
       {
-        path: "viewBio",
+        path: "view-biodata",
         element: <ViewBio/>,
       },
       {

@@ -1,22 +1,31 @@
-import React from "react";
-import useBio from "../../../hooks/useBio";
-import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useBio from "../../../hooks/useBio";
+import {
+  Mail,
+  Phone,
+  User,
+  MapPin,
+  Download,
+  Share2,
+  FileText,
+  Heart,
+  Calendar,
+  Scale,
+  Briefcase,
+  Users,
+} from "lucide-react";
+import { useState } from "react";
 
-const ViewBio = () => {
-  const [bio] = useBio();
-  const axiosSecure = useAxiosSecure();
+const ViewBiodata = () => {
+  const [biodata] = useBio();
+  const [isCopied, setIsCopied] = useState(false);
+
   const {
-    age,
+    biodata_id,
     biodata_type,
     contact_email,
     contact_number,
     date_of_birth,
-    expected_partner_age,
-    expected_partner_height,
-    expected_partner_weight,
     fathers_name,
     height,
     mothers_name,
@@ -27,193 +36,182 @@ const ViewBio = () => {
     profile_image,
     race,
     weight,
-    biodata_id,
-  } = bio;
+  } = biodata || {};
 
-  // request biodata for premium
-  const handleBioPremium = () => {
-    if (bio.premium_status === true) {
-      Swal.fire({
-        title: "Your Biodata Already Premium",
-        width: 600,
-        padding: "3em",
-        color: "#716add",
-        background: "#fff url(/images/trees.png)",
-        backdrop: `
-          rgba(0,0,123,0.4)
-          url("/images/nyan-cat.gif")
-          left top
-          no-repeat
-        `,
-      });
-    } else {
-      Swal.fire({
-        title: "Are you sure to make your biodata premium",
-        showCancelButton: true,
-        confirmButtonText: "Yes",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          const userBioInfo = { name, contact_email, biodata_id ,status:false};
-          axiosSecure.post("/premium-bio", userBioInfo)
-          .then((res) => {
-            if (res.data.insertedId) {
-              Swal.fire("Wait for Admin Approved Now!", "", "success");
-            }
-            if (res.data.insertedId === null) {
-              Swal.fire("Already sent your biodata for premium !", "", "error");
-            }
-          });
-        } else if (result.isDenied) {
-          Swal.fire("Changes are not saved", "", "biodata premium");
-        }
-      });
-    }
+  // 📌 Age Calculation
+  const calculateAge = (dob) => {
+    if (!dob) return "N/A";
+    const birthDate = new Date(dob);
+    const diff = Date.now() - birthDate.getTime();
+    const ageDate = new Date(diff);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+  };
+
+  // 📌 Print / Download
+  const handlePrint = () => {
+    window.print();
+  };
+
+  // 📌 Share link
+  const handleShare = () => {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
   };
 
   return (
-    <div>
+    <>
       <Helmet>
-        <title>View Biodata | WedlockBD</title>
+        <title>My Biodata | WedlockBD</title>
       </Helmet>
-      {bio.biodata_id ? (
-        <div className="max-w-[950px]  md:w-[950px] p-6 mx-auto shadow-lg  space-y-4 rounded-lg ">
-          <div>
-            <div className="relative w-[220px] h-[220px] mx-auto">
+
+      {/* <div className="max-w-7xl mx-auto py-10 px-4 md:py-14 space-y-10"> */}
+      <div className="space-y-10 w-full lg:max-w-7xl mx-auto mt-8">
+        {/* Header */}
+        <div className="relative bg-gradient-to-r from-[#5b285c] to-[#131729] rounded-3xl p-8 md:p-10 text-white shadow-2xl overflow-hidden border border-purple-200">
+          {/* gradient overlays */}
+          <div className="absolute top-0 right-0 w-56 h-56 bg-white opacity-10 rounded-full blur-2xl -mr-20 -mt-20"></div>
+          <div className="absolute bottom-0 left-0 w-40 h-40 bg-white opacity-10 rounded-full blur-xl -mb-14 -ml-14"></div>
+
+          <div className="flex flex-col md:flex-row items-center gap-8 relative z-10">
+            {/* profile */}
+            <div className="relative">
               <img
                 src={profile_image}
-                alt="portrait"
-                className="w-full h-full rounded-full bg-black/30"
+                alt={name}
+                className="w-36 h-36 md:w-44 md:h-44 rounded-full object-cover border-4 border-white shadow-xl"
               />
+              <div className="absolute -bottom-3 -right-2 bg-white text-pink-600 rounded-full p-2 shadow-lg">
+                <Heart className="w-6 h-6" fill="currentColor" />
+              </div>
             </div>
-            <div className="grid ml-44 gap-x-16 gap-y-2 md:grid-cols-2 mt-4">
-              <p className="text-gray-500 dark:text-gray-400">Name : {name}</p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Date of Birth : {date_of_birth}
+
+            {/* info */}
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="text-3xl md:text-4xl font-extrabold drop-shadow mb-2">
+                {name || "N/A"}
+              </h2>
+              <p className="text-pink-100 font-medium mb-4">
+                Biodata ID:{" "}
+                <span className="font-semibold">{biodata_id || "N/A"}</span> •{" "}
+                {biodata_type || "N/A"}
               </p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Occupation : {occupation}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">Age : {age}</p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Height : {height}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Weight : {weight}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">Race : {race}</p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Biodata Id : {biodata_id}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Gender : {biodata_type}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Permanent Division : {permanent_division_name}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Present Division : {present_division_name}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Father's name : {fathers_name}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Mother's name : {mothers_name}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Expected Partner Height : {expected_partner_height}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Expected Partner Weight : {expected_partner_weight}
-              </p>
-              <p className=" text-gray-500 dark:text-gray-400">
-                Expected Partner Age : {expected_partner_age}
-              </p>
-              <p className="text-gray-500"> Number : {contact_number}</p>
-              <p className="text-gray-500"> Email : {contact_email}</p>
+              <div className="flex flex-wrap justify-center md:justify-start gap-3">
+                <span className="bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-sm flex items-center shadow">
+                  <Calendar className="w-4 h-4 mr-2" />{" "}
+                  {calculateAge(date_of_birth)} Years
+                </span>
+                <span className="bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-sm flex items-center shadow">
+                  <Scale className="w-4 h-4 mr-2" /> {height || "N/A"} cm
+                </span>
+                <span className="bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-sm flex items-center shadow">
+                  <Briefcase className="w-4 h-4 mr-2" /> {occupation || "N/A"}
+                </span>
+              </div>
             </div>
-            <div className="flex gap-4 mt-8">
+
+            {/* actions */}
+            <div className="flex gap-4 mt-4 md:mt-0">
               <button
-                onClick={handleBioPremium}
-                className="text-lg font-semibold w-full rounded-lg h-14 bg-sky-500 text-white relative overflow-hidden group z-10 hover:text-white duration-1000"
+                onClick={handlePrint}
+                className="bg-gradient-to-r from-[#810284] to-[#131729] px-5 py-3 rounded-xl flex items-center gap-2 
+                font-medium shadow-lg transition-all"
               >
-                <span className="absolute bg-sky-600 w-36 h-36 rounded-full group-hover:scale-100 scale-0 -z-10 -left-2 -top-10 group-hover:duration-500 duration-700 origin-center transform transition-all"></span>
-                <span className="absolute bg-sky-800 w-36 h-36 -left-2 -top-10 rounded-full group-hover:scale-100 scale-0 -z-10 group-hover:duration-700 duration-500 origin-center transform transition-all"></span>
-                Make biodata to premium
+                <Download className="w-5 h-5" /> Download
+              </button>
+              <button
+                onClick={handleShare}
+                className="bg-gradient-to-r from-[#131729] to-[#810284] px-5 py-3 rounded-xl flex items-center gap-2 
+                font-medium shadow-lg transition-all"
+              >
+                <Share2 className="w-5 h-5" /> {isCopied ? "Copied!" : "Share"}
               </button>
             </div>
           </div>
         </div>
-      ) : (
-        <div className="flex justify-center items-center my-44 text-center">
-          <div className="w-2/3">
-            <h2 className="text-3xl font-bold mb-3 text-purple-500">
-              ----Keep In Mind----
-            </h2>
-            <p>
-              To view biodata you must create your own profile in advance then
-              you can view your view biodata, so click the button below to
-              create your bio, then view biodata.
-            </p>
-            <Link to="/add-biodata">
-              <div className="flex justify-center">
-                <button className="py-2 w-60 h-16 rounded-lg px-6 mb-4 mt-6 bg-sky-700 hover:bg-sky-600 duration-300 text-white flex items-center justify-center overflow-hidden hover:overflow-visible relative group">
-                  <svg
-                    viewBox="0 0 1024 1024"
-                    className="icon rotate-45 group-hover:duration-700 absolute w-12 -translate-x-full translate-y-full scale-0 group-hover:scale-100 group-hover:translate-x-8 group-hover:-translate-y-8 duration-150"
-                    version="1.1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="#000000"
-                  >
-                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                    <g
-                      id="SVGRepo_tracerCarrier"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    ></g>
-                    <g id="SVGRepo_iconCarrier">
-                      <path
-                        d="M244.5 662l268.1-446.4 268 446.4z"
-                        fill="#9ED5E4"
-                      ></path>
-                      <path
-                        d="M780.6 676.2H244.5c-5.3 0-10.2-2.7-12.8-7.1s-2.6-9.8 0-14.3l268.1-446.3c2.6-4.4 7.5-7.1 12.8-7.1 5.3 0 10.2 2.7 12.8 7.1l268.1 446.3c2.6 4.4 2.6 9.8 0 14.3-2.7 4.4-7.6 7.1-12.9 7.1z m-510.5-28.5H755L512.6 244.2 270.1 647.7z"
-                        fill="#154B8B"
-                      ></path>
-                      <path
-                        d="M512.6 23s129 131.7 129 352.4-129 376-129 376-129-155.3-129-376S512.6 23 512.6 23z"
-                        fill="#F7F9F9"
-                      ></path>
-                      <path
-                        d="M512.6 765.7c-4.5 0-8.8-2-11.6-5.4-1.4-1.6-33.7-40.9-66.4-108.1-30.1-61.9-65.9-160.2-65.9-276.8 0-116.9 36-208.8 66.1-265.4 32.8-61.6 65.5-95.3 66.9-96.7 2.8-2.9 6.7-4.5 10.8-4.5 4.1 0 8 1.6 10.8 4.5 1.4 1.4 34.1 35.1 66.9 96.7 30.2 56.6 66.1 148.6 66.1 265.4 0 116.6-35.8 214.9-65.9 276.8-32.6 67.2-65 106.5-66.4 108.1-2.7 3.4-6.9 5.4-11.4 5.4z m0-720.5c-11.9 14.5-32 41.3-51.8 78.8-28.4 53.6-62.4 140.8-62.4 251.5 0 111.4 34.3 205.4 63.1 264.7 19.6 40.3 39.1 70.2 51.1 86.9 12-16.9 31.9-47.2 51.5-87.8 28.6-59.1 62.7-152.9 62.7-263.9 0-110.7-33.9-197.8-62.4-251.5-19.9-37.4-40-64.3-51.8-78.7z"
-                        fill="#154B8B"
-                      ></path>
-                      <path
-                        d="M447.6 278.9a65 62.4 0 1 0 130 0 65 62.4 0 1 0-130 0Z"
-                        fill="#9ED5E4"
-                      ></path>
-                      <path
-                        d="M512.6 355.6c-44 0-79.8-34.4-79.8-76.7s35.8-76.7 79.8-76.7 79.8 34.4 79.8 76.7-35.9 76.7-79.8 76.7z m0-124.8c-27.6 0-50.1 21.6-50.1 48.2s22.5 48.2 50.1 48.2 50.1-21.6 50.1-48.2-22.5-48.2-50.1-48.2z"
-                        fill="#154B8B"
-                      ></path>
-                      <path
-                        d="M570 860.9c0 13 1.5-7.5-57.4 141.4-56.2-142.1-57.4-128.4-57.4-141.4 0-36 25.7-65.2 57.4-65.2s57.4 29.2 57.4 65.2z"
-                        fill="#9ED5E4"
-                      ></path>
-                      <path
-                        d="M512.5 1016.6c-6.2 0-11.7-3.7-13.9-9.2-31.2-78.9-45.6-110.1-51.8-123.3-5.4-11.6-6.6-14.3-6.6-23.1 0-43.8 32.4-79.5 72.2-79.5 39.8 0 72.2 35.7 72.2 79.5v0.9c0 7.7-1 9.9-5.3 19.1-5.8 12.4-19.5 41.6-53.1 126.5-2 5.4-7.5 9.1-13.7 9.1z m0-206.7c-23.5 0-42.6 22.9-42.6 51 0 2.7 0 2.7 4.1 11.5 5.7 12.3 16.5 35.7 38.5 90.1 24-59.5 34.8-82.6 39.9-93.4 1.2-2.5 2.3-4.9 2.7-5.9v-2.3c0-28.1-19.1-51-42.6-51z"
-                        fill="#154B8B"
-                      ></path>
-                    </g>
-                  </svg>
-                  <span className="duration-500">Now Add Your Profile </span>
-                </button>
+
+        {/* Body */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Column */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Personal Info */}
+            <div className="bg-white rounded-2xl p-8 border border-gray-200 transition-all">
+              <h3 className="text-xl font-bold mb-6 text-gray-800 border-b pb-3 flex items-center gap-2">
+                <User className="text-purple-500" /> Personal Information
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
+                <Info label="Full Name" value={name} />
+                <Info label="Date of Birth" value={date_of_birth} />
+                <Info label="Occupation" value={occupation} />
+                <Info label="Race" value={race} />
+                <Info label="Height" value={`${height || "N/A"} cm`} />
+                <Info label="Weight" value={`${weight || "N/A"} kg`} />
               </div>
-            </Link>
+            </div>
+
+            {/* Family Info */}
+            <div className="bg-white rounded-2xl p-8 border border-gray-200 transition-all">
+              <h3 className="text-xl font-bold mb-6 text-gray-800 border-b pb-3 flex items-center gap-2">
+                <Users className="text-blue-500" /> Family Information
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
+                <Info label="Father's Name" value={fathers_name} />
+                <Info label="Mother's Name" value={mothers_name} />
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column */}
+          <div className="space-y-8">
+            {/* Location */}
+            <div className="bg-white rounded-2xl p-8 border border-gray-200 transition-all">
+              <h3 className="text-xl font-bold mb-6 text-gray-800 border-b pb-3 flex items-center gap-2">
+                <MapPin className="text-green-500" /> Location
+              </h3>
+              <div className="space-y-5 text-gray-700">
+                <Info label="Present Division" value={present_division_name} />
+                <Info label="Permanent Division" value={permanent_division_name} />
+              </div>
+            </div>
+
+            {/* Contact */}
+            <div className="bg-white rounded-2xl p-8 border border-gray-200 transition-all">
+              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                <FileText className="w-5 h-5" /> Contact Information
+              </h3>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 p-4 bg-white/20 rounded-xl">
+                  <Mail className="w-5 h-5" />
+                  <span>{contact_email || "N/A"}</span>
+                </div>
+                <div className="flex items-center gap-3 p-4 bg-white/20 rounded-xl">
+                  <Phone className="w-5 h-5" />
+                  <span>{contact_number || "N/A"}</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      )}
-    </div>
+      </div>
+
+      {/* hide buttons in print */}
+      <style>{`
+        @media print {
+          button {
+            display: none !important;
+          }
+        }
+      `}</style>
+    </>
   );
 };
 
-export default ViewBio;
+const Info = ({ label, value }) => (
+  <div className="flex flex-col">
+    <span className="text-sm text-gray-500">{label}</span>
+    <span className="font-medium">{value || "N/A"}</span>
+  </div>
+);
+
+export default ViewBiodata;

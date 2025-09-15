@@ -40,7 +40,7 @@ const TDashboard = () => {
   }
 
 //   const isAdmin = user?.role === 'admin' || false; 
-const isAdmin = true;
+const isAdmin = false;
 
   // Mock data for different sections
   const mockContactRequests = [
@@ -140,18 +140,19 @@ const isAdmin = true;
   // User Dashboard Sidebar Items
   const userSidebarItems = [
     { id: 'overview', label: 'Overview', icon: BarChart3 },
+    { id: 'add-biodata', label: 'Add Biodata', icon: Edit },
     { id: 'edit-biodata', label: 'Edit Biodata', icon: Edit },
     { id: 'view-biodata', label: 'View Biodata', icon: Eye },
-    { id: 'contact-requests', label: 'My Contact Request', icon: MessageCircle },
-    { id: 'favorites', label: 'Favourites Biodata', icon: Heart },
+    { id: 'contact-request', label: 'Contact Request', icon: MessageCircle },
+    { id: 'favorites', label: 'Favourites', icon: Heart },
   ];
 
   // Admin Dashboard Sidebar Items
   const adminSidebarItems = [
-    { id: 'admin-overview', label: 'Admin Dashboard', icon: BarChart3 },
+    { id: 'admin-overview', label: 'Overview', icon: BarChart3 },
     { id: 'manage-users', label: 'Manage Users', icon: Users },
-    { id: 'approved-premium', label: 'Approved Premium', icon: Crown },
-    { id: 'approved-contact', label: 'Approved Contact Request', icon: CheckCircle },
+    { id: 'approved-premium', label: 'Approved Pro', icon: Crown },
+    { id: 'approved-contact', label: 'Contact Request', icon: CheckCircle },
     { id: 'success-stories', label: 'Success Stories', icon: Star },
   ];
 
@@ -160,11 +161,11 @@ const isAdmin = true;
   const renderUserOverview = () => (
     <div className="space-y-8">
       {/* Welcome Section */}
-      <div className="bg-gradient-to-r from-primary-500 to-secondary-500 rounded-3xl p-8 text-white">
+      <div className="bg-gradient-to-r from-pink-500 to-blue-500 rounded-3xl p-8 text-white">
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-3xl font-bold mb-2">Welcome back, {user?.name || 'User'}!</h2>
-            <p className="text-primary-100 text-lg">Manage your profile and find your perfect match</p>
+            <p className="text-pink-100 text-lg">Manage your profile and find your perfect match</p>
           </div>
           <div className="bg-white bg-opacity-20 p-4 rounded-full">
             <User className="h-12 w-12" />
@@ -452,7 +453,7 @@ const isAdmin = true;
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h2 className="text-3xl font-bold text-gray-800">Success Stories</h2>
-        <button className="bg-primary-500 text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">
+        <button className="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition-colors">
           <Download className="h-4 w-4 inline mr-2" />
           Export Data
         </button>
@@ -542,6 +543,8 @@ const isAdmin = true;
           return renderContactRequests();
         case 'favorites':
           return renderFavorites();
+        case 'add-biodata':
+          return <div className="text-center py-16"><Edit className="h-24 w-24 text-gray-300 mx-auto mb-4" /><h3 className="text-2xl font-semibold text-gray-600">Add Biodata</h3><p className="text-gray-500">Biodata editing functionality coming soon</p></div>;
         case 'edit-biodata':
           return <div className="text-center py-16"><Edit className="h-24 w-24 text-gray-300 mx-auto mb-4" /><h3 className="text-2xl font-semibold text-gray-600">Edit Biodata</h3><p className="text-gray-500">Biodata editing functionality coming soon</p></div>;
         case 'view-biodata':
@@ -554,11 +557,11 @@ const isAdmin = true;
 
   return (
       <div className="flex my-16 md:my-20">
-        {/* Sidebar */}
-        <div className="w-64 bg-white shadow-lg min-h-screen sticky top-0">
+        {/* sidebar */}
+        <div className="w-64 bg-gray-100 rounded-lg sticky top-0">
           <div className="p-6">
             <div className="flex items-center space-x-3 mb-8">
-              <div className="bg-gradient-to-r from-primary-500 to-secondary-500 p-3 rounded-full">
+              <div className="bg-gradient-to-r from-pink-500 to-blue-500 p-3 rounded-full">
                 <User className="h-6 w-6 text-white" />
               </div>
               <div>
@@ -576,7 +579,7 @@ const isAdmin = true;
                     onClick={() => setActiveTab(item.id)}
                     className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-left transition-all duration-200 ${
                       activeTab === item.id
-                        ? 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-lg'
+                        ? 'bg-gradient-to-r from-pink-500 to-blue-500 text-white shadow-lg'
                         : 'text-gray-600 hover:bg-gray-100'
                     }`}
                   >

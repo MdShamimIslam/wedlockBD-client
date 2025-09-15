@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 
 // Matrimony Dashboard (Single-file JSX, Tailwind)
 // - Mock data only

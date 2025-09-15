@@ -38,7 +38,7 @@ const WebWork = () => {
         </div>
 
         <div className="text-center mt-16">
-          <Link to={`${bio.biodata_id ? "/alreadyCreate" : "/add-biodata"}`}>
+          <Link to={`${bio.biodata_id ? "/alreadyCreate" : "/dashboard/add-biodata"}`}>
             <Button> Start Your Journey Today</Button>
           </Link>
         </div>

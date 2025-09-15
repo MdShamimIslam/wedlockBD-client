@@ -55,7 +55,7 @@ const AddBiodata = () => {
       <Helmet>
         <title>Add Biodata | WedlockBD</title>
       </Helmet>
-      <div className="max-w-4xl mx-auto bg-slate-50 shadow-lg rounded-2xl p-8 md:p-12">
+      <div className="max-w-4xl mx-auto bg-gradient-to-br from-gray-50 to-white p-8 md:p-12 rounded-2xl border border-gray-200 hover:border-blue-200 transition-all duration-300">
         <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-center text-gray-800 mb-6">
           Add Your Biodata
         </h2>
@@ -79,7 +79,7 @@ const AddBiodata = () => {
             <input
               {...register("contact_number")}
               required
-              type="text"
+              type="number"
               placeholder="Mobile Number"
               className="border rounded-lg px-3 py-2 w-full"
             />
@@ -219,18 +219,17 @@ const AddBiodata = () => {
               ))}
             </select>
           </div>
-
           <button
             type="submit"
             disabled={loading}
             className="w-full bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 rounded-lg font-semibold hover:scale-105 transition-transform"
           >
-            {loading ? "Submitting..." : "Add Biodata"}
+            {loading ? "Submitting..." : "Submit Now"}
           </button>
         </form>
       </div>
     </div>
   );
 };
-
+  
 export default AddBiodata;

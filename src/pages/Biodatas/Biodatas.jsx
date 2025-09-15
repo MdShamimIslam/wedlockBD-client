@@ -21,7 +21,6 @@ const Biodatas = () => {
   }, [debouncedSearch]);
 
   const {biodatas,total,totalPages,isLoading, isFetching} = useBiodatas({filters,page,limit});
-  console.log(biodatas, "biodatas");
 
   const divisions = [...new Set(biodatas.map((b) => b.present_division_name))];
   const occupations = [...new Set(biodatas.map((b) => b.occupation))];
