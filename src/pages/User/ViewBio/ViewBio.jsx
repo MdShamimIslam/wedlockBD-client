@@ -66,7 +66,6 @@ const ViewBiodata = () => {
         <title>My Biodata | WedlockBD</title>
       </Helmet>
 
-      {/* <div className="max-w-7xl mx-auto py-10 px-4 md:py-14 space-y-10"> */}
       <div className="space-y-10 w-full lg:max-w-7xl mx-auto mt-8">
         {/* Header */}
         <div className="relative bg-gradient-to-r from-[#5b285c] to-[#131729] rounded-3xl p-8 md:p-10 text-white shadow-2xl overflow-hidden border border-purple-200">

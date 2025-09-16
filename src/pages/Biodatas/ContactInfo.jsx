@@ -1,7 +1,24 @@
 import { Crown, Mail, Phone } from "lucide-react";
-import { Link } from "react-router-dom";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const ContactInfo = ({bio = {}, contact_email, contact_number}) => {
+  const axiosSecure = useAxiosSecure();
+
+  const handlePayment = async (biodataId) => {
+    try {
+      const res = await axiosSecure.post(`/checkout-session/${biodataId}`);
+      
+      if (!res?.data?.session?.url) {
+        throw new Error("Payment URL not found!");
+      }
+
+      window.location.href = res.data.session.url;
+      
+    } catch (err) {
+      toast.error(err.message || "Payment failed!");
+    }
+  };
   
   return (
     <div className="p-6 border-t border-gray-200">
@@ -30,11 +47,10 @@ const ContactInfo = ({bio = {}, contact_email, contact_number}) => {
         <p className="text-gray-600 mb-6">
           Contact information is only available to premium members. Upgrade your account or request contact information.
         </p>
-        <Link to={`${bio.biodata_id ? `/contact-request` : '/nodata'}`}>
-            <button className="bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 px-8 rounded-lg font-semibold hover:from-pink-600 hover:to-blue-600 transition-all duration-300">
+        
+            <button onClick={() => handlePayment(bio.biodata_id)} className="bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 px-8 rounded-lg font-semibold hover:from-pink-600 hover:to-blue-600 transition-all duration-300">
                 Request Contact Info
             </button>
-        </Link>
       </div>
     )}
   </div>

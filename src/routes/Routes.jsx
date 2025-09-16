@@ -116,11 +116,11 @@ export const router = createBrowserRouter([
         element: <EditBio/>,
       },
       {
-        path: "favoritesBio",
+        path: "favorites",
         element: <FavoritesBio/>,
       },
       {
-        path: "myContactRequest",
+        path: "contact-requests",
         element: <MyContactRequest/>,
       },
       {

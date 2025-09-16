@@ -41,7 +41,7 @@ const ManageUsers = () => {
 
     // make premium to user bio
     const handleMakePremium =(email)=>{
-        axiosSecure.patch(`/biodatas-premium/${email}`)
+        axiosSecure.patch(`/biodatas/premium/${email}`)
         .then(res=>{
           console.log(res.data);
             if(res.data.result2.modifiedCount > 0){

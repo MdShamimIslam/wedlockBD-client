@@ -12,7 +12,7 @@ const PremiumBio = () => {
   const { data: biodatas = [] } = useQuery({
     queryKey: ["premiumBiodatas"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/limit-biodatas");
+      const res = await axiosPublic.get("/biodatas/byLimit");
       return res?.data;
     },
   });

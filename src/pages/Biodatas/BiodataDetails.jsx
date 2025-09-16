@@ -124,7 +124,8 @@ const BiodataDetails = () => {
                     <span>Add to Favorites</span>
                   </button> 
                   
-                  {bio?.premium_status && (
+                  {/* TODO */}
+                  {!bio?.premium_status && (
                       <button
                         onClick={() => handlePayment(bio.biodata_id)}
                         className="flex-1 bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-pink-600 hover:to-blue-600 transition-all duration-300 flex items-center justify-center space-x-2"

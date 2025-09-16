@@ -11,7 +11,7 @@ const useBio = () => {
       enabled: !loading && !!user?.email,
       queryFn: async () => {
         try {
-          const res = await axiosSecure.get(`/biodatas/by-email?email=${user?.email}`);
+          const res = await axiosSecure.get(`/biodatas/byMail?email=${user?.email}`);
           return res?.data;
         } catch (error) {
           if (error.response?.status === 404) {

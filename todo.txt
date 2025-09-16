@@ -5,3 +5,14 @@
 5. Contact us er moddhe real feedback data add korte hobe and site jekono akta vlo page a feedback dewar section banaite hobe
 6. verifyToken and verifyAdmin aisob server and client a thik vabe bosate hobe
 7. email verification, forget & reset passward,
+
+
+
+// middleware jekhane jekhane use kortesi tar list niche
+1.Payment routes.
+2.SuccessStory routes.
+3.Contact request routes
+4.Admin routes
+5.PremiumBio routes
+6.User routes
+7.biodata routes
