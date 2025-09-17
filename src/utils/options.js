@@ -3,7 +3,7 @@ import { LuFacebook } from "react-icons/lu";
 import { TbBrandYoutubeFilled } from "react-icons/tb";
 import { FiTwitter } from "react-icons/fi";
 import { SiInstagram } from "react-icons/si";
-import { UserPlus, Search, Heart, MessageCircle,Mail, Phone, MapPin, Clock,  HeadphonesIcon, Users, Globe, Shield, Award, Target, Eye, Lightbulb } from 'lucide-react';
+import { UserPlus, Search, Heart, MessageCircle,Mail, Phone, MapPin, Clock,  HeadphonesIcon, Users, Globe, Shield, Award, Target, Eye, Lightbulb, BarChart3, Edit, Crown, CheckCircle, Star, Settings } from 'lucide-react';
 
 import shamim from "../assets/images/shamim.png";
 import fatima from "../assets/images/fatima.jpeg";
@@ -912,5 +912,26 @@ export const countries = [
   "Spain",
   "Brazil",
   "Mexico"
-]
+];
+
+ // User Sidebar Items
+ export const userSidebarItems = [
+  { path: "/dashboard/overview", label: "Overview", icon: BarChart3 },
+  { path: "/dashboard/add-biodata", label: "Add Biodata", icon: UserPlus   },
+  { path: "/dashboard/edit-biodata", label: "Edit Biodata", icon: Edit },
+  { path: "/dashboard/view-biodata", label: "View Biodata", icon: Eye },
+  { path: "/dashboard/contact-requests", label: "Contact Request", icon: MessageCircle },
+  { path: "/dashboard/favorites", label: "Favourites", icon: Heart },
+  { path: "/dashboard/got-married", label: "Got Married", icon: Crown}
+];
+
+// Admin Sidebar Items
+export const adminSidebarItems = [
+  { path: "/dashboard/admin-overview", label: "Overview", icon: BarChart3 },
+  { path: "/dashboard/manage-users", label: "Manage Users", icon: Users },
+  { path: "/dashboard/approved-premium", label: "Approved Pro", icon: Crown },
+  { path: "/dashboard/approved-contact", label: "Contact Request", icon: CheckCircle },
+  { path: "/dashboard/success-stories", label: "Success Stories", icon: Star },
+  { path: "/dashboard/settings", label: "Settings", icon: Settings },
+];
 

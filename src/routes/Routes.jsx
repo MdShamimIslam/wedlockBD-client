@@ -9,7 +9,7 @@ import AboutUs from "../pages/AboutUs/AboutUs";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import PrivateRoute from "./PrivateRoute";
 import BiodataDetails from "../pages/Biodatas/BiodataDetails";
-import AddBiodata from "../pages/AddBiodata/AddBiodata";
+import AddBiodata from "../pages/User/AddBiodata/AddBiodata";
 import Nodata from "../component/Nodata";
 import AlreadyCreate from "../component/AlreadyCreate";
 import EditBio from "../pages/User/EditBio/EditBio";

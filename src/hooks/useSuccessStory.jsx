@@ -6,7 +6,7 @@ const useSuccessStory = () => {
     const { data: stories=[] } = useQuery({
         queryKey: ["successStories"],
         queryFn: async () => {
-            const res = await axiosSecure.get('/successStories');
+            const res = await axiosSecure.get('/success-stories');
             return res.data;
         },
       });

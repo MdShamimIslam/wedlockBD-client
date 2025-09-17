@@ -15,6 +15,7 @@ import {
   Users,
 } from "lucide-react";
 import { useState } from "react";
+import MakePremium from "./MakePremium";
 
 const ViewBiodata = () => {
   const [biodata] = useBio();
@@ -115,21 +116,21 @@ const ViewBiodata = () => {
               <button
                 onClick={handlePrint}
                 className="bg-gradient-to-r from-[#810284] to-[#131729] px-5 py-3 rounded-xl flex items-center gap-2 
-                font-medium shadow-lg transition-all"
+                font-medium shadow-lg transition-all hover:scale-105 hover:shadow-2xl"
               >
                 <Download className="w-5 h-5" /> Download
               </button>
               <button
                 onClick={handleShare}
                 className="bg-gradient-to-r from-[#131729] to-[#810284] px-5 py-3 rounded-xl flex items-center gap-2 
-                font-medium shadow-lg transition-all"
+                font-medium shadow-lg transition-all hover:scale-105 hover:shadow-2xl"
               >
                 <Share2 className="w-5 h-5" /> {isCopied ? "Copied!" : "Share"}
               </button>
             </div>
           </div>
         </div>
-
+       
         {/* Body */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column */}
@@ -190,8 +191,10 @@ const ViewBiodata = () => {
                 </div>
               </div>
             </div>
+           
           </div>
         </div>
+        <MakePremium/>
       </div>
 
       {/* hide buttons in print */}
