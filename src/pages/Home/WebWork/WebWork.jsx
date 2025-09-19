@@ -5,7 +5,7 @@ import Heading from "../../../component/common/Heading";
 import Button from "../../../component/common/Button";
 
 const WebWork = () => {
-  const [bio] = useBio();
+  const {bio = {}} = useBio();
 
   return (
    

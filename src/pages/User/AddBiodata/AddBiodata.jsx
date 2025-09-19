@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -10,14 +9,12 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AddBiodata = () => {
   const { user } = useAuth();
-  const { register, reset, handleSubmit } = useForm();
+  const { register, reset, handleSubmit, formState: { isSubmitting } } = useForm();
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure(true);
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data) => {
-    setLoading(true);
     try {
       const formData = new FormData();
       formData.append("image", data.profile_image[0]);
@@ -46,7 +43,6 @@ const AddBiodata = () => {
       }
     } catch (error) {
       toast.error(error.message || "Something went wrong!");
-      setLoading(false);
     }
   };
 
@@ -225,10 +221,10 @@ const AddBiodata = () => {
           <div className="flex justify-center">
             <button
               type="submit"
-              disabled={loading}
+              disabled={isSubmitting}
               className="mt-5 w-full md:w-2/5 lg:w-1/5 bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 rounded-lg font-semibold hover:scale-105 transition-transform"
             >
-              {loading ? "Submitting..." : "Submit Now"}
+              {isSubmitting ? "Submitting..." : "Submit Now"}
             </button>
           </div>
           

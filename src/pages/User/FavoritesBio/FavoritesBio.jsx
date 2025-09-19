@@ -10,7 +10,7 @@ import useBio from "../../../hooks/useBio";
 const FavoritesBio = () => {
   const axiosSecure = useAxiosSecure();
   const { user, loading } = useAuth();
-
+  const {bio = {}} = useBio();
   // get biodatas by user email
   const { data: favorites = [], refetch } = useQuery({
     queryKey: ["favoritesBiodata", user?.email],
@@ -55,8 +55,6 @@ const FavoritesBio = () => {
         }
       });
   };
-
-  const [bio] = useBio();
 
   return (
     <div className="">

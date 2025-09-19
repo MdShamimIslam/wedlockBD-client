@@ -10,3 +10,8 @@ export const calculateAge = (dob) => {
     }
     return age;
   };
+
+  export const formatDate = (isoDate)=> {
+    if (!isoDate) return "";
+    return isoDate.split("T")[0];
+  }

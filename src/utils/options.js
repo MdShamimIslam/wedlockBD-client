@@ -3,7 +3,9 @@ import { LuFacebook } from "react-icons/lu";
 import { TbBrandYoutubeFilled } from "react-icons/tb";
 import { FiTwitter } from "react-icons/fi";
 import { SiInstagram } from "react-icons/si";
-import { UserPlus, Search, Heart, MessageCircle,Mail, Phone, MapPin, Clock,  HeadphonesIcon, Users, Globe, Shield, Award, Target, Eye, Lightbulb, BarChart3, Edit, Crown, CheckCircle, Star, Settings } from 'lucide-react';
+import { UserPlus, Search, Heart, MessageCircle,Mail, Phone, MapPin, Clock,  HeadphonesIcon, Users, Globe, Shield, Award, Target, Eye, Lightbulb, 
+  BarChart3, Edit, Crown, CheckCircle, Star, Settings, User, XCircle, 
+  Calendar} from 'lucide-react';
 
 import shamim from "../assets/images/shamim.png";
 import fatima from "../assets/images/fatima.jpeg";
@@ -933,5 +935,33 @@ export const adminSidebarItems = [
   { path: "/dashboard/approved-contact", label: "Contact Request", icon: CheckCircle },
   { path: "/dashboard/success-stories", label: "Success Stories", icon: Star },
   { path: "/dashboard/settings", label: "Settings", icon: Settings },
+];
+
+// contact request table
+export const tHead = [
+  {
+    icon: User,
+    title: "Full Name",
+  },
+  {
+    icon: Mail,
+    title: "Email",
+  },
+  {
+    icon: Phone,
+    title: "Number",
+  },
+  {
+    icon: Calendar,
+    title: "Request Date",
+  },
+  {
+    icon: CheckCircle,
+    title: "Status",
+  },
+  {
+    icon: XCircle,
+    title: "Action",
+  },
 ];
 

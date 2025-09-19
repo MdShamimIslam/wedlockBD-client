@@ -22,7 +22,7 @@ const useBio = () => {
       },
     });
     
-    return [bio,refetch];
+    return {bio,refetch};
 };
 
 export default useBio;

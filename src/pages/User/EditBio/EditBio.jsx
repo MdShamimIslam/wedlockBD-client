@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { countries, divisions } from "../../../utils/options";
@@ -12,16 +12,13 @@ import { Edit } from "lucide-react";
 
 const EditBiodata = () => {
   const { user } = useAuth();
-  const { register, handleSubmit, setValue } = useForm();
+  const { register, handleSubmit, setValue, formState: { isSubmitting } } = useForm();
   const axiosSecure = useAxiosSecure(true);
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
 
-  // 🔹 get user biodata from custom hook
-  const [bio, refetch] = useBio();
+  const {bio = {}, refetch} = useBio();
 
-  // 🔹 fill form when bio loaded
   useEffect(() => {
     if (bio && bio._id) {
       Object.keys(bio).forEach((key) => {
@@ -30,9 +27,7 @@ const EditBiodata = () => {
     }
   }, [bio, setValue]);
 
-  // 🔹 Submit update
   const onSubmit = async (data) => {
-    setLoading(true);
 
     try {
       let imageUrl = bio?.profile_image;
@@ -73,11 +68,9 @@ const EditBiodata = () => {
           }
         })
         .catch(() => toast.error("Update failed!"))
-        .finally(() => setLoading(false));
 
     } catch (error) {
       toast.error(error.message || "Something went wrong!");
-      setLoading(false);
     }
   };
 
@@ -120,7 +113,7 @@ const EditBiodata = () => {
               {...register("contact_email")}
               readOnly
               type="email"
-              className="border rounded-lg px-3 py-2 bg-gray-100 w-full focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              className={inputClasses}
             />
             <input
               {...register("contact_number")}
@@ -226,10 +219,10 @@ const EditBiodata = () => {
           <div className="flex justify-center">
             <button
               type="submit"
-              disabled={loading}
+              disabled={isSubmitting}
               className="mt-5 w-full md:w-2/5 lg:w-1/5 bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 rounded-lg font-semibold hover:scale-105 transition-transform"
             >
-               {loading ? "Updating..." : "Update Now"}
+               {isSubmitting ? "Updating..." : "Update Now"}
             </button>
           </div>
         </form>

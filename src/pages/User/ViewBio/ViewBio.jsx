@@ -16,11 +16,11 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import MakePremium from "./MakePremium";
+import { calculateAge } from "../../../utils/functions";
 
 const ViewBiodata = () => {
-  const [biodata] = useBio();
+  const {bio = {}} = useBio();
   const [isCopied, setIsCopied] = useState(false);
-
   const {
     biodata_id,
     biodata_type,
@@ -37,23 +37,14 @@ const ViewBiodata = () => {
     profile_image,
     race,
     weight,
-  } = biodata || {};
+  } = bio || {};
 
-  // 📌 Age Calculation
-  const calculateAge = (dob) => {
-    if (!dob) return "N/A";
-    const birthDate = new Date(dob);
-    const diff = Date.now() - birthDate.getTime();
-    const ageDate = new Date(diff);
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
-  };
-
-  // 📌 Print / Download
+  
   const handlePrint = () => {
     window.print();
   };
 
-  // 📌 Share link
+ 
   const handleShare = () => {
     const url = window.location.href;
     navigator.clipboard.writeText(url);
@@ -74,7 +65,7 @@ const ViewBiodata = () => {
           <div className="absolute top-0 right-0 w-56 h-56 bg-white opacity-10 rounded-full blur-2xl -mr-20 -mt-20"></div>
           <div className="absolute bottom-0 left-0 w-40 h-40 bg-white opacity-10 rounded-full blur-xl -mb-14 -ml-14"></div>
 
-          <div className="flex flex-col md:flex-row items-center gap-8 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center gap-8 relative z-10">
             {/* profile */}
             <div className="relative">
               <img
@@ -88,8 +79,8 @@ const ViewBiodata = () => {
             </div>
 
             {/* info */}
-            <div className="flex-1 text-center md:text-left">
-              <h2 className="text-3xl md:text-4xl font-extrabold drop-shadow mb-2">
+            <div className="flex-1 text-center lg:text-left">
+              <h2 className="text-xl md:text-2xl lg:text-4xl font-extrabold drop-shadow mb-2">
                 {name || "N/A"}
               </h2>
               <p className="text-pink-100 font-medium mb-4">
