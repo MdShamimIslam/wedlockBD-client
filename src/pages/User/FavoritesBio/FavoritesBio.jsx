@@ -117,7 +117,7 @@ const FavoritesBio = () => {
         </div>
           :
           <div className="flex justify-center my-80">
-              <h3 className="font-bold text-4xl">
+              <h3 className="font-bold text-xl md:text-3xl">
               You haven't added Biodata of your favorite people yet !!
               </h3>
             </div>

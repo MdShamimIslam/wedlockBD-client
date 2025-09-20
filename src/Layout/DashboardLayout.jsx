@@ -25,7 +25,7 @@ const DashboardLayout = () => {
         </div>
 
         {/* Page Content */}
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-6 max-w-[100vw]">
           <Outlet />
         </main>
       </div>
