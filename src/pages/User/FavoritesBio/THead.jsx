@@ -1,10 +1,10 @@
-import { tHeadOfUserContact } from "../../../utils/options";
+import { tHeadUserFavorite } from "../../../utils/options";
 
 const THead = () => {
   return (
     <thead className="bg-gray-50 whitespace-nowrap">
           <tr>
-            {tHeadOfUserContact.map((item, index) => (
+            {tHeadUserFavorite.map((item, index) => (
               <th
                 key={index}
                 className="px-4 py-3 text-left text-sm font-medium text-slate-600"

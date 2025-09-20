@@ -5,7 +5,10 @@ import { FiTwitter } from "react-icons/fi";
 import { SiInstagram } from "react-icons/si";
 import { UserPlus, Search, Heart, MessageCircle,Mail, Phone, MapPin, Clock,  HeadphonesIcon, Users, Globe, Shield, Award, Target, Eye, Lightbulb, 
   BarChart3, Edit, Crown, CheckCircle, Star, Settings, User, XCircle, 
-  Calendar} from 'lucide-react';
+  Calendar,
+  Hash,
+  Briefcase,
+  Flag} from 'lucide-react';
 
 import shamim from "../assets/images/shamim.png";
 import fatima from "../assets/images/fatima.jpeg";
@@ -938,7 +941,7 @@ export const adminSidebarItems = [
 ];
 
 // contact request table
-export const tHead = [
+export const tHeadOfUserContact = [
   {
     icon: User,
     title: "Full Name",
@@ -958,6 +961,33 @@ export const tHead = [
   {
     icon: CheckCircle,
     title: "Status",
+  },
+  {
+    icon: XCircle,
+    title: "Action",
+  },
+];
+
+export const tHeadUserFavorite = [
+  {
+    icon: User,
+    title: "Full Name",
+  },
+  {
+    icon: Hash,
+    title: "Biodata ID",
+  },
+  {
+    icon: Calendar,
+    title: "Age",
+  },
+  {
+    icon: Briefcase,
+    title: "Occupation",
+  },
+  {
+    icon: Flag,
+    title: "Race",
   },
   {
     icon: XCircle,

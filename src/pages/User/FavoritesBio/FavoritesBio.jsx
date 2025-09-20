@@ -1,17 +1,16 @@
-import React from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
-import FavoritesDataTable from "./FavoritesDataTable";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
-import useBio from "../../../hooks/useBio";
+import THead from "./THead";
+import TRow from "./TRow";
+import TPagination from "./TPagination";
 
 const FavoritesBio = () => {
   const axiosSecure = useAxiosSecure();
   const { user, loading } = useAuth();
-  const {bio = {}} = useBio();
-  // get biodatas by user email
+
   const { data: favorites = [], refetch } = useQuery({
     queryKey: ["favoritesBiodata", user?.email],
     queryFn: async () => {
@@ -29,8 +28,7 @@ const FavoritesBio = () => {
     );
   }
 
-  // delete favorite bio
-  const handleDeleteFavoriteBio = (_id,name) => {
+  const handleDeleteFavoriteBio = (id,name) => {
     Swal.fire({
         title: "Are you sure?",
         text: `You want to delete ${name}`,
@@ -41,7 +39,7 @@ const FavoritesBio = () => {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.isConfirmed) {
-          axiosSecure.delete(`/favorites/${_id}`).then((data) => {
+          axiosSecure.delete(`/favorites/${id}`).then((data) => {
             if (data.data.deletedCount > 0) {
               refetch();
               Swal.fire({
@@ -61,69 +59,17 @@ const FavoritesBio = () => {
        <Helmet>
         <title> Favorites Biodata | WedlockBD</title>
       </Helmet>
-      <div className="container mx-auto px-4 sm:px-8">
-        {
-          bio && bio?.biodata_id ?
-          <div className="py-8">
-          <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-            <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
-              <table className="min-w-full leading-normal">
-                <thead>
-                  <tr>
-                    <th
-                      scope="col"
-                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
-                    >
-                      Name
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
-                    >
-                      Biodata Id
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
-                    >
-                      Permanent Address
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
-                    >
-                      Occupation
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
-                    >
-                      Delete
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {favorites?.map((favoriteData) => (
-                    <FavoritesDataTable
-                      key={favoriteData._id}
-                      favoriteData={favoriteData}
-                      handleDeleteFavoriteBio={handleDeleteFavoriteBio}
-                    ></FavoritesDataTable>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-          :
-          <div className="flex justify-center my-80">
-              <h3 className="font-bold text-xl md:text-3xl">
-              You haven't added Biodata of your favorite people yet !!
-              </h3>
-            </div>
-        }
-        
+      <div className="overflow-hidden w-full lg:max-w-[1400px] mx-auto mt-8 ">
+      <div className="overflow-x-auto">
+        <table className="bg-white min-w-full">
+            <THead/>
+            <tbody className="whitespace-nowrap divide-y divide-gray-200">
+            { favorites?.map((favorite) => <TRow key={favorite._id} {...{favorite,handleDeleteFavoriteBio}} /> )}
+            </tbody>
+        </table>
       </div>
+      <TPagination/>
+    </div>
     </div>
   );
 };
