@@ -26,6 +26,7 @@ import SuccessMarried from "../pages/Admin/SuccessMarried/SuccessMarried";
 import AdminRoute from "./AdminRoute";
 import CheckoutSuccess from "../pages/CheckoutSuccess/CheckoutSuccess";
 import DashboardLayout from "../Layout/DashboardLayout";
+import AdminOverview from "../pages/Admin/AdminOverview";
 
 export const router = createBrowserRouter([
   {
@@ -131,13 +132,11 @@ export const router = createBrowserRouter([
         path: "got-married",
         element: <GotMarried/>,
       },
-      // admin route
+      // admin route TODO: aguloke admin route add korte hobe
       {
-        path: "adminHome",
+        path: "admin-overview",
         element: (
-          <AdminRoute>
-            <AdminHome/>
-          </AdminRoute>
+            <AdminOverview/>
         ),
       },
       {

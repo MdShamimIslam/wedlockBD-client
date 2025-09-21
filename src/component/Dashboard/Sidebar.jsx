@@ -7,7 +7,8 @@ import toast from "react-hot-toast";
 
 const Sidebar = ({sidebarOpen}) => {
     const { user, logOut } = useAuth();
-    const isAdmin = user?.role === "Admin";
+    // const isAdmin = user?.role === "Admin";
+    const isAdmin = true;
     const navigate = useNavigate();
 
     const sidebarItems = isAdmin ? adminSidebarItems : userSidebarItems;

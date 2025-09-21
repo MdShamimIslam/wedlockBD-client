@@ -7,6 +7,7 @@
 7. email verification, forget & reset passward,
 8. pagination er page jeno reload dilew dhore thake
 9. Payment integration a webhook er kaj korte hobe karon pay korar agey pay hosse akhon.
+10. AdminRoute, Sidebar, MenuDropDown aikhane admin ke default vabe true kora hoyeche check korar jonno ata uncomment korte hobe
 
 
 
