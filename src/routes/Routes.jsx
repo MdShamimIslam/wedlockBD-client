@@ -132,11 +132,13 @@ export const router = createBrowserRouter([
         path: "got-married",
         element: <GotMarried/>,
       },
-      // admin route TODO: aguloke admin route add korte hobe
+      // admin route
       {
         path: "admin-overview",
         element: (
+          <AdminRoute>
             <AdminOverview/>
+          </AdminRoute>
         ),
       },
       {
