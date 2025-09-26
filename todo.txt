@@ -1,14 +1,12 @@
 1. Footer: link gulor right route dite hobe and subscribe er functionality add korte hobe 
 2. SuccessStory : minimum 1 ta success story add korte hobe
-3. User Dashboard a add biodata menu dite hobe
-4. database er data guloke valo kore sajaite hobe
 5. Contact us er moddhe real feedback data add korte hobe and site jekono akta vlo page a feedback dewar section banaite hobe
 6. verifyToken and verifyAdmin aisob server and client a thik vabe bosate hobe
 7. email verification, forget & reset passward,
 8. pagination er page jeno reload dilew dhore thake
 9. Payment integration a webhook er kaj korte hobe karon pay korar agey pay hosse akhon.
-10. AdminRoute, Sidebar, MenuDropDown aikhane admin ke default vabe true kora hoyeche check korar jonno ata uncomment korte hobe
-
+10. first time user jodi biodata create na kore tahle tar jonno overview er moddhe kisu kaj korte hobe conditionaly karon default value onk dewa ache.
+11. main.jsx er moddhe react strictmode add korte hobe
 
 
 // middleware jekhane jekhane use kortesi tar list niche

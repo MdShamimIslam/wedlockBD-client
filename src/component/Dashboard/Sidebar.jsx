@@ -7,8 +7,7 @@ import toast from "react-hot-toast";
 
 const Sidebar = ({sidebarOpen}) => {
     const { user, logOut } = useAuth();
-    // const isAdmin = user?.role === "Admin";
-    const isAdmin = true;
+    const isAdmin = user?.role === "admin";
     const navigate = useNavigate();
 
     const sidebarItems = isAdmin ? adminSidebarItems : userSidebarItems;
@@ -20,7 +19,7 @@ const Sidebar = ({sidebarOpen}) => {
             toast.success("Successfully Logged Out!");
           })
           .catch((err) => toast.error(err.message));
-      };
+    };
 
     return (
         <div
@@ -41,7 +40,6 @@ const Sidebar = ({sidebarOpen}) => {
                         WedlockBD
                     </h3>
                 </Link>
-
                 {/* Navigation */}
                 <nav className="space-y-2 mt-6">
                     {sidebarItems.map((item) => {
@@ -64,7 +62,6 @@ const Sidebar = ({sidebarOpen}) => {
                     );
                     })}
                 </nav>
-
                 {/* Logout */}
                 <div className="mt-8 pt-8 border-t border-gray-200">
                     <button

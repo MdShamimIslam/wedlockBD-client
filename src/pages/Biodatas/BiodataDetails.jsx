@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { Heart, Lock} from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
@@ -9,6 +10,7 @@ import SimilarProfiles from './SimilarProfiles';
 import ContactInfo from './ContactInfo';
 import BasicInfo from './BasicInfo';
 import useCheckContactRequestStatus from '../../hooks/useCheckContactRequestStatus';
+import useBio from '../../hooks/useBio';
 
 const BiodataDetails = () => {
   const { user } = useAuth();
@@ -16,6 +18,8 @@ const BiodataDetails = () => {
   const biodata = useLoaderData();
   const {biodatas}= useBiodatas();
   const requested = useCheckContactRequestStatus(biodata?.biodata_id);
+  const {bio} = useBio();
+
 
   const {
     biodata_id,
@@ -35,15 +39,39 @@ const BiodataDetails = () => {
     weight,
   } = biodata || {};
 
+  useEffect(() => {
+    if (!user?.email || !contact_email) return;
+
+    const addProfileView = async () => {
+      try {
+        await axiosSecure.post("/profile-views", {
+          profileOwnerEmail: contact_email,
+          visitorEmail: user.email,
+          visitorName: user.displayName,
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    addProfileView();
+  }, [user, contact_email, axiosSecure]);
+
+
   const handleAddToFavorite = async () => {
-    if(!biodata_id) {
+    if(!bio?.biodata_id) {
      return toast.error('Create your biodata before add to favorites');
+    }
+
+    if (contact_email === user?.email) {
+      return toast.error('You cannot add your own biodata to favorites');
     }
 
     try {
       const bioInfo = { ...biodata, email: user?.email };
 
       const res = await axiosSecure.post("/favorites", bioInfo);
+
       if (res.data.insertedId) {
         toast.success("Successfully Added.");
       }
@@ -52,6 +80,7 @@ const BiodataDetails = () => {
       }
     
     } catch (error) {
+      console.log(error);
       toast.error(error.message);
     }
   };
@@ -59,6 +88,14 @@ const BiodataDetails = () => {
   const similarProfiles = biodatas?.filter( (profile) => profile.biodata_type === biodata_type && profile._id !== biodata._id );
 
   const handlePayment = async (biodataId) => {
+    if(!bio?.biodata_id) {
+      return toast.error('Create your biodata before add to contact request');
+    }
+
+    if (contact_email === user?.email) {
+      return toast.error('You cannot add your own biodata to contact request');
+    }
+
     try {
       const res = await axiosSecure.post(`/contact-request/${biodataId}`);
      
@@ -72,6 +109,7 @@ const BiodataDetails = () => {
       toast.error(errorMsg);
     }
   };
+
 
   return (
     <>

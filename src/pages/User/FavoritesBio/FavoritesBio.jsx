@@ -6,6 +6,8 @@ import { Helmet } from "react-helmet-async";
 import THead from "./THead";
 import TRow from "./TRow";
 import TPagination from "./TPagination";
+import EmptyState from "../../../component/EmptyState";
+import { Heart } from "lucide-react";
 
 const FavoritesBio = () => {
   const axiosSecure = useAxiosSecure();
@@ -25,6 +27,18 @@ const FavoritesBio = () => {
       <div className="flex justify-center items-center my-80">
         <div className="w-10 h-10 animate-[spin_1s_linear_infinite] rounded-full border-double border-4 border-r-0 border-l-0 border-b-sky-400 border-t-sky-700"></div>
       </div>
+    );
+  }
+
+  if (favorites?.length === 0) {
+    return (
+      <EmptyState
+      icon={Heart}
+      title="No favorites yet"
+      description="When you add someone to your favorites, you’ll see them here."
+      linkText="Find Matches"
+      path="/biodatas"
+    />
     );
   }
 

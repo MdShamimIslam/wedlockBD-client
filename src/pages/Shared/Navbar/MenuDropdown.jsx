@@ -11,8 +11,7 @@ const MenuDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
-  // const [isAdmin] = useAdmin();
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
   const dropdownRef = useRef(null);
 
   useEffect(() => {

@@ -4,6 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import THead from "./THead";
 import TRow from "./TRow";
 import TPagination from "./TPagination";
+import EmptyState from "../../../component/EmptyState";
+import { Mail } from "lucide-react";
 
 
 const MyContactRequest = () => {
@@ -18,6 +20,17 @@ const MyContactRequest = () => {
     }
   });
 
+  if (requestData?.length === 0) {
+    return (
+      <EmptyState
+      icon={Mail}
+      title="You haven’t sent any contact requests yet"
+      description="Once you send a request to someone, it will appear here in your list."
+      linkText="Browse Profiles"
+      path="/biodatas"
+    />
+    );
+  }
 
   return (
     <div className="overflow-hidden w-full lg:max-w-[1400px] mx-auto mt-8 ">

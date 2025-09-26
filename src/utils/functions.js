@@ -1,3 +1,5 @@
+import { formatDistanceToNow } from "date-fns";
+
 export const calculateAge = (dob) => {
     if (!dob) return "N/A";
     const birthDate = new Date(dob);
@@ -15,6 +17,12 @@ export const formatDate = (isoDate)=> {
   if (!isoDate) return "";
   return isoDate.split("T")[0];
 }
+
+export const timeAgo = (isoDate) => {
+  if (!isoDate) return "";
+  return formatDistanceToNow(new Date(isoDate), { addSuffix: true });
+};
+
 
 
 

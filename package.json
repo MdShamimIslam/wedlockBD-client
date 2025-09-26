@@ -17,6 +17,7 @@
     "@tanstack/react-query": "^5.17.14",
     "aos": "^2.3.4",
     "axios": "^1.6.5",
+    "date-fns": "^4.1.0",
     "firebase": "^10.7.1",
     "localforage": "^1.10.0",
     "lodash": "^4.17.21",

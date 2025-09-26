@@ -1,22 +1,10 @@
 import { Helmet } from "react-helmet-async";
 import useBio from "../../../hooks/useBio";
-import {
-  Mail,
-  Phone,
-  User,
-  MapPin,
-  Download,
-  Share2,
-  FileText,
-  Heart,
-  Calendar,
-  Scale,
-  Briefcase,
-  Users,
-} from "lucide-react";
+import { Mail, Phone, User, MapPin, Download, Share2, FileText, Heart, Calendar, Scale, Briefcase, Users, Eye } from "lucide-react";
 import { useState } from "react";
 import MakePremium from "./MakePremium";
 import { calculateAge } from "../../../utils/functions";
+import Nodata from "../../../component/common/Nodata";
 
 const ViewBiodata = () => {
   const {bio = {}} = useBio();
@@ -44,13 +32,16 @@ const ViewBiodata = () => {
     window.print();
   };
 
- 
   const handleShare = () => {
     const url = window.location.href;
     navigator.clipboard.writeText(url);
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 2000);
   };
+
+  if (!bio || !bio._id) {
+    return <Nodata Icon={Eye} />;
+  }
 
   return (
     <>

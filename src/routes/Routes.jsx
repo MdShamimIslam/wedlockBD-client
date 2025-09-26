@@ -10,13 +10,11 @@ import ContactUs from "../pages/ContactUs/ContactUs";
 import PrivateRoute from "./PrivateRoute";
 import BiodataDetails from "../pages/Biodatas/BiodataDetails";
 import AddBiodata from "../pages/User/AddBiodata/AddBiodata";
-import Nodata from "../component/Nodata";
 import AlreadyCreate from "../component/AlreadyCreate";
 import EditBio from "../pages/User/EditBio/EditBio";
 import FavoritesBio from "../pages/User/FavoritesBio/FavoritesBio";
 import MyContactRequest from "../pages/User/MyContactRequest/MyContactRequest";
 import ViewBio from "../pages/User/ViewBio/ViewBio";
-import AdminHome from "../pages/Admin/AdminHome/AdminHome";
 import ApprovedContactRequest from "../pages/Admin/ApprovedContactRequest/ApprovedContactRequest";
 import ApprovedPremium from "../pages/Admin/ApprovedPremium/ApprovedPremium";
 import ManageUsers from "../pages/Admin/ManageUsers/ManageUsers";
@@ -42,10 +40,6 @@ export const router = createBrowserRouter([
         path: "/biodatas",
         element: <Biodatas/>,
         loader: () => fetch("http://localhost:5000/user-stats"),
-      },
-      {
-        path: "/nodata",
-        element: <Nodata/>,
       },
       {
         path: "/alreadyCreate",

@@ -9,6 +9,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useBio from "../../../hooks/useBio";
 import { Edit } from "lucide-react";
+import Nodata from "../../../component/common/Nodata";
 
 const EditBiodata = () => {
   const { user } = useAuth();
@@ -75,15 +76,7 @@ const EditBiodata = () => {
   };
 
   if (!bio || !bio._id) {
-    return (
-      <div className="text-center py-16">
-        <Edit className="h-24 w-24 text-gray-300 mx-auto mb-4" />
-        <h3 className="text-xl md:text-2xl font-semibold text-gray-600">
-          Your biodata is not available.
-        </h3>
-        <p className="text-gray-500 text-sm md:text-base">Please add your biodata to continue.</p>
-      </div>
-    );
+    return <Nodata Icon={Edit} />;
   }
 
   const inputClasses = "border rounded-lg px-3 py-2 w-full focus:ring-2 focus:ring-indigo-500 focus:outline-none";

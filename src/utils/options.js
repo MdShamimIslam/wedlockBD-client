@@ -995,3 +995,19 @@ export const tHeadUserFavorite = [
   },
 ];
 
+export const emptyLineData = [
+  { day: "Mon", views: 0, pv: 0, amt: 0 },
+  { day: "Tue", views: 0, pv: 0, amt: 0 },
+  { day: "Wed", views: 0, pv: 0, amt: 0 },
+  { day: "Thu", views: 0, pv: 0, amt: 0 },
+  { day: "Fri", views: 0, pv: 0, amt: 0 },
+  { day: "Sat", views: 0, pv: 0, amt: 0 },
+  { day: "Sun", views: 0, pv: 0, amt: 0 },
+];
+
+export const emptyPieData = [
+  { name: "Favorites", value: 0 },
+  { name: "Requests", value: 0 },
+  { name: "Matches", value: 0 },
+];
+

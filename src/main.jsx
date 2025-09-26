@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import AuthProvider from "./Provider/AuthProvider/AuthProvider";
@@ -10,8 +10,9 @@ import { router } from "./routes/Routes";
 
 const queryClient = new QueryClient()
 
+// </React.StrictMode>
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  
   <AuthProvider>
       <HelmetProvider>
         <QueryClientProvider client={queryClient}>
@@ -21,5 +22,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       </HelmetProvider>
     </AuthProvider>
   
-  </React.StrictMode>
 );

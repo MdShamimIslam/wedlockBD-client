@@ -1,11 +1,16 @@
 import { Crown, Mail, Phone } from "lucide-react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import useBio from "../../hooks/useBio";
 
 const ContactInfo = ({biodata_id, contact_email, contact_number, requested}) => {
   const axiosSecure = useAxiosSecure();
+  const {bio} = useBio();
 
   const handlePayment = async (biodataId) => {
+    if(!bio?.biodata_id) {
+      return toast.error('Create your biodata before add to contact request');
+    }
     try {
       const res = await axiosSecure.post(`/contact-request/${biodataId}`);
      

@@ -33,9 +33,10 @@ const SignUp = () => {
       });
   
       if (imgRes.data.success) {
+        console.log("image uploaded");
         await createUser(data.email, data.password);
         await updateUserProfile(data.name, imgRes.data.data.url);
-  
+        console.log("user created");
         const userInfo = {
           name: data.name,
           email: data.email,
@@ -50,6 +51,7 @@ const SignUp = () => {
         }
       }
     } catch (error) {
+      console.log("error");
       setErrorMess(error.message);
     }
   };
