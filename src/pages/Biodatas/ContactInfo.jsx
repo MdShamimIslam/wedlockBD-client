@@ -24,11 +24,12 @@ const ContactInfo = ({biodata_id, contact_email, contact_number, requested}) => 
       toast.error(errorMsg);
     }
   };
+
   
   return (
     <div className="p-6 border-t border-gray-200">
     <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-800 mb-6">Contact Information</h2>
-    {requested ? (
+    {(requested || bio?.premium_status) ? (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="flex items-center space-x-3">
           <Phone className="h-5 w-5 text-primary-500" />

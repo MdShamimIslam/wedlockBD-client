@@ -38,8 +38,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/biodatas",
-        element: <Biodatas/>,
-        loader: () => fetch("http://localhost:5000/user-stats"),
+        element: <Biodatas/>
       },
       {
         path: "/alreadyCreate",
@@ -60,8 +59,7 @@ export const router = createBrowserRouter([
             <BiodataDetails/>
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/biodatas/${params.id}`),
+        loader: ({ params }) => fetch(`http://localhost:5000/biodatas/${params.id}`)
       },
       {
         path: "/checkout-success",

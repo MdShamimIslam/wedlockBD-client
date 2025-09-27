@@ -1,6 +1,18 @@
-import { tHeadOfUserContact } from "../../../utils/options";
+import { Calendar, CheckCircle, Hash, Mail, Phone, User } from "lucide-react";
+import useBio from "../../../hooks/useBio";
+
 
 const THead = () => {
+  const {bio} = useBio();
+  const tHeadOfUserContact = [
+    { icon: User, title: "Full Name" },
+    { icon: Hash, title: "Biodata ID" },
+    { icon: Mail, title: "Email" },
+    { icon: Phone, title: "Number" },
+    { icon: Calendar, title: "Request Date" },
+    ...(bio?.premium_status === false ? [{ icon: CheckCircle, title: "Status" }] : [])
+  ];
+
   return (
     <thead className="bg-gray-50 whitespace-nowrap">
           <tr>

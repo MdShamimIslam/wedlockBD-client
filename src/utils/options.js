@@ -4,11 +4,7 @@ import { TbBrandYoutubeFilled } from "react-icons/tb";
 import { FiTwitter } from "react-icons/fi";
 import { SiInstagram } from "react-icons/si";
 import { UserPlus, Search, Heart, MessageCircle,Mail, Phone, MapPin, Clock,  HeadphonesIcon, Users, Globe, Shield, Award, Target, Eye, Lightbulb, 
-  BarChart3, Edit, Crown, CheckCircle, Star, Settings, User, XCircle, 
-  Calendar,
-  Hash,
-  Briefcase,
-  Flag} from 'lucide-react';
+  BarChart3, Edit, Crown, CheckCircle, Star, Settings, User, XCircle, Calendar, Hash, Briefcase, Flag} from 'lucide-react';
 
 import shamim from "../assets/images/shamim.png";
 import fatima from "../assets/images/fatima.jpeg";

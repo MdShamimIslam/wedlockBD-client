@@ -1,4 +1,3 @@
-import React from "react";
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
@@ -14,10 +13,7 @@ const ApprovedPremium = () => {
     const { data: premiumData = [], refetch } = useQuery({
       queryKey: ["premiumData"],
       queryFn: async () => {
-        const res = await axiosSecure.get(
-          `/premium-bio`
-        );
-  
+        const res = await axiosSecure.get(`/premium-bio`);
         return res.data;
       },
     });

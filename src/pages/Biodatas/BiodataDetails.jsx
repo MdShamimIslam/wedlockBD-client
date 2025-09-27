@@ -20,7 +20,6 @@ const BiodataDetails = () => {
   const requested = useCheckContactRequestStatus(biodata?.biodata_id);
   const {bio} = useBio();
 
-
   const {
     biodata_id,
     biodata_type,
@@ -160,7 +159,7 @@ const BiodataDetails = () => {
                     <span>Add to Favorites</span>
                   </button> 
                   
-                 {!requested && <button
+                 {((!requested && !bio?.premium_status) && !requested) && <button
                     onClick={() => handlePayment(biodata_id)}
                     className="flex-1 bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-pink-600 hover:to-blue-600 transition-all duration-300 flex items-center justify-center space-x-2"
                   >
@@ -171,7 +170,7 @@ const BiodataDetails = () => {
                 </div>
               </div>
                 <BasicInfo {...{ race, permanent_division_name, present_division_name, occupation, height, weight, date_of_birth,fathers_name, mothers_name}}/>
-                <ContactInfo {...{ biodata_id, contact_email, contact_number,requested}} />
+                <ContactInfo {...{ biodata_id, contact_email, contact_number,requested, bio}} />
             </div>
           </div>
           {/* similar profiles */}

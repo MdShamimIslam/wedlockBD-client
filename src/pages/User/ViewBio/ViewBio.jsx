@@ -1,14 +1,15 @@
 import { Helmet } from "react-helmet-async";
 import useBio from "../../../hooks/useBio";
-import { Mail, Phone, User, MapPin, Download, Share2, FileText, Heart, Calendar, Scale, Briefcase, Users, Eye } from "lucide-react";
-import { useState } from "react";
-import MakePremium from "./MakePremium";
+import { Mail, Phone, User, MapPin, Download, FileText, Heart, Calendar, Scale, Briefcase, Users, Eye, Crown } from "lucide-react";
 import { calculateAge } from "../../../utils/functions";
 import Nodata from "../../../component/common/Nodata";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
+import Swal from 'sweetalert2'
 
 const ViewBiodata = () => {
   const {bio = {}} = useBio();
-  const [isCopied, setIsCopied] = useState(false);
+  const axiosSecure = useAxiosSecure();
   const {
     biodata_id,
     biodata_type,
@@ -25,18 +26,47 @@ const ViewBiodata = () => {
     profile_image,
     race,
     weight,
+    premium_status
   } = bio || {};
 
-  
   const handlePrint = () => {
     window.print();
   };
 
-  const handleShare = () => {
-    const url = window.location.href;
-    navigator.clipboard.writeText(url);
-    setIsCopied(true);
-    setTimeout(() => setIsCopied(false), 2000);
+  const handleMakePremium = async () => {
+    const result = await Swal.fire({
+      title: "Make Profile Premium?",
+      text: "Upgrading to premium will give you access to exclusive features. Do you want to continue?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, upgrade me!",
+      cancelButtonText: "Cancel",
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      showClass: {
+        popup: `animate__animated animate__fadeInUp animate__faster`,
+      },
+      hideClass: {
+        popup: `animate__animated animate__fadeOutDown animate__faster`,
+      },
+    });
+  
+    if (result.isConfirmed) {
+      try {
+        const res = await axiosSecure.patch(`/payments/make-premium/${biodata_id}`);
+  
+        if (!res?.data?.session?.url) {
+          throw new Error("Payment URL not found!");
+        }
+  
+        window.location.href = res.data.session.url;
+      } catch (err) {
+        const errorMsg = err.response?.data?.message || err.message || "Payment failed!";
+        toast.error(errorMsg);
+      }
+    } else {
+      toast.info("Payment process cancelled.");
+    }
   };
 
   if (!bio || !bio._id) {
@@ -94,20 +124,20 @@ const ViewBiodata = () => {
             </div>
 
             {/* actions */}
-            <div className="flex gap-4 mt-4 md:mt-0">
-              <button
-                onClick={handlePrint}
+            <div className="flex md:flex-row flex-col gap-4 mt-4 md:mt-0">
+            {!premium_status && <button
+                onClick={handleMakePremium}
                 className="bg-gradient-to-r from-[#810284] to-[#131729] px-5 py-3 rounded-xl flex items-center gap-2 
                 font-medium shadow-lg transition-all hover:scale-105 hover:shadow-2xl"
               >
-                <Download className="w-5 h-5" /> Download
-              </button>
+               <Crown className="w-5 h-5" /> Make Premium 
+              </button> }  
               <button
-                onClick={handleShare}
+                onClick={handlePrint}
                 className="bg-gradient-to-r from-[#131729] to-[#810284] px-5 py-3 rounded-xl flex items-center gap-2 
                 font-medium shadow-lg transition-all hover:scale-105 hover:shadow-2xl"
               >
-                <Share2 className="w-5 h-5" /> {isCopied ? "Copied!" : "Share"}
+                 <Download className="w-5 h-5" /> Download
               </button>
             </div>
           </div>
@@ -176,7 +206,6 @@ const ViewBiodata = () => {
            
           </div>
         </div>
-        <MakePremium/>
       </div>
 
       {/* hide buttons in print */}

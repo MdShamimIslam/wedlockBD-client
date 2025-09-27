@@ -1,12 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
-import useAxiosSecure from './useAxiosSecure';
+import useAxiosPublic from './useAxiosPublic';
 
 const useSuccessStory = () => {
-    const axiosSecure = useAxiosSecure();
+    const axiosPublic = useAxiosPublic();
+    
     const { data: stories=[] } = useQuery({
         queryKey: ["successStories"],
         queryFn: async () => {
-            const res = await axiosSecure.get('/success-stories');
+            const res = await axiosPublic.get('/success-stories');
             return res.data;
         },
       });
