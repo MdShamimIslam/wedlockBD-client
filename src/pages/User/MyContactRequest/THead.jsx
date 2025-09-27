@@ -4,6 +4,7 @@ import useBio from "../../../hooks/useBio";
 
 const THead = () => {
   const {bio} = useBio();
+  
   const tHeadOfUserContact = [
     { icon: User, title: "Full Name" },
     { icon: Hash, title: "Biodata ID" },

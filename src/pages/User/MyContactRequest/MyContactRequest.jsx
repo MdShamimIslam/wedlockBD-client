@@ -3,15 +3,15 @@ import useAuth from "../../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import THead from "./THead";
 import TRow from "./TRow";
-import TPagination from "./TPagination";
 import EmptyState from "../../../component/EmptyState";
 import { Mail } from "lucide-react";
-
+import TPagination from "../../../component/common/TPagination";
+import usePagination from "../../../hooks/usePagination";
 
 const MyContactRequest = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-
+  
   const { data: requestData = [] } = useQuery({
     queryKey: ["requestBiodata", user?.email],
     queryFn: async () => {
@@ -20,7 +20,7 @@ const MyContactRequest = () => {
     }
   });
 
-  console.log(requestData);
+  const { currentData, currentPage, setCurrentPage, rowsPerPage, setRowsPerPage, totalPages, totalEntries } = usePagination(requestData, 10);
 
   if (requestData?.length === 0) {
     return (
@@ -40,11 +40,11 @@ const MyContactRequest = () => {
         <table className="bg-white min-w-full">
             <THead/>
             <tbody className="whitespace-nowrap divide-y divide-gray-200">
-            { requestData?.map((request) => <TRow key={request._id} request={request} /> )}
+            { currentData?.map((request) => <TRow key={request._id} request={request} /> )}
             </tbody>
         </table>
       </div>
-      <TPagination/>
+      <TPagination {...{currentPage, totalPages, totalEntries, rowsPerPage, setCurrentPage, setRowsPerPage}} />
     </div>
   )
 }

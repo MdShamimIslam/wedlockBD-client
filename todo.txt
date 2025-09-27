@@ -7,3 +7,4 @@
 9. Payment integration a webhook er kaj korte hobe karon pay korar agey pay hosse akhon.
 11. main.jsx er moddhe react strictmode add korte hobe
 14. Favorite table take pagination korte hobe
+15. index.html a chat app chalu korte hobe and emailjs ta remove kore js er moddhe initilize korte hobe

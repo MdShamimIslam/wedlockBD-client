@@ -5,13 +5,14 @@ import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import THead from "./THead";
 import TRow from "./TRow";
-import TPagination from "./TPagination";
 import EmptyState from "../../../component/EmptyState";
 import { Heart } from "lucide-react";
+import TPagination from "../../../component/common/TPagination";
+import usePagination from "../../../hooks/usePagination";
 
 const FavoritesBio = () => {
   const axiosSecure = useAxiosSecure();
-  const { user, loading } = useAuth();
+  const { user } = useAuth();
 
   const { data: favorites = [], refetch } = useQuery({
     queryKey: ["favoritesBiodata", user?.email],
@@ -22,13 +23,8 @@ const FavoritesBio = () => {
     },
   });
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center my-80">
-        <div className="w-10 h-10 animate-[spin_1s_linear_infinite] rounded-full border-double border-4 border-r-0 border-l-0 border-b-sky-400 border-t-sky-700"></div>
-      </div>
-    );
-  }
+  const { currentData, currentPage, setCurrentPage, rowsPerPage, setRowsPerPage, totalPages, totalEntries } = usePagination(favorites, 10);
+
 
   if (favorites?.length === 0) {
     return (
@@ -78,11 +74,11 @@ const FavoritesBio = () => {
         <table className="bg-white min-w-full">
             <THead/>
             <tbody className="whitespace-nowrap divide-y divide-gray-200">
-            { favorites?.map((favorite) => <TRow key={favorite._id} {...{favorite,handleDeleteFavoriteBio}} /> )}
+            { currentData?.map((favorite) => <TRow key={favorite._id} {...{favorite,handleDeleteFavoriteBio}} /> )}
             </tbody>
         </table>
       </div>
-      <TPagination/>
+      <TPagination {...{currentPage, totalPages, totalEntries, rowsPerPage, setCurrentPage, setRowsPerPage}} />
     </div>
     </div>
   );
