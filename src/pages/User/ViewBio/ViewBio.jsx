@@ -36,7 +36,7 @@ const ViewBiodata = () => {
   const handleMakePremium = async () => {
     const result = await Swal.fire({
       title: "Make Profile Premium?",
-      text: "Upgrading to premium will give you access to exclusive features. Do you want to continue?",
+      text: "Upgrading to premium costs $10 and will give you access to exclusive features. Do you want to continue?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Yes, upgrade me!",
@@ -51,22 +51,21 @@ const ViewBiodata = () => {
       },
     });
   
-    if (result.isConfirmed) {
-      try {
-        const res = await axiosSecure.patch(`/payments/make-premium/${biodata_id}`);
-  
-        if (!res?.data?.session?.url) {
-          throw new Error("Payment URL not found!");
-        }
-  
-        window.location.href = res.data.session.url;
-      } catch (err) {
-        const errorMsg = err.response?.data?.message || err.message || "Payment failed!";
-        toast.error(errorMsg);
+    if (!result.isConfirmed) return; 
+
+    try {
+      const res = await axiosSecure.patch(`/payments/make-premium/${biodata_id}`);
+
+      if (!res?.data?.session?.url) {
+        throw new Error("Payment URL not found!");
       }
-    } else {
-      toast.info("Payment process cancelled.");
+
+      window.location.href = res.data.session.url;
+    } catch (err) {
+      const errorMsg = err.response?.data?.message || err.message || "Payment failed!";
+      toast.error(errorMsg);
     }
+    
   };
 
   if (!bio || !bio._id) {

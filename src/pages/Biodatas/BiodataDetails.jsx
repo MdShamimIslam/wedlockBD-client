@@ -11,6 +11,7 @@ import ContactInfo from './ContactInfo';
 import BasicInfo from './BasicInfo';
 import useCheckContactRequestStatus from '../../hooks/useCheckContactRequestStatus';
 import useBio from '../../hooks/useBio';
+import Swal from "sweetalert2";
 
 const BiodataDetails = () => {
   const { user } = useAuth();
@@ -95,6 +96,22 @@ const BiodataDetails = () => {
       return toast.error('You cannot add your own biodata to contact request');
     }
 
+    const result = await Swal.fire({
+      title: "Send Contact Request?",
+      html: `
+        <p>To send a contact request, you need to pay:</p>
+        <p class="mt-2 text-lg font-semibold text-blue-600">💲 Amount: $1</p>
+      `,
+      icon: "info",
+      showCancelButton: true,
+      confirmButtonText: "Yes, proceed to pay!",
+      cancelButtonText: "Cancel",
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+    });
+
+    if (!result.isConfirmed) return; 
+
     try {
       const res = await axiosSecure.post(`/contact-request/${biodataId}`);
      
@@ -108,7 +125,6 @@ const BiodataDetails = () => {
       toast.error(errorMsg);
     }
   };
-
 
   return (
     <>

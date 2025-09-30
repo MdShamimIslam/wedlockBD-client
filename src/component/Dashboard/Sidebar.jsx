@@ -4,12 +4,13 @@ import logoImg from "../../assets/logo/wedlock.png";
 import { adminSidebarItems, userSidebarItems } from "../../utils/options";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import useAdmin from "../../hooks/useAdmin";
 
 const Sidebar = ({sidebarOpen}) => {
-    const { user, logOut } = useAuth();
-    const isAdmin = user?.role === "admin";
+    const { logOut } = useAuth();
+    const [isAdmin] = useAdmin();
     const navigate = useNavigate();
-
+    
     const sidebarItems = isAdmin ? adminSidebarItems : userSidebarItems;
 
     const handleLogOut = () => {
@@ -21,13 +22,13 @@ const Sidebar = ({sidebarOpen}) => {
           .catch((err) => toast.error(err.message));
     };
 
+
     return (
         <div
-            className={`fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transform 
-            ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} 
+            className={`fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-md transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} 
             transition-transform duration-300 lg:translate-x-0 lg:static lg:inset-0`}
         >
-            <div className="p-6">
+            <div className="p-6 ">
                 <Link to="/" className="flex items-center">
                     <img
                         className="ml-[-10px] lg:ml-[-15px]"
@@ -73,7 +74,7 @@ const Sidebar = ({sidebarOpen}) => {
                     </button>
                 </div>
             </div>
-    </div>
+        </div>
     )
 }
 

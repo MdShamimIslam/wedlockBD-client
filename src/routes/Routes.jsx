@@ -24,7 +24,8 @@ import SuccessMarried from "../pages/Admin/SuccessMarried/SuccessMarried";
 import AdminRoute from "./AdminRoute";
 import CheckoutSuccess from "../pages/CheckoutSuccess/CheckoutSuccess";
 import DashboardLayout from "../Layout/DashboardLayout";
-import AdminOverview from "../pages/Admin/AdminOverview";
+import AdminOverview from "../pages/Admin/AdminOverview/AdminOverview";
+import Settings from "../pages/Admin/Settings/Settings";
 
 export const router = createBrowserRouter([
   {
@@ -82,7 +83,7 @@ export const router = createBrowserRouter([
     element: <SignUp/>,
   },
 
-  // old dashboard route
+  // dashboard route
   {
     path: "/dashboard",
     element: (
@@ -130,6 +131,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AdminOverview/>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "settings",
+        element: (
+          <AdminRoute>
+            <Settings/>
           </AdminRoute>
         ),
       },

@@ -930,7 +930,6 @@ export const countries = [
 export const adminSidebarItems = [
   { path: "/dashboard/admin-overview", label: "Overview", icon: BarChart3 },
   { path: "/dashboard/manage-users", label: "Manage Users", icon: Users },
-  { path: "/dashboard/approved-premium", label: "Approved Pro", icon: Crown },
   { path: "/dashboard/approved-contact", label: "Contact Request", icon: CheckCircle },
   { path: "/dashboard/success-stories", label: "Success Stories", icon: Star },
   { path: "/dashboard/settings", label: "Settings", icon: Settings },
