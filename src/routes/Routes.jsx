@@ -26,6 +26,13 @@ import CheckoutSuccess from "../pages/CheckoutSuccess/CheckoutSuccess";
 import DashboardLayout from "../Layout/DashboardLayout";
 import AdminOverview from "../pages/Admin/AdminOverview/AdminOverview";
 import Settings from "../pages/Admin/Settings/Settings";
+import GeneralSettings from "../pages/Admin/Settings/GeneralSettings";
+import UserManagement from "../pages/Admin/Settings/UserManagement";
+import SecuritySettings from "../pages/Admin/Settings/SecuritySettings";
+import PaymentSettings from "../pages/Admin/Settings/PaymentSettings";
+import NotificationSettings from "../pages/Admin/Settings/NotificationSettings";
+import AppearanceSettings from "../pages/Admin/Settings/AppearanceSettings";
+import AdvancedSettings from "../pages/Admin/Settings/AdvancedSettings";
 
 export const router = createBrowserRouter([
   {
@@ -141,6 +148,15 @@ export const router = createBrowserRouter([
             <Settings/>
           </AdminRoute>
         ),
+        children: [
+          { path: "general", element: <GeneralSettings /> },
+          { path: "users", element: <UserManagement /> },
+          { path: "security", element: <SecuritySettings /> },
+          { path: "payments", element: <PaymentSettings /> },
+          { path: "notifications", element: <NotificationSettings /> },
+          { path: "appearance", element: <AppearanceSettings /> },
+          { path: "advanced", element: <AdvancedSettings /> },
+        ],
       },
       {
         path: "approved-contact-request",

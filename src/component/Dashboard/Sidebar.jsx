@@ -45,6 +45,40 @@ const Sidebar = ({sidebarOpen}) => {
                 <nav className="space-y-2 mt-6">
                     {sidebarItems.map((item) => {
                     const IconComponent = item.icon;
+
+                    // if any children then create a submenu
+                    if (item.children) {
+                        return (
+                          <div key={item.label} className="space-y-1">
+                            <div className="flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-700 font-semibold">
+                              <IconComponent className="h-5 w-5" />
+                              <span>{item.label}</span>
+                            </div>
+                            <div className="ml-8 space-y-1">
+                              {item.children.map((child) => {
+                                const ChildIcon = child.icon;
+                                return (
+                                  <NavLink
+                                    key={child.path}
+                                    to={child.path}
+                                    className={({ isActive }) =>
+                                      `flex items-center space-x-2 px-3 py-2 rounded-lg text-sm transition-all ${
+                                        isActive
+                                          ? "bg-gradient-to-r from-[#7a2f7b] to-[#455aa5] text-white"
+                                          : "text-gray-600 hover:bg-gray-100"
+                                      }`
+                                    }
+                                  >
+                                    <ChildIcon className="h-4 w-4" />
+                                    <span>{child.label}</span>
+                                  </NavLink>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        );
+                      }
+
                     return (
                         <NavLink
                             key={item.path}
@@ -62,6 +96,7 @@ const Sidebar = ({sidebarOpen}) => {
                         </NavLink>
                     );
                     })}
+
                 </nav>
                 {/* Logout */}
                 <div className="mt-8 pt-8 border-t border-gray-200">

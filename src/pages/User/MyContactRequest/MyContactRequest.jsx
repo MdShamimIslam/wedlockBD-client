@@ -7,6 +7,7 @@ import EmptyState from "../../../component/EmptyState";
 import { Mail } from "lucide-react";
 import TPagination from "../../../component/common/TPagination";
 import usePagination from "../../../hooks/usePagination";
+import { Helmet } from "react-helmet-async";
 
 const MyContactRequest = () => {
   const axiosSecure = useAxiosSecure();
@@ -35,17 +36,24 @@ const MyContactRequest = () => {
   }
 
   return (
-    <div className="overflow-hidden w-full lg:max-w-[1400px] mx-auto mt-8 ">
-      <div className="overflow-x-auto">
-        <table className="bg-white min-w-full">
-            <THead/>
-            <tbody className="whitespace-nowrap divide-y divide-gray-200">
-            { currentData?.map((request) => <TRow key={request._id} request={request} /> )}
-            </tbody>
-        </table>
-      </div>
-      <TPagination {...{currentPage, totalPages, totalEntries, rowsPerPage, setCurrentPage, setRowsPerPage}} />
+    <>
+    <Helmet>
+        <title>My Contact Request | WedlockBD</title>
+    </Helmet>
+
+    <div className="overflow-hidden w-full lg:max-w-[1500px] mx-auto mt-4">
+        <div className="overflow-x-auto">
+          <table className="bg-white min-w-full">
+              <THead/>
+              <tbody className="whitespace-nowrap divide-y divide-gray-200">
+              { currentData?.map((request) => <TRow key={request._id} request={request} /> )}
+              </tbody>
+          </table>
+        </div>
+        <TPagination {...{currentPage, totalPages, totalEntries, rowsPerPage, setCurrentPage, setRowsPerPage}} />
     </div>
+    </>
+   
   )
 }
 

@@ -69,7 +69,7 @@ const FavoritesBio = () => {
        <Helmet>
         <title> Favorites Biodata | WedlockBD</title>
       </Helmet>
-      <div className="overflow-hidden w-full lg:max-w-[1400px] mx-auto mt-8 ">
+      <div className="overflow-hidden w-full lg:max-w-[1500px] mx-auto mt-4">
       <div className="overflow-x-auto">
         <table className="bg-white min-w-full">
             <THead/>

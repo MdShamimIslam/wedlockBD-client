@@ -58,11 +58,11 @@ const GotMarried = () => {
   const labelClasses = "block text-sm font-medium text-gray-700 mb-1";
 
   return (
-    <div className="mt-8 p-4 lg:p-0">
+    <div className="mt-4 p-4 lg:p-0 lg:max-w-[1500px] mx-auto">
       <Helmet>
         <title>Got Married | WedlockBD</title>
       </Helmet>
-      <div className="max-w-7xl mx-auto bg-gradient-to-br from-gray-50 to-white p-8 md:p-12 rounded-2xl border border-gray-200 hover:border-blue-200 transition-all duration-300">
+      <div className="bg-gradient-to-br from-gray-50 to-white p-8 md:p-12 rounded-2xl border border-gray-200 hover:border-blue-200 transition-all duration-300">
         <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-center text-gray-800 mb-8">Share Your Success Story</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -75,8 +75,8 @@ const GotMarried = () => {
               <input {...register("partnerNumber")} type="number" required placeholder="Enter partner number" className={inputClasses} />
             </div>
             <div>
-              <label className={labelClasses}>Ratings</label>
-              <input {...register("ratings")} required type="number" min="1" max="5" placeholder="1-5" className={inputClasses} />
+              <label className={labelClasses}>Ratings</label> 
+              <input {...register("ratings")} required type="number"  min="1" max="5" placeholder="1-5" className={inputClasses} />
             </div>
           </div>
 

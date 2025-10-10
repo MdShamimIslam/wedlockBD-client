@@ -30,9 +30,9 @@ const OverView = () => {
   return (
     <>
       <Helmet>
-        <title>User Dashboard | WedlockBD</title>
+        <title>Overview | WedlockBD</title>
       </Helmet>
-      <div className="space-y-10 w-full lg:max-w-7xl mx-auto mt-8">
+      <div className="space-y-8 w-full lg:max-w-[1500px] mx-auto mt-4">
         <Welcome/>
         <QuickStats {...{stats}} />
         <Analytics {...{pieData}} />

@@ -75,10 +75,10 @@ const ViewBiodata = () => {
   return (
     <>
       <Helmet>
-        <title>My Biodata | WedlockBD</title>
+        <title>View Biodata | WedlockBD</title>
       </Helmet>
 
-      <div className="space-y-10 w-full lg:max-w-7xl mx-auto mt-8">
+      <div className="space-y-8 w-full lg:max-w-[1500px] mx-auto mt-4">
         {/* Header */}
         <div className="relative bg-gradient-to-r from-[#5b285c] to-[#131729] rounded-3xl p-8 md:p-10 text-white shadow-2xl overflow-hidden border border-purple-200">
           {/* gradient overlays */}

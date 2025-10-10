@@ -11,7 +11,7 @@ const THead = () => {
               >
                 <div className="flex items-center">
                   <item.icon className={`w-4 h-4 md:w-5 md:h-5 ${item.color}`} />
-                  <span className="ml-2">{item.title}</span>
+                  <span className="ml-2 font-bold">{item.title}</span>
                 </div>
               </th>
             ))}

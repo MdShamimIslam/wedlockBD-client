@@ -4,7 +4,13 @@ import { TbBrandYoutubeFilled } from "react-icons/tb";
 import { FiTwitter } from "react-icons/fi";
 import { SiInstagram } from "react-icons/si";
 import { UserPlus, Search, Heart, MessageCircle,Mail, Phone, MapPin, Clock,  HeadphonesIcon, Users, Globe, Shield, Award, Target, Eye, Lightbulb, 
-  BarChart3, Edit, Crown, CheckCircle, Star, Settings, User, XCircle, Calendar, Hash, Briefcase, Flag} from 'lucide-react';
+  BarChart3, Edit, Crown, CheckCircle, Star, Settings, User, XCircle, Calendar, Hash, Briefcase, Flag,
+  UserCog,
+  CreditCard,
+  Bell,
+  Palette,
+  Database,
+  Sliders} from 'lucide-react';
 
 import shamim from "../assets/images/shamim.png";
 import fatima from "../assets/images/fatima.jpeg";
@@ -932,7 +938,18 @@ export const adminSidebarItems = [
   { path: "/dashboard/manage-users", label: "Manage Users", icon: Users },
   { path: "/dashboard/approved-contact", label: "Contact Request", icon: CheckCircle },
   { path: "/dashboard/success-stories", label: "Success Stories", icon: Star },
-  { path: "/dashboard/settings", label: "Settings", icon: Settings },
+  { children: [
+      { path: "/dashboard/settings/general", label: "General", icon: Sliders },
+      { path: "/dashboard/settings/users", label: "User Management", icon: UserCog },
+      { path: "/dashboard/settings/security", label: "Security", icon: Shield },
+      { path: "/dashboard/settings/payments", label: "Payments", icon: CreditCard },
+      { path: "/dashboard/settings/notifications", label: "Notifications", icon: Bell },
+      { path: "/dashboard/settings/appearance", label: "Appearance", icon: Palette },
+      { path: "/dashboard/settings/advanced", label: "Advanced", icon: Database },
+    ],
+    label: "Settings",
+    icon: Settings,
+  },
 ];
 
 // contact request table
