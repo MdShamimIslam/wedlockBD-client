@@ -1,11 +1,11 @@
 1. Footer: link gulor right route dite hobe and subscribe er functionality add korte hobe 
-2. SuccessStory : minimum 1 ta success story add korte hobe
-3. SuccessStory te jei jei user er data thakbe taderke ar kew Favorite ba contact request korte parbe na..sei button duitar jaygay onno text dekhabe
+2. normal user jokhon tar biodata ke make premimum korbe tokhon direct premium hobe na admin ke approve korte hobe tarpor premimum hobe
+3. SuccessStory te jei jei user er data thakbe tader ke ar kew Favorite ba contact request korte parbe na..sei button duitar jaygay onno text dekhabe
 4. Contact us er moddhe real feedback data add korte hobe and site jekono akta vlo page a feedback dewar section banaite hobe
-5. email verification, forget & reset passward,
+5. email verification, forget & reset passward implement korte hobe,
 6. pagination er page jeno reload dilew dhore thake
 7. Payment integration a webhook er kaj korte hobe karon pay korar agey pay hosse akhon.
 8. main.jsx er moddhe react strictmode add korte hobe
-9. Favorite table take pagination korte hobe
+9. Folder er name component dewa ache er sathe s add kore components likhte hobe
 10. index.html a chat app chalu korte hobe and emailjs ta remove kore js er moddhe initilize korte hobe
 11. social login korar somoy jeno website er name dekhay seta korte hobe

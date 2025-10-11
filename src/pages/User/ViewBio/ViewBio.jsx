@@ -54,7 +54,7 @@ const ViewBiodata = () => {
     if (!result.isConfirmed) return; 
 
     try {
-      const res = await axiosSecure.patch(`/payments/make-premium/${biodata_id}`);
+      const res = await axiosSecure.post(`/premium-bio/make-premium/${biodata_id}`);
 
       if (!res?.data?.session?.url) {
         throw new Error("Payment URL not found!");

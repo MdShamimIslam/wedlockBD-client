@@ -1,46 +1,79 @@
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import useAuth from "../../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
-import ApprovedPremiumTable from "./ApprovedPremiumTable";
-import Swal from "sweetalert2";
+import TableHead from "../../../component/common/TableHead";
+import { tHeadAdminApprovedPremium } from "../../../utils/options";
+import EmptyState from "../../../component/EmptyState";
+import { Crown } from "lucide-react";
+import TPagination from "../../../component/common/TPagination";
+import usePagination from "../../../hooks/usePagination";
+import TRow from "./TRow";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const ApprovedPremium = () => {
     const axiosSecure = useAxiosSecure();
-    const { loading } = useAuth();
-    // get premium biodatas by user email
-    const { data: premiumData = [], refetch } = useQuery({
-      queryKey: ["premiumData"],
+
+    const { data: premiumCollectionData = [], refetch } = useQuery({
+      queryKey: ["premium-collection-data"],
       queryFn: async () => {
         const res = await axiosSecure.get(`/premium-bio`);
         return res.data;
       },
     });
+
+    const { currentData, currentPage, setCurrentPage, rowsPerPage, setRowsPerPage, totalPages, totalEntries } = usePagination(premiumCollectionData, 10);
   
-    if (loading) {
+    if (premiumCollectionData?.length === 0) {
       return (
-        <div className="flex justify-center items-center my-80">
-          <div className="w-10 h-10 animate-[spin_1s_linear_infinite] rounded-full border-double border-4 border-r-0 border-l-0 border-b-sky-400 border-t-sky-700"></div>
-        </div>
+        <EmptyState
+        icon={Crown}
+        title="No Premium Requests Yet"
+        description="No users have requested for premium biodata upgrade. Once someone sends a request, it will appear here for your review."
+        linkText="Go to Dashboard Overview"
+        path="/dashboard/admin-overview"
+      />
       );
     }
+   
+    const handlePremiumInfoEdit = async (biodataId) => {
+      try {
+        const result = await Swal.fire({
+          title: "Do you want to make this profile Premium?",
+          icon: "question",
+          showCancelButton: true,
+          confirmButtonText: "Yes, make premium",
+          cancelButtonText: "Cancel",
+          confirmButtonColor: "#2563eb", 
+          cancelButtonColor: "#6b7280",
+        });
+    
+        if (!result.isConfirmed) return;
 
-     // make premium to user bio
-     const handleMakePremium =(email)=>{
-        axiosSecure.patch(`/biodatas/premium/${email}`)
-        .then(res=>{
-            console.log(res.data);
-            if(res.data.result3.modifiedCount > 0){
-                refetch();
-                toast.success('Premium approved now!!')
-            }
-        })
-    }
-
-//   request bio delete
-const handlePremiumInfoDelete =(_id,name)=>{
-    Swal.fire({
+        const res = await axiosSecure.patch(`/premium-bio/${biodataId}`);
+    
+        if (res.data?.success) {
+          refetch();
+          toast.success(res.data?.message || "Premium approved successfully!");
+        } 
+        else if (res.data?.modifiedCount > 0 || res.data?.result3?.modifiedCount > 0) {
+          refetch();
+          toast.success("Premium approved successfully!");
+        } 
+        else if (res.data?.message) {
+          toast.warning(res.data.message);
+        } 
+        else {
+          toast.error("No changes were made. Try again!");
+        }
+      } 
+      catch (error) {
+        toast.error(error.response?.data?.error || "Something went wrong while updating premium status!");
+      }
+    };
+    
+    const handlePremiumInfoDelete = (_id,name) => {
+      Swal.fire({
         title: "Are you sure?",
         text: `You want to delete ${name}`,
         icon: "warning",
@@ -60,73 +93,27 @@ const handlePremiumInfoDelete =(_id,name)=>{
               });
             }
           });
-       
+      
         }
       });
-}
+    }
 
   return (
     <div>
       <Helmet>
         <title> Approved Premium | WedlockBD</title>
       </Helmet>
-      <div className='container mx-auto px-4 sm:px-8'>
-        <div className='py-8'>
-          <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
-            <div className='inline-block min-w-full shadow rounded-lg overflow-hidden'>
-              <table className='min-w-full leading-normal'>
-                <thead>
-                  <tr>
-                    <th
-                      scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
-                    >
-                    Name
-                    </th>
-                    <th
-                      scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
-                    >
-                      Biodata Id
-
-                    </th>
-                    <th
-                      scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
-                    >
-                     Contact Email
-                    </th>
-                    
-                    <th
-                      scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
-                    >
-                       Make Premium
-                    </th>
-                    <th
-                      scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
-                    >
-                      Delete
-                    </th>
-                   
-                  </tr>
-                </thead>
-                <tbody>
-                {premiumData?.map((premium) => (
-                  <ApprovedPremiumTable
-                    key={premium._id}
-                    premium={premium}
-                    handleMakePremium={handleMakePremium}
-                    handlePremiumInfoDelete={handlePremiumInfoDelete}
-                  ></ApprovedPremiumTable>
-                ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+      <div className="overflow-hidden w-full lg:max-w-[1500px] mx-auto mt-4">
+        <div className="overflow-x-auto">
+          <table className="bg-white min-w-full">
+              <TableHead headOptions={tHeadAdminApprovedPremium} />
+              <tbody className="whitespace-nowrap divide-y divide-gray-200">
+              { currentData?.map((premiumInfo) => <TRow key={premiumInfo._id} {...{premiumInfo, handlePremiumInfoEdit, handlePremiumInfoDelete}} /> )}
+              </tbody>
+          </table>
         </div>
-      </div>
+        <TPagination {...{currentPage, totalPages, totalEntries, rowsPerPage, setCurrentPage, setRowsPerPage}} />
+    </div>
     </div>
   );
 };

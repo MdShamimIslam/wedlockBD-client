@@ -13,8 +13,8 @@ const AdminOverview = () => {
     <>
     <Helmet>
         <title>Admin Dashboard | WedlockBD</title>
-      </Helmet>
-      <div className="space-y-8 w-full lg:max-w-[1500px] mx-auto mt-4">
+    </Helmet>
+    <div className="space-y-8 w-full lg:max-w-[1500px] mx-auto mt-4">
       <Welcome/>
       <EnhancedStats/>
       <AdditionalStats/>

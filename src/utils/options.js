@@ -937,6 +937,7 @@ export const adminSidebarItems = [
   { path: "/dashboard/admin-overview", label: "Overview", icon: BarChart3 },
   { path: "/dashboard/manage-users", label: "Manage Users", icon: Users },
   { path: "/dashboard/approved-contact", label: "Contact Request", icon: CheckCircle },
+  { path: "/dashboard/approved-premium", label: "Approved Premium", icon: Crown },
   { path: "/dashboard/success-stories", label: "Success Stories", icon: Star },
   { children: [
       { path: "/dashboard/settings/general", label: "General", icon: Sliders },
@@ -980,6 +981,7 @@ export const tHeadOfUserContact = [
   },
 ];
 
+// favorite table
 export const tHeadUserFavorite = [
   {
     icon: User,
@@ -1006,6 +1008,36 @@ export const tHeadUserFavorite = [
     title: "Action",
   },
 ];
+
+// approved premium table
+export const tHeadAdminApprovedPremium = [
+  {
+    icon: User,
+    title: "Full Name",
+  },
+  {
+    icon: Mail,
+    title: "Email",
+  },
+  {
+    icon: Hash,
+    title: "Biodata ID",
+  },
+  {
+    icon: Calendar,
+    title: "Payment Date",
+  },
+  {
+    icon: CheckCircle,
+    title: "Status",
+  },
+  {
+    icon: XCircle,
+    title: "Action",
+  }
+  
+
+]
 
 export const emptyLineData = [
   { day: "Mon", views: 0, pv: 0, amt: 0 },

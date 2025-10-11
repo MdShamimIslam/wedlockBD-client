@@ -29,7 +29,7 @@ const THead = () => {
               </th>
             ))}
           </tr>
-        </thead>
+    </thead>
   )
 }
 
