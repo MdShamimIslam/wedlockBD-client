@@ -3,12 +3,13 @@ import useAuth from "../../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
-import THead from "./THead";
 import TRow from "./TRow";
 import EmptyState from "../../../component/EmptyState";
 import { Heart } from "lucide-react";
 import TPagination from "../../../component/common/TPagination";
 import usePagination from "../../../hooks/usePagination";
+import TableHead from "../../../component/common/TableHead";
+import { tHeadUserFavorite } from "../../../utils/options";
 
 const FavoritesBio = () => {
   const axiosSecure = useAxiosSecure();
@@ -72,7 +73,7 @@ const FavoritesBio = () => {
       <div className="overflow-hidden w-full lg:max-w-[1500px] mx-auto mt-4">
       <div className="overflow-x-auto">
         <table className="bg-white min-w-full">
-            <THead/>
+            <TableHead headOptions={tHeadUserFavorite} />
             <tbody className="whitespace-nowrap divide-y divide-gray-200">
             { currentData?.map((favorite) => <TRow key={favorite._id} {...{favorite,handleDeleteFavoriteBio}} /> )}
             </tbody>

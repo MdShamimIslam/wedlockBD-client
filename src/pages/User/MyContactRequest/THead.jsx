@@ -1,4 +1,4 @@
-import { Calendar, CheckCircle, Hash, Mail, Phone, User } from "lucide-react";
+import { Calendar, CheckCircle, Hash, Mail, Phone, User, UserCircle } from "lucide-react";
 import useBio from "../../../hooks/useBio";
 
 
@@ -6,6 +6,7 @@ const THead = () => {
   const {bio} = useBio();
   
   const tHeadOfUserContact = [
+    { icon: UserCircle, title: "Image" },
     { icon: User, title: "Full Name" },
     { icon: Hash, title: "Biodata ID" },
     { icon: Mail, title: "Email" },

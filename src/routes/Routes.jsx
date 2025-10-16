@@ -159,7 +159,7 @@ export const router = createBrowserRouter([
         ],
       },
       {
-        path: "approved-contact-request",
+        path: "approved-contact",
         element: (
           <AdminRoute>
             <ApprovedContactRequest/>
@@ -183,7 +183,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "success-married",
+        path: "success-stories",
         element: (
           <AdminRoute>
             <SuccessMarried/>

@@ -23,17 +23,17 @@ const ManageUsers = () => {
 
   const { currentData, currentPage, setCurrentPage, rowsPerPage, setRowsPerPage, totalPages, totalEntries } = usePagination(users, 10);
   
- if (users?.length === 0) {
-  return (
-    <EmptyState
-      icon={Users}
-      title="No Users Found"
-      description="No users available to manage right now."
-      linkText="Go to Dashboard Overview"
-      path="/dashboard/admin-overview"
-    />
-  );
-}
+  if (users?.length === 0) {
+    return (
+      <EmptyState
+        icon={Users}
+        title="No Users Found"
+        description="No users available to manage right now."
+        linkText="Go to Dashboard Overview"
+        path="/dashboard/admin-overview"
+      />
+    );
+  }
 
   
   
@@ -128,7 +128,7 @@ const ManageUsers = () => {
           </table>
         </div>
         <TPagination {...{currentPage, totalPages, totalEntries, rowsPerPage, setCurrentPage, setRowsPerPage}} />
-    </div>
+      </div>
     </div>
   );
 };

@@ -12,7 +12,10 @@ import { UserPlus, Search, Heart, MessageCircle,Mail, Phone, MapPin, Clock,  Hea
   Database,
   Sliders,
   ShieldCheck,
-  UserCircle} from 'lucide-react';
+  UserCircle,
+  UserCircle2,
+  HeartHandshake,
+  CalendarCheck} from 'lucide-react';
 
 import shamim from "../assets/images/shamim.png";
 import fatima from "../assets/images/fatima.jpeg";
@@ -957,36 +960,12 @@ export const adminSidebarItems = [
   },
 ];
 
-// contact request table
-export const tHeadOfUserContact = [
-  {
-    icon: User,
-    title: "Full Name",
-  },
-  {
-    icon: Mail,
-    title: "Email",
-  },
-  {
-    icon: Phone,
-    title: "Number",
-  },
-  {
-    icon: Calendar,
-    title: "Request Date",
-  },
-  {
-    icon: CheckCircle,
-    title: "Status",
-  },
-  {
-    icon: XCircle,
-    title: "Action",
-  },
-];
-
 // favorite table
 export const tHeadUserFavorite = [
+  {
+    icon: UserCircle,
+    title: "Image",
+  },
   {
     icon: User,
     title: "Full Name",
@@ -1065,6 +1044,38 @@ export const tHeadAdminMangeUser = [
     title: "Action",
   }
 ]
+// approved contact request table
+export const tHeadAdminApprovedContactRequest = [
+  {
+    icon: UserCircle2,
+    title: "Partner Image",
+  },
+  {
+    icon: HeartHandshake, 
+    title: "Partner Name",
+  },
+  {
+    icon: Hash,
+    title: "Partner Biodata ID",
+  },
+  {
+    icon: User,
+    title: "Requester Name",
+  },
+  {
+    icon: Mail,
+    title: "Requester Email",
+  },
+  {
+    icon: CalendarCheck,
+    title: "Status",
+  },
+  {
+    icon: XCircle,
+    title: "Action",
+  }
+];
+
 
 export const emptyLineData = [
   { day: "Mon", views: 0, pv: 0, amt: 0 },

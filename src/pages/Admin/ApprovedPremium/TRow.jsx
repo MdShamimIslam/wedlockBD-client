@@ -1,13 +1,12 @@
 import { Edit3, Trash2 } from "lucide-react";
 import useBio from "../../../hooks/useBio";
 import { formatDate } from "../../../utils/functions";
+import { tdClases } from "../../../utils/options";
 
 const TRow = ({premiumInfo = {}, handlePremiumInfoEdit, handlePremiumInfoDelete}) => {
     const {_id, name, contact_email, biodata_id, payment_status, payment_date} = premiumInfo || {};
     const {bio} = useBio();
     const checkStatus = (payment_status === "approved" ||  bio?.premium_status) ? true : false;
-    
-    const tdClases = "px-4 py-3 text-sm text-slate-600 font-medium";
 
     return (
         <tr>
