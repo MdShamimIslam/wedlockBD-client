@@ -10,7 +10,9 @@ import { UserPlus, Search, Heart, MessageCircle,Mail, Phone, MapPin, Clock,  Hea
   Bell,
   Palette,
   Database,
-  Sliders} from 'lucide-react';
+  Sliders,
+  ShieldCheck,
+  UserCircle} from 'lucide-react';
 
 import shamim from "../assets/images/shamim.png";
 import fatima from "../assets/images/fatima.jpeg";
@@ -426,6 +428,8 @@ export const allBiodatas = [
 
 // section class
 export const secCl = "my-16 md:my-20 lg:my-28 p-3 lg:p-0";
+// table cell class
+export const tdClases = "px-4 py-3 text-sm text-slate-600 font-medium";
 
 // navbar options
 export const navLinks = [
@@ -1037,6 +1041,29 @@ export const tHeadAdminApprovedPremium = [
   }
   
 
+]
+// manage users table
+export const tHeadAdminMangeUser = [
+  {
+    icon: UserCircle,
+    title: "Image",
+  },
+  {
+    icon: User,
+    title: "Full Name",
+  },
+  {
+    icon: Mail,
+    title: "Email",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Action (Admin Status)",
+  },
+  {
+    icon: XCircle,
+    title: "Action",
+  }
 ]
 
 export const emptyLineData = [

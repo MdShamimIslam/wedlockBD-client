@@ -27,14 +27,15 @@ const ApprovedPremium = () => {
     if (premiumCollectionData?.length === 0) {
       return (
         <EmptyState
-        icon={Crown}
-        title="No Premium Requests Yet"
-        description="No users have requested for premium biodata upgrade. Once someone sends a request, it will appear here for your review."
-        linkText="Go to Dashboard Overview"
-        path="/dashboard/admin-overview"
-      />
+          icon={Crown}
+          title="No Premium Requests"
+          description="No premium requests available right now."
+          linkText="Go to Dashboard Overview"
+          path="/dashboard/admin-overview"
+        />
       );
     }
+    
    
     const handlePremiumInfoEdit = async (biodataId) => {
       try {
