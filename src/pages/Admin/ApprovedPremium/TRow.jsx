@@ -22,7 +22,7 @@ const TRow = ({premiumInfo = {}, handlePremiumInfoEdit, handlePremiumInfoDelete}
            {!checkStatus && <button
                 type="button"
                 onClick={() => handlePremiumInfoEdit(biodata_id)}
-                className="flex items-center gap-2 rounded-lg text-blue-600 bg-blue-50 border border-blue-200 px-3 py-1 hover:bg-blue-100 transition-colors duration-200 ml-2"
+                className="flex items-center gap-2 rounded-lg text-blue-600 bg-blue-50 border border-blue-200 px-3 py-1 hover:bg-blue-100 transition-colors duration-200"
             >
                 <Edit3 className="w-4 h-4" />
                 Make Premium

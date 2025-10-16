@@ -13,10 +13,10 @@ const GotMarried = () => {
   const axiosSecure = useAxiosSecure();
   const {bio = {}} = useBio();
   
-  const {contact_number} = bio;
+  const {biodata_id} = bio;
 
   const onSubmit = async (data) => {
-    const { selfNumber, partnerNumber, marriage_date, img, ratings, message } = data;
+    const { selfBiodataId, partnerBiodataId, marriage_date, img, ratings, message } = data;
 
     try {
       const formData = new FormData();
@@ -26,10 +26,10 @@ const GotMarried = () => {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
-      if (imgRes.data.success) {
+      if (imgRes?.data?.success) {
         const storyInfo = {
-          selfNumber,
-          partnerNumber,
+          selfBiodataId,
+          partnerBiodataId,
           img: imgRes.data.data.url,
           marriage_date,
           ratings: parseInt(ratings),
@@ -67,12 +67,12 @@ const GotMarried = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div>
-              <label className={labelClasses}>Your Contact Number</label>
-              <input value={contact_number || ""} readOnly {...register("selfNumber")} type="number" required placeholder="Enter your number" className={inputClasses} />
+              <label className={labelClasses}>Your Biodata ID</label>
+              <input value={biodata_id || ""} readOnly {...register("selfBiodataId")} type="number" required placeholder="Enter your number" className={inputClasses} />
             </div>
             <div>
-              <label className={labelClasses}>Partner Contact Number</label>
-              <input {...register("partnerNumber")} type="number" required placeholder="Enter partner number" className={inputClasses} />
+              <label className={labelClasses}>Partner Biodata ID</label>
+              <input {...register("partnerBiodataId")} type="number" required placeholder="Enter Partner Biodata ID" className={inputClasses} />
             </div>
             <div>
               <label className={labelClasses}>Ratings</label> 

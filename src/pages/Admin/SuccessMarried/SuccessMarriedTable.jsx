@@ -1,4 +1,4 @@
-import { Modal1 } from '../../../component/Modal1';
+import { Modal1 } from '../../../component/StoryModal';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
@@ -24,6 +24,7 @@ const SuccessMarriedTable = ({story}) => {
       return res.data;
     }
   })
+  
 
     return (
         <tr>

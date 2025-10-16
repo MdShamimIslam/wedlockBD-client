@@ -2,13 +2,10 @@ import { useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 
-export const Modal1 = ({ story }) => {
+export const StoryModal = ({ story = {} }) => {
   const [openModal, setOpenModal] = useState(false);
-  const {
-    message,
-    ratings,
-    img,
-  } = story;
+  const { message, ratings, img } = story;
+  
   return (
     <div>
       <button

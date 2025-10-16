@@ -1075,7 +1075,33 @@ export const tHeadAdminApprovedContactRequest = [
     title: "Action",
   }
 ];
-
+// success stories table
+export const tHeadAdminSuccessStories = [
+  {
+    icon: Hash, 
+    title: "Male Biodata ID",
+  },
+  {
+    icon: Hash,
+    title: "Female Biodata ID",
+  },
+  {
+    icon: Calendar,
+    title: "Post Date",
+  },
+  {
+    icon: CalendarCheck,
+    title: "Married Date",
+  },
+  {
+    icon: Eye,
+    title: "Action view",
+  },
+  {
+    icon: XCircle,
+    title: "Action",
+  }
+];
 
 export const emptyLineData = [
   { day: "Mon", views: 0, pv: 0, amt: 0 },

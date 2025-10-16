@@ -2,7 +2,6 @@ import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-import toast from "react-hot-toast";
 import EmptyState from "../../../component/EmptyState";
 import usePagination from "../../../hooks/usePagination";
 import TableHead from "../../../component/common/TableHead";
@@ -81,7 +80,6 @@ const ApprovedContactRequest = () => {
         icon: "error",
         confirmButtonText: "Try Again",
       });
-      toast.error("Failed to approve request!");
     }
   };
   

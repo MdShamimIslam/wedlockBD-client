@@ -1,5 +1,4 @@
 1. Footer: link gulor right route dite hobe and subscribe er functionality add korte hobe 
-2. normal user jokhon tar biodata ke make premimum korbe tokhon direct premium hobe na admin ke approve korte hobe tarpor premimum hobe
 3. SuccessStory te jei jei user er data thakbe tader ke ar kew Favorite ba contact request korte parbe na..sei button duitar jaygay onno text dekhabe
 4. Contact us er moddhe real feedback data add korte hobe and site jekono akta vlo page a feedback dewar section banaite hobe
 5. email verification, forget & reset passward implement korte hobe,
