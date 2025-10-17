@@ -8,7 +8,6 @@ import { Crown } from "lucide-react";
 import TPagination from "../../../component/common/TPagination";
 import usePagination from "../../../hooks/usePagination";
 import TRow from "./TRow";
-import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 
 const ApprovedPremium = () => {
@@ -40,63 +39,79 @@ const ApprovedPremium = () => {
     const handlePremiumInfoEdit = async (biodataId) => {
       try {
         const result = await Swal.fire({
-          title: "Do you want to make this profile Premium?",
-          icon: "question",
+          title: "Are you sure?",
+          text: "You are about to make this profile Premium.",
+          icon: "warning",
           showCancelButton: true,
-          confirmButtonText: "Yes, make premium",
+          confirmButtonColor: "#2563eb",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, make Premium",
           cancelButtonText: "Cancel",
-          confirmButtonColor: "#2563eb", 
-          cancelButtonColor: "#6b7280",
         });
     
         if (!result.isConfirmed) return;
-
+    
         const res = await axiosSecure.patch(`/premium-bio/${biodataId}`);
     
         if (res.data?.success) {
           refetch();
-          toast.success(res.data?.message || "Premium approved successfully!");
-        } 
-        else if (res.data?.modifiedCount > 0 || res.data?.result3?.modifiedCount > 0) {
-          refetch();
-          toast.success("Premium approved successfully!");
-        } 
-        else if (res.data?.message) {
-          toast.warning(res.data.message);
-        } 
-        else {
-          toast.error("No changes were made. Try again!");
+          Swal.fire({
+            title: "Success!",
+            text: res.data?.message || "Profile upgraded to Premium!",
+            icon: "success",
+            timer: 1500,
+            showConfirmButton: false,
+          });
+        } else {
+          Swal.fire({
+            title: "No changes made",
+            text: res.data?.message || "This profile might already be Premium.",
+            icon: "info",
+          });
         }
-      } 
-      catch (error) {
-        toast.error(error.response?.data?.error || "Something went wrong while updating premium status!");
+      } catch (error) {
+        Swal.fire({
+          title: "Error!",
+          text: error?.response?.data?.error || "Something went wrong while updating premium status.",
+          icon: "error",
+        });
       }
     };
     
-    const handlePremiumInfoDelete = (_id,name) => {
-      Swal.fire({
-        title: "Are you sure?",
-        text: `You want to delete ${name}`,
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
-      }).then((result) => {
+    const handlePremiumInfoDelete = async (_id,name) => {
+      try {
+        const result = await Swal.fire({
+          title: "Are you sure?",
+          text: `You want to delete ${name}`,
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!",
+        })
+  
         if (result.isConfirmed) {
-          axiosSecure.delete(`/premium-bio/${_id}`).then((data) => {
-            if (data.data.deletedCount > 0) {
-              refetch();
-              Swal.fire({
-                title: "Deleted!",
-                text: "Deleted Successfully",
-                icon: "success",
-              });
-            }
-          });
-      
+          const res = await axiosSecure.delete(`/premium-bio/${_id}`);
+          
+          if (res.data.deletedCount > 0) {
+                refetch();
+                Swal.fire({
+                  title: "Deleted!",
+                  text: "Deleted Successfully",
+                  icon: "success",
+                });
+              }
+        
         }
-      });
+      }catch(error){
+        Swal.fire({
+          title: "Error!",
+          text: error.response?.data?.error || "Something went wrong!",
+          icon: "error",
+          confirmButtonText: "OK",
+        })
+      }
+    
     }
 
   return (

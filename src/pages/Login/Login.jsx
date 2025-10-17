@@ -8,6 +8,7 @@ import useAxiosPublic from '../../hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 import { useForm } from 'react-hook-form';
+import SpinnerSVG from '../../component/common/SpinnerSVG';
 
 const Login = () => {
   const { signIn, signInWithGoogle } = useAuth();
@@ -17,7 +18,7 @@ const Login = () => {
   const from = location?.state?.from?.pathname || '/';
   const [showPassword, setShowPassword] = useState(false);
   const [errorMess, setErrorMess] = useState('');
-  const { register, reset, handleSubmit, formState: { errors } } = useForm();
+  const { register, reset, handleSubmit, formState: { errors, isSubmitting } } = useForm();
 
   const onSubmit = async (data) => {
     setErrorMess('');
@@ -142,12 +143,14 @@ const Login = () => {
                     </span>
                   )}
                 </div>
-                <button
-                  type='submit'
-                  className='w-full bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 px-4 rounded-lg font-semibold hover:from-primary-600 hover:to-secondary-600 transition-all duration-300 transform hover:scale-105 shadow-lg'
-                >
-                  Sign In
-                </button>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="mt-5 w-full bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 px-4 rounded-lg font-semibold hover:from-primary-600 hover:to-secondary-600 transition-all duration-300 transform hover:scale-105 shadow-lg flex justify-center items-center gap-2"
+                    >
+                      { isSubmitting && <SpinnerSVG/> }
+                      {isSubmitting ? "Signing you in..." : "Sign In"}
+                  </button>
               </form>
 
               {/* Or login with Google */}

@@ -6,6 +6,7 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useBio from "../../../hooks/useBio";
 import Nodata from "../../../component/common/Nodata";
 import { Crown } from "lucide-react";
+import SpinnerSVG from "../../../component/common/SpinnerSVG";
 
 const GotMarried = () => {
   const { register, reset, handleSubmit, formState: { isSubmitting } } = useForm();
@@ -28,8 +29,8 @@ const GotMarried = () => {
 
       if (imgRes?.data?.success) {
         const storyInfo = {
-          selfBiodataId,
-          partnerBiodataId,
+          selfBiodataId : parseInt(selfBiodataId),
+          partnerBiodataId : parseInt(partnerBiodataId),
           img: imgRes.data.data.url,
           marriage_date,
           ratings: parseInt(ratings),
@@ -45,7 +46,7 @@ const GotMarried = () => {
       }
 
     } catch (error) {
-      toast.error(error.message || "Something went wrong!");
+      toast.error("You have already added a success story");
     }
     
   };
@@ -107,11 +108,13 @@ const GotMarried = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="mt-5 w-full md:w-2/5 lg:w-1/5 bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 rounded-lg font-semibold hover:scale-105 transition-transform"
+              className="mt-5 w-full md:w-2/5 lg:w-1/5 bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 rounded-lg font-semibold hover:scale-105 transition-transform flex justify-center items-center gap-2"
             >
+              { isSubmitting && <SpinnerSVG/> }
               {isSubmitting ? "Submitting..." : "Submit Now"}
             </button>
           </div>
+
         </form>
       </div>
     </div>

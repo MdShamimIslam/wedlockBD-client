@@ -6,6 +6,7 @@ import { countries, divisions } from "../../../utils/options";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import SpinnerSVG from "../../../component/common/SpinnerSVG";
 
 const AddBiodata = () => {
   const { user } = useAuth();
@@ -224,6 +225,7 @@ const AddBiodata = () => {
               disabled={isSubmitting}
               className="mt-5 w-full md:w-2/5 lg:w-1/5 bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 rounded-lg font-semibold hover:scale-105 transition-transform"
             >
+              {isSubmitting && <SpinnerSVG/>}
               {isSubmitting ? "Submitting..." : "Submit Now"}
             </button>
           </div>

@@ -100,7 +100,7 @@ const BiodataDetails = () => {
       title: "Send Contact Request?",
       html: `
         <p>To send a contact request, you need to pay:</p>
-        <p class="mt-2 text-lg font-semibold text-blue-600">💲 Amount: $1</p>
+        <p class="mt-2 text-lg font-semibold text-blue-600">Amount: $1</p>
       `,
       icon: "info",
       showCancelButton: true,

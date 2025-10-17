@@ -2,15 +2,39 @@ import { Crown, Mail, Phone } from "lucide-react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import useBio from "../../hooks/useBio";
+import Swal from "sweetalert2";
+import useAuth from "../../hooks/useAuth";
 
 const ContactInfo = ({biodata_id, contact_email, contact_number, requested}) => {
   const axiosSecure = useAxiosSecure();
   const {bio} = useBio();
+  const { user } = useAuth();
 
   const handlePayment = async (biodataId) => {
     if(!bio?.biodata_id) {
       return toast.error('Create your biodata before add to contact request');
     }
+
+    if (contact_email === user?.email) {
+      return toast.error('You cannot add your own biodata to contact request');
+    }
+
+    const result = await Swal.fire({
+      title: "Send Contact Request?",
+      html: `
+        <p>To send a contact request, you need to pay:</p>
+        <p class="mt-2 text-lg font-semibold text-blue-600">Amount: $1</p>
+      `,
+      icon: "info",
+      showCancelButton: true,
+      confirmButtonText: "Yes, proceed to pay!",
+      cancelButtonText: "Cancel",
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+    });
+
+    if (!result.isConfirmed) return; 
+
     try {
       const res = await axiosSecure.post(`/contact-request/${biodataId}`);
      

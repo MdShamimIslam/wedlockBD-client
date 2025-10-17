@@ -7,9 +7,12 @@ import TPagination from '../../../component/common/TPagination';
 import { tHeadAdminSuccessStories } from '../../../utils/options';
 import TableHead from '../../../component/common/TableHead';
 import TRow from './TRow';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const SuccessMarried = () => {
-    const [stories] = useSuccessStory();
+    const [stories, refetch] = useSuccessStory();
+    const axiosSecure = useAxiosSecure();
 
     const { currentData, currentPage, setCurrentPage, rowsPerPage, setRowsPerPage, totalPages, totalEntries } = usePagination(stories, 10);
 
@@ -25,6 +28,42 @@ const SuccessMarried = () => {
       );
     }
 
+    const handleDeleteStory = async (_id) => {
+      try {
+        const result =  await Swal.fire({
+          title: "Are you sure?",
+          text: `You want to delete`,
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!",
+        })
+  
+        if (result.isConfirmed) {
+          const res = await axiosSecure.delete(`/success-stories/${_id}`);
+            if (res.data.deletedCount > 0) {
+              refetch();
+              Swal.fire({
+                title: "Deleted!",
+                text: "Deleted Successfully",
+                icon: "success",
+              });
+            }
+          
+        }
+      } catch (error) {
+        Swal.fire({
+          title: "Error!",
+          text: "Something went wrong",
+          icon: "error",
+        })
+      }
+     
+     
+    }
+
+
     return (
         <div>
         <Helmet>
@@ -35,7 +74,7 @@ const SuccessMarried = () => {
           <table className="bg-white min-w-full">
               <TableHead headOptions={tHeadAdminSuccessStories} />
               <tbody className="whitespace-nowrap divide-y divide-gray-200">
-                { currentData?.map((story) => <TRow key={story._id} {...{story}} /> )}
+                { currentData?.map((story) => <TRow key={story._id} {...{story, handleDeleteStory}} /> )}
               </tbody>
           </table>
         </div>
