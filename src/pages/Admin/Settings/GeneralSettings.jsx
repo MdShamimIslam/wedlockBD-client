@@ -1,7 +1,10 @@
+import UnderDevelopmentAlert from "../../../component/common/UnderDevelopmentAlert";
+
 const GeneralSettings = () => {
   return (
     <div className="space-y-8">
-      <div className="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl p-6 text-white">
+      <UnderDevelopmentAlert section="General Settings"/>
+      <div className="bg-gradient-to-r from-purple-700 to-indigo-600 rounded-2xl p-6 text-white">
         <h3 className="text-2xl font-bold mb-2">General Settings</h3>
         <p className="text-blue-100">Configure your matrimony platform&apos;s basic settings</p>
       </div>
@@ -41,7 +44,7 @@ const GeneralSettings = () => {
               <label className="block text-sm font-medium text-gray-700 mb-2">Contact Email</label>
               <input 
                 type="email" 
-                defaultValue="admin@wedlockbd.com" 
+                defaultValue="shamim401897@gmail.com" 
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
               />
             </div>
@@ -50,7 +53,7 @@ const GeneralSettings = () => {
               <label className="block text-sm font-medium text-gray-700 mb-2">Support Phone</label>
               <input 
                 type="tel" 
-                defaultValue="+880 1700-000000" 
+                defaultValue="+880 1571529918" 
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
               />
             </div>

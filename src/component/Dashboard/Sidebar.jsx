@@ -22,7 +22,6 @@ const Sidebar = ({sidebarOpen}) => {
           .catch((err) => toast.error(err.message));
     };
 
-
     return (
         <div
             className={`fixed inset-y-0 left-0 z-50 w-68 bg-white shadow-md transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} 
@@ -41,19 +40,26 @@ const Sidebar = ({sidebarOpen}) => {
                         WedlockBD
                     </h3>
                 </Link>
-                {/* Navigation */}
+              
                 <nav className="space-y-2 mt-6">
                     {sidebarItems.map((item) => {
                     const IconComponent = item.icon;
 
-                    // if any children then create a submenu
                     if (item.children) {
                         return (
                           <div key={item.label} className="space-y-1">
-                            <div className="flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-700 font-semibold">
-                              <IconComponent className="h-5 w-5" />
-                              <span>{item.label}</span>
+                            <div className="flex items-center justify-between px-4 py-3 rounded-xl text-gray-700 font-semibold">
+                                <div className="flex items-center space-x-3">
+                                  <IconComponent className="h-5 w-5" />
+                                  <span>{item.label}</span>
+                                </div>
+                                {item.label === "Settings" && (
+                                  <span className="text-xs font-medium px-2 py-0.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full shadow-sm animate-pulse">
+                                    Running
+                                  </span>
+                                )}
                             </div>
+
                             <div className="ml-8 space-y-1">
                               {item.children.map((child) => {
                                 const ChildIcon = child.icon;

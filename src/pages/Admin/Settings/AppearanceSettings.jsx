@@ -1,9 +1,12 @@
 import { Camera, Globe, Monitor, Smartphone, Tablet } from "lucide-react";
+import UnderDevelopmentAlert from "../../../component/common/UnderDevelopmentAlert";
 
 const AppearanceSettings = () => {
   return (
     <div className="space-y-8">
-      <div className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl p-6 text-white">
+      <UnderDevelopmentAlert section="Appearance Settings"/>
+
+      <div className="bg-gradient-to-r from-pink-900 to-purple-600 rounded-2xl p-6 text-white">
         <h3 className="text-2xl font-bold mb-2">Appearance Settings</h3>
         <p className="text-indigo-100">Customize the look and feel of your matrimony platform</p>
       </div>
@@ -78,7 +81,7 @@ const AppearanceSettings = () => {
               <label className="block text-sm font-medium text-gray-700 mb-2">Footer Text</label>
               <textarea 
                 rows={3}
-                defaultValue="© 2024 WedlockBD. All rights reserved. Find your perfect life partner with Bangladesh's most trusted matrimony platform."
+                defaultValue="© 2025 WedlockBD. All rights reserved. Made with ❤️ for finding true love."
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
               />
             </div>

@@ -1,5 +1,6 @@
 import { DollarSign, Edit, Heart, Mail, MessageSquare, Smartphone } from "lucide-react";
 import { useState } from "react";
+import UnderDevelopmentAlert from "../../../component/common/UnderDevelopmentAlert";
 
 const NotificationSettings = () => {
     const [notifications, setNotifications] = useState({ email: true, sms: false, push: true, matches: true, messages: true, payments: true });
@@ -12,7 +13,9 @@ const NotificationSettings = () => {
       };
   return (
     <div className="space-y-8">
-    <div className="bg-gradient-to-r from-purple-500 to-indigo-600 rounded-2xl p-6 text-white">
+      <UnderDevelopmentAlert section="Notification Settings"/>
+      
+    <div className="bg-gradient-to-r from-black to-slate-600 rounded-2xl p-6 text-white">
       <h3 className="text-2xl font-bold mb-2">Notification Settings</h3>
       <p className="text-purple-100">Configure how and when to notify your users</p>
     </div>

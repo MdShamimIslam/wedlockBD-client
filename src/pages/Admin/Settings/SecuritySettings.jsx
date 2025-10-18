@@ -1,7 +1,11 @@
+import UnderDevelopmentAlert from "../../../component/common/UnderDevelopmentAlert";
+
 const SecuritySettings = () => {
   return (
     <div className="space-y-8">
-      <div className="bg-gradient-to-r from-red-500 to-pink-600 rounded-2xl p-6 text-white">
+      <UnderDevelopmentAlert section="Security Settings"/>
+
+      <div className="bg-gradient-to-r from-red-700 to-pink-600 rounded-2xl p-6 text-white">
         <h3 className="text-2xl font-bold mb-2">Security Settings</h3>
         <p className="text-red-100">Protect your platform with advanced security measures</p>
       </div>

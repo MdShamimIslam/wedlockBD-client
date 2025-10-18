@@ -1,7 +1,11 @@
+import UnderDevelopmentAlert from "../../../component/common/UnderDevelopmentAlert";
+
 const UserManagement = () => {
   return (
     <div className="space-y-8">
-    <div className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl p-6 text-white">
+      <UnderDevelopmentAlert section="User Management Settings"/> 
+
+    <div className="bg-gradient-to-r from-green-700 to-emerald-600 rounded-2xl p-6 text-white">
       <h3 className="text-2xl font-bold mb-2">User Management</h3>
       <p className="text-green-100">Control user registration, verification, and profile settings</p>
     </div>
