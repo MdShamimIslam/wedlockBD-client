@@ -1,14 +1,19 @@
-import UnderDevelopmentAlert from "../../../component/common/UnderDevelopmentAlert";
+import SectionUnderDevelopment from "../../../components/common/SectionUnderDevelopment";
 
 const SecuritySettings = () => {
   return (
     <div className="space-y-8">
-      <UnderDevelopmentAlert section="Security Settings"/>
-
-      <div className="bg-gradient-to-r from-red-700 to-pink-600 rounded-2xl p-6 text-white">
-        <h3 className="text-2xl font-bold mb-2">Security Settings</h3>
-        <p className="text-red-100">Protect your platform with advanced security measures</p>
-      </div>
+      <SectionUnderDevelopment
+        title="Security Settings"
+        emoji="🔒"
+        subtitle="Protect your platform with advanced security measures"
+        gradientFrom="from-red-700"
+        gradientTo="to-pink-600"
+        glowFrom="from-red-400"
+        glowVia="via-pink-400"
+        glowTo="to-rose-500"
+        accentColor="text-red-100"
+      />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">

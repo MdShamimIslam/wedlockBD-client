@@ -1,5 +1,5 @@
 import { useState } from "react";
-import UnderDevelopmentAlert from "../../../component/common/UnderDevelopmentAlert";
+import SectionUnderDevelopment from "../../../components/common/SectionUnderDevelopment";
 
 const PaymentSettings = () => {
   const [payments, setPayments] = useState([
@@ -39,12 +39,17 @@ const PaymentSettings = () => {
 
   return (
     <div className="space-y-8">
-      <UnderDevelopmentAlert section="Payment Settings"/>
-
-      <div className="bg-gradient-to-r from-yellow-700 to-orange-500 rounded-2xl p-6 text-white">
-        <h3 className="text-2xl font-bold mb-2">Payment Settings</h3>
-        <p>Configure pricing and payment options for your platform</p>
-      </div>
+      <SectionUnderDevelopment
+        title="Payment Settings"
+        emoji="💳"
+        subtitle="Configure pricing and payment options for your platform"
+        gradientFrom="from-yellow-700"
+        gradientTo="to-orange-500"
+        glowFrom="from-yellow-400"
+        glowVia="via-orange-400"
+        glowTo="to-red-500"
+        accentColor="text-white"
+      />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">

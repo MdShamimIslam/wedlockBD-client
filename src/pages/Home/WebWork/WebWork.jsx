@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import useBio from "../../../hooks/useBio";
 import { secCl, steps } from "../../../utils/options";
-import Heading from "../../../component/common/Heading";
-import Button from "../../../component/common/Button";
+import Heading from "../../../components/common/Heading";
+import Button from "../../../components/common/Button";
 
 const WebWork = () => {
   const {bio = {}} = useBio();

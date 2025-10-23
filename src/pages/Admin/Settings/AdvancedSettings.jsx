@@ -1,18 +1,25 @@
 import { Activity, Database, Download, Eye, EyeOff, RefreshCw, Zap } from "lucide-react";
 import { useState } from "react";
-import UnderDevelopmentAlert from "../../../component/common/UnderDevelopmentAlert";
+import SectionUnderDevelopment from "../../../components/common/SectionUnderDevelopment";
 
 const AdvancedSettings = () => {
     const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div className="space-y-8">
-      <UnderDevelopmentAlert section="Advanced Settings"/>
 
-      <div className="bg-gradient-to-r from-lime-700 to-lime-400 rounded-2xl p-6 text-white">
-        <h3 className="text-2xl font-bold mb-2">Advanced Settings</h3>
-        <p>Configure advanced system settings and integrations</p>
-      </div>
+      <SectionUnderDevelopment
+        emoji="🧩"
+        title="Advanced Settings"
+        subtitle="Configure advanced system options, automation, and third-party integrations."
+        gradientFrom="from-lime-700"
+        gradientTo="to-lime-400"
+        glowFrom="from-yellow-300"
+        glowVia="via-lime-400"
+        glowTo="to-green-700"
+        accentColor="text-lime-100"
+      />
+
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">

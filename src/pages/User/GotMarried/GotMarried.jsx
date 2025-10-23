@@ -4,9 +4,9 @@ import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useBio from "../../../hooks/useBio";
-import Nodata from "../../../component/common/Nodata";
+import Nodata from "../../../components/common/Nodata";
 import { Crown } from "lucide-react";
-import SpinnerSVG from "../../../component/common/SpinnerSVG";
+import SpinnerSVG from "../../../components/common/SpinnerSVG";
 
 const GotMarried = () => {
   const { register, reset, handleSubmit, formState: { isSubmitting } } = useForm();
@@ -17,7 +17,7 @@ const GotMarried = () => {
   const {biodata_id} = bio;
 
   const onSubmit = async (data) => {
-    const { selfBiodataId, partnerBiodataId, marriage_date, img, ratings, message } = data;
+    const { selfBiodataId, partnerBiodataId, marriage_date, story_type, img, ratings, message } = data;
 
     try {
       const formData = new FormData();
@@ -31,6 +31,7 @@ const GotMarried = () => {
         const storyInfo = {
           selfBiodataId : parseInt(selfBiodataId),
           partnerBiodataId : parseInt(partnerBiodataId),
+          story_type,
           img: imgRes.data.data.url,
           marriage_date,
           ratings: parseInt(ratings),
@@ -79,9 +80,18 @@ const GotMarried = () => {
               <label className={labelClasses}>Ratings</label> 
               <input {...register("ratings")} required type="number"  min="1" max="5" placeholder="1-5" className={inputClasses} />
             </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label className={labelClasses}>Story Type</label>
+              <select
+              {...register("story_type")}
+              required
+              className={inputClasses}
+            >
+              <option value="">Select Story Type</option>
+              <option value="married">Married</option>
+              <option value="Female">engaged</option>
+            </select>
+            </div>
             <div>
               <label className={labelClasses}>Your/Couple Image</label>
               <input 
@@ -97,13 +107,13 @@ const GotMarried = () => {
               <input {...register("marriage_date")} required type="date" className={inputClasses} />
             </div>
           </div>
-
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Success Message</label>
-            <textarea {...register("message")} required placeholder="Type your success story"
+            <textarea {...register("message")} required placeholder="Type success message here... "
               className={`${inputClasses} text-sm h-36`}
             />
           </div>
+          
           <div className="flex justify-center">
             <button
               type="submit"

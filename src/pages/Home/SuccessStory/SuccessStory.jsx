@@ -1,11 +1,11 @@
   import { useState, useEffect, useCallback } from "react";
   import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from "lucide-react";
-  import Heading from "../../../component/common/Heading";
+  import Heading from "../../../components/common/Heading";
   import { Rating } from "@smastrom/react-rating";
   import "@smastrom/react-rating/style.css";
 import useSuccessStory from "../../../hooks/useSuccessStory";
 import { secCl } from "../../../utils/options";
-import Loading from "../../../component/Loading";
+import Loading from "../../../components/Loading";
 
   const SuccessStory = () => {
     const [stories] = useSuccessStory();

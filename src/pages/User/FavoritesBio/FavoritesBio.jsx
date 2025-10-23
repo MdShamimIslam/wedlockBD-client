@@ -4,11 +4,11 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import TRow from "./TRow";
-import EmptyState from "../../../component/EmptyState";
+import EmptyState from "../../../components/EmptyState";
 import { Heart } from "lucide-react";
-import TPagination from "../../../component/common/TPagination";
+import TPagination from "../../../components/common/TPagination";
 import usePagination from "../../../hooks/usePagination";
-import TableHead from "../../../component/common/TableHead";
+import TableHead from "../../../components/common/TableHead";
 import { tHeadUserFavorite } from "../../../utils/options";
 
 const FavoritesBio = () => {

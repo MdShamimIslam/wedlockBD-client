@@ -1,11 +1,11 @@
 import { Helmet } from 'react-helmet-async';
 import useSuccessStory from '../../../hooks/useSuccessStory';
 import usePagination from '../../../hooks/usePagination';
-import EmptyState from '../../../component/EmptyState';
+import EmptyState from '../../../components/EmptyState';
 import { BookOpenText } from 'lucide-react';
-import TPagination from '../../../component/common/TPagination';
+import TPagination from '../../../components/common/TPagination';
 import { tHeadAdminSuccessStories } from '../../../utils/options';
-import TableHead from '../../../component/common/TableHead';
+import TableHead from '../../../components/common/TableHead';
 import TRow from './TRow';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';

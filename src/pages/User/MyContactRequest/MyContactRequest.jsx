@@ -3,9 +3,9 @@ import useAuth from "../../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import THead from "./THead";
 import TRow from "./TRow";
-import EmptyState from "../../../component/EmptyState";
+import EmptyState from "../../../components/EmptyState";
 import { Mail } from "lucide-react";
-import TPagination from "../../../component/common/TPagination";
+import TPagination from "../../../components/common/TPagination";
 import usePagination from "../../../hooks/usePagination";
 import { Helmet } from "react-helmet-async";
 

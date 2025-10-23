@@ -5,7 +5,7 @@ import useBio from "../../hooks/useBio";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 
-const ContactInfo = ({biodata_id, contact_email, contact_number, requested}) => {
+const ContactInfo = ({biodata_id, contact_email, contact_number, requested, matchingStory}) => {
   const axiosSecure = useAxiosSecure();
   const {bio} = useBio();
   const { user } = useAuth();
@@ -73,15 +73,28 @@ const ContactInfo = ({biodata_id, contact_email, contact_number, requested}) => 
     ) : (
       <div className="bg-gray-200 p-8 rounded-xl text-center">
         <Crown className="h-16 w-16 text-pink-500 mx-auto mb-4" />
-        <h3 className="text-xl font-semibold text-gray-800 mb-2">Premium Feature</h3>
+        <h3 className="text-xl font-semibold text-gray-800 mb-2">
+          Premium Feature
+        </h3>
+        
         <p className="text-gray-600 mb-6">
-          Contact information is only available to premium members. Upgrade your account or request contact information.
+          {matchingStory
+            ? matchingStory.story_type === "married"
+              ? "This biodata is part of a verified married success story. Contact information is restricted."
+              : "This biodata is part of a verified engaged success story. Contact information is restricted."
+            : "Contact information is only available to premium members. Upgrade your account or request contact information."}
         </p>
         
-            <button onClick={() => handlePayment(biodata_id)} className="bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 px-8 rounded-lg font-semibold hover:from-pink-600 hover:to-blue-600 transition-all duration-300">
-                Request Contact Info
-            </button>
-      </div>
+        {!matchingStory && (
+          <button
+            onClick={() => handlePayment(biodata_id)}
+            className="bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 px-8 rounded-lg font-semibold hover:from-pink-600 hover:to-blue-600 transition-all duration-300"
+          >
+            Request Contact Info
+          </button>
+        )}
+    </div>
+
     )}
   </div>
   )

@@ -1,11 +1,11 @@
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import TableHead from "../../../component/common/TableHead";
+import TableHead from "../../../components/common/TableHead";
 import { tHeadAdminApprovedPremium } from "../../../utils/options";
-import EmptyState from "../../../component/EmptyState";
+import EmptyState from "../../../components/EmptyState";
 import { Crown } from "lucide-react";
-import TPagination from "../../../component/common/TPagination";
+import TPagination from "../../../components/common/TPagination";
 import usePagination from "../../../hooks/usePagination";
 import TRow from "./TRow";
 import Swal from "sweetalert2";

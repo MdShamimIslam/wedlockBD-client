@@ -9,8 +9,8 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useBio from "../../../hooks/useBio";
 import { Edit } from "lucide-react";
-import Nodata from "../../../component/common/Nodata";
-import SpinnerSVG from "../../../component/common/SpinnerSVG";
+import Nodata from "../../../components/common/Nodata";
+import SpinnerSVG from "../../../components/common/SpinnerSVG";
 
 const EditBiodata = () => {
   const { user } = useAuth();
@@ -81,7 +81,7 @@ const EditBiodata = () => {
   }
 
   const inputClasses = "border rounded-lg px-3 py-2 w-full focus:ring-2 focus:ring-indigo-500 focus:outline-none";
-  const gridClasses = "grid grid-cols-1 md:grid-cols-3 gap-4";
+  const labelClasses = "block text-sm font-medium text-gray-700 mb-1";
 
   return (
     <div className="mt-4 p-4 lg:p-0 lg:max-w-[1500px] mx-auto">
@@ -94,122 +94,212 @@ const EditBiodata = () => {
         </h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          {/* Name, Email, Number */}
-          <div className={gridClasses}>
-            <input
-              {...register("name")}
-              required
-              type="text"
-              placeholder="Your Name"
-              className={inputClasses}
-            />
-            <input
-              {...register("contact_email")}
-              readOnly
-              type="email"
-              className={inputClasses}
-            />
-            <input
-              {...register("contact_number")}
-              required
-              type="number"
-              placeholder="Mobile Number"
-              className={inputClasses}
-            />
-          </div>
 
-          {/* Profile Image and DOB */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              {...register("profile_image")}
-              type="file"
-              accept="image/*"
-              className={inputClasses}
-            />
-            <input
-              {...register("date_of_birth")}
-              required
-              type="date"
-              className={inputClasses}
-            />
-          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Full Name */}
+            <div>
+              <label className={labelClasses}>Full Name</label>
+              <input
+                {...register("name")}
+                required
+                type="text"
+                placeholder="Enter Your Full Name"
+                className={inputClasses}
+              />
+            </div>
 
-          {/* Gender, Height, Weight */}
-          <div className={gridClasses}>
-            <select {...register("biodata_type")} required className={inputClasses}>
-              <option value="">Select Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
-            <select {...register("height")} required className={inputClasses}>
-              <option value="">Select Height</option>
-              {Array.from({ length: (7 - 4 + 1) * 12 }, (_, i) => {
-                const feet = 4 + Math.floor(i / 12);
-                const inches = i % 12;
-                return (
-                  <option key={i} value={`${feet}'${inches}"`}>
-                    {feet}&apos;{inches}&quot;
+            {/* Email */}
+            <div>
+              <label className={labelClasses}>Email</label>
+              <input
+                {...register("contact_email")}
+                readOnly
+                type="email"
+                className={inputClasses}
+              />
+            </div>
+
+            {/* Contact Number */}
+            <div>
+              <label className={labelClasses}>Mobile Number</label>
+              <input
+                {...register("contact_number")}
+                required
+                type="number"
+                placeholder="Enter Your Mobile Number"
+                className={inputClasses}
+              />
+            </div>
+
+            {/* Profile Image */}
+            <div>
+              <label className={labelClasses}>Profile Image</label>
+              <input
+                {...register("profile_image")}
+                type="file"
+                accept="image/*"
+                className={inputClasses}
+              />
+            </div>
+
+            {/* Date of Birth */}
+            <div>
+              <label className={labelClasses}>Date of Birth</label>
+              <input
+                {...register("date_of_birth")}
+                required
+                type="date"
+                className={inputClasses}
+              />
+            </div>
+
+            {/* Gender */}
+            <div>
+              <label className={labelClasses}>Biodata type</label>
+              <select {...register("biodata_type")} required className={inputClasses}>
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+
+            {/* Height */}
+            <div>
+              <label className={labelClasses}>Height</label>
+              <select {...register("height")} required className={inputClasses}>
+                <option value="">Select Height</option>
+                {Array.from({ length: (7 - 4 + 1) * 12 }, (_, i) => {
+                  const feet = 4 + Math.floor(i / 12);
+                  const inches = i % 12;
+                  return (
+                    <option key={i} value={`${feet}'${inches}"`}>
+                      {feet}&apos;{inches}&quot;
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+
+            {/* Weight */}
+            <div>
+              <label className={labelClasses}>Weight (kg)</label>
+              <select {...register("weight")} required className={inputClasses}>
+                <option value="">Select Weight</option>
+                {[...Array(80)].map((_, i) => (
+                  <option key={i}>{40 + i}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Occupation */}
+            <div>
+              <label className={labelClasses}>Occupation</label>
+              <input
+                {...register("occupation")}
+                required
+                placeholder="Occupation"
+                className={inputClasses}
+              />
+            </div>
+
+            {/* Father's Name */}
+            <div>
+              <label className={labelClasses}>Father&apos;s Name</label>
+              <input
+                {...register("fathers_name")}
+                required
+                placeholder="Father's Name"
+                className={inputClasses}
+              />
+            </div>
+
+            {/* Mother's Name */}
+            <div>
+              <label className={labelClasses}>Mother&apos;s Name</label>
+              <input
+                {...register("mothers_name")}
+                required
+                placeholder="Mother's Name"
+                className={inputClasses}
+              />
+            </div>
+
+            {/* Permanent Division */}
+            <div>
+              <label className={labelClasses}>Permanent Division</label>
+              <select {...register("permanent_division_name")} required className={inputClasses}>
+                <option value="">Select Permanent Division</option>
+                {divisions?.map((d) => (
+                  <option key={d}>{d}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Present Division */}
+            <div>
+              <label className={labelClasses}>Present Division</label>
+              <select {...register("present_division_name")} required className={inputClasses}>
+                <option value="">Select Present Division</option>
+                {divisions?.map((d) => (
+                  <option key={d}>{d}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Race */}
+            <div>
+              <label className={labelClasses}>Race</label>
+              <select {...register("race")} required className={inputClasses}>
+                <option value="">Select Race</option>
+                {countries.map((country, i) => (
+                  <option key={i} value={country}>
+                    {country}
                   </option>
-                );
-              })}
-            </select>
-            <select {...register("weight")} required className={inputClasses}>
-              <option value="">Select Weight (kg)</option>
-              {[...Array(80)].map((_, i) => (
-                <option key={i}>{40 + i}</option>
-              ))}
-            </select>
+                ))}
+              </select>
+            </div>
+
+            {/* Expected Partner Age */}
+            <div>
+              <label className={labelClasses}>Expected Partner Age</label>
+              <input
+                {...register("expected_partner_age")}
+                required
+                type="number"
+                placeholder="Enter Partner Age"
+                className={inputClasses}
+              />
+            </div>
+
+            {/* Expected Partner Height */}
+            <div>
+              <label className={labelClasses}>Expected Partner Height</label>
+              <select {...register("expected_partner_height")} required className={inputClasses}>
+                <option value="">Select Partner Height</option>
+                {Array.from({ length: (7 - 4 + 1) * 12 }, (_, i) => {
+                  const feet = 4 + Math.floor(i / 12);
+                  const inches = i % 12;
+                  return (
+                    <option key={i} value={`${feet}'${inches}"`}>
+                      {feet}&apos;{inches}&quot;
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+
+            {/* Expected Partner Weight */}
+            <div>
+              <label className={labelClasses}>Expected Partner Weight (kg)</label>
+              <select {...register("expected_partner_weight")} required className={inputClasses}>
+                <option value="">Select Partner Weight</option>
+                {[...Array(80)].map((_, i) => (
+                  <option key={i}>{40 + i}</option>
+                ))}
+              </select>
+            </div>
           </div>
 
-          {/* Occupation, Parents */}
-          <div className={gridClasses}>
-            <input {...register("occupation")} required placeholder="Occupation" className={inputClasses} />
-            <input {...register("fathers_name")} required placeholder="Father's Name" className={inputClasses} />
-            <input {...register("mothers_name")} required placeholder="Mother's Name" className={inputClasses} />
-          </div>
-
-          {/* Divisions and Race */}
-          <div className={gridClasses}>
-            <select {...register("permanent_division_name")} required className={inputClasses}>
-              <option value="">Permanent Division</option>
-              {divisions?.map((d) => <option key={d}>{d}</option>)}
-            </select>
-            <select {...register("present_division_name")} required className={inputClasses}>
-              <option value="">Present Division</option>
-              {divisions?.map((d) => <option key={d}>{d}</option>)}
-            </select>
-            <select {...register("race")} required className={inputClasses}>
-              <option value="">Select Race</option>
-              {countries.map((country, i) => (
-                <option key={i} value={country}>
-                  {country}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Partner Info */}
-          <div className={gridClasses}>
-            <input {...register("expected_partner_age")} required type="number" placeholder="Partner Age" className={inputClasses} />
-            <select {...register("expected_partner_height")} required className={inputClasses}>
-              <option value="">Partner Height</option>
-              {Array.from({ length: (7 - 4 + 1) * 12 }, (_, i) => {
-                const feet = 4 + Math.floor(i / 12);
-                const inches = i % 12;
-                return (
-                  <option key={i} value={`${feet}'${inches}"`}>
-                    {feet}&apos;{inches}&quot;
-                  </option>
-                );
-              })}
-            </select>
-            <select {...register("expected_partner_weight")} required className={inputClasses}>
-              <option value="">Partner Weight (kg)</option>
-              {[...Array(80)].map((_, i) => (
-                <option key={i}>{40 + i}</option>
-              ))}
-            </select>
-          </div>
           <div className="flex justify-center">
             <button
               type="submit"

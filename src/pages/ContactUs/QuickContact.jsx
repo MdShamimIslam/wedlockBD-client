@@ -1,4 +1,4 @@
-import Heading from "../../component/common/Heading";
+import Heading from "../../components/common/Heading";
 import { contactInfo, secCl } from "../../utils/options";
 
 const QuickContact = () => {

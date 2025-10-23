@@ -1,6 +1,6 @@
 import { CheckCircle } from "lucide-react";
 import { faqCategories, secCl } from "../../utils/options";
-import Heading from "../../component/common/Heading";
+import Heading from "../../components/common/Heading";
 
 const ContactFAQ = () => {
   return (

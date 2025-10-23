@@ -1,15 +1,21 @@
 import { Camera, Globe, Monitor, Smartphone, Tablet } from "lucide-react";
-import UnderDevelopmentAlert from "../../../component/common/UnderDevelopmentAlert";
+import SectionUnderDevelopment from "../../../components/common/SectionUnderDevelopment";
 
 const AppearanceSettings = () => {
   return (
     <div className="space-y-8">
-      <UnderDevelopmentAlert section="Appearance Settings"/>
+      <SectionUnderDevelopment
+        title="Appearance Settings"
+        emoji="🎨"
+        subtitle="Customize the look and feel of your matrimony platform"
+        gradientFrom="from-pink-900"
+        gradientTo="to-purple-600"
+        glowFrom="from-pink-500"
+        glowVia="via-purple-500"
+        glowTo="to-indigo-700"
+        accentColor="text-indigo-100"
+      />
 
-      <div className="bg-gradient-to-r from-pink-900 to-purple-600 rounded-2xl p-6 text-white">
-        <h3 className="text-2xl font-bold mb-2">Appearance Settings</h3>
-        <p className="text-indigo-100">Customize the look and feel of your matrimony platform</p>
-      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">

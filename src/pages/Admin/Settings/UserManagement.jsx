@@ -1,14 +1,19 @@
-import UnderDevelopmentAlert from "../../../component/common/UnderDevelopmentAlert";
+import SectionUnderDevelopment from "../../../components/common/SectionUnderDevelopment";
 
 const UserManagement = () => {
   return (
     <div className="space-y-8">
-      <UnderDevelopmentAlert section="User Management Settings"/> 
-
-    <div className="bg-gradient-to-r from-green-700 to-emerald-600 rounded-2xl p-6 text-white">
-      <h3 className="text-2xl font-bold mb-2">User Management</h3>
-      <p className="text-green-100">Control user registration, verification, and profile settings</p>
-    </div>
+      <SectionUnderDevelopment
+        title="User Management"
+        emoji="👥"
+        subtitle="Control user registration, verification, and profile settings"
+        gradientFrom="from-green-700"
+        gradientTo="to-emerald-600"
+        glowFrom="from-green-400"
+        glowVia="via-emerald-400"
+        glowTo="to-lime-500"
+        accentColor="text-green-100"
+      />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">

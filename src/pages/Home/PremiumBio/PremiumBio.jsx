@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
-import Heading from "../../../component/common/Heading";
+import Heading from "../../../components/common/Heading";
 import { secCl } from "../../../utils/options";
 import HomeBiodataCard from "./HomeBiodataCard";
-import Loading from "../../../component/Loading";
+import Loading from "../../../components/Loading";
 
 const PremiumBio = () => {
   const axiosPublic = useAxiosPublic();

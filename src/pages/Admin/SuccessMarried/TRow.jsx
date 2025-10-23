@@ -1,6 +1,6 @@
 import { Trash2 } from "lucide-react";
 import { tdClases } from "../../../utils/options";
-import { StoryModal } from "../../../component/StoryModal";
+import { StoryModal } from "../../../components/StoryModal";
 import { formatDate } from "../../../utils/functions";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";

@@ -8,7 +8,7 @@ import useAxiosPublic from '../../hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 import { useForm } from 'react-hook-form';
-import SpinnerSVG from '../../component/common/SpinnerSVG';
+import SpinnerSVG from '../../components/common/SpinnerSVG';
 
 const SignUp = () => {
   const { createUser, updateUserProfile, signInWithGoogle } = useAuth();

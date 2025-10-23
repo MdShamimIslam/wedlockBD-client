@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { Heart, Lock} from 'lucide-react';
+import { CheckCircle, Heart, Lock} from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import useBiodatas from '../../hooks/useBiodatas';
 import toast from 'react-hot-toast';
@@ -12,6 +12,7 @@ import BasicInfo from './BasicInfo';
 import useCheckContactRequestStatus from '../../hooks/useCheckContactRequestStatus';
 import useBio from '../../hooks/useBio';
 import Swal from "sweetalert2";
+import useSuccessStory from '../../hooks/useSuccessStory';
 
 const BiodataDetails = () => {
   const { user } = useAuth();
@@ -20,6 +21,9 @@ const BiodataDetails = () => {
   const {biodatas}= useBiodatas();
   const requested = useCheckContactRequestStatus(biodata?.biodata_id);
   const {bio} = useBio();
+  const [stories] = useSuccessStory();
+
+  const matchingStory = stories?.find((story) => story.selfBiodataId === biodata?.biodata_id || story.partnerBiodataId === biodata?.biodata_id);
 
   const {
     biodata_id,
@@ -166,27 +170,48 @@ const BiodataDetails = () => {
               </div>
 
               <div className="p-6 border-b border-gray-200">
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <button
-                    onClick={handleAddToFavorite}
-                    className="flex-1 flex items-center justify-center space-x-2 py-3 px-6 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r from-pink-500 to-blue-500 text-white hover:from-pink-600 hover:to-blue-600"
-                  >
-                    <Heart className="h-5 w-5" />
-                    <span>Add to Favorites</span>
-                  </button> 
-                  
-                 {((!requested && !bio?.premium_status) && !requested) && <button
-                    onClick={() => handlePayment(biodata_id)}
-                    className="flex-1 bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-pink-600 hover:to-blue-600 transition-all duration-300 flex items-center justify-center space-x-2"
-                  >
-                    <Lock className="h-5 w-5" />
-                    <span>Request Contact</span>
-                  </button>
-                 }
-                </div>
+                {matchingStory?.story_type ? <div className="bg-gradient-to-r from-pink-600 to-blue-500 text-white py-4 px-6 rounded-xl shadow-md flex flex-col sm:flex-row items-center justify-between gap-3">
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle className="h-6 w-6 text-white" />
+                      <div>
+                        <h3 className="text-lg font-semibold">
+                          {matchingStory?.story_type === "married" && "Married 🎉"}
+                          {matchingStory?.story_type === "engaged" && "Engaged 💍"}
+                        </h3>
+                        <p className="text-sm text-pink-100">
+                          {matchingStory?.story_type === "married" &&
+                            "This biodata is part of a verified married success story."}
+                          {matchingStory?.story_type === "engaged" &&
+                            "This biodata is part of a verified engaged success story."}
+                        </p>
+                      </div>
+                    </div>
+                    <span className="bg-white/20 text-sm font-medium py-1 px-3 rounded-full">
+                      {matchingStory?.story_type === "married" && "Married"}
+                      {matchingStory?.story_type === "engaged" && "Engaged"}
+                    </span>
+                  </div> :   <div className="flex flex-col sm:flex-row gap-4">
+                        <button
+                          onClick={handleAddToFavorite}
+                          className="flex-1 flex items-center justify-center space-x-2 py-3 px-6 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r from-pink-500 to-blue-500 text-white hover:from-pink-600 hover:to-blue-600"
+                        >
+                          <Heart className="h-5 w-5" />
+                          <span>Add to Favorites</span>
+                        </button> 
+                        
+                      {((!requested && !bio?.premium_status) && !requested) && <button
+                          onClick={() => handlePayment(biodata_id)}
+                          className="flex-1 bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-pink-600 hover:to-blue-600 transition-all duration-300 flex items-center justify-center space-x-2"
+                        >
+                          <Lock className="h-5 w-5" />
+                          <span>Request Contact</span>
+                        </button>
+                      }
+                    </div>
+                }
               </div>
                 <BasicInfo {...{ race, permanent_division_name, present_division_name, occupation, height, weight, date_of_birth,fathers_name, mothers_name}}/>
-                <ContactInfo {...{ biodata_id, contact_email, contact_number,requested, bio}} />
+                <ContactInfo {...{ biodata_id, contact_email, contact_number, requested, matchingStory}} />
             </div>
           </div>
           {/* similar profiles */}

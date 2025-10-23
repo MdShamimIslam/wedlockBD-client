@@ -1,4 +1,4 @@
-import Heading from "../../component/common/Heading";
+import Heading from "../../components/common/Heading";
 import { secCl, values } from "../../utils/options";
 
 const Values = () => {

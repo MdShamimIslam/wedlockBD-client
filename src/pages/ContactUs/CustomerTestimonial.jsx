@@ -1,6 +1,6 @@
 import { Star } from "lucide-react";
 import { secCl, testimonials } from "../../utils/options";
-import Heading from "../../component/common/Heading";
+import Heading from "../../components/common/Heading";
 
 const CustomerTestimonial = () => {
   return (

@@ -1,6 +1,6 @@
 import { Mail, MapPin, Phone, Users } from "lucide-react";
 import { officeLocations, secCl } from "../../utils/options";
-import Heading from "../../component/common/Heading";
+import Heading from "../../components/common/Heading";
 
 const ContactOfficeLocation = () => {
   return (

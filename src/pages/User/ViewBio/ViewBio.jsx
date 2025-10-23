@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import useBio from "../../../hooks/useBio";
 import { Mail, Phone, User, MapPin, Download, FileText, Heart, Calendar, Scale, Briefcase, Users, Eye, Crown } from "lucide-react";
 import { calculateAge } from "../../../utils/functions";
-import Nodata from "../../../component/common/Nodata";
+import Nodata from "../../../components/common/Nodata";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import Swal from 'sweetalert2'
