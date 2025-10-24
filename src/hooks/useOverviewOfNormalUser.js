@@ -9,7 +9,7 @@ const UseOverviewOfNormalUser = () => {
     const { data: overviewOfNormalUser = {} } = useQuery({
           queryKey: ["overviewOfNormalUser"],
           queryFn: async () => {
-              const res = await axiosSecure.get(`/overview/normal-user?email=${user?.email}`);
+              const res = await axiosSecure.get(`/user-stats/normal-user?email=${user?.email}`);
               return res.data;
           },
       });

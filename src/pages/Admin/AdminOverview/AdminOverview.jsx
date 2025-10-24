@@ -2,9 +2,7 @@ import Welcome from './Welcome';
 import EnhancedStats from './EnhancedStats';
 import AdditionalStats from './AdditionalStats';
 import EnhancedCharts from './EnhancedCharts';
-import AgeGroupAndLocaDis from './AgeGroupAndLocaDis';
 import DailyActivityAndSuccessStories from './DailyActivityAndSuccessStories';
-import RecentActivitiesandPendingApprovals from './RecentActivitiesandPendingApprovals';
 import { Helmet } from 'react-helmet-async';
 
 const AdminOverview = () => {
@@ -19,9 +17,7 @@ const AdminOverview = () => {
       <EnhancedStats/>
       <AdditionalStats/>
       <EnhancedCharts/>
-      <AgeGroupAndLocaDis/>
       <DailyActivityAndSuccessStories/>
-      <RecentActivitiesandPendingApprovals/>
     </div>
     </>
     

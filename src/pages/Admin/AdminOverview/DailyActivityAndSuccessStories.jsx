@@ -1,24 +1,12 @@
 import { MapPin } from 'lucide-react';
 import { XAxis,  YAxis,  CartesianGrid,  Tooltip,  ResponsiveContainer, LineChart, Line } from 'recharts';
+import UseAdminStats from '../../../hooks/useAdminStats';
 
 
 const DailyActivityAndSuccessStories = () => {
-    const dailyActivityData = [
-        { day: 'Mon', logins: 450, messages: 1200, profileViews: 2800 },
-        { day: 'Tue', logins: 520, messages: 1350, profileViews: 3100 },
-        { day: 'Wed', logins: 480, messages: 1180, profileViews: 2900 },
-        { day: 'Thu', logins: 600, messages: 1450, profileViews: 3400 },
-        { day: 'Fri', logins: 720, messages: 1680, profileViews: 3800 },
-        { day: 'Sat', logins: 850, messages: 1920, profileViews: 4200 },
-        { day: 'Sun', logins: 680, messages: 1580, profileViews: 3600 }
-      ];
+  const adminStats = UseAdminStats();
+  const {topMatches=[], dailyActivityData=[]} = adminStats || {};
 
-    const topMatches = [
-        { id: 1, couple: 'Ahmed & Fatima', date: '2024-01-15', location: 'Dhaka', status: 'married' },
-        { id: 2, couple: 'Karim & Ayesha', date: '2024-01-10', location: 'Chittagong', status: 'engaged' },
-        { id: 3, couple: 'Rashid & Salma', date: '2024-01-05', location: 'Sylhet', status: 'married' },
-        { id: 4, couple: 'Hassan & Nadia', date: '2024-01-02', location: 'Rajshahi', status: 'engaged' }
-      ];
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Daily Activity */}
@@ -36,19 +24,19 @@ const DailyActivityAndSuccessStories = () => {
                   borderRadius: '8px'
                 }}
               />
-              <Line type="monotone" dataKey="logins" stroke="#3B82F6" strokeWidth={3} dot={{ r: 6 }} />
-              <Line type="monotone" dataKey="messages" stroke="#10B981" strokeWidth={3} dot={{ r: 6 }} />
+              <Line type="monotone" dataKey="requestsSent" stroke="#3B82F6" strokeWidth={3} dot={{ r: 6 }} />
+              <Line type="monotone" dataKey="premiumPurchases" stroke="#10B981" strokeWidth={3} dot={{ r: 6 }} />
               <Line type="monotone" dataKey="profileViews" stroke="#F59E0B" strokeWidth={3} dot={{ r: 6 }} />
             </LineChart>
           </ResponsiveContainer>
           <div className="flex justify-center gap-6 mt-4">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-              <span className="text-sm text-gray-600">Logins</span>
+              <span className="text-sm text-gray-600">Requests Sent</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-              <span className="text-sm text-gray-600">Messages</span>
+              <span className="text-sm text-gray-600">Premium Purchases</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
@@ -61,23 +49,42 @@ const DailyActivityAndSuccessStories = () => {
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
           <h3 className="text-lg font-semibold text-gray-900 mb-6">Recent Success Stories</h3>
           <div className="space-y-4">
-            {topMatches.map((match) => (
-              <div key={match.id} className="p-4 bg-gradient-to-r from-pink-50 to-purple-50 rounded-lg border border-pink-100">
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-semibold text-gray-900">{match.couple}</h4>
-                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                    match.status === 'married' 
-                      ? 'bg-green-100 text-green-800' 
-                      : 'bg-blue-100 text-blue-800'
-                  }`}>
-                    {match.status}
-                  </span>
+            {topMatches.map((match, idx) => (
+              <div
+                key={idx}
+                className="flex items-center gap-4 p-4 bg-gradient-to-r from-pink-50 to-purple-50 rounded-xl border border-pink-100 hover:shadow-md transition-all duration-200"
+              >
+                {/* Couple Image */}
+                <div className="w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden border border-pink-200 shadow-sm">
+                  <img
+                    src={match.img || "/placeholder-couple.jpg"}
+                    alt={match.couple}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <p className="text-sm text-gray-600 flex items-center gap-1">
-                  <MapPin className="w-3 h-3" />
-                  {match.location}
-                </p>
-                <p className="text-xs text-gray-500 mt-1">{match.date}</p>
+
+                {/* Text Content */}
+                <div className="flex-1">
+                  <div className="flex items-center justify-between mb-1">
+                    <h4 className="font-semibold text-gray-900">{match.couple}</h4>
+                    <span
+                      className={`px-2 py-1 rounded-full text-xs font-medium ${
+                        match.status === "married"
+                          ? "bg-green-100 text-green-800"
+                          : "bg-blue-100 text-blue-800"
+                      }`}
+                    >
+                      {match.status}
+                    </span>
+                  </div>
+
+                  <p className="text-sm text-gray-600 flex items-center gap-1">
+                    <MapPin className="w-3 h-3" />
+                    {match.location}
+                  </p>
+
+                  <p className="text-xs text-gray-500 mt-1">{match.date}</p>
+                </div>
               </div>
             ))}
           </div>
