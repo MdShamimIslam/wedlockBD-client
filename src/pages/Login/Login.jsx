@@ -70,7 +70,7 @@ const Login = () => {
     <>
       <div className='max-w-7xl mx-auto'>
         <Navbar />
-        <div className='flex items-center justify-center my-16 md:my-20 lg:my-24 px-4 sm:px-6 lg:px-8'>
+        <div className='flex items-center justify-center my-12 md:my-16 px-4 sm:px-6 lg:px-8'>
           <div className='max-w-md w-full space-y-8'>
             <div className='text-center'>
               <h2 className='text-2xl lg:text-3xl font-bold text-gray-800 mb-2'>
@@ -80,7 +80,7 @@ const Login = () => {
               {errorMess && <p className='text-red-600 mt-2'>{errorMess}</p>}
             </div>
 
-            <div className='bg-slate-50 rounded-2xl shadow-xl p-8'>
+            <div className='bg-slate-50 rounded-2xl shadow-sm border p-8'>
               <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
                 {/* Email */}
                 <div>
@@ -188,10 +188,6 @@ const Login = () => {
                   </Link>
                 </p>
               </div>
-            </div>
-
-            <div className='text-center text-gray-500 text-sm'>
-              <p>By signing in, you agree to our Terms of Service and Privacy Policy</p>
             </div>
           </div>
         </div>

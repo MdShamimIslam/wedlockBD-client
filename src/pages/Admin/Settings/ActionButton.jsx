@@ -2,7 +2,7 @@ import { RefreshCw, Save } from "lucide-react";
 
 const ActionButton = () => {
   return (
-    <div className="flex justify-end gap-4 mt-8 pt-8 border-t border-gray-200">
+    <div className="flex justify-start gap-4 mt-8 pt-8 border-t border-gray-200">
           <button className="bg-gray-100 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors flex items-center gap-2">
             <RefreshCw className="w-4 h-4" />
             Reset to Default

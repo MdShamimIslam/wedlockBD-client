@@ -9,7 +9,7 @@ const EnhancedCharts = () => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+        <div className="bg-white rounded-2xl p-6 shadow-sm border ">
           <h3 className="text-lg font-semibold text-gray-900 mb-6">Age Distribution by Gender</h3>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={ageGroupData}>
@@ -39,7 +39,7 @@ const EnhancedCharts = () => {
           </div>
         </div>
         {/* User Demographics Pie Chart */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+        <div className="bg-white rounded-2xl p-6 shadow-sm border ">
           <h3 className="text-lg font-semibold text-gray-900 mb-6">User Demographics</h3>
           <ResponsiveContainer width="100%" height={350}>
             <RechartsPieChart>

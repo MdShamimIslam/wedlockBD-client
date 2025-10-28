@@ -47,7 +47,7 @@ const EnhancedStats = () => {
           return (
             <div
           key={index}
-          className={`bg-gradient-to-br ${fromColor} ${toColor} rounded-2xl p-6 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1`}
+          className={`bg-gradient-to-br ${fromColor} ${toColor} rounded-2xl p-6 text-white shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1`}
         >
           <div className="flex items-center justify-between">
             <div>

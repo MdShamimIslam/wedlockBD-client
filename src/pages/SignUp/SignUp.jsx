@@ -90,7 +90,7 @@ const SignUp = () => {
               {errorMess && <p className='text-red-600 mt-2'>{errorMess}</p>}
             </div>
 
-            <div className='bg-slate-50 rounded-2xl shadow-xl p-8'>
+            <div className='bg-slate-50 rounded-2xl shadow-sm border p-8'>
               <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
                 {/* Name */}
                 <div>
@@ -206,10 +206,6 @@ const SignUp = () => {
                   </Link>
                 </p>
               </div>
-            </div>
-
-            <div className='text-center text-gray-500 text-sm'>
-              <p>By signing up, you agree to our Terms of Service and Privacy Policy</p>
             </div>
           </div>
         </div>

@@ -216,7 +216,7 @@ const BiodataDetails = () => {
           </div>
           {/* similar profiles */}
           <div className="lg:col-span-1">
-            <div className="bg-slate-100 rounded-2xl shadow-lg p-6 sticky top-4">
+            <div className="bg-slate-100 rounded-2xl shadow-sm border p-6 sticky top-4">
               <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-800 mb-6">
                 Similar {biodata_type} Profiles
               </h2>

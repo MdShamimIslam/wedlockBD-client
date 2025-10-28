@@ -8,7 +8,7 @@ const Welcome = () => {
   const today = new Date().toLocaleDateString();
 
   return (
-    <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-3xl p-6 md:p-8 text-white shadow-2xl">
+    <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-3xl p-6 md:p-8 text-white">
       <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8">
         <div className="text-center lg:text-left flex-1">
           <h1 className="text-2xl md:text-3xl font-bold mb-2">

@@ -18,7 +18,7 @@ const AdditionalStats = () => {
         {stats.map((stat, idx) => {
           const { title, value, Icon, iconColor } = stat;
           return (
-            <div key={idx} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+            <div key={idx} className="bg-white rounded-2xl p-6 shadow-sm border  hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600">{title}</p>

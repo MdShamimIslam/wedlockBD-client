@@ -10,7 +10,7 @@ const DailyActivityAndSuccessStories = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Daily Activity */}
-        <div className="lg:col-span-2 bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+        <div className="lg:col-span-2 bg-white rounded-2xl p-6 shadow-sm border   ">
           <h3 className="text-lg font-semibold text-gray-900 mb-6">Weekly Activity Overview</h3>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={dailyActivityData}>
@@ -46,7 +46,7 @@ const DailyActivityAndSuccessStories = () => {
         </div>
 
         {/* Recent Success Stories */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+        <div className="bg-white rounded-2xl p-6 shadow-sm border ">
           <h3 className="text-lg font-semibold text-gray-900 mb-6">Recent Success Stories</h3>
           <div className="space-y-4">
             {topMatches.map((match, idx) => (
