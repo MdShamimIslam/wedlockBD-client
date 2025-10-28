@@ -1,32 +1,18 @@
-import { ComposedChart, Area, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
-import { emptyLineData } from "../../../utils/options";
 
 
-const LineChart = ({lineData = []}) => {
-    const hasLineData = lineData.length > 0;
+const LineChart = () => {
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border p-6">
-        <h3 className="text-lg font-bold mb-4 text-gray-800">Profile Views (Last 7 days)</h3>
-        <div style={{ width: '100%', height: 300 }}>
-            <ResponsiveContainer>
-                <ComposedChart
-                data={hasLineData ? lineData : emptyLineData}
-                margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-                >
-                    <CartesianGrid stroke="#f5f5f5" />
-                    <XAxis dataKey="day" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Area type="monotone" dataKey="amt" fill="#8884d8" stroke="#8884d8" />
-                    <Bar dataKey="pv" barSize={20} fill="#413ea0" />
-                    <Line type="monotone" dataKey="views" stroke="#ff7300" />
-                </ComposedChart>
-            </ResponsiveContainer>
-        </div>
-        {!hasLineData &&  <p className="text-gray-500 italic text-center mt-2">No profile view data yet</p>}
+    <div className="bg-white p-6 rounded-2xl shadow-sm border">
+    <h3 className="text-lg font-bold mb-3 text-gray-800">Achievements</h3>
+    <div className="flex flex-wrap gap-3">
+      <span className="px-3 py-1 bg-gradient-to-r from-pink-500 to-orange-500 text-white rounded-full text-sm font-medium shadow-md">🏆 100 Profile Views</span>
+      <span className="px-3 py-1 bg-gradient-to-r from-green-500 to-teal-500 text-white rounded-full text-sm font-medium shadow-md">💬 First Request Sent</span>
+      <span className="px-3 py-1 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-full text-sm font-medium shadow-md">⭐ Verified Profile</span>
+    </div>
   </div>
+  
+  
   )
 }
 

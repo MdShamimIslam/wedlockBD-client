@@ -9,7 +9,7 @@ const useLast7DaysViews = () => {
   return useQuery({
     queryKey: ["last7daysViews", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/profile-views/last7days?email=${user.email}`);
+      const res = await axiosSecure.get(`/user-stats/last7days?email=${user.email}`);
       return res.data;
     },
     enabled: !!user?.email

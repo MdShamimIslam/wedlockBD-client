@@ -48,7 +48,7 @@ const BiodataDetails = () => {
 
     const addProfileView = async () => {
       try {
-        await axiosSecure.post("/profile-views", {
+        await axiosSecure.post("/biodatas/add-profile-view", {
           profileOwnerEmail: contact_email,
           visitorEmail: user.email,
           visitorName: user.displayName,
