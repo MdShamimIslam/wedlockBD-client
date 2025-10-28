@@ -5,7 +5,7 @@ const Welcome = () => {
     const { displayName, photoURL } = user || {};
     
   return (
-    <div className="bg-gradient-to-r from-[#5b285c] to-[#131729] rounded-3xl p-8 text-white flex items-center justify-between shadow-xl">
+    <div className="bg-gradient-to-r from-[#5b285c] to-[#131729] rounded-3xl p-8 text-white flex items-center justify-between">
           <div>
             <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2">
               Welcome back, {displayName || "Anonymous"}!

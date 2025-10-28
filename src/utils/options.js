@@ -666,14 +666,6 @@ export const contactInfo = [
 
 export const supportOptions = [
   {
-    icon: MessageCircle,
-    title: "Live Chat Support",
-    description: "Get instant help from our support team with real-time chat assistance",
-    features: ["Instant Response", "24/7 Available", "Multi-language Support"],
-    action: "Start Chat Now",
-    color: "from-blue-500 to-blue-600"
-  },
-  {
     icon: HeadphonesIcon,
     title: "Phone Consultation",
     description: "Speak directly with our matrimony experts for personalized guidance",
@@ -947,13 +939,13 @@ export const adminSidebarItems = [
   { path: "/dashboard/approved-premium", label: "Approved Premium", icon: Crown },
   { path: "/dashboard/success-stories", label: "Success Stories", icon: Star },
   { children: [
+    { path: "/dashboard/settings/appearance", label: "Appearance", icon: Palette },
+    { path: "/dashboard/settings/advanced", label: "Advanced", icon: Database },
+    { path: "/dashboard/settings/notifications", label: "Notifications", icon: Bell },
       { path: "/dashboard/settings/general", label: "General", icon: Sliders },
       { path: "/dashboard/settings/users", label: "User Management", icon: UserCog },
       { path: "/dashboard/settings/security", label: "Security", icon: Shield },
       { path: "/dashboard/settings/payments", label: "Payments", icon: CreditCard },
-      { path: "/dashboard/settings/notifications", label: "Notifications", icon: Bell },
-      { path: "/dashboard/settings/appearance", label: "Appearance", icon: Palette },
-      { path: "/dashboard/settings/advanced", label: "Advanced", icon: Database },
     ],
     label: "Settings",
     icon: Settings,

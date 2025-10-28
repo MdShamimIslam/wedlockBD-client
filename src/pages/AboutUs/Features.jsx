@@ -13,7 +13,7 @@ const Features = () => {
         {features.map((feature, index) => {
           const IconComponent = feature.icon;
           return (
-            <div key={index} className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+            <div key={index} className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
               <div className={`${feature.bgColor} w-16 h-16 rounded-2xl flex items-center justify-center mb-6`}>
                 <IconComponent className={`h-8 w-8 ${feature.color}`} />
               </div>

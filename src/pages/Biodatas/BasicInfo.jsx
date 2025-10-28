@@ -73,8 +73,8 @@ const BasicInfo = ({race, permanent_division_name, present_division_name, occupa
             <div>
                 <p className="text-sm text-gray-500">Race</p>
                 <p className="font-semibold text-gray-800">{race}</p>
-                </div>
-                </div>
+            </div>
+        </div>
         </div>
   </div>
   )

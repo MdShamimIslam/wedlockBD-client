@@ -39,7 +39,7 @@ const CounterCard = ({ icon: Icon, color, bgColor, value, label }) => {
   const animatedValue = useCountUp(value);
 
   return (
-    <div className="bg-white rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+    <div className="bg-white rounded-2xl p-8 text-center shadow-sm border hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
       <div className={`w-16 h-16 ${bgColor} rounded-full flex items-center justify-center mx-auto mb-4`}>
         <Icon className={`h-8 w-8 ${color}`} />
       </div>

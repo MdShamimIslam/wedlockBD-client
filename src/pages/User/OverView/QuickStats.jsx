@@ -4,7 +4,7 @@ const QuickStats = ({stats=[]}) => {
           {stats?.map((item, i) => (
             <div  
               key={i}
-              className="bg-white rounded-2xl p-6 shadow-md border transition"
+              className="bg-white rounded-2xl p-6 shadow-sm border transition"
             >
               <div className="flex items-center justify-between">
                 <div>

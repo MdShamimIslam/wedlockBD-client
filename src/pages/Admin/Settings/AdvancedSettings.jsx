@@ -139,7 +139,7 @@ const AdvancedSettings = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-xl shadow-lg border">
+      <div className="bg-white rounded-xl shadow-sm border">
         <div className="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white rounded-t-xl p-6">
           <h2 className="text-xl font-bold flex items-center gap-3">
             <div className="p-2 bg-white/20 rounded-lg">

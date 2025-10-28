@@ -6,7 +6,7 @@ const LineChart = ({lineData = []}) => {
     const hasLineData = lineData.length > 0;
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6">
+    <div className="bg-white rounded-2xl shadow-sm border p-6">
         <h3 className="text-lg font-bold mb-4 text-gray-800">Profile Views (Last 7 days)</h3>
         <div style={{ width: '100%', height: 300 }}>
             <ResponsiveContainer>

@@ -2,7 +2,6 @@ import { Heart, Star } from "lucide-react"
 import useUserStats from "../../hooks/useUserStats";
 import storyImg from "../../assets/images/story.jpeg";
 import useSuccessStory from "../../hooks/useSuccessStory";
-import { secCl } from "../../utils/options";
 
 const Story = () => {
   const userStats = useUserStats();
@@ -17,7 +16,7 @@ const Story = () => {
   const hasHalfStar = avgRating - fullStars >= 0.5;
 
   return (
-    <div className={secCl}>
+    <div className="my-8 md:my-12 lg:my-16 p-3 lg:p-0">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center px-8 md:px-6 lg:px-0">
             <div className="order-2 lg:order-1">
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-8 leading-tight">Our Story</h2>

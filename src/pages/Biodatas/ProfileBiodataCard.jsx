@@ -8,7 +8,7 @@ const ProfileBiodataCard = ({biodata = {}}) => {
     const actualAge = calculateAge(date_of_birth);
 
     return (
-        <div key={_id} className="bg-white rounded-2xl shadow-lg overflow-hidden card-hover group">
+        <div key={_id} className="bg-white rounded-2xl shadow-md overflow-hidden card-hover group">
             <div className="relative">
                 <img
                     src={profile_image}

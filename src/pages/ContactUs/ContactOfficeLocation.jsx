@@ -13,7 +13,7 @@ const ContactOfficeLocation = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-8">
         {officeLocations.map((office, index) => (
-          <div key={index} className="bg-slate-50 p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div key={index} className="bg-slate-50 p-8 rounded-3xl shadow-sm border hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2">
             <div className="text-center mb-6">
               <div className="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MapPin className="h-8 w-8 text-primary-600" />

@@ -7,7 +7,7 @@ const RecentActivity = ({ latestProfileView, latestRequest }) => {
 
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-8">
+    <div className="bg-white rounded-2xl shadow-sm border p-8">
       <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
         Recent Activity
       </h3>

@@ -191,7 +191,7 @@ const ViewBiodata = () => {
               <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
                 <FileText className="w-5 h-5" /> Contact Information
               </h3>
-              <div className="space-y-4">
+              <div>
                 <div className="flex items-center gap-3 p-4 bg-white/20 rounded-xl">
                   <Mail className="w-5 h-5" />
                   <span>{contact_email || "N/A"}</span>

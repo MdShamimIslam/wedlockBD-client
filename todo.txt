@@ -1,7 +1,2 @@
-1. Footer: link gulor right route dite hobe and subscribe er functionality add korte hobe 
-2. Contact us er moddhe real feedback data add korte hobe and site jekono akta vlo page a feedback dewar section banaite hobe
-3. email verification, forget & reset passward implement korte hobe,
-4. Payment integration a webhook er kaj korte hobe karon pay korar agey pay hosse akhon.
-5. main.jsx er moddhe react strictmode add korte hobe
-6. index.html a chat app chalu korte hobe and emailjs ta remove kore js er moddhe initilize korte hobe
+
 

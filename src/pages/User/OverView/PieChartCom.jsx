@@ -7,7 +7,7 @@ const PieChartCom = ({pieData=[]}) => {
   const hasPieData = pieData?.some((d) => d.value > 0);
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6">
+    <div className="bg-white rounded-2xl shadow-sm border p-6">
         <h3 className="text-lg font-bold mb-4 text-gray-800">Engagement Breakdown</h3>
         <ResponsiveContainer width="100%" height={250}>
           <PieChart>

@@ -105,7 +105,7 @@ const SignUp = () => {
                       id="name"
                       required
                       placeholder="Your Name"
-                      className='w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200'
+                      className='w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200'
                     />
                   </div>
                 </div>
@@ -141,7 +141,7 @@ const SignUp = () => {
                       id="email"
                       required
                       placeholder="Your Email"
-                      className='w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200'
+                      className='w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200'
                     />
                   </div>
                 </div>
@@ -162,7 +162,7 @@ const SignUp = () => {
                       id="password"
                       required
                       placeholder="Enter password"
-                      className='w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200'
+                      className='w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200'
                     />
                     <button
                       type='button'

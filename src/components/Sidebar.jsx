@@ -1,10 +1,10 @@
 import { LogOut } from "lucide-react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import logoImg from "../../assets/logo/wedlock.png";
-import { adminSidebarItems, userSidebarItems } from "../../utils/options";
-import useAuth from "../../hooks/useAuth";
+import logoImg from "../assets/logo/wedlock.png";
+import { adminSidebarItems, userSidebarItems } from "../utils/options";
+import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
-import useAdmin from "../../hooks/useAdmin";
+import useAdmin from "../hooks/useAdmin";
 
 const Sidebar = ({sidebarOpen}) => {
     const { logOut } = useAuth();
@@ -23,9 +23,8 @@ const Sidebar = ({sidebarOpen}) => {
     };
 
     return (
-        <div
-            className={`fixed inset-y-0 left-0 z-50 w-68 bg-white shadow-md transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} 
-            transition-transform duration-300 lg:translate-x-0 lg:static lg:inset-0`}
+        <div className={`fixed top-0 left-0 h-screen z-50 w-68 bg-white shadow-md transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          } transition-transform duration-300 lg:translate-x-0 lg:static lg:inset-0 overflow-hidden`}
         >
             <div className="p-6 ">
                 <Link to="/" className="flex items-center">

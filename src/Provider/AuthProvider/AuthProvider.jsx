@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { GoogleAuthProvider, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, sendPasswordResetEmail } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../../firebase/firebase.config";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
@@ -62,6 +62,12 @@ const AuthProvider = ({ children }) => {
     });
   };
 
+  const resetPassword = (email) => {
+    return sendPasswordResetEmail(auth, email);
+  };
+
+  
+
   const authInfo = {
     user,
     loading,
@@ -70,6 +76,7 @@ const AuthProvider = ({ children }) => {
     signInWithGoogle,
     logOut,
     updateUserProfile,
+    resetPassword
   };
 
   return <AuthContext.Provider value={authInfo}>

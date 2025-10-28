@@ -11,14 +11,14 @@ import { useForm } from 'react-hook-form';
 import SpinnerSVG from '../../components/common/SpinnerSVG';
 
 const Login = () => {
-  const { signIn, signInWithGoogle } = useAuth();
+  const { signIn, signInWithGoogle, resetPassword } = useAuth();
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || '/';
   const [showPassword, setShowPassword] = useState(false);
   const [errorMess, setErrorMess] = useState('');
-  const { register, reset, handleSubmit, formState: { errors, isSubmitting } } = useForm();
+  const { register, reset, handleSubmit, watch, formState: { errors, isSubmitting } } = useForm();
 
   const onSubmit = async (data) => {
     setErrorMess('');
@@ -50,6 +50,22 @@ const Login = () => {
     }
   };
 
+  const handleResetPassword = async () => {
+    const email = watch("email"); 
+    if (!email) {
+      toast.error("Please enter your email address first!");
+      return;
+    }
+  
+    try {
+      await resetPassword(email);
+      toast.success("Password reset email sent! Please check your inbox.");
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+  
+
   return (
     <>
       <div className='max-w-7xl mx-auto'>
@@ -78,7 +94,7 @@ const Login = () => {
                       type="email"
                       id="email"
                       required
-                      className='w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200'
+                      className='w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200'
                       placeholder='Enter your email'
                     />
                   </div>
@@ -101,7 +117,7 @@ const Login = () => {
                       })}
                       type={showPassword ? 'text' : 'password'}
                       required
-                      className='w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200'
+                      className='w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200'
                       placeholder='Enter your password'
                     />
                     <button
@@ -126,7 +142,7 @@ const Login = () => {
                       Remember me
                     </label>
                   </div>
-                  <Link className='text-sm text-primary-600 hover:text-primary-500'>
+                  <Link onClick={handleResetPassword} className='text-sm text-primary-600 hover:text-primary-500'>
                     Forgot password?
                   </Link>
                 </div>

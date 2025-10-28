@@ -1,5 +1,3 @@
-
-
 const SectionUnderDevelopment = ({
     title,
     emoji = "⚙️",
@@ -14,7 +12,7 @@ const SectionUnderDevelopment = ({
 
   return (
     <div
-      className={`bg-gradient-to-r ${gradientFrom} ${gradientTo} rounded-2xl p-6 text-white relative overflow-hidden`}
+      className={`bg-gradient-to-r ${gradientFrom} ${gradientTo} rounded-2xl p-6 text-white relative overflow-hidden mt-3`}
     >
       {/* Animated subtle background */}
       <div

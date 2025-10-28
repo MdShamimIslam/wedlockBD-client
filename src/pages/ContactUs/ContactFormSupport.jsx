@@ -1,6 +1,7 @@
 import { Send } from "lucide-react";
 import { supportOptions } from "../../utils/options";
 import { useState } from "react";
+import { toast } from 'react-hot-toast';
 
 const ContactFormSupport = () => {
     const [formData, setFormData] = useState({ name: '', email: '', phone: '', subject: '', message: '', priority: 'normal' });
@@ -23,13 +24,15 @@ const ContactFormSupport = () => {
         message: '',
         priority: 'normal'
       });
+
+      toast.success('Your message has been sent successfully!');
     };
 
 
   return (
      <div className="my-16 md:my-24 lg:my-32 px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-        <div className="bg-white p-10 rounded-3xl shadow-2xl border border-gray-100">
+        <div className="bg-white p-10 rounded-3xl shadow-sm border border-gray-100">
           <div className="text-center mb-8">
             <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 mb-4">Send us a Message</h3>
             <p className="text-gray-600">Fill out the form below and we will get back to you as soon as possible</p>
@@ -47,7 +50,7 @@ const ContactFormSupport = () => {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                  className="w-full px-4 py-4 border border-gray-300 rounded-xl outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -62,7 +65,7 @@ const ContactFormSupport = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                  className="w-full px-4 py-4 border border-gray-300 rounded-xl outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
                   placeholder="Enter your email"
                 />
               </div>
@@ -78,7 +81,7 @@ const ContactFormSupport = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                  className="w-full px-4 py-4 border border-gray-300 rounded-xl outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
                   placeholder="Enter your phone number"
                 />
               </div>
@@ -91,7 +94,7 @@ const ContactFormSupport = () => {
                   name="priority"
                   value={formData.priority}
                   onChange={handleChange}
-                  className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                  className="w-full px-4 py-4 border border-gray-300 rounded-xl outline-none  focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
                 >
                   <option value="low">Low Priority</option>
                   <option value="normal">Normal Priority</option>
@@ -110,7 +113,7 @@ const ContactFormSupport = () => {
                 required
                 value={formData.subject}
                 onChange={handleChange}
-                className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                className="w-full px-4 py-4 border border-gray-300 rounded-xl outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
               >
                 <option value="">Select a subject</option>
                 <option value="general">General Inquiry</option>
@@ -135,7 +138,7 @@ const ContactFormSupport = () => {
                 rows={6}
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 resize-none bg-gray-50 focus:bg-white"
+                className="w-full px-4 py-4 border border-gray-300 rounded-xl outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 resize-none bg-gray-50 focus:bg-white"
                 placeholder="Tell us how we can help you..."
               />
             </div>
@@ -171,7 +174,7 @@ const ContactFormSupport = () => {
           {supportOptions.map((option, index) => {
             const IconComponent = option.icon;
             return (
-              <div key={index} className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+              <div key={index} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100">
                 <div className="flex items-start space-x-6">
                   <div className={`bg-gradient-to-r ${option.color} w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0`}>
                     <IconComponent className="h-7 w-7 text-white" />

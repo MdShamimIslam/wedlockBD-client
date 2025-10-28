@@ -3,7 +3,7 @@ import { Filter } from "lucide-react";
 const FilterSidebar = ({filters={}, handleFilterChange, showFilters, clearFilters, divisions=[], occupations=[], total}) => {
   return (
     <div className={`lg:w-1/4 ${showFilters ? "block" : "hidden lg:block"}`}>
-            <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-4">
+            <div className="bg-white rounded-2xl shadow-sm border p-6 sticky top-4">
 
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-2xl font-bold text-gray-800 flex items-center">
