@@ -9,11 +9,12 @@ import TPagination from "../../../components/common/TPagination";
 import TRow from "./TRow";
 import { tHeadAdminApprovedContactRequest } from "../../../utils/options";
 import { CheckCircle } from "lucide-react";
+import Loading from "../../../components/Loading";
 
 const ApprovedContactRequest = () => {
     const axiosSecure = useAxiosSecure();
 
-    const { data: allContactRequest = [], refetch } = useQuery({
+    const { data: allContactRequest = [], refetch, isLoading } = useQuery({
       queryKey: ["all-contact-request"],
       queryFn: async () => {
         const res = await axiosSecure.get( `/contact-request/all` );
@@ -24,6 +25,14 @@ const ApprovedContactRequest = () => {
 
   const { currentData, currentPage, setCurrentPage, rowsPerPage, setRowsPerPage, totalPages, totalEntries } = usePagination(allContactRequest, 10);
   
+  if (isLoading) {
+    return (
+      <div className='mt-72 lg:mt-96'>
+        <Loading/>
+      </div>
+    )
+  }
+
   if (allContactRequest?.length === 0) {
     return (
       <EmptyState

@@ -13,7 +13,7 @@ const FilterSidebar = ({filters={}, handleFilterChange, showFilters, clearFilter
                 <button
                   type="button"
                   onClick={clearFilters}
-                  className="text-primary-500 hover:text-primary-600 font-medium text-sm"
+                  className="text-white bg-gradient-to-r from-pink-500 to-blue-500 px-2 py-1 rounded-md  font-medium text-sm"
                 >
                   Clear All
                 </button>

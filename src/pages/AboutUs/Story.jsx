@@ -16,7 +16,7 @@ const Story = () => {
   const hasHalfStar = avgRating - fullStars >= 0.5;
 
   return (
-    <div className="my-8 md:my-12 lg:my-16 p-3 lg:p-0">
+    <div className="my-16 p-3 lg:p-0">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center px-8 md:px-6 lg:px-0">
             <div className="order-2 lg:order-1">
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-8 leading-tight">Our Story</h2>
@@ -57,7 +57,7 @@ const Story = () => {
                 </div>
               </div>
             </div>
-            <div className="order-1 lg:order-2 relative">
+            <div className="order-1 lg:order-2 relative lg:mb-24">
               <div className="relative">
                 <img
                   src={storyImg}

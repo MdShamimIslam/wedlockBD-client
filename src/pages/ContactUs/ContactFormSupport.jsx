@@ -1,5 +1,5 @@
 import { Send } from "lucide-react";
-import { supportOptions } from "../../utils/options";
+import { secCl, supportOptions } from "../../utils/options";
 import { useState } from "react";
 import { toast } from 'react-hot-toast';
 
@@ -30,7 +30,7 @@ const ContactFormSupport = () => {
 
 
   return (
-     <div className="my-16 md:my-24 lg:my-32 px-4 sm:px-6 lg:px-8">
+     <div className={secCl}>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
         <div className="bg-white p-10 rounded-3xl shadow-sm border border-gray-100">
           <div className="text-center mb-8">

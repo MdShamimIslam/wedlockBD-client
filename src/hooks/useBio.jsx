@@ -6,7 +6,7 @@ const useBio = () => {
     const {user,loading} = useAuth();
     const axiosSecure = useAxiosSecure();
 
-    const { data: bio = {}, refetch } = useQuery({
+    const { data: bio = {}, refetch, isLoading } = useQuery({
       queryKey: ["biodata-by-email", user?.email],
       enabled: !loading && !!user?.email,
       queryFn: async () => {
@@ -22,7 +22,7 @@ const useBio = () => {
       },
     });
     
-    return {bio,refetch};
+    return {bio,refetch, isLoading};
 };
 
 export default useBio;

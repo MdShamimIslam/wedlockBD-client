@@ -4,14 +4,14 @@ import useAxiosPublic from './useAxiosPublic';
 const useSuccessStory = () => {
     const axiosPublic = useAxiosPublic();
     
-    const { data: stories=[], refetch } = useQuery({
+    const { data: stories=[], refetch, isLoading } = useQuery({
         queryKey: ["successStories"],
         queryFn: async () => {
             const res = await axiosPublic.get('/success-stories');
             return res.data;
         },
       });
-      return [stories, refetch];
+      return [stories, refetch, isLoading];
 };
 
 export default useSuccessStory;

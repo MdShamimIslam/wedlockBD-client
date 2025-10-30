@@ -67,7 +67,7 @@ export const router = createBrowserRouter([
             <BiodataDetails/>
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`http://localhost:5000/biodatas/${params.id}`)
+        loader: ({ params }) => fetch(`https://wedlock-bd-server.vercel.app/biodatas/${params.id}`)
       },
       {
         path: "/checkout-success",

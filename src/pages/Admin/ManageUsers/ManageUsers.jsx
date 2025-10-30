@@ -9,11 +9,12 @@ import TableHead from "../../../components/common/TableHead";
 import { Users } from "lucide-react";
 import { tHeadAdminMangeUser } from "../../../utils/options";
 import TRow from "./TRow";
+import Loading from "../../../components/Loading";
 
 const ManageUsers = () => {
   const axiosSecure = useAxiosSecure();
 
-  const { data: users = [], refetch } = useQuery({
+  const { data: users = [], refetch, isLoading } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosSecure.get('/users');
@@ -23,6 +24,14 @@ const ManageUsers = () => {
 
   const { currentData, currentPage, setCurrentPage, rowsPerPage, setRowsPerPage, totalPages, totalEntries } = usePagination(users, 10);
   
+  if (isLoading) {
+    return (
+      <div className='mt-72 lg:mt-96'>
+        <Loading/>
+      </div>
+    )
+  }
+
   if (users?.length === 0) {
     return (
       <EmptyState

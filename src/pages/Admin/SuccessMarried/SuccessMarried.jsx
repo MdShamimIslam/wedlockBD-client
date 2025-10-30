@@ -9,14 +9,23 @@ import TableHead from '../../../components/common/TableHead';
 import TRow from './TRow';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import Loading from '../../../components/Loading';
 
 const SuccessMarried = () => {
-    const [stories, refetch] = useSuccessStory();
+    const [stories, refetch, isLoading] = useSuccessStory();
     const axiosSecure = useAxiosSecure();
 
     const { currentData, currentPage, setCurrentPage, rowsPerPage, setRowsPerPage, totalPages, totalEntries } = usePagination(stories, 10);
 
-    if (!stories?.length) {
+    if (isLoading) {
+      return (
+        <div className='mt-72 lg:mt-96'>
+          <Loading/>
+        </div>
+      )
+    }
+
+    if (stories?.length === 0) {
       return (
         <EmptyState
           icon={BookOpenText}

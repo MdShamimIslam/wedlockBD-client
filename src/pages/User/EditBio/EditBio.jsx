@@ -11,6 +11,7 @@ import useBio from "../../../hooks/useBio";
 import { Edit } from "lucide-react";
 import Nodata from "../../../components/common/Nodata";
 import SpinnerSVG from "../../../components/common/SpinnerSVG";
+import Loading from "../../../components/Loading";
 
 const EditBiodata = () => {
   const { user } = useAuth();
@@ -19,7 +20,7 @@ const EditBiodata = () => {
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
 
-  const {bio = {}, refetch} = useBio();
+  const {bio = {}, refetch, isLoading} = useBio();
 
   useEffect(() => {
     if (bio && bio._id) {
@@ -75,6 +76,14 @@ const EditBiodata = () => {
       toast.error(error.message || "Something went wrong!");
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className='mt-72 lg:mt-96'>
+        <Loading/>
+      </div>
+    )
+  }
 
   if (!bio || !bio._id) {
     return <Nodata Icon={Edit} />;

@@ -9,11 +9,12 @@ import TPagination from "../../../components/common/TPagination";
 import usePagination from "../../../hooks/usePagination";
 import TRow from "./TRow";
 import Swal from "sweetalert2";
+import Loading from "../../../components/Loading";
 
 const ApprovedPremium = () => {
     const axiosSecure = useAxiosSecure();
 
-    const { data: premiumCollectionData = [], refetch } = useQuery({
+    const { data: premiumCollectionData = [], refetch, isLoading } = useQuery({
       queryKey: ["premium-collection-data"],
       queryFn: async () => {
         const res = await axiosSecure.get(`/premium-bio`);
@@ -23,6 +24,14 @@ const ApprovedPremium = () => {
 
     const { currentData, currentPage, setCurrentPage, rowsPerPage, setRowsPerPage, totalPages, totalEntries } = usePagination(premiumCollectionData, 10);
   
+    if (isLoading) {
+      return (
+        <div className='mt-72 lg:mt-96'>
+          <Loading/>
+        </div>
+      )
+    }
+
     if (premiumCollectionData?.length === 0) {
       return (
         <EmptyState

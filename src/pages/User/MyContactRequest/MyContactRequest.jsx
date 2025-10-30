@@ -8,12 +8,13 @@ import { Mail } from "lucide-react";
 import TPagination from "../../../components/common/TPagination";
 import usePagination from "../../../hooks/usePagination";
 import { Helmet } from "react-helmet-async";
+import Loading from "../../../components/Loading";
 
 const MyContactRequest = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   
-  const { data: requestData = [] } = useQuery({
+  const { data: requestData = [], isLoading } = useQuery({
     queryKey: ["requestBiodata", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get( `/contact-request?email=${user?.email}`);
@@ -22,6 +23,14 @@ const MyContactRequest = () => {
   });
 
   const { currentData, currentPage, setCurrentPage, rowsPerPage, setRowsPerPage, totalPages, totalEntries } = usePagination(requestData, 10);
+
+  if (isLoading) {
+    return (
+      <div className='mt-72 lg:mt-96'>
+        <Loading/>
+      </div>
+    )
+  }
 
   if (requestData?.length === 0) {
     return (

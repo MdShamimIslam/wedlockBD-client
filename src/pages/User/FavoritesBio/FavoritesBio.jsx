@@ -10,24 +10,35 @@ import TPagination from "../../../components/common/TPagination";
 import usePagination from "../../../hooks/usePagination";
 import TableHead from "../../../components/common/TableHead";
 import { tHeadUserFavorite } from "../../../utils/options";
+import Loading from "../../../components/Loading";
 
 const FavoritesBio = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-
-  const { data: favorites = [], refetch } = useQuery({
+  
+  const { data: favorites = [], refetch, isLoading } = useQuery({
     queryKey: ["favoritesBiodata", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/favorites?email=${user?.email}`);
-
+      
       return res.data;
     },
   });
 
+
   const { currentData, currentPage, setCurrentPage, rowsPerPage, setRowsPerPage, totalPages, totalEntries } = usePagination(favorites, 10);
 
+  
+  if (isLoading) {
+    return (
+      <div className='mt-72 lg:mt-96'>
+        <Loading/>
+      </div>
+    )
+  }
 
   if (favorites?.length === 0) {
+   
     return (
       <EmptyState
       icon={Heart}

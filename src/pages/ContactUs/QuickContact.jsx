@@ -1,9 +1,9 @@
 import Heading from "../../components/common/Heading";
-import { contactInfo } from "../../utils/options";
+import { contactInfo, secCl } from "../../utils/options";
 
 const QuickContact = () => {
   return (
-    <div className={`my-8 md:my-12 lg:my-16 px-4 sm:px-6 lg:px-8`}>
+    <div className={secCl}>
           <Heading
             title="Multiple Ways to Reach Us"
             desc="Choose the contact method that works best for you. Our team is always ready to assist."

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const AlreadyCreate = () => {
   return (
     <div className="flex items-center justify-center my-12 md:my-16 lg:my-20 p-4">
-      <div className="bg-white rounded-3xl shadow-xl max-w-xl w-full p-8 text-center animate-fadeIn">
+      <div className="max-w-xl w-full p-8 text-center animate-fadeIn">
         <div className="flex justify-center mb-6">
           <img
             src={wowImg}
