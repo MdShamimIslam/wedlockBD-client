@@ -92,7 +92,7 @@ const Footer = () => {
                         <p className="text-gray-300 mb-6 ">
                             Subscribe to get the latest success stories and matrimony tips
                         </p>
-                        <form className="flex space-x-2">
+                        <form className="md:flex space-x-2">
                             <input
                                 type="email"
                                 id="email"
@@ -101,11 +101,13 @@ const Footer = () => {
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
                                 placeholder="Enter your email"
-                                className="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:border-primary-500"
+                                className="flex-1 mr-2 md:mr-0 px-4 py-3 rounded-lg bg-gray-800 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:border-primary-500"
                             />
                             <button
                                 onClick={handleSubscribe}
-                                className="bg-gradient-to-r from-pink-700 via-black-500 to-black-500  hover:bg-gradient-to-r hover:from-black-500 hover:via-black-500 hover:to-pink-700  text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
+                                className="bg-gradient-to-r from-pink-700 via-black-500 to-black-500 hover:bg-gradient-to-r 
+                                hover:from-black-500 hover:via-black-500 hover:to-pink-700  text-white px-6 py-3 rounded-lg 
+                                font-semibold transition-colors duration-200 md:mt-0 mt-4"
                             >
                                 Subscribe
                             </button>
@@ -114,7 +116,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="border-t border-gray-700">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 py-6">
                     <div className="flex flex-col lg:flex-row justify-between items-center">
                         {/* Copyright */}
                         <div className="text-gray-300 text-sm mb-4 md:mb-0">
@@ -123,14 +125,14 @@ const Footer = () => {
 
                         {/* Social Links */}
                         <div className="flex items-center space-x-4 md:mt-4 lg:mt-0">
-                            <span className="text-gray-400 text-sm mr-2">Follow Us :</span>
+                            <span className="text-gray-400 text-sm mr-2 ml-[-90px] md:ml-0">Follow Us :</span>
                             {socialLinks.map((social, index) => {
                                 const IconComponent = social.icon;
                                 return (
                                     <a
                                         key={index}
                                         href={social.href}
-                                        className="text-gray-400 hover:text-pink-500 transition-colors duration-200 p-2 rounded-full hover:bg-gray-800"
+                                        className="text-gray-400 hover:text-pink-500 transition-colors duration-200 p-1 md:p-2 rounded-full hover:bg-gray-800"
                                     >
                                         <IconComponent className="h-5 w-5" />
                                     </a>

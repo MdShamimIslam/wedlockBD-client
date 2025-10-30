@@ -91,8 +91,6 @@
                 <ChevronDown className="w-6 h-6 text-foreground group-hover:text-primary transition-colors" />
               </button>
 
-
-
               {/* Slider container */}
               <div
                 className="flex transition-transform ease-in-out duration-700"
