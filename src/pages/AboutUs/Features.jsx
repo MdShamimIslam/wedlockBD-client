@@ -9,7 +9,7 @@ const Features = () => {
         desc=" We provide the best matrimony experience with our unique features, dedicated service, and commitment to your happiness."
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
         {features.map((feature, index) => {
           const IconComponent = feature.icon;
           return (

@@ -430,7 +430,7 @@ export const allBiodatas = [
 ];
 
 // section class
-export const secCl = "my-16 md:my-20 lg:my-28 p-3 lg:p-0";
+export const secCl = "my-12 md:my-20 lg:my-28 p-3 lg:p-0";
 // table cell class
 export const tdClases = "px-4 py-3 text-sm text-slate-600 font-medium";
 

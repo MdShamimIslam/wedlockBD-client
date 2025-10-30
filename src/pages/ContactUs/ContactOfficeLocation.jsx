@@ -11,7 +11,7 @@ const ContactOfficeLocation = () => {
         desc="Find our offices in major cities across Bangladesh to serve you better"
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
         {officeLocations.map((office, index) => (
           <div key={index} className="bg-slate-50 p-8 rounded-3xl shadow-sm border hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2">
             <div className="text-center mb-6">

@@ -1,15 +1,15 @@
 import Heading from "../../components/common/Heading";
-import { contactInfo, secCl } from "../../utils/options";
+import { contactInfo } from "../../utils/options";
 
 const QuickContact = () => {
   return (
-    <div className={secCl}>
+    <div className="my-12 md:my-16 p-3 lg:p-0">
           <Heading
             title="Multiple Ways to Reach Us"
             desc="Choose the contact method that works best for you. Our team is always ready to assist."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mdgap-6">
             {contactInfo.map((info, index) => {
               const IconComponent = info.icon;
               return (

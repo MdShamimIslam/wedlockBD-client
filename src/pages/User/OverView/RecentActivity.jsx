@@ -30,10 +30,10 @@ const RecentActivity = ({ latestProfileView, latestRequest }) => {
             return (
               <div
                 key={idx}
-                className={`bg-gradient-to-br ${act.gradient} rounded-3xl p-6 shadow-lg transform hover:-translate-y-1 hover:shadow-2xl transition-all duration-300`}
+                className={`bg-gradient-to-br ${act.gradient} rounded-3xl p-6 shadow-md transform hover:-translate-y-1 hover:shadow-2xl transition-all duration-300`}
               >
                 <div className="flex items-center space-x-4">
-                  <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm shadow-md">
+                  <div className="w-20 md:w-14 h-14 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm shadow-md">
                     <Icon className="w-6 h-6 text-white" />
                   </div>
                   <div>

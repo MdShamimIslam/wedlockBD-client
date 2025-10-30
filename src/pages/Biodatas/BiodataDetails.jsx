@@ -136,7 +136,7 @@ const BiodataDetails = () => {
         <title>Biodata Details | WedlockBD</title>
       </Helmet>
 
-      <div className="my-12 md:my-20 p-3 lg:p-0">
+      <div className="my-8 md:my-16 lg:my-20 p-3 lg:p-0">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
             <div className=" rounded-2xl  border overflow-hidden">

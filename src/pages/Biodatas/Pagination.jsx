@@ -48,7 +48,7 @@ const Pagination = ({ totalPages, setPage, page }) => {
           <button
             key={`page-${num}-${idx}`}
             onClick={() => setPage(num)}
-            className={`px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg border text-sm sm:text-base transition-colors duration-150 ${
+            className={`px-4 py-2 rounded-lg border text-sm sm:text-base transition-colors duration-150 ${
               page === num
                 ? "bg-slate-500 text-white font-semibold border-slate-500"
                 : "bg-white text-gray-700 hover:bg-gray-100"

@@ -8,7 +8,7 @@ const EnhancedCharts = () => {
   const genderBio = genderData?.filter(item => item.name === "Male" || item.name === "Female");
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
         <div className="bg-white rounded-2xl p-6 shadow-sm border ">
           <h3 className="text-lg font-semibold text-gray-900 mb-6">Age Distribution by Gender</h3>
           <ResponsiveContainer width="100%" height={300}>

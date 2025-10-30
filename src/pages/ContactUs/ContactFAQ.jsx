@@ -10,7 +10,7 @@ const ContactFAQ = () => {
         desc="Find quick answers to common questions about our matrimony platform and services"
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
         {faqCategories.map((category, index) => (
           <div key={index} className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-2xl border border-gray-200 hover:border-primary-200 transition-all duration-300">
             <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-4">{category.title}</h3>
@@ -26,7 +26,7 @@ const ContactFAQ = () => {
         ))}
       </div>
 
-      <div className="text-center mt-12">
+      <div className="text-center mt-8 md:mt-12">
         <button className="bg-gradient-to-r from-pink-500 to-blue-500 text-white px-8 py-4 rounded-full md:text-lg font-semibold hover:from-pink-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
           View All FAQs
         </button>

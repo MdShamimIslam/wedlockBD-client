@@ -8,7 +8,7 @@ const DailyActivityAndSuccessStories = () => {
   const {topMatches=[], dailyActivityData=[]} = adminStats || {};
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8">
         {/* Daily Activity */}
         <div className="lg:col-span-2 bg-white rounded-2xl p-6 shadow-sm border   ">
           <h3 className="text-lg font-semibold text-gray-900 mb-6">Weekly Activity Overview</h3>

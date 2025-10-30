@@ -93,7 +93,7 @@ const ViewBiodata = () => {
                 alt={name}
                 className="w-36 h-36 md:w-44 md:h-44 rounded-full object-cover border-4 border-white shadow-xl"
               />
-              <div className="absolute -bottom-3 -right-2 bg-white text-pink-600 rounded-full p-2 shadow-lg">
+              <div className="absolute -bottom-6 md:-bottom-3 -right-2 bg-white text-pink-600 rounded-full p-2 shadow-lg">
                 <Heart className="w-6 h-6" fill="currentColor" />
               </div>
             </div>
@@ -143,9 +143,9 @@ const ViewBiodata = () => {
         </div>
        
         {/* Body */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8">
           {/* Left Column */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-4 md:space-y-8">
             {/* Personal Info */}
             <div className="bg-white rounded-2xl p-8 border border-gray-200 transition-all">
               <h3 className="text-xl font-bold mb-6 text-gray-800 border-b pb-3 flex items-center gap-2">
@@ -174,7 +174,7 @@ const ViewBiodata = () => {
           </div>
 
           {/* Right Column */}
-          <div className="space-y-8">
+          <div className="space-y-4 md:space-y-8">
             {/* Location */}
             <div className="bg-white rounded-2xl p-8 border border-gray-200 transition-all">
               <h3 className="text-xl font-bold mb-6 text-gray-800 border-b pb-3 flex items-center gap-2">

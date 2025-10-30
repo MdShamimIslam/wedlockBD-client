@@ -253,7 +253,7 @@ const AddBiodata = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="mt-5 w-full md:w-2/5 lg:w-1/5 bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 rounded-lg font-semibold hover:scale-105 transition-transform"
+              className="mt-1 md:mt-5 w-full md:w-2/5 lg:w-1/5 bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 rounded-lg font-semibold hover:scale-105 transition-transform"
             >
               {isSubmitting && <SpinnerSVG/>}
               {isSubmitting ? "Submitting..." : "Submit Now"}
