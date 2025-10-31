@@ -10,7 +10,7 @@ const Team = () => {
         desc=" Dedicated professionals working tirelessly to help you find your perfect life partner"
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
         {teamMembers.map((member, index) => (
           <div key={index} className="bg-white rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
             <div className="relative">

@@ -101,7 +101,7 @@ const Footer = () => {
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
                                 placeholder="Enter your email"
-                                className="flex-1 mr-2 md:mr-0 px-4 py-3 rounded-lg bg-gray-800 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:border-primary-500"
+                                className="flex-1 md:mr-0 px-4 py-3 rounded-lg bg-gray-800 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:border-primary-500"
                             />
                             <button
                                 onClick={handleSubscribe}
@@ -125,7 +125,7 @@ const Footer = () => {
 
                         {/* Social Links */}
                         <div className="flex items-center space-x-4 md:mt-4 lg:mt-0">
-                            <span className="text-gray-400 text-sm mr-2 ml-[-90px] md:ml-0">Follow Us :</span>
+                            <span className="text-gray-400 text-sm ml-[-85px] md:ml-0">Follow Us :</span>
                             {socialLinks.map((social, index) => {
                                 const IconComponent = social.icon;
                                 return (

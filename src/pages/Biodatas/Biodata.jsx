@@ -18,7 +18,7 @@ const Biodata = ({isLoading, isFetching, limit, biodatas, totalPages, setPage, p
 
       {!isLoading && biodatas.length === 0 && <NoProfiles/> }
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
         {biodatas.map((biodata) => <ProfileBiodataCard key={biodata._id} biodata={biodata} /> )}
       </div>
 

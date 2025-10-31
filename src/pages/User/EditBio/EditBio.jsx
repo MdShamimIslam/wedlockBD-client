@@ -93,11 +93,11 @@ const EditBiodata = () => {
   const labelClasses = "block text-sm font-medium text-gray-700 mb-1";
 
   return (
-    <div className="mt-4 p-4 lg:p-0 lg:max-w-[1500px] mx-auto">
+    <div className="mt-4 lg:max-w-[1500px] mx-auto">
       <Helmet>
         <title>Edit Biodata | WedlockBD</title>
       </Helmet>
-      <div className="bg-gradient-to-br from-gray-50 to-white p-8 md:p-12 rounded-2xl border border-gray-200 hover:border-blue-200 transition-all duration-300">
+      <div className="bg-gradient-to-br from-gray-50 to-white p-4 md:p-6 lg:p-12 rounded-2xl border border-gray-200 hover:border-blue-200 transition-all duration-300">
         <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-center text-gray-800 mb-6">
           Edit Your Biodata
         </h2>

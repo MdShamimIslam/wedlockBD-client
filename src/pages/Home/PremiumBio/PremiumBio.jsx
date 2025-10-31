@@ -27,7 +27,7 @@ const PremiumBio = () => {
 
           {biodatas.length === 0 && <Loading />}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {biodatas.map((biodata) => (
               <HomeBiodataCard key={biodata._id} biodata={biodata} />
             ))}

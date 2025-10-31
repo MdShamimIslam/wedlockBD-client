@@ -65,7 +65,7 @@ const OverView = () => {
       <Helmet>
         <title>Overview | WedlockBD</title>
       </Helmet>
-      <div className="space-y-8 w-full lg:max-w-[1500px] mx-auto mt-4">
+      <div className="space-y-4 md:space-y-8 w-full lg:max-w-[1500px] mx-auto mt-4">
         <Welcome/>
         <QuickStats {...{stats}} />
         <WeeklyRequestsChart/>
