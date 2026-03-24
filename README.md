@@ -1,4 +1,4 @@
-# 💒 WedlockBD - A Premium Matrimonial Platform (Client-Side)
+# 💒 WedlockBD - A Premium Matrimonial Platform
 
 Welcome to **WedlockBD**, a modern, feature-rich matrimonial platform designed to connect individuals seeking life partners. This is the **Frontend/Client-side** implementation built with React and Vite.
 
@@ -39,13 +39,21 @@ npm install
 ```
 
 ### 3. Environment Variables
-Create a `.env.local` file in the root of the `client` directory and add your API keys:
+Create a `.env.local` file in the root of the `client` directory and add your Firebase, ImgBB, and Stripe API keys:
 ```env
+# Firebase Authentication & Hosting Configuration
+VITE_apiKey=your_api_key
+VITE_authDomain=your_project.firebaseapp.com
+VITE_projectId=your_project_id
+VITE_storageBucket=your_project.appspot.com
+VITE_messagingSenderId=your_sender_id
+VITE_appId=your_app_id
+
 # ImgBB API Key for Profile Image Uploads
 VITE_IMGBB_KEY=your_imgbb_secret_key
 
 # Stripe Public Key for Checkout Sessions
-VITE_STRIPE_PUBLIC_KEY=pk_test_your_stripe_public_key
+VITE_STRIPE_PK=pk_test_your_stripe_public_key
 ```
 
 ### 4. API Configuration
