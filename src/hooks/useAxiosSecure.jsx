@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const axiosSecure = axios.create({
-  baseURL: "https://wedlock-bd-server.vercel.app",
+  baseURL: "https://wedlock-bd-server.vercel.app"
 });
 
 const useAxiosSecure = () => {

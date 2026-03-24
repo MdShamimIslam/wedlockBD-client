@@ -20,7 +20,7 @@ const Biodatas = () => {
     setPage(1); 
   }, [debouncedSearch]);
 
-  const {biodatas,total,totalPages,isLoading, isFetching} = useBiodatas({filters,page,limit});
+  const {biodatas,total,totalPages, isLoading, isFetching} = useBiodatas({filters,page,limit});
 
   const divisions = [...new Set(biodatas.map((b) => b.present_division_name))];
   const occupations = [...new Set(biodatas.map((b) => b.occupation))];
