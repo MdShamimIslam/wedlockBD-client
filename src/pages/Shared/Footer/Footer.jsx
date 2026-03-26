@@ -14,21 +14,21 @@ const Footer = () => {
 
     const handleSubscribe = () => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
+
         if (!email) {
-          toast.error("Please enter your email address!");
-          return;
+            toast.error("Please enter your email address!");
+            return;
         }
-    
+
         if (!emailRegex.test(email)) {
-          toast.error("Please enter a valid email address!");
-          return;
+            toast.error("Please enter a valid email address!");
+            return;
         }
-    
+
         // Success case
         toast.success("Successfully Subscribed!");
         setEmail("");
-      };
+    };
 
     return (
         <footer className="bg-gray-900 text-white">

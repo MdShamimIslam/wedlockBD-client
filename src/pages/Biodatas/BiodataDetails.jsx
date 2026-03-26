@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { CheckCircle, Heart, Lock} from 'lucide-react';
+import { CheckCircle, Heart, Lock } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import useBiodatas from '../../hooks/useBiodatas';
 import toast from 'react-hot-toast';
@@ -16,11 +16,11 @@ import useSuccessStory from '../../hooks/useSuccessStory';
 
 const BiodataDetails = () => {
   const { user } = useAuth();
-  const axiosSecure = useAxiosSecure(); 
+  const axiosSecure = useAxiosSecure();
   const biodata = useLoaderData();
-  const {biodatas}= useBiodatas();
+  const { biodatas } = useBiodatas();
   const requested = useCheckContactRequestStatus(biodata?.biodata_id);
-  const {bio} = useBio();
+  const { bio } = useBio();
   const [stories] = useSuccessStory();
 
   const matchingStory = stories?.find((story) => story.selfBiodataId === biodata?.biodata_id || story.partnerBiodataId === biodata?.biodata_id);
@@ -63,8 +63,8 @@ const BiodataDetails = () => {
 
 
   const handleAddToFavorite = async () => {
-    if(!bio?.biodata_id) {
-     return toast.error('Create your biodata before add to favorites');
+    if (!bio?.biodata_id) {
+      return toast.error('Create your biodata before add to favorites');
     }
 
     if (contact_email === user?.email) {
@@ -82,17 +82,17 @@ const BiodataDetails = () => {
       if (res.data.insertedId === null) {
         toast.error("Already added.");
       }
-    
+
     } catch (error) {
       console.log(error);
       toast.error(error.message);
     }
   };
 
-  const similarProfiles = biodatas?.filter( (profile) => profile.biodata_type === biodata_type && profile._id !== biodata._id );
+  const similarProfiles = biodatas?.filter((profile) => profile.biodata_type === biodata_type && profile._id !== biodata._id);
 
   const handlePayment = async (biodataId) => {
-    if(!bio?.biodata_id) {
+    if (!bio?.biodata_id) {
       return toast.error('Create your biodata before add to contact request');
     }
 
@@ -114,11 +114,11 @@ const BiodataDetails = () => {
       cancelButtonColor: "#d33",
     });
 
-    if (!result.isConfirmed) return; 
+    if (!result.isConfirmed) return;
 
     try {
       const res = await axiosSecure.post(`/contact-request/${biodataId}`);
-     
+
       if (!res?.data?.session?.url) {
         throw new Error("Payment URL not found!");
       }
@@ -151,18 +151,16 @@ const BiodataDetails = () => {
                 <div className="absolute bottom-6 left-6 text-white">
                   <h1 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2">{name}</h1>
                   <div className="flex items-center space-x-4">
-                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                      biodata_type === 'Male' 
-                        ? 'bg-blue-500 text-white' 
-                        : 'bg-pink-500 text-white'
-                    }`}>
+                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${biodata_type === 'Male'
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-pink-500 text-white'
+                      }`}>
                       {biodata_type}
                     </span>
-                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                      biodata_type === 'Male' 
-                        ? 'bg-pink-500 text-white' 
-                        : 'bg-blue-500 text-white'
-                    }`}>
+                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${biodata_type === 'Male'
+                      ? 'bg-pink-500 text-white'
+                      : 'bg-blue-500 text-white'
+                      }`}>
                       ID: {biodata_id}
                     </span>
                   </div>
@@ -171,47 +169,48 @@ const BiodataDetails = () => {
 
               <div className="p-6 border-b border-gray-200">
                 {matchingStory?.story_type ? <div className="bg-gradient-to-r from-pink-600 to-blue-500 text-white py-4 px-6 rounded-xl shadow-md flex flex-col sm:flex-row items-center justify-between gap-3">
-                    <div className="flex items-center space-x-3">
-                      <CheckCircle className="h-6 w-6 text-white" />
-                      <div>
-                        <h3 className="text-lg font-semibold">
-                          {matchingStory?.story_type === "married" && "Married 🎉"}
-                          {matchingStory?.story_type === "engaged" && "Engaged 💍"}
-                        </h3>
-                        <p className="text-sm text-pink-100">
-                          {matchingStory?.story_type === "married" &&
-                            "This biodata is part of a verified married success story."}
-                          {matchingStory?.story_type === "engaged" &&
-                            "This biodata is part of a verified engaged success story."}
-                        </p>
-                      </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-6 w-6 text-white" />
+                    <div>
+                      <h3 className="text-lg font-semibold">
+                        {matchingStory?.story_type === "married" && "Married 🎉"}
+                        {matchingStory?.story_type === "engaged" && "Engaged 💍"}
+                      </h3>
+                      <p className="text-sm text-pink-100">
+                        {matchingStory?.story_type === "married" &&
+                          "This biodata is part of a verified married success story."}
+                        {matchingStory?.story_type === "engaged" &&
+                          "This biodata is part of a verified engaged success story."}
+                      </p>
                     </div>
-                    <span className="bg-white/20 text-sm font-medium py-1 px-3 rounded-full">
-                      {matchingStory?.story_type === "married" && "Married"}
-                      {matchingStory?.story_type === "engaged" && "Engaged"}
-                    </span>
-                  </div> :   <div className="flex flex-col sm:flex-row gap-4">
-                        <button
-                          onClick={handleAddToFavorite}
-                          className="flex-1 flex items-center justify-center space-x-2 py-3 px-6 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r from-pink-500 to-blue-500 text-white hover:from-pink-600 hover:to-blue-600"
-                        >
-                          <Heart className="h-5 w-5" />
-                          <span>Add to Favorites</span>
-                        </button> 
-                        
-                      {((!requested && !bio?.premium_status) && !requested) && <button
-                          onClick={() => handlePayment(biodata_id)}
-                          className="flex-1 bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-pink-600 hover:to-blue-600 transition-all duration-300 flex items-center justify-center space-x-2"
-                        >
-                          <Lock className="h-5 w-5" />
-                          <span>Request Contact</span>
-                        </button>
-                      }
-                    </div>
+                  </div>
+                  <span className="bg-white/20 text-sm font-medium py-1 px-3 rounded-full">
+                    {matchingStory?.story_type === "married" && "Married"}
+                    {matchingStory?.story_type === "engaged" && "Engaged"}
+                  </span>
+                </div> : <div className="flex flex-col sm:flex-row gap-4">
+                  <button
+                    onClick={handleAddToFavorite}
+                    className="flex-1 flex items-center justify-center space-x-2 py-3 px-6 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r from-pink-500 to-blue-500 text-white hover:from-pink-600 hover:to-blue-600"
+                  >
+                    <Heart className="h-5 w-5" />
+                    <span>Add to Favorites</span>
+                  </button>
+
+                  {((!requested && !bio?.premium_status) && !requested) &&
+                    <button
+                      onClick={() => handlePayment(biodata_id)}
+                      className="flex-1 bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-pink-600 hover:to-blue-600 transition-all duration-300 flex items-center justify-center space-x-2"
+                    >
+                      <Lock className="h-5 w-5" />
+                      <span>Request Contact</span>
+                    </button>
+                  }
+                </div>
                 }
               </div>
-                <BasicInfo {...{ race, permanent_division_name, present_division_name, occupation, height, weight, date_of_birth,fathers_name, mothers_name}}/>
-                <ContactInfo {...{ biodata_id, contact_email, contact_number, requested, matchingStory}} />
+              <BasicInfo {...{ race, permanent_division_name, present_division_name, occupation, height, weight, date_of_birth, fathers_name, mothers_name }} />
+              <ContactInfo {...{ biodata_id, contact_email, contact_number, requested, matchingStory }} />
             </div>
           </div>
           {/* similar profiles */}
@@ -220,10 +219,10 @@ const BiodataDetails = () => {
               <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-800 mb-6">
                 Similar {biodata_type} Profiles
               </h2>
-              
+
               <div className="space-y-4 h-[800px] overflow-y-auto pr-2">
                 {similarProfiles?.map((profile) => (
-                  <SimilarProfiles key={profile._id} profile={profile}/>
+                  <SimilarProfiles key={profile._id} profile={profile} />
                 ))}
               </div>
             </div>
